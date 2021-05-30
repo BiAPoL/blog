@@ -3,8 +3,8 @@ Most of us study and work at the [Bio-image Analysis Technology Development grou
 We blog about image data science, knowledge exchange and research data management in the life sciences.
 
 ## [Why we blog](https://biapol.github.io/blog/why_we_blog)
+<small>Robert Haase May 30th, 2021</small>\
 <img style="float: right; width:100px; height:100px" src="images/biapol_logo.png">
-<small>Robert Haase May 30th, 2021</small>
 Bio-image analysis is an emerging field. 
 New technological developments in the middle ground between microscopy and data science emerge rapidly and new ways for processing image data change the way how we do research in biology and biophysics. 
 As it is challenging to keep track of all the new developments...
