@@ -84,6 +84,21 @@ You will then see the saved file in your google drive:
 ![](images/clesperanto_colab/colab11.png)
 
 ## Hints
+
+### Sharing notebooks via github.com
+If you have a [github](https://github.com) account, you can upload a notebook also to a github repository.
+Afterwards, you can enter the location of the repository into a google colab link to share it with collaborators:
+
+For example, a notebook on github.com can have this URL:
+```
+                      https://github.com/clEsperanto/pyclesperanto_google_colab/blob/main/interactive_example.ipynb
+```
+and the corresponding Google Colab adress looks like this:
+```
+https://colab.research.google.com/github/clEsperanto/pyclesperanto_google_colab/blob/main/interactive_example.ipynb
+```
+[Try it out!](https://colab.research.google.com/github/clEsperanto/pyclesperanto_google_colab/blob/main/interactive_example.ipynb)
+
 ### How much memory does my GPU have?
 You can read how much memory is available from the device object. 
 Divide the value three times by 1024 to get the amount of memory in giga bytes.
