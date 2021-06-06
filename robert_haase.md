@@ -10,7 +10,7 @@ I have job titles such as bio-image analyst, scientific software engineer and im
 I give lectures about bio-image analysis, bio-statistics, programming and machine learning at the Biotechnology Center of the TU Dresden and world-wide via youtube. 
 
 Since 2020 I'm heading the Bio-image Analysis Technology Development group (BiA-PoL) at the DFG Cluster of Excellence "Physics of Life" at the TU Dresden where I also started this blog. 
-I serve here as editor and I'm supporting students, employees and collaborators of the BiA-PoL in communicating their science with the world.
+I serve here as editor and I'm supporting students, employees and collaborators of the BiA-PoL in communicating their science and technology with the world.
 
 ## Blog posts
 * [GPU-accelerated image processing in the cloud using Google Colab and clEsperanto](clesperanto_google_colab.md)
