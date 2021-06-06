@@ -2,7 +2,7 @@
 <img style="float: right;" src="images/robert_haase.png">
 My name is Robert and I am computer scientist by training. 
 Over the years I turned into an image data scientist working in the life sciences. 
-Thus, I'm not a computer scientist anymore and not yet a biologist neither.
+Thus, I don't feel like a computer scientist anymore and not yet as biologist neither.
 In the past decade, I worked registering microscopy images of histological stainings of tumor tissue with magnetic resonance imaging, 
 swarm intelligence based algorithms for medical image segmentation for positron emission tomography in the cancer research context and
 analysing manifold images from mostly fluorescent microscopy.
