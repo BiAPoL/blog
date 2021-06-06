@@ -1,4 +1,6 @@
 # GPU-accelerated image processing in the cloud using Google Colab and clEsperanto
+[Robert Haase](https://biapol.github.io/blog/robert_haase), June 5th 2021
+
 Not every computer has a powerful graphics processing unit (GPU) and thus, 
 it might make sense to use cloud computing, e.g. provided by Google. In this
 blog post I give a short intro into Google Colab and how to enable
