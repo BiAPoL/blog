@@ -7,7 +7,7 @@ We blog about image data science, knowledge exchange and research data managemen
 <img style="float: right; width:100px; height:100px" src="images/idr_logo.png">
 For downloading images from the image data resource (IDR), you only need a link, e.g. for requesting the data in tif format. 
 You can then use scikit-image to open the image. In this blog post we show how to browse the IDR programmatically in Python.
-
+<hr/>
 ## [GPU-accelerated image processing in the cloud using Google Colab and clEsperanto](https://biapol.github.io/blog/clesperanto_google_colab) <small>Robert Haase June 5th, 2021</small>
 
 <img style="float: right; width:100px; height:100px" src="images/cle_logo.png">
