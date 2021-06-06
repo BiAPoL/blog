@@ -4,7 +4,7 @@ We blog about image data science, knowledge exchange and research data managemen
 
 <hr/>
 ## [GPU-accelerated image processing using CUPY and CUCIM](https://biapol.github.io/blog/cupy_cucim)  <small>Robert Haase, June 6th, 2021</small>
-<img style="float: right; width:100px; height:100px" src="images/cupy_logo.png">
+<img style="float: right; width:100px; height:100px" src="https://avatars.githubusercontent.com/u/23187665?s=200&v=4">
 Processing large images with python can take time. 
 In order to accelerate processing, graphics processing units (GPUs) can be exploited, for example using NVidia CUDA. 
 For processing images with CUDA, there are a couple of libraries available. 
