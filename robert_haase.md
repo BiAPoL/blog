@@ -13,7 +13,8 @@ Since 2020 I'm heading the Bio-image Analysis Technology Development group (BiA-
 I serve here as editor and I'm supporting students, employees and collaborators of the BiA-PoL in communicating their science and technology with the world.
 
 ## Blog posts
-* [GPU-accelerated image processing in the cloud using Google Colab and clEsperanto](clesperanto_google_colab.md)
+* [GPU-accelerated image processing in the cloud using Google Colab and clEsperanto](https://biapol.github.io/blog/clesperanto_google_colab)
+* [Browsing the Open Microscopy Image Data Resource with Python](https://biapol.github.io/blog/browsing_idr)
 
 ## Links
 * [BiA-PoL group website](https://physics-of-life.tu-dresden.de/en/research/technology-development-groups/bio-image-analysis)
