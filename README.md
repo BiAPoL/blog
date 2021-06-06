@@ -17,7 +17,7 @@ blog post I give a short intro into Google Colab and how to enable
 GPU-accelerated image processing in the cloud using clEsperanto
 
 <hr/>
-## [Why we blog](https://biapol.github.io/blog/why_we_blog)\<small>Robert Haase May 30th, 2021</small>
+## [Why we blog](https://biapol.github.io/blog/why_we_blog)<small>Robert Haase May 30th, 2021</small>
 <img style="float: right; width:100px; height:100px" src="images/biapol_logo.png">
 Bio-image analysis is an emerging field. 
 New technological developments in the middle ground between microscopy and data science emerge rapidly and new ways for processing image data change the way how we do research in biology and biophysics. 
