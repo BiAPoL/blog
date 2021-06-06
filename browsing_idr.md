@@ -4,8 +4,7 @@
 For downloading images from the [image data resource (IDR)](https://idr.openmicroscopy.org/), you only need a link, e.g. for requesting the data in tif format. You can then use [scikit-image](https://scikit-image.org/) to open the image.
 In this blog post we show how to browse the IDR programmatically in Python. The procedures shown here will also work with your local [Omero](https://www.openmicroscopy.org/omero/) installation if you have one.
 
-See also
-* [IDR API](https://idr.openmicroscopy.org/about/api.html)
+Some of the code examples shown below were adaped from the [IDR API website](https://idr.openmicroscopy.org/about/api.html) licensed by the University of Dundee & Open Microscopy Environment under the [Creative Commons Attribution 4.0 International License](https://creativecommons.org/licenses/by/4.0/).
 
 In the following example, we download image data from Stojic et al shared under the [CC BY 4.0 license](https://creativecommons.org/licenses/by/4.0/) available from the IDR under this URL: https://idr.openmicroscopy.org/webclient/?show=screen-2302 See also the related publication: https://www.nature.com/articles/s41467-020-14978-7
 
