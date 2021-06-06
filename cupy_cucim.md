@@ -42,8 +42,14 @@ image_gpu = cp.asarray(image)
 
 image_gpu.shape
 ```
+```
+(640, 640, 3)
+```
 
-Extracting a single channel out of the three-channel image works like if we were working with numpy. Showing the image does not work, because the CUDA image is not available in memory. In order to get it back from GPU memory, we need to convert it to a numpy array.
+Extracting a single channel out of the three-channel image works like if we were working with 
+[numpy](https://numpy.org/). 
+Showing the image using scikit-image `imshow` does not work, because the CUDA image is not available in memory.
+In order to get it back from GPU memory, we need to convert it to a numpy array.
 ```python
 single_channel_gpu = image_gpu[:,:,1]
 
@@ -56,8 +62,8 @@ imshow(single_channel)
 ```
 ![](images/cupy_cucim/cu2.png)
 
+We can also do this within a convenience function, making our following code shorter and easier to read.
 ```python
-# we can also do this with a convenience function
 def gpu_imshow(image_gpu):
     image = cp.asnumpy(image_gpu)
     imshow(image)
@@ -65,7 +71,12 @@ def gpu_imshow(image_gpu):
 
 ## Image filtering and segmentation
 
-The cucim developers have re-implemented many functions from sckit image, e.g. the [Gaussian blur filter](https://docs.rapids.ai/api/cucim/stable/api.html#cucim.skimage.filters.gaussian), [Otsu Thresholding](https://docs.rapids.ai/api/cucim/stable/api.html#cucim.skimage.filters.threshold_otsu) after [Otsu et al. 1979](https://ieeexplore.ieee.org/document/4310076), [binary erosion](https://docs.rapids.ai/api/cucim/stable/api.html#cucim.skimage.morphology.binary_erosion) and [connected component labeling](https://docs.rapids.ai/api/cucim/stable/api.html#cucim.skimage.measure.label).
+The [cucim developers](https://github.com/rapidsai/cucim/graphs/contributors) have re-implemented many functions from sckit image, 
+e.g. the [Gaussian blur filter](https://docs.rapids.ai/api/cucim/stable/api.html#cucim.skimage.filters.gaussian), 
+[Otsu Thresholding](https://docs.rapids.ai/api/cucim/stable/api.html#cucim.skimage.filters.threshold_otsu) 
+after [Otsu et al. 1979](https://ieeexplore.ieee.org/document/4310076), 
+[binary erosion](https://docs.rapids.ai/api/cucim/stable/api.html#cucim.skimage.morphology.binary_erosion) 
+and [connected component labeling](https://docs.rapids.ai/api/cucim/stable/api.html#cucim.skimage.measure.label).
 
 ```python
 from cucim.skimage.filters import gaussian
@@ -112,7 +123,8 @@ gpu_imshow(labels_gpu)
 ![](images/cupy_cucim/cu6.png)
 
 
-For visualization purposes, it is recommended to turn the label image into an RGB image, especially if you want to save it to disk.
+For visualization purposes, it is recommended to turn the label image into an 
+[RGB](https://en.wikipedia.org/wiki/RGB_color_model) image, especially if you want to save it to disk.
 ```python
 from cucim.skimage.color import label2rgb
 
@@ -125,7 +137,7 @@ gpu_imshow(labels_rgb_gpu)
 
 ## Quantitative measurements
 
-Also quantitative measurments using [regionprops_table](https://docs.rapids.ai/api/cucim/stable/api.html#cucim.skimage.measure.regionprops_table) have been implemented in cucim. A major difference is that you need to convert its result back to numpy if you want to continue processing on the CPU, e.g. using [pandas](https://pandas.pydata.org/).
+Also quantitative measurements using [regionprops_table](https://docs.rapids.ai/api/cucim/stable/api.html#cucim.skimage.measure.regionprops_table) have been implemented in cucim. A major difference is that you need to convert its result back to numpy if you want to continue processing on the CPU, e.g. using [pandas](https://pandas.pydata.org/).
 
 ```python
 from cucim.skimage.measure import regionprops_table 
