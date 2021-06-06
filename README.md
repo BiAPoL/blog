@@ -26,9 +26,8 @@ Bio-image analysis is an emerging field.
 New technological developments in the middle ground between microscopy and data science emerge rapidly and new ways for processing image data change the way how we do research in biology and biophysics. 
 As it is challenging to keep track of all the new developments...
 
-<img style="height:60px" src="images/pol_logo.png">
-
-<img style="height:60px" src="images/tud_logo.png">
+<img style="height:40px" src="images/pol_logo.png"> 
+<img style="height:40px" src="images/tud_logo.png">
 
 ## Acknowledgements
 We acknowledge the support by the Deutsche Forschungsgemeinschaft (DFG, German Research Foundation) under Germany’s Excellence Strategy – EXC2068 - Cluster of Excellence Physics of Life of TU Dresden.
