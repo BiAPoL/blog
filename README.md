@@ -3,6 +3,16 @@ Most of us study and work at the [Bio-image Analysis Technology Development grou
 We blog about image data science, knowledge exchange and research data management in the life sciences.
 
 <hr/>
+## [GPU-accelerated image processing using CUPY and CUCIM](https://biapol.github.io/blog/cupy_cucim)  <small>Robert Haase, June 6th, 2021</small>
+<img style="float: right; width:100px; height:100px" src="images/cupy_logo.png">
+Processing large images with python can take time. 
+In order to accelerate processing, graphics processing units (GPUs) can be exploited, for example using NVidia CUDA. 
+For processing images with CUDA, there are a couple of libraries available. 
+We will take a closer look at cupy, which brings more general computing capabilities for CUDA compatible GPUs, 
+and cucim, a library of image processing specific operations using CUDA. 
+Both together can serve as GPU-surrogate for scikit-image.
+
+<hr/>
 ## [Browsing the Open Microscopy Image Data Resource with Python](https://biapol.github.io/blog/browsing_idr) <small>Robert Haase, June 6th, 2021</small>
 <img style="float: right; width:100px; height:100px" src="images/idr_logo.png">
 For downloading images from the image data resource (IDR), you only need a link, e.g. for requesting the data in tif format. 
