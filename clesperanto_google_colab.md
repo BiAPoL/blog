@@ -136,5 +136,8 @@ It will give an overview about what's currently going on on your GPU:
 +-----------------------------------------------------------------------------+
 ```
 
+# Disclosure
+When reading this blog post, please have in mind that I'm one of the core developers of [clesperanto](https://clesperanto.net). I may be biased on the one side and even more interested on feedback on the other side.
+
 # Acknowledgements
 I would like to thank Florian Jug and Wei Ouyang for introducing me to Google Colab and showing me tips and tricks.
