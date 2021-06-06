@@ -171,7 +171,7 @@ for row in grid['grid']:
 
 ![img_1_thumbnail.png](images/idr_api/img_1_thumbnail.png)
 
-In order to retrieve the whole image, we can use the code shown on top.
+In order to retrieve the whole 2D image, we can use the code shown on top.
 
 ```python
 generic_image_url = "https://idr.openmicroscopy.org/webclient/render_image_download/{image_id}/?format=tif"
@@ -185,6 +185,9 @@ imshow(image)
 ```
 
 ![img_1.png](images/idr_api/img_1.png)
+
+If the dataset is 3D or a timelapse (or both) downloading is a bit more complicated. 
+See the [related discussion with example code on image.sc](https://forum.image.sc/t/download-3d-dataset-from-image-data-resource/53632/6).
 
 Furthermore, we can print out the meta data using [json](https://www.json.org/json-en.html). 
 Note: We can have a look at the meta data without downloading the image.
