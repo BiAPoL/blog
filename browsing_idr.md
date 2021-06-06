@@ -6,7 +6,9 @@ In this blog post we show how to browse the IDR programmatically in Python. The 
 
 Some of the code examples shown below were adaped from the [IDR API website](https://idr.openmicroscopy.org/about/api.html) licensed by the University of Dundee & Open Microscopy Environment under the [Creative Commons Attribution 4.0 International License](https://creativecommons.org/licenses/by/4.0/).
 
-In the following example, we download image data from Stojic et al shared under the [CC BY 4.0 license](https://creativecommons.org/licenses/by/4.0/) available from the IDR under this URL: https://idr.openmicroscopy.org/webclient/?show=screen-2302 See also the related publication: https://www.nature.com/articles/s41467-020-14978-7
+In the following example, we download image data from Stojic et al shared under the [CC BY 4.0 license](https://creativecommons.org/licenses/by/4.0/) available 
+[from the IDR under this URL](https://idr.openmicroscopy.org/webclient/?show=screen-2302). See also the 
+[related publication](https://www.nature.com/articles/s41467-020-14978-7).
 
 ## Downloading a single image
 On the IDR website, we can navigate inside the screen dataset and click on images. 
