@@ -26,7 +26,7 @@ imshow(image)
 
 ![img_1.png](images/idr_api/img_1.png)
 
-This also works from [Google Colab](https://colab.research.google.com/github/biapol/blog/notebooks/browse_idr.ipynb).
+This also works from [Google Colab](https://colab.research.google.com/github/biapol/blog/blob/master/notebooks/browse_idr.ipynb).
 
 ![img_2.png](images/idr_api/idr2.png)
 
