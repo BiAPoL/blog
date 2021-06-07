@@ -1,5 +1,5 @@
 # Introduction to Image Analysis Basics in Python with Scikit Image
-Now that we have a grasp of the basics of python it's time to get started with some proper image analysis! For the purposes of trying out image analysis I have a picture of a tribolium embryo with stained nuclei. It previously was a 3D image but we are working with a maximum projection to keep it simple (This means the maximum intensity over all slices of the embryo were taken). Now to see how processing is done in python the explanation will be shown with this example.
+Now that we have a grasp of the basics in python it's time to get started with some proper image analysis! For the purposes of trying out image analysis I have a picture of a tribolium embryo with stained nuclei. It previously was a 3D image but we are working with a maximum projection to keep it simple (This means the maximum intensity over all slices of the embryo were taken). Now to see how processing is done in python the explanation will be shown with this example.
 The first step in any program is to import the libraries needed. You can import whole libraries for example numpy:
 
 
@@ -19,7 +19,7 @@ import matplotlib.pyplot as plt
 
 If you have downloaded anaconda and created an environment as was described in my first [post](https://biapol.github.io/blog/rs_Introduction_to_Python) you will have these libraries pre-installed as they are some of the standard scientific packages needed in python. If you get any errors, go to the command line, activate your environment and install the libraries. If you search the library you want to install in google you will find how to install them in your environment on the sites. 
 
-Now that we have the libraries imported we can talk a bit about them: Numpy is one of the most important libraries you'll need since a lot of the other libraries we will work with are partially based on numpy. In short numpy is a framework with which arrays can be used for mathmatical operations like vectors and matrices, but it is also far more than that. I would HIGHLY suggest watching [this video](https://www.youtube.com/watch?v=4uFs1qouPEI&list=PLZsOBAyNTZwYHBIlu_PUO19M7aHMgwBJr&index=12&ab_channel=DigitalSreeni) on numpy arrays and how they work. It is also helpful to play around with numpy arrays yourself to get used to how they work, because pictures in python are nothing else that numpy arrays of intensities!
+Now that we have the libraries imported we can talk a bit about them: Numpy is one of the most important libraries you'll need since a lot of the other libraries we will work with are partially based on numpy. In short numpy is a framework with which arrays can be used for mathmatical operations like vectors and matrices, but it is also far more than that. I would HIGHLY suggest watching [this video](https://www.youtube.com/watch?v=4uFs1qouPEI&list=PLZsOBAyNTZwYHBIlu_PUO19M7aHMgwBJr&index=12&ab_channel=DigitalSreeni) on numpy arrays and how they work. It is also helpful to play around with numpy arrays yourself to get used to how they work, because pictures in python are nothing else that numpy arrays of intensities! I'm also still learning numpy and the best way to find out what functions you need for a task is Google. Numpy is a large library and learning all functions in one go will be impossible. You will find solutions along the way and you will find yourself becoming familiar with its functions by simply using it.
 
 The other library we will be using is scikit image: you could think of this library a bit like the ImageJ of python. It has hundreds of functions needed for image analysis included and this saves us form defining our own functions for gaussian blurs, thresholding, etc. Most importantly the 'io' submodule can be used to read and write images into or from python:
 
@@ -64,7 +64,7 @@ io.imshow(tribolium)
     
 
 
-We can also display images with matplotlib. This needs more lines of code but we also have some more options regarding the plots like title. A detailed description of different plotting techniques can be found [here](https://matplotlib.org/3.1.0/gallery/subplots_axes_and_figures/subplots_demo.html)
+We can also display images with matplotlib. This needs more lines of code, but we also have some more options regarding the plots like titles and axes descriptions. A detailed description of different plotting techniques can be found [here](https://matplotlib.org/3.1.0/gallery/subplots_axes_and_figures/subplots_demo.html)
 
 
 ```python
@@ -181,7 +181,7 @@ plt.show()
     
 
 
-These results are not too great so some preprocessing appart from the median filter is needed. Here we will use a tophat filter for background subtraction in order to achieve a more percise segmentation. The function shown here is a simple implementation of the scikit image function and works with a radius as parameter for the tophat filtering. A more in-depth look at background subtration is will be provided in a separate blogpost!
+These results are not too great so some preprocessing appart from the median filter is needed. Here we will use a tophat filter for background subtraction in order to achieve a more percise segmentation. The function shown here is a simple implementation of the scikit image function and works with a radius as parameter for the tophat filtering. A more in-depth look at background subtration is will be provided in a [separate blogpost]().
 
 
 ```python
@@ -225,7 +225,7 @@ ax3.set_title('Thresholded Image')
     
 
 
-To actually get to individual marked cells we need to perform connected components analysis, in which each seperate group of white pixels is marked as an individual entity. This is done by assigning a different grey value to each pixel and is easily handled with the measure submodule of scikit image. The result can then be plotted 
+To actually get to individual marked cells we need to perform connected components analysis, in which each seperate group of white pixels is marked as an individual entity. This is done by assigning a different grey value to each pixel and is easily handled with the measure submodule of scikit image. The result can then be plotted:
 
 
 ```python
@@ -251,7 +251,7 @@ ax2.set_title('Connected Componets Analysis')
     
 
 
-As you can see after connected components analysis the different segmented nuclei have differing grey values but sometimes it's hard to see the nuclei or to differentiate them from eachother. To get random colors for each cell we need to generate our own colourmap and to do this we will use numpy! A colourmap is nothing than a 2 dimensional array of shape 256 x 3. The 3 is because each colour is made up of a red, green and blue value. If we want to have a black background we need the first element of the colourmap to be black: 0 red, 0 green and 0 blue. After that we can have random values for each next element. Since randomness in computing is never quite real we can also set a seed for the randomness. This means if we run this code with the same seed on another computer we will get the very same 'randomness'. For some more information on random numbers in the computers you can read about it [here](https://www.sharpsightlabs.com/blog/numpy-random-seed/).
+As you can see after connected components analysis the different segmented nuclei have differing grey values but it's hard to differentiate them from eachother. To get random colors for each cell we need to generate our own colourmap and to do this we will use numpy! A colourmap is nothing than a 2 dimensional array of shape 256 x 3. The size 3 is due to each colour being made up of a red, green and blue value. If we want to have a black background we need the first element of the colourmap to be black: 0 red, 0 green and 0 blue. After that we can have random values for each next element. Since randomness in computing is never quite real we can also set a seed for the randomness. This means if we run this code with the same seed on another computer we will get the very same 'randomness'. For some more information on random numbers in computing you can read about it [here](https://www.sharpsightlabs.com/blog/numpy-random-seed/).
 
 
 ```python
@@ -281,7 +281,7 @@ ax1.set_title('Connected Componets Analysis')
     
 
 
-Even though the borders of the nuclei are slightly bugggy and show what seem to be rainbows the cells can be differentiated from eachother much more easily and we finally have a good result for the workflow. Next time we will get into another method for achieving segmentations without relying on thresholding!
+Even though the borders of the nuclei are slightly buggy and look like rainbows, the cells can be differentiated from eachother much more easily and we finally have a good result for the workflow. Next time we will look at [background subtraction] in more detail and get into another method for achieving [segmentations without relying on thresholding]!
 
 ## [Home](https://biapol.github.io/blog/ryan_savill)
 
