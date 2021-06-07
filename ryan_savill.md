@@ -9,4 +9,7 @@ Below you'll find an index of topics that I'll cover, which will be updated with
 * [Introduction to Image Analysis Basics in Python with Scikit Image](https://biapol.github.io/blog/rs_Intro_to_img_analysis_skimage)
 * [Background Subtraction]
 * [Spot Detection in Scikit Image]
+
 #### Have Fun Coding!
+
+[Imprint](https://biapol.github.io/blog/imprint)
