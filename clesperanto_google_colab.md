@@ -27,8 +27,10 @@ For installing pyclesperanto, enter this code in a cell and hit SHIFT-ENTER.
 ```
 !pip install pyclesperanto_prototype
 ```
-After installation, you may read a message asking you to restart your kernel. If so, click on 'Restart' and follow the instructions.
 ![](images/clesperanto_colab/colab3a.png)
+
+After installation, you may read a message asking you to restart your kernel. If so, click on 'Restart Runtime'.
+![](images/clesperanto_colab/restart_runtime.png)
 
 Afterwards, test the installation by printing out which GPU-device is selected:
 ```
