@@ -1,5 +1,0 @@
-The IDR logo is adapted from the IDR github repository where it is available under the CC-BY 4.0 license
-https://github.com/IDR/idr.openmicroscopy.org/blob/master/LICENSE
-
-Source:
-https://github.com/IDR/idr.openmicroscopy.org/blob/master/img/logos/logo-idr.svg
