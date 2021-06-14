@@ -10,7 +10,13 @@ I'm using Windows and to open it you just need to search for 'cmd' using the Win
 The basic functionality and use of conda in it can be found in this [great explanation of command line and conda](https://youtu.be/MOEPe9TGBK0?t=1161), created by Robert Haase, my supervisor.
 Another nice explanation of the command line can be found by Sreeni [here](https://www.youtube.com/watch?v=AzuajQnRuGI&list=PLZsOBAyNTZwbIjGnolFydAN33gyyGP7lT&index=5&ab_channel=DigitalSreeni) 
 
-You will also need an integrated development environment (in short IDE), which makes organizing code, files and projects easier. You can watch more details and explanations on why IDEs make sense [here](https://www.youtube.com/watch?v=BxebisJKWBg&list=PLZsOBAyNTZwbIjGnolFydAN33gyyGP7lT&index=7&ab_channel=DigitalSreeniDigitalSreeni). If you go with anaconda, like I did, one IDE will be preinstalled in your environment: [spyder](https://www.spyder-ide.org/) (it's the same as the one used by Sreeni).
+You will also need an integrated development environment (in short IDE), which makes organizing code, files and projects easier. You can watch more details and explanations on why IDEs make sense [here](https://www.youtube.com/watch?v=BxebisJKWBg&list=PLZsOBAyNTZwbIjGnolFydAN33gyyGP7lT&index=7&ab_channel=DigitalSreeniDigitalSreeni). If you go with anaconda, like I did, one IDE will be preinstalled in your environment: [spyder](https://www.spyder-ide.org/) (it's the same as the one used by Sreeni). Once you open spyder it can be a bit intimidating but I'll break it down for you:
+
+<img style="height:800px" src="ryan_data/01_intro_to_python/IDE_overview.png"> 
+
+1. This is the area where you write your code. You will see that some code will be coloured like when you import libraries or define functions and this makes the code easier to read and write.
+2. This is a window for looking at your variables (the small tab marked 2a) or to look at generated plots or images (the small tab marked 2b).  I love the variable explorer as I don't have to print anything if I want to see what a variable contains and I can just check if my functions are all doing what they should be doing. This section really helps with debugging code and I know you will find it helpful too.
+3. This is the console. It is similar to the command line and you can manually define variables in here, but most importantly this is where any errors in the code will be displayed. Also if you run the code (either by pressing shift + enter or with the green play button at the top) a message will be displayed here.
 
 To get started with your first programs in python, I would suggest you follow the tutorial on setting up an environment after installing anaconda. I can offer a bonus tip for creating conda environments and that is to install a specific python version, as some libraries won't work with the newest python version but you may find that out yourself. Furthermore, install all the essential scientific libraries included in anaconda. To do this you need to initialise a conda environment as follows:
 
@@ -20,6 +26,17 @@ C:\Users\yourusername> conda create -n your_environment_name python=3.8 anaconda
 ```
 
 You have to replace `your_environment_name` with a name of your choice. For now you can omit the line `python=3.8` but if you run into problems you can use this line to install any python version you wish to. The command `anaconda` at the end will install all the libraries that come preinstalled with anaconda to your new environment. It can happen that your environment breaks because you mess up an installation or a library is not compatible with another or incompatible with the installed python version. Don't panic that is normal and happens. Just go ahead and create a new environment and reinstall the libraries you need. 
+To activate your created environment you can just call the command below, again replacing `your_environment_name` with your chosen environment name:
+
+```sh
+C:\Users\yourusername> conda activate your_environment_name
+```
+Now you are in the environment you created and can install libraries or open your IDE (if you have chosen spyder) by calling:
+
+```sh
+C:\Users\yourusername> spyder
+```
+
 
 ## The Basics
 To be frank I cannot teach all the basics of python anywhere near as well as the plethora of people on youtube and various blogs and sites across the internet. What I can do is give you some of the resources I have used to get into python, which you might also like. If you are starting completely from scratch I would advise you to watch [this](https://www.youtube.com/watch?v=rfscVS0vtbw&ab_channel=freeCodeCamp.org) video.
@@ -56,7 +73,7 @@ If we want to know what index each element has we can use enumerate to get this 
 
 ```python
 # The enumerate function returns the index of the element of the 
-# list and the actual element as a tupule and we can acess 
+# list and the actual element as a tupule and we can access 
 # both at the same time through this way of for looping
 for index, method in enumerate(loop_list):
     
@@ -97,7 +114,7 @@ for method, time in zip(loop_list, processingtimes):
     analysistook 120 seconds
     
 
-What zip actually does is create a list of tupules of the two input arrays. We can then acess both of these elements at once when using a for-loop. If one list is shorter then it will only loop through the indices of the shorter list as we can see that the last element in processingtimes is not printed.
+What zip actually does is create a list of tupules of the two input arrays. We can then access both of these elements at once when using a for-loop. If one list is shorter then it will only loop through the indices of the shorter list as we can see that the last element in processingtimes is not printed.
 
 ### List Comprehension
 The last trick I want to show you is list comprehension. I love it because it gets rid of a lot of lines of code that you have to write manually otherwise. I will show you the long version and how list comprehension can replace these lines. In this basic example we will do some basic math with two lists  and save the results in a third:
