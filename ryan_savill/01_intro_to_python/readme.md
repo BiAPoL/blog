@@ -12,7 +12,7 @@ Another nice explanation of the command line can be found by Sreeni [here](https
 
 You will also need an integrated development environment (in short IDE), which makes organizing code, files and projects easier. You can watch more details and explanations on why IDEs make sense [here](https://www.youtube.com/watch?v=BxebisJKWBg&list=PLZsOBAyNTZwbIjGnolFydAN33gyyGP7lT&index=7&ab_channel=DigitalSreeniDigitalSreeni). If you go with anaconda, like I did, one IDE will be preinstalled in your environment: [spyder](https://www.spyder-ide.org/) (it's the same as the one used by Sreeni). Once you open spyder it can be a bit intimidating but I'll break it down for you:
 
-<img style="height:800px" src="ryan_savill/01_intro_to_python/IDE_overview.png"> 
+<img style="width:500px" src="IDE_overview.png"> 
 
 1. This is the area where you write your code. You will see that some code will be coloured like when you import libraries or define functions and this makes the code easier to read and write.
 2. This is a window for looking at your variables (the small tab marked 2a) or to look at generated plots or images (the small tab marked 2b).  I love the variable explorer as I don't have to print anything if I want to see what a variable contains and I can just check if my functions are all doing what they should be doing. This section really helps with debugging code and I know you will find it helpful too.
