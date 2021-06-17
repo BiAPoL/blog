@@ -5,7 +5,7 @@ I'm a Master Student in molecular bioengineering (in your university it's probab
 Below you'll find an index of topics that I'll cover, which will be updated with content every now and then. All resources I'm using will be linked to or are availible in the github repository of this Blog!
 
 ## Topics
-* [Intorduction to Using Python for Image Analysis](https://biapol.github.io/blog/rs_Introduction_to_Python)
+* [Introduction to Using Python for Image Analysis](https://biapol.github.io/blog/rs_Introduction_to_Python)
 * [Introduction to Image Analysis Basics in Python with Scikit Image](https://biapol.github.io/blog/rs_Intro_to_img_analysis_skimage)
 * [Background Subtraction]
 * [Spot Detection in Scikit Image]
