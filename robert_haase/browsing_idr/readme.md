@@ -13,7 +13,7 @@ In the following example, we download image data from Stojic et al shared under 
 ## Downloading a single image
 On the IDR website, we can navigate inside the screen dataset and click on images. 
 After selecting an image, there will be download link in the top right corner.
-![img_1.png](images/idr_api/idr1.png)
+![img_1.png](idr_api/idr1.png)
 
 You can copy this link and use it in your python code to download and show the image.
 ```python
@@ -24,16 +24,16 @@ image = imread('https://idr.openmicroscopy.org/webclient/render_image_download/9
 imshow(image)
 ```
 
-![img_1.png](images/idr_api/img_1.png)
+![img_1.png](idr_api/img_1.png)
 
 This also works from [Google Colab](https://colab.research.google.com/github/biapol/blog/blob/master/notebooks/browse_idr.ipynb).
 
-![img_2.png](images/idr_api/idr2.png)
+![img_2.png](idr_api/idr2.png)
 
 Furthermore, can assemble the link from a generic link if you know the image identifier of the image you want to download. 
 You can see the identifier of the image on the bottom of your browser when hovering with the mouse over the download link:
 
-![img_3.png](images/idr_api/idr3.png)
+![img_3.png](idr_api/idr3.png)
 
 Using pythons [string format](https://www.w3schools.com/python/ref_string_format.asp) function, we can assemble a generic unified resource locator (URL) with the specific image identifier to a specific link:
 ```python
@@ -52,7 +52,7 @@ imshow(image)
 To navigate through all images which belong to a given dataset, we first need to find out the screen identifier of the dataset. 
 You find it for example in the URL bar of the browser:
 
-![img_4.png](images/idr_api/idr4.png)
+![img_4.png](idr_api/idr4.png)
 
 The IDR [application programing interface (API)](https://idr.openmicroscopy.org/about/api.html) then allows you to technically browse the database using Python. 
 The image shown above is part of screen 2303. 
@@ -170,7 +170,7 @@ for row in grid['grid']:
     break
 ```
 
-![img_1_thumbnail.png](images/idr_api/img_1_thumbnail.png)
+![img_1_thumbnail.png](idr_api/img_1_thumbnail.png)
 
 In order to retrieve the whole 2D image, we can use the code shown on top.
 
@@ -185,7 +185,7 @@ image = imread(image_url)
 imshow(image)
 ```
 
-![img_1.png](images/idr_api/img_1.png)
+![img_1.png](idr_api/img_1.png)
 
 If the dataset is 3D or a timelapse (or both) downloading is a bit more complicated. 
 See the [related discussion with example code on image.sc](https://forum.image.sc/t/download-3d-dataset-from-image-data-resource/53632/6).

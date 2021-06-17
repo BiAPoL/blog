@@ -13,24 +13,24 @@ See also
 ## Step 1: Create a new notebook
 Go to [https://colab.research.google.com/](https://colab.research.google.com/)
 and click on `New Notebook`
-![](images/clesperanto_colab/colab1.png)
+![](clesperanto_colab/colab1.png)
 
 ## Step 2: Activate access to a GPU
 In the `Runtime` menu, click on `Change runtime type`
-![](images/clesperanto_colab/colab2.png)
+![](clesperanto_colab/colab2.png)
 
 The dialog allows you to select hardware accelerators. Select `GPU` and click on `Save`.
-![](images/clesperanto_colab/colab3b.png)
+![](clesperanto_colab/colab3b.png)
 
 ## Step 4: Install pyclesperanto
 For installing pyclesperanto, enter this code in a cell and hit SHIFT-ENTER.
 ```
 !pip install pyclesperanto_prototype
 ```
-![](images/clesperanto_colab/colab3a.png)
+![](clesperanto_colab/colab3a.png)
 
 After installation, you may read a message asking you to restart your kernel. If so, click on 'Restart Runtime'.
-![](images/clesperanto_colab/restart_runtime.png)
+![](clesperanto_colab/restart_runtime.png)
 
 Afterwards, test the installation by printing out which GPU-device is selected:
 ```
@@ -38,7 +38,7 @@ import pyclesperanto_prototype as cle
 
 cle.get_device()
 ```
-![](images/clesperanto_colab/colab4.png)
+![](clesperanto_colab/colab4.png)
 
 ## Step 4: Testing image processing
 For processing an image, we use scikit-image to load it from the cloud first
@@ -49,7 +49,7 @@ image = cle.push(imread('https://samples.fiji.sc/blobs.png'))
 image.shape
 ```
 and clesperantos' `imshow` function to visualize it:
-![](images/clesperanto_colab/colab5.png)
+![](clesperanto_colab/colab5.png)
 
 An image processing workflow using the GPU looks for example like this:
 ```
@@ -61,7 +61,7 @@ Label images can be visualzed with `cle.imshow` as well by providing the paramet
 ```
 cle.imshow(labels, labels=True)
 ```
-![](images/clesperanto_colab/colab6.png)
+![](clesperanto_colab/colab6.png)
 
 ## Step 5: Connecting google drive
 For saving image processing results to our google drive, we need to connect to it:
@@ -72,20 +72,20 @@ drive.mount('/content/gdrive')
 The procedure involves creating an authorization code. 
 In order to generate it, click on the provided link and follow the instructions.
 Give access to your Google drive to Google Colab:
-![](images/clesperanto_colab/colab7.png)
+![](clesperanto_colab/colab7.png)
 Afterwards, copy the authorization code by clicking the `copy to clipboard` button
-![](images/clesperanto_colab/colab8.png)
+![](clesperanto_colab/colab8.png)
 and paste the code in the respective field in your notebook:
-![](images/clesperanto_colab/colab9.png)
+![](clesperanto_colab/colab9.png)
 After the connection was established successfully, you can save to your google drive like this:
 
-![](images/clesperanto_colab/colab10.png)
+![](clesperanto_colab/colab10.png)
 ```
 from skimage.io import imsave
 imsave('/content/gdrive/My Drive/labels.tif', cle.pull(labels))
 ```
 You will then see the saved file in your google drive:
-![](images/clesperanto_colab/colab11.png)
+![](clesperanto_colab/colab11.png)
 
 ## Hints
 

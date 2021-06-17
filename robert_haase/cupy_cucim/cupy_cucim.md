@@ -8,7 +8,7 @@ See also
 * [cupy basics tutorial](https://docs.cupy.dev/en/stable/user_guide/basic.html)
 * [cucim example notebooks](https://github.com/rapidsai/cucim/blob/branch-0.20/notebooks/Welcome.ipynb)
 
-Before we start, we need to install CUDA and CUCIM it properly. The following commands make this notebook run in Google Colab.
+Before we start, we need to install CUDA and CUCIM it properly. The following commands make this notebook run in Google Colab. Installation instructions for linux can be found [here](https://github.com/rapidsai/cucim) and [other operating systems are not supported](https://github.com/rapidsai/cucim/issues/60) at the time of writing this.
 
 ```shell
 !curl https://colab.chainer.org/install | sh -
@@ -17,7 +17,7 @@ Before we start, we need to install CUDA and CUCIM it properly. The following co
 !pip install scipy scikit-image cupy-cuda100
 ```
 
-You can also go through this blog post as a [google colab notebook](https://colab.research.google.com/github/biapol/blog/blob/master/notebooks/cupy_cucim.ipynb)
+You can also go through this blog post as a [google colab notebook](https://colab.research.google.com/github/biapol/blog/blob/master/robert_haase/cupy_cucim/cupy_cucim.ipynb)
 
 We can check the installation by importing all libraries we need.
 ```
@@ -34,7 +34,7 @@ image = imread('https://idr.openmicroscopy.org/webclient/render_image_download/9
 
 imshow(image)
 ```
-![](images/cupy_cucim/cu1.png)
+![](cupy_cucim/cu1.png)
 
 In order to process an image using CUDA on the GPU, we need to convert it. Under the hood of this conversion, the image data is sent from computer random access memory (RAM) to the GPUs memory.
 ```python
@@ -60,7 +60,7 @@ single_channel_gpu = image_gpu[:,:,1]
 single_channel = cp.asnumpy(single_channel_gpu)
 imshow(single_channel)
 ```
-![](images/cupy_cucim/cu2.png)
+![](cupy_cucim/cu2.png)
 
 We can also do this within a convenience function, making our following code shorter and easier to read.
 ```python
@@ -86,7 +86,7 @@ blurred_gpu = gaussian(single_channel_gpu, sigma=5)
 gpu_imshow(blurred_gpu)
 ```
 
-![](images/cupy_cucim/cu3.png)
+![](cupy_cucim/cu3.png)
 
 ```python
 from cucim.skimage.filters import threshold_otsu
@@ -100,7 +100,7 @@ binary_gpu = blurred_gpu > threshold
 gpu_imshow(binary_gpu)
 ```
 
-![](images/cupy_cucim/cu4.png)
+![](cupy_cucim/cu4.png)
 
 ```python
 from cucim.skimage.morphology import binary_erosion, disk
@@ -110,7 +110,7 @@ eroded_gpu = binary_erosion(binary_gpu, selem=disk(2))
 gpu_imshow(eroded_gpu)
 ```
 
-![](images/cupy_cucim/cu5.png)
+![](cupy_cucim/cu5.png)
 
 ```python
 from cucim.skimage.measure import label
@@ -120,7 +120,7 @@ labels_gpu = label(eroded_gpu)
 gpu_imshow(labels_gpu)
 ```
 
-![](images/cupy_cucim/cu6.png)
+![](cupy_cucim/cu6.png)
 
 
 For visualization purposes, it is recommended to turn the label image into an 
@@ -133,7 +133,7 @@ labels_rgb_gpu = label2rgb(labels_gpu)
 gpu_imshow(labels_rgb_gpu)
 ```
 
-![](images/cupy_cucim/cu7.png)
+![](cupy_cucim/cu7.png)
 
 ## Quantitative measurements
 
@@ -168,7 +168,7 @@ table_gpu
 table = {item[0] : cp.asnumpy(item[1]) for item in table_gpu.items()}
 pd.DataFrame(table)
 ```
-![](images/cupy_cucim/cu8.png)
+![](cupy_cucim/cu8.png)
 
 
 
