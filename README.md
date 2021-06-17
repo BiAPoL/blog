@@ -3,6 +3,11 @@ Most of us study and work at the [Bio-image Analysis Technology Development grou
 We blog about image data science, knowledge exchange and research data management in the life sciences.
 
 <hr/>
+## [Introduction to Using Python for Image Analysis](https://biapol.github.io/blog/ryan_savill/01_intro_to_python)  <small>Ryan Savill, June 17th, 2021</small>
+<img style="float: right; width:100px; height:100px" src="images/python_logo.png">
+To get started using python the first step is the installation and there are several ways you can do it. To make it easier for your future self it's a good idea to set up a virtual environment.
+
+<hr/>
 ## [GPU-accelerated image processing using cupy and cucim](https://biapol.github.io/blog/robert_haase/cupy_cucim)  <small>Robert Haase, June 6th, 2021</small>
 <img style="float: right; width:100px; height:100px" src="images/cupy_logo.png">
 Processing large images with python can take time. 

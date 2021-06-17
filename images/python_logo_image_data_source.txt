@@ -1,0 +1,8 @@
+Guidelines for Use
+The Python logo is a trademark of the Python Software Foundation, which is responsible for defending against any damaging or confusing uses of the trademark.
+
+See the PSF Trademark Usage Policy.
+
+In general, we want the logo to be used as widely as possible to indicate use of Python or suitability for Python. However, please ask first when using a derived version of the logo or when in doubt.
+
+https://www.python.org/community/logos/
