@@ -3,6 +3,13 @@ Most of us study and work at the [Bio-image Analysis Technology Development grou
 We blog about image data science, knowledge exchange and research data management in the life sciences.
 
 <hr/>
+## [Using StarDist in napari with GPU-support in Windows](https://biapol.github.io/blog/robert_haase/stardist_gpu)  <small>Robert Haase, June 19th, 2021</small>
+<img style="float: right; height:60px" src="images/stardist_logo.png">
+3D segmentation using deep learning is computationally costly, it might be necessary from a practical perspective to do it on computers
+with powerful graphics processing units (GPUs). One option is to do this in the cloud via Google Colab and therefore it is recommended to take a look at ZeroCostDeepLearning4Microscopy.
+If you are greedy, as I am, and want to run everything on your own Windows computer, you can follow the instructions provided here.
+
+<hr/>
 ## [Introduction to Using Python for Image Analysis](https://biapol.github.io/blog/ryan_savill/01_intro_to_python)  <small>Ryan Savill, June 17th, 2021</small>
 <img style="float: right; height:60px" src="images/python_logo.png">
 To get started using python the first step is the installation and there are several ways you can do it. To make it easier for your future self it's a good idea to set up a virtual environment.
