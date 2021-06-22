@@ -1,0 +1,281 @@
+# Background Subtraction
+In the previous notebook we saw how background subtraction can improve segmentation substancially. We will now take a more in depth look at how background subtraction works by showing the tophat filter and and difference of gaussian filter, which both can achieve background subtraction. In general we want to use background subtraction if there is a sharp signal (high localised intensity) we want to isolate from moderate signal that is evenly distributed in the background. Some simple functions allow us to find the background image and subtract it from our original image, only leaving the signals we want to isolate. 
+
+## Tophat-Filter
+This process is basically what a tophat-filter does. It takes the minimum of our original image, representing the background. The minimum is averaged over a window with a size that we have to choose. This size should be larger than our objects so that the filter chooses the minimum which lies between our signal of interest. This then gives us an approximation of the background. To demonstrate this we will apply the filter to our maximum projection image from the [last post](https://biapol.github.io/blog/ryan_savill/01_intro_to_python/):
+
+```python
+from skimage import io, morphology
+import numpy as np
+import matplotlib.pyplot as plt
+import skimage.feature as features
+from scipy import ndimage
+
+your_file_path = 'data_ryan//'
+tribolium = io.imread(your_file_path + 'MAX_Lund_18.0_22.0_Hours Z-projection t1.tif')
+```
+
+Now that we have the data loaded and our libraries imported we can apply a minimum filter and subtract it from the original image to see the result:
+
+
+```python
+# setting the size of the minimum filter to be larger than the nuclei
+size  = 25 
+
+minimum_trib = ndimage.minimum_filter(tribolium, size)  
+orig_sub_min = tribolium - minimum_trib
+
+# visualising the result
+fig, (ax1, ax2, ax3) = plt.subplots(1, 3, figsize =(20,20))
+ax1.imshow(tribolium, cmap = 'gray')
+ax1.set_title('Original')
+ax2.imshow(minimum_trib, cmap = 'gray')
+ax2.set_title('Minimum')
+ax3.imshow(orig_sub_min, cmap = 'gray')
+ax3.set_title('Original - Minimum')
+```
+
+
+    
+![png](output_3_1.png)
+    
+
+
+This already works quite well but we can see that there still is some background that isn't removed around the outside of the embryo. This is why in the tophat filter the minimum image is corrected with a maximum filter. This maximum filter assures that the whole background is included
+
+
+```python
+# getting the maximum of the minimum filtered image
+max_of_min_trib = ndimage.maximum_filter(minimum_trib, size)
+
+# subtraction from the original to obtain the tophat filter
+tophat_trib = tribolium-max_of_min_trib
+
+fig, (ax1, ax2, ax3, ax4) = plt.subplots(1, 4, figsize =(20,20))
+ax1.imshow(tribolium, cmap = 'gray')
+ax1.set_title('Original')
+ax2.imshow(minimum_trib, cmap = 'gray')
+ax2.set_title('Minimum')
+ax3.imshow(max_of_min_trib, cmap = 'gray')
+ax3.set_title('Max of Min')
+ax4.imshow(tophat_trib, cmap = 'gray')
+ax4.set_title('Tophat')
+```
+
+
+    
+![png](output_5_1.png)
+    
+
+
+This in essence is the tophat-filter and we could now put it into a function to use to make our life easier or we can plot it with different values for the max and min filters to see what effect that has on the background subtraction:
+
+
+```python
+def diytophat(image, minsize=25, maxsize=25):
+    from scipy.ndimage import maximum_filter, minimum_filter
+    minimum = minimum_filter(image,minsize)
+    max_of_min = maximum_filter(minimum, maxsize)
+    tophat = image - max_of_min
+    return tophat
+
+# creating a range of filtersizes to iterate through (from 5 to 105 in steps of size 20)
+filtersizes = range(5,105,20)
+
+# initialising the plot
+fig, axs = plt.subplots(len(filtersizes), len(filtersizes), figsize=(20,20))
+
+# iterating over the filtersizes for min and max
+for index_1, i in enumerate(filtersizes):
+    for index_2, j in enumerate(filtersizes):
+        # making the image and showing it on the plot 
+        axs[index_1,index_2].imshow(diytophat(tribolium,i,j),cmap='gray')
+        axs[index_1,index_2].set_title("min = {minval}, max = {maxval}".format(minval = i, maxval = j))
+plt.show()
+```
+
+
+    
+![png](output_7_0.png)
+    
+
+
+From these plots we can see that keeping the filtersizes the same yields the best results, but having the maximum filter slightly smaller than the minimum filter also produces plausible results. Any large differences between the values seem to distort the image substancially. Since equal values seem to work the best we will modify our function to only have one filter size as input:
+
+
+```python
+def diytophat(image, size=25):
+    from scipy.ndimage import maximum_filter, minimum_filter
+    minimum = minimum_filter(image,size)
+    max_of_min = maximum_filter(minimum,size)
+    tophat = image - max_of_min
+    return tophat
+```
+
+One of the main benefits of python is that you don't need to write a lot of code if you are doing things that are common, which is why to apply a tophat filter we can also just use scikit image to apply a tophat filter! The downside is that there are usually some peculiarities with the prepackaged code. In scikit image for some filters we need a structuring element. Basically what this is is a 2d (or 3d if we are processing 3d images) matrix filled with 1 where the filter should be applied and 0 otherwise. The filters need this as a parameter to know how to apply the filter. Now let's generate one to see what it looks like:
+
+
+```python
+from skimage.morphology import disk
+
+# set the radius of the structuring element
+radius = 5
+
+# generate the structuring element
+str_el = disk(radius)
+
+#taking a look at the structuring element
+str_el
+```
+
+
+
+
+    array([[0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0],
+           [0, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0],
+           [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0],
+           [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0],
+           [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0],
+           [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+           [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0],
+           [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0],
+           [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0],
+           [0, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0],
+           [0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0]], dtype=uint8)
+
+
+
+Now that we can generate the structuring element we can use the tophat filter in scikit image on our max projection:
+
+
+```python
+from skimage.morphology import white_tophat
+
+# set the radius of the structuring element
+radius = 25
+
+# generate the structuring element
+str_el = disk(radius)
+
+# apply the filter
+scikit_tophat = white_tophat(tribolium, str_el)
+
+# plotting the result
+fig, (ax1, ax2) = plt.subplots(1, 2, figsize =(20,20))
+ax1.imshow(tribolium, cmap = 'gray')
+ax1.set_title('Original')
+ax2.imshow(scikit_tophat, cmap = 'gray')
+ax2.set_title('Scikit Tophat')
+```
+
+
+    
+![png](output_13_1.png)
+    
+
+
+Again we can make a function to shorten the code if we use it more often:
+
+
+```python
+def subtract_background(image, radius=50, light_bg=False):
+    # import libraries
+    from skimage.morphology import white_tophat, black_tophat, disk 
+    
+    # generate structuring element
+    str_el = disk(radius)
+     
+    # use appropriate filter depending on the background colour
+    if light_bg:
+        return black_tophat(image, str_el)
+    else:
+        return white_tophat(image, str_el)
+```
+
+## Detour: Why Functions Are Awesome
+
+Making functions seems a bit tedious at the beginning and it can be much more fun to explore the code without having to make a function everytime, but you will soon get used to writing functions and chosing parameters to put into the functions. Not only that but you can save these functions in a file to use them in other python programs or jupyter notebooks and you will see how much easier this will make coding in python.
+
+I for instance have chosen to work with data in the form of dataframes (if you use [R](https://www.r-project.org/) or [matlab](https://de.mathworks.com/products/matlab.html) this might be familiar to you) with a python library called [pandas](https://pandas.pydata.org/). It comes pre-installed with anaconda and makes my life a little easier as all columns have names unlike numpy arrays, which could create a lot of confusion. When I want to perform some kind of analysis on my dataframes often functions will output results as numpy arrays, so I have to turn them back into dataframes and sometimes the dataframes need to be converted into arrays as input for some libraries. Functions help me everyday, because the small lines of code that convert datatypes or reshape lists for specific functions really sum up if you have to write them everytime. Also these lines of code make the files ineligable, whereas functions are just neat one-liners which I can easily read! But how can you make a library? I'll show you a simple way now and a more in depth way later:
+
+### How to Build Your Own Simple Library
+- First you have to make a python file and name it something recogniseable (like: img_analysis_functs). 
+- Then you have to add the functions you want to include in your library. Make sure that each function also contains all the import statements of the libraries it uses, otherwise you might be met with errors later on! 
+- And believe it or not that was it! 
+
+The important thing is that this python file is in the same folder as the python file you want to use your library in. If this is the case you should be able to import it like this:
+
+
+```python
+import img_analysis_functs as iaf
+
+io.imshow(iaf.subtract_background(tribolium))
+```
+
+
+    
+![png](output_17_2.png)
+    
+
+
+## Difference of Gaussian
+This is another method of highlighting nuclei, even if it is not described as background subtraction but rather [feature enhancement](https://en.wikipedia.org/wiki/Difference_of_Gaussians). In essence what is done is that we generate two gaussian blurred images with differing sizes of gaussians. The features we want to highlight should be in between the two sizes of the gaussians. Afterwards we subtract the larger blurred image from the smallller one. In a way this combines the noise removal of the small gaussian blurred image with a background subtraction represented by the larger gaussian blurred image. If filters are a common concept for you you can think of it as a bandpass filter that highlights thefeatures in between the two sizes. Since gaussian blur is a simple function included in scikit image let's create this filter ourselves:
+
+
+```python
+from skimage import filters
+
+# the smaller gaussian is just there to remove 
+# noise so it can be just a few pixels
+small_gauss = filters.gaussian(tribolium, sigma = 1)
+
+# the larger gaussian has to be bigger than our largest
+# object, which we can measure or make an educated guess
+large_gauss = filters.gaussian(tribolium, sigma = 100)
+
+# now we subtract the large gaussian from the small one
+dog_tribolium = small_gauss - large_gauss
+
+# visualising the results
+fig, (ax1, ax2, ax3) = plt.subplots(1, 3, figsize =(20,20))
+ax1.imshow(small_gauss, cmap = 'gray')
+ax1.set_title('Small Gaussian')
+ax2.imshow(large_gauss, cmap = 'gray')
+ax2.set_title('Large Gaussian')
+ax3.imshow(dog_tribolium, cmap = 'gray')
+ax3.set_title('DoG Image')
+```
+
+
+    
+![png](output_19_1.png)
+    
+
+
+We can see that it is not quite as effective as the tophat-filter but nonetheless, it has managed to remove some of the background in the image. Making this filter ourselves is a good exercise in coding and understanding what these filters do but when it gets to complicated filters reinventing the wheel isn't practical and you will most likely find the filter you are looking for either in [scikit image](https://scikit-image.org/), in [scipy](https://docs.scipy.org/doc/) or just google (this is what I often do). Because python is a relatively simple language to learn it has many users who have most likely asked the same question as you have countless times! For the difference of gaussian filter scikit image has this function, which we can use here instead of doing the processing ourselves:
+
+
+```python
+# setting the same sigmas as above
+sk_dog_tribolium = filters.difference_of_gaussians(tribolium, 1, 100)
+
+# visualising the results
+# visualising the results
+fig, (ax1, ax2) = plt.subplots(1, 2, figsize =(20,20))
+ax1.imshow(tribolium, cmap = 'gray')
+ax1.set_title('Original')
+ax2.imshow(sk_dog_tribolium, cmap = 'gray')
+ax2.set_title('DoG Image')
+```
+
+
+    
+![png](output_21_1.png)
+    
+
+
+Difference of gaussian is not only helpful as a background filter but it can also be used in spot- or blob-detection, which we will look at in the [next post]! Until then happy coding!
+
+## [Home](https://biapol.github.io/blog/ryan_savill/)
+
+[Imprint](https://biapol.github.io/blog/imprint)
