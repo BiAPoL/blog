@@ -1,7 +1,8 @@
 # Browsing the Open Microscopy Image Data Resource with Python
 [Robert Haase](https://biapol.github.io/blog/robert_haase), June 6th 2021
 
-For downloading images from the [image data resource (IDR)](https://idr.openmicroscopy.org/), you only need a link, e.g. for requesting the data in tif format. You can then use [scikit-image](https://scikit-image.org/) to open the image.
+The [Image Data Resource (IDR)](https://idr.openmicroscopy.org/) is an online database of microscopy research image data where scientist can publish their data if it is part of a scientific publication. It is a fantastic resource not just for biologists searching for images of samples they are interested in. It is also a fantastic source of data for image data scientists who develop new algorithms. For automated access of the underlying data base, an application programming interface (API) is accessible via python allowing you to programmatically browse the database, search for images with certain properties and download them for dedicated image analysis. 
+For downloading images from the IDR, you only need a link, e.g. for requesting the data in tif format. You can then use [scikit-image](https://scikit-image.org/) to open the image.
 In this blog post we show how to browse the IDR programmatically in Python. The procedures shown here will also work with your local [Omero](https://www.openmicroscopy.org/omero/) installation if you have one.
 
 Some of the code examples shown below were adaped from the [IDR API website](https://idr.openmicroscopy.org/about/api.html) licensed by the University of Dundee & Open Microscopy Environment under the [Creative Commons Attribution 4.0 International License](https://creativecommons.org/licenses/by/4.0/).
@@ -11,7 +12,7 @@ In the following example, we download image data from Stojic et al shared under 
 [related publication](https://www.nature.com/articles/s41467-020-14978-7).
 
 ## Downloading a single image
-On the IDR website, we can navigate inside the screen dataset and click on images. 
+On the [IDR website](https://idr.openmicroscopy.org), we can navigate inside the screen dataset and click on images. 
 After selecting an image, there will be download link in the top right corner.
 ![img_1.png](idr_api/idr1.png)
 
@@ -30,7 +31,7 @@ This also works from [Google Colab](https://colab.research.google.com/github/bia
 
 ![img_2.png](idr_api/idr2.png)
 
-Furthermore, can assemble the link from a generic link if you know the image identifier of the image you want to download. 
+Furthermore, you can assemble the link from a generic link if you know the image identifier of the image you want to download. 
 You can see the identifier of the image on the bottom of your browser when hovering with the mouse over the download link:
 
 ![img_3.png](idr_api/idr3.png)
@@ -108,7 +109,7 @@ Annotation File idr0056-screenB-annotation.csv https://github.com/IDR/idr0056-st
 ```
 Next, we can go through sub-datasets. 
 We are looking at a [high content screening](https://en.wikipedia.org/wiki/High-content_screening) (HCS) data set, which typically are organized in plates. 
-A [for-loop](https://nbviewer.jupyter.org/github/BiAPoL/Bio-image_Analysis_with_Python/blob/main/python_basics/08_loops.ipynb) allows us to take a look at available plates.**Text fett markieren**
+A [for-loop](https://nbviewer.jupyter.org/github/BiAPoL/Bio-image_Analysis_with_Python/blob/main/python_basics/08_loops.ipynb) allows us to take a look at available plates.
 
 ```python
 PLATES_URL = "https://idr.openmicroscopy.org/webclient/api/plates/?id={screen_id}"
