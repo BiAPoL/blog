@@ -94,7 +94,7 @@ Afterwards, you can activate this environment:
 conda activate stardist_gpu
 ```
 
-We install tensorflow and precisely, its GPU version:
+We install tensorflow and more precisely, its GPU version:
 ```shell
 pip install tensorflow-gpu=2.4.2
 ```
