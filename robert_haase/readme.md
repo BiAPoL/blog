@@ -16,6 +16,7 @@ I serve here as editor and I'm supporting students, employees and collaborators 
 * [GPU-accelerated image processing in the cloud using Google Colab and clEsperanto](https://biapol.github.io/blog/robert_haase/clesperanto_google_colab)
 * [Browsing the Open Microscopy Image Data Resource with Python](https://biapol.github.io/blog/robert_haase/browsing_idr)
 * [GPU-accelerated image processing using cupy and cucim](https://biapol.github.io/blog/robert_haase/cupy_cucim)
+* [Using StarDist in napari with GPU-support in Windows](https://biapol.github.io/blog/robert_haase/stardist_gpu)
 
 ## Links
 * [BiA-PoL group website](https://physics-of-life.tu-dresden.de/en/research/technology-development-groups/bio-image-analysis)
