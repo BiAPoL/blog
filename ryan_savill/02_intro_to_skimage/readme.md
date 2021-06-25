@@ -281,7 +281,7 @@ ax1.set_title('Connected Componets Analysis')
     
 
 
-Even though the borders of the nuclei are slightly bugggy and show what seem to be rainbows the cells can be differentiated from eachother much more easily and we finally have a good result for the workflow. Next time we will get into another method for achieving segmentations without relying on thresholding!
+Even though the borders of the nuclei are slightly bugggy and show what seem to be rainbows the cells can be differentiated from each other much more easily and we finally have a good result for the workflow. Next time, we will get into another method for achieving segmentations without relying on thresholding!
 
 ## [Home](https://biapol.github.io/blog/ryan_savill/)
 
