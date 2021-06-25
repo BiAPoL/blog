@@ -10,7 +10,7 @@ The [StarDist](https://github.com/stardist/stardist/) developers Uwe Schmidt and
 This eventually gives 3D nuclei segmentation using StarDist into the hands of end-users. 
 You can see it in action in this [Youtube video](https://www.youtube.com/watch?v=Km1_TnUQ4FM&list=PLilvrWT8aLuZCaOkjucLjvDu2YRtCS-JT&index=5).
 
-StarDist under the hood uses 
+Under the hood StarDist uses 
 [Tensorflow](https://www.tensorflow.org/), 
 [CUDA](https://developer.nvidia.com/cuda-toolkit) 
 and [CUDNN](https://developer.nvidia.com/cudnn). As installation of these is not trivial, I took some notes while setting up a Windows computer recently and share the steps here.
