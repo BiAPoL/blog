@@ -97,7 +97,7 @@ Now that we have learnt how to look at our image we can move on to manipulating 
 # importing the scipy library since it contains a median filter
 from scipy import ndimage
 
-# medianfiltering with scipy to remove noise in the image
+# median filtering with scipy to remove noise in the image
 medianfilteredtrib = ndimage.median_filter(tribolium, size = 1)
 
 # determining the intensity value of the threshold according to otsu
