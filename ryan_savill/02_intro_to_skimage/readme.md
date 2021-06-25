@@ -27,7 +27,7 @@ The other library we will be using is scikit image: you could think of this libr
 ```python
 # you will need to write the filepath for where you have
 # the data stored in this variable as a string!
-yourfilepath = 'data//02 Introduction to Image Analysis Basics in Python with Scikit Image//'
+yourfilepath = 'data/02 Introduction to Image Analysis Basics in Python with Scikit Image/'
 
 # the image will now be loaded into this variable
 tribolium = io.imread(yourfilepath + 'MAX_Lund_18.0_22.0_Hours Z-projection t1.tif')
