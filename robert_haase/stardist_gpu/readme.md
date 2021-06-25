@@ -5,7 +5,7 @@
 with powerful graphics processing units (GPUs). One option is to do this in the cloud via Google Colab and for that it is recommended to take a look at [ZeroCostDeepLearning4Microscopy](https://github.com/HenriquesLab/ZeroCostDL4Mic/wiki).
 If you are greedy, as I am, and want to run everything on your own Windows computer, you can follow the instructions provided here.
 
-The [StarDist](https://github.com/stardist/stardist/) developers Uwe Schmidt and Martin Weigert recently release a 
+The [StarDist](https://github.com/stardist/stardist/) developers Uwe Schmidt and Martin Weigert recently released a 
 [napari plugin](https://github.com/napari/napari) named [stardist-napari](https://github.com/stardist/stardist-napari).
 This eventually gives 3D nuclei segmentation using StarDist into the hands of end-users. 
 You can see it in action in this [Youtube video](https://www.youtube.com/watch?v=Km1_TnUQ4FM&list=PLilvrWT8aLuZCaOkjucLjvDu2YRtCS-JT&index=5).
