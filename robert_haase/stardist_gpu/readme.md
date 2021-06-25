@@ -84,7 +84,7 @@ As there are some conflicts between differen versions of CUDA, Tensorflow, Pytho
 If you don't have conda installed yet, I recommend installing [miniconda](https://docs.conda.io/en/latest/miniconda.html#windows-installers). 
 There is an [installation instruction part of our Python Bio-ImageAnalysis course](https://github.com/BiAPoL/Bio-image_Analysis_with_Python/blob/main/conda_basics/01_conda_environments.md).
 
-Assuming conda is set up, we start by creating a new environment and specifically install python 3.8:
+Assuming conda is set up, we start by creating a new environment and specifically installing python 3.8:
 ```shell
 conda create --name stardist_gpu python==3.8
 ```
