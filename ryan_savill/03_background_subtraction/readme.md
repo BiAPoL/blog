@@ -229,7 +229,7 @@ from skimage import filters
 # noise so it can be just a few pixels
 small_gauss = filters.gaussian(tribolium, sigma = 1)
 
-# the larger gaussian has to be bigger than our largest
+# the larger Gaussian has to be bigger than our largest
 # object, which we can measure or make an educated guess
 large_gauss = filters.gaussian(tribolium, sigma = 100)
 
