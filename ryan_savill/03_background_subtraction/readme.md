@@ -79,7 +79,7 @@ def diytophat(image, minsize=25, maxsize=25):
     tophat = image - max_of_min
     return tophat
 
-# creating a range of filtersizes to iterate through (from 5 to 105 in steps of size 20)
+# creating a range of filter sizes to iterate through (from 5 to 105 in steps of size 20)
 filtersizes = range(5,105,20)
 
 # initialising the plot
