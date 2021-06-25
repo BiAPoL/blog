@@ -21,7 +21,7 @@ If you have downloaded anaconda and created an environment as was described in m
 
 Now that we have the libraries imported we can talk a bit about them: Numpy is one of the most important libraries you'll need since a lot of the other libraries we will work with are partially based on numpy. In short, numpy is a framework with which arrays can be used for mathematical operations on vectors and matrices, but it is also far more than that. I would HIGHLY suggest watching [this video](https://www.youtube.com/watch?v=4uFs1qouPEI&list=PLZsOBAyNTZwYHBIlu_PUO19M7aHMgwBJr&index=12&ab_channel=DigitalSreeni) on numpy arrays and how they work. It is also helpful to play around with numpy arrays yourself to get used to how they work, because images in python are nothing else that numpy arrays of intensities!
 
-The other library we will be using is scikit image: you could think of this library a bit like the ImageJ of python. It has hundreds of functions needed for image analysis included and this saves us form defining our own functions for gaussian blurs, thresholding, etc. Most importantly the 'io' submodule can be used to read and write images into or from python:
+The other library we will be using is scikit image: you could think of this library a bit like the ImageJ of python. It has hundreds of functions needed for image analysis included and this saves us from defining our own functions for gaussian blurring, thresholding, etc. Most importantly the 'io' submodule can be used to read images from disc or saving them from python:
 
 
 ```python
