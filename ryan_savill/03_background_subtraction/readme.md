@@ -174,7 +174,7 @@ ax2.set_title('Scikit Tophat')
     
 
 
-Again we can make a function to shorten the code if we use it more often:
+Again, we can make a function to shorten the code if we use it more often:
 
 
 ```python
