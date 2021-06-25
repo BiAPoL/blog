@@ -174,7 +174,7 @@ As the default-values fit to the example data, you can just click on `Run` in th
 
 ![](images/use_stardist2.png)
 
-To make sure that the installation of the GPU-related software worked, you can check in the command line window in the back that the GPU is used indeed:
+To make sure that the installation of the GPU-related software worked, you can check if the GPU is indeed used, by looking at the command line window in the background :
 
 ![](images/use_stardist3.png)
 
