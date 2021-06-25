@@ -1,5 +1,5 @@
 # Introduction to Image Analysis Basics in Python with Scikit Image
-Now that we have a grasp of the basics of python it's time to get started with some proper image analysis! For the purposes of trying out image analysis I have a picture of a tribolium embryo with stained nuclei. It previously was a 3D image but we are working with a maximum projection to keep it simple (This means the maximum intensity over all slices of the embryo were taken). Now to see how processing is done in python the explanation will be shown with this example.
+Now that we have a grasp of the basics of python it's time to get started with some proper image analysis! For the purpose of trying out image analysis I have a picture of a tribolium embryo with stained nuclei. It previously was a 3D image but we are working with a maximum projection to keep it simple (This means the maximum intensity over all slices of the embryo were taken).  The dataset was acquired by Daniela Vorkel, Myers lab, MPI-CBG / CSBD Dresden. Now to see how processing is done in python the explanation will be shown with this example.
 The first step in any program is to import the libraries needed. You can import whole libraries for example numpy:
 
 
