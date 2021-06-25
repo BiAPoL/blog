@@ -98,15 +98,15 @@ Now that we have learnt how to look at our image we can move on to manipulating 
 from scipy import ndimage
 
 # median filtering with scipy to remove noise in the image
-medianfilteredtrib = ndimage.median_filter(tribolium, size = 1)
+denoised_tribolium = ndimage.median_filter(tribolium, size = 1)
 
 # determining the intensity value of the threshold according to otsu
-otsu_thresh = filters.threshold_otsu(medianfilteredtrib)
+otsu_thresh = filters.threshold_otsu(denoised_tribolium)
 
 # here we perform the binarisation and all it takes is one line!
 # the larger than symbol applies to each pixel in the image and returns
 # either true or false, which is either white ore black, respectively
-tribolium_binary = medianfilteredtrib > otsu_thresh
+tribolium_binary = denoised_tribolium > otsu_thresh
 
 
 # plotting the original and thresholded image
