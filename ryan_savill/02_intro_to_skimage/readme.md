@@ -181,7 +181,7 @@ plt.show()
     
 
 
-These results are not too great so some preprocessing appart from the median filter is needed. Here we will use a tophat filter for background subtraction in order to achieve a more percise segmentation. The function shown here is a simple implementation of the scikit image function and works with a radius as parameter for the tophat filtering. A more in-depth look at background subtration is will be provided in a separate blogpost!
+These results are not too great so some preprocessing appart from the median filter is needed. Here we will use a [top-hat filter](https://en.wikipedia.org/wiki/Top-hat_transform) for background subtraction in order to achieve a more percise segmentation. The function shown here is a simple implementation of the scikit image function and works with a radius as parameter for the top-hat filtering. A more in-depth overview about background subtration is will be provided in a separate blog post!
 
 
 ```python
