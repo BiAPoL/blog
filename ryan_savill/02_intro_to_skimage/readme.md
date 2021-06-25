@@ -47,7 +47,7 @@ print('shape of tribolium picture: {}'.format(tribolium.shape))
     shape of tribolium picture: (1024, 512)
     
 
-Now we can obviously see that printing the values of the picture do not show it. We can also see that the shape of the picture is 1024 x 512 pixels and is represented by and array of 1024 arrays with the length 512: each value representing the intensity of a pixel. To take a look at a 2D image we need to use other functions. Either we can use scikit image or matplotlib: a library for plotting data (and images). Below you can see how to do this:
+Now we can obviously see that printing the values of the image do not show it. We can also see that the shape of the image is 1024 x 512 pixels and is represented by an array of 1024 arrays with the length 512: each value representing the intensity of a pixel. To take a look at a 2D image we need to use other functions. Either we can use scikit image or matplotlib: a library for plotting data (and images). Below you can see how to do this:
 
 
 ```python
