@@ -225,7 +225,7 @@ This is another method of highlighting nuclei, even if it is not described as ba
 ```python
 from skimage import filters
 
-# the smaller gaussian is just there to remove 
+# the smaller Gaussian is just there to remove 
 # noise so it can be just a few pixels
 small_gauss = filters.gaussian(tribolium, sigma = 1)
 
