@@ -252,7 +252,7 @@ ax3.set_title('DoG Image')
     
 
 
-We can see that it is not quite as effective as the tophat-filter but nonetheless, it has managed to remove some of the background in the image. Making this filter ourselves is a good exercise in coding and understanding what these filters do but when it gets to complicated filters reinventing the wheel isn't practical and you will most likely find the filter you are looking for either in [scikit image](https://scikit-image.org/), in [scipy](https://docs.scipy.org/doc/) or just google (this is what I often do). Because python is a relatively simple language to learn it has many users who have most likely asked the same question as you have countless times! For the difference of gaussian filter scikit image has this function, which we can use here instead of doing the processing ourselves:
+We can see that it is not quite as effective as the top-hat filter but nonetheless, it has managed to remove some of the background in the image. Making this filter ourselves is a good exercise in coding and understanding what these filters do. However, when it gets to complicated filters, reinventing the wheel isn't practical and you will most likely find the filter you are looking for either in [scikit image](https://scikit-image.org/), in [scipy](https://docs.scipy.org/doc/) or just google (this is what I often do). Because python is a relatively simple language to learn. There are many users who have most likely asked the same question as you have! For the [Difference of Gaussian filter](https://scikit-image.org/docs/dev/api/skimage.filters.html#skimage.filters.difference_of_gaussians) scikit image has this function as well, which we can use here instead of doing the processing ourselves:
 
 
 ```python
