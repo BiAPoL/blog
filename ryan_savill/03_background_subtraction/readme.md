@@ -112,7 +112,7 @@ def diytophat(image, size=25):
     return tophat
 ```
 
-One of the main benefits of python is that you don't need to write a lot of code if you are doing things that are common, which is why to apply a tophat filter we can also just use scikit image to apply a tophat filter! The downside is that there are usually some peculiarities with the prepackaged code. In scikit image for some filters we need a structuring element. Basically what this is is a 2d (or 3d if we are processing 3d images) matrix filled with 1 where the filter should be applied and 0 otherwise. The filters need this as a parameter to know how to apply the filter. Now let's generate one to see what it looks like:
+One of the main benefits of python is that you don't need to write a lot of code if you are doing things that are common, which is why to apply a top-hat filter we can also just use [scikit image](https://scikit-image.org/) to apply a top-hat filter! The downside is that there are usually some peculiarities with the prepackaged code. In scikit image for some filters we need a [structuring element](https://homepages.inf.ed.ac.uk/rbf/HIPR2/strctel.htm). Basically, this is a 2d (or 3d if we are processing 3d images) matrix filled with 1 where the filter should take a pixel into account and 0 otherwise. The filters need this as a parameter to know how to apply the filter spatially. Now let's generate one to see what it looks like:
 
 
 ```python
