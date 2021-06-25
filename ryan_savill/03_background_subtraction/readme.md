@@ -200,7 +200,7 @@ I for instance have chosen to work with data in the form of dataframes (if you u
 
 ### How to Build Your Own Simple Library
 - First you have to make a python file and name it something recogniseable (like: img_analysis_functs). 
-- Then you have to add the functions you want to include in your library. Make sure that each function also contains all the import statements of the libraries it uses, otherwise you might be met with errors later on! 
+- Thenm you have to add the functions you want to include in your library. Make sure that each function also contains all the import statements of the libraries it uses, otherwise you might be met with errors later on! 
 - And believe it or not that was it! 
 
 The important thing is that this python file is in the same folder as the python file you want to use your library in. If this is the case you should be able to import it like this:
