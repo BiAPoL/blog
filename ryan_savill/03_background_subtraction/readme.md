@@ -2,7 +2,7 @@
 In the [previous blog post](https://biapol.github.io/blog/02_intro_to_skimage) we saw how background subtraction can improve segmentation substantially. We will now take a more in depth look at how background subtraction works by showing the top-hat filter and Difference of Gaussian (DoG) filter, which both can achieve background subtraction. In general, we want to use background subtraction if there is a sharp signal (high localised intensity) we want to isolate from moderate signal that is evenly distributed in the background. Some simple functions allow us to find the background image and subtract it from our original image, only leaving the signals we want to isolate. 
 
 ## Top-hat Filter
-This process is basically what a top-hat filter does. It takes the minimum of our original image, representing the background. The minimum is averaged over a window with a size that we have to choose. This size should be larger than our objects so that the filter chooses the minimum which lies between our signal of interest. This then gives us an approximation of the background. To demonstrate this, we will apply the filter to our maximum projection image from the [last post](https://biapol.github.io/blog/ryan_savill/01_intro_to_python/) which originates from a dataset acquired by Daniela Vorkel, Myers lab MPI CBG / CSBD:
+This process is basically [what a top-hat filter does](https://www.youtube.com/watch?v=0PP38Z0CNMI&t=800s). Under the hood we are applying two filters in series before subtracting this filtered image from our input image. The first filter we apply is a minimum filter, which finds the minimum intensity for a pixel in a neighbourhood defined by the filter size. This can be seen as an [erosion](https://homepages.inf.ed.ac.uk/rbf/HIPR2/erode.htm) of the image and returns part of the background. Afterwards, we apply a maximum filter to our minimum-filtered image, which sets a pixel to the maximum intensity value in a given neighbourhood. What we are doing now is a [dilation](https://homepages.inf.ed.ac.uk/rbf/HIPR2/dilate.htm) of the image to retrieve the whole background (since we eroded some of it). To demonstrate this, we will apply the filter to our maximum projection image from the [last post](https://biapol.github.io/blog/ryan_savill/01_intro_to_python/) which originates from a dataset acquired by Daniela Vorkel, Myers lab MPI CBG / CSBD:
 
 ```python
 from skimage import io, morphology
@@ -199,7 +199,7 @@ Making functions seems a bit tedious at the beginning and it can be much more fu
 I for instance have chosen to work with data in the form of dataframes (if you use [R](https://www.r-project.org/) or [matlab](https://de.mathworks.com/products/matlab.html) this might be familiar to you) with a python library called [pandas](https://pandas.pydata.org/). It comes pre-installed with anaconda and makes my life a little easier as all columns have names unlike numpy arrays, which could create a lot of confusion. When I want to perform some kind of analysis on my dataframes often functions will output results as numpy arrays, so I have to turn them back into dataframes and sometimes the dataframes need to be converted into arrays as input for some libraries. Functions help me everyday, because the small lines of code that convert datatypes or reshape lists for specific functions really sum up if you have to write them everytime. Also these lines of code make the files ineligable, whereas functions are just neat one-liners which I can easily read! But how can you make a library? I'll show you a simple way now and a more in depth way later:
 
 ### How to Build Your Own Simple Library
-- First you have to make a python file and name it something recogniseable (like: img_analysis_functs). 
+- First you have to make a python file and name it something recogniseable (like: image_analysis_functions). 
 - Thenm you have to add the functions you want to include in your library. Make sure that each function also contains all the import statements of the libraries it uses, otherwise you might be met with errors later on! 
 - And believe it or not that was it! 
 
@@ -207,7 +207,7 @@ The important thing is that this python file is in the same folder as the python
 
 
 ```python
-import img_analysis_functs as iaf
+import image_analysis_functions as iaf
 
 io.imshow(iaf.subtract_background(tribolium))
 ```
@@ -219,7 +219,7 @@ io.imshow(iaf.subtract_background(tribolium))
 
 
 ## Difference of Gaussian
-This is another method of highlighting nuclei, even if it is not described as background subtraction but rather [feature enhancement](https://en.wikipedia.org/wiki/Difference_of_Gaussians). In essence, it generates two Gaussian blurred images with different sigma for the Gaussian blur filter. The features we want to highlight should hafe a size between the two sigma values of the Gaussian blurs. Afterwards, we subtract the larger blurred image from the smallller one. In a way this combines the noise removal of the small Gaussian blurred image with a background subtraction represented by the larger Gaussian blurred image. If filters are a common concept for you, you can think of it as a bandpass filter that highlights the features in between the two sizes. Since [Gaussian blur](https://scikit-image.org/docs/dev/api/skimage.filters.html#skimage.filters.gaussian) is a function included in scikit image let's create this filter ourselves:
+This is another method of highlighting nuclei, even if it is not described as background subtraction but rather [feature enhancement](https://en.wikipedia.org/wiki/Difference_of_Gaussians). In essence, it generates two Gaussian blurred images with different sigma for the Gaussian blur filter. The features we want to highlight should have a size between the two sigma values of the Gaussian blurs. Afterwards, we subtract the larger blurred image from the smallller one. In a way this combines the noise removal of the small Gaussian blurred image with a background subtraction represented by the larger Gaussian blurred image. If filters are a common concept for you, you can think of it as a bandpass filter that highlights the features in between the two sizes. Since [Gaussian blur](https://scikit-image.org/docs/dev/api/skimage.filters.html#skimage.filters.gaussian) is a function included in scikit image let's create this filter ourselves:
 
 
 ```python
@@ -227,20 +227,20 @@ from skimage import filters
 
 # the smaller Gaussian is just there to remove 
 # noise so it can be just a few pixels
-small_gauss = filters.gaussian(tribolium, sigma = 1)
+small_gaussian = filters.gaussian(tribolium, sigma = 1)
 
 # the larger Gaussian has to be bigger than our largest
 # object, which we can measure or make an educated guess
-large_gauss = filters.gaussian(tribolium, sigma = 100)
+large_gaussian = filters.gaussian(tribolium, sigma = 100)
 
 # now we subtract the large gaussian from the small one
-dog_tribolium = small_gauss - large_gauss
+dog_tribolium = small_gaussian - large_gaussian
 
 # visualising the results
 fig, (ax1, ax2, ax3) = plt.subplots(1, 3, figsize =(20,20))
-ax1.imshow(small_gauss, cmap = 'gray')
+ax1.imshow(small_gaussian, cmap = 'gray')
 ax1.set_title('Small Gaussian')
-ax2.imshow(large_gauss, cmap = 'gray')
+ax2.imshow(large_gaussian, cmap = 'gray')
 ax2.set_title('Large Gaussian')
 ax3.imshow(dog_tribolium, cmap = 'gray')
 ax3.set_title('DoG Image')
@@ -252,7 +252,7 @@ ax3.set_title('DoG Image')
     
 
 
-We can see that it is not quite as effective as the top-hat filter but nonetheless, it has managed to remove some of the background in the image. Making this filter ourselves is a good exercise in coding and understanding what these filters do. However, when it gets to complicated filters, reinventing the wheel isn't practical and you will most likely find the filter you are looking for either in [scikit image](https://scikit-image.org/), in [scipy](https://docs.scipy.org/doc/) or just google (this is what I often do). Because python is a relatively simple language to learn. There are many users who have most likely asked the same question as you have! For the [Difference of Gaussian filter](https://scikit-image.org/docs/dev/api/skimage.filters.html#skimage.filters.difference_of_gaussians) scikit image has this function as well, which we can use here instead of doing the processing ourselves:
+We can see that it is not quite as effective as the top-hat filter but nonetheless, it has managed to remove some of the background in the image. Making this filter ourselves is a good exercise in coding and understanding what these filters do. However, when it gets to complicated filters, reinventing the wheel isn't practical and you will most likely find the filter you are looking for either in [scikit image](https://scikit-image.org/), in [scipy](https://docs.scipy.org/doc/) or just google (this is what I often do). Because python is a relatively simple language to learn, there are many users who have most likely asked the same question as you have! For the [Difference of Gaussian filter](https://scikit-image.org/docs/dev/api/skimage.filters.html#skimage.filters.difference_of_gaussians) scikit image has this function as well, which we can use here instead of doing the processing ourselves:
 
 
 ```python
