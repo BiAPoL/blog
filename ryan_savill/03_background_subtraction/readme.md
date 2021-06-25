@@ -68,7 +68,7 @@ ax4.set_title('Tophat')
     
 
 
-This in essence is the tophat-filter and we could now put it into a function to use to make our life easier or we can plot it with different values for the max and min filters to see what effect that has on the background subtraction:
+This in essence is the top-hat filter and we could now put it into a function to use to make our life easier or we can plot it with different values for the maximum and minimum filters to see what effect that has on the background subtraction:
 
 
 ```python
