@@ -19,7 +19,7 @@ It previously was a 3D image but we are working with a maximum projection to kee
 
 <hr/>
 ## [Using StarDist in napari with GPU-support in Windows](https://biapol.github.io/blog/robert_haase/stardist_gpu)  <small>Robert Haase, June 19th, 2021</small>
-<img style="float: right; height:100px; width:100px" src="images/stardist_logo.png">
+<img style="float: right; height:100px; width:100px" src="images/stardist_logo.jpg">
 3D segmentation using deep learning is computationally costly, it might be necessary from a practical perspective to do it on computers
 with powerful graphics processing units (GPUs). One option is to do this in the cloud via Google Colab and therefore it is recommended to take a look at ZeroCostDeepLearning4Microscopy.
 If you are greedy, as I am, and want to run everything on your own Windows computer, you can follow the instructions provided here.
