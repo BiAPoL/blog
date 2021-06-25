@@ -48,7 +48,7 @@ This already works quite well but we can see that there still is some background
 # getting the maximum of the minimum filtered image
 max_of_min_trib = ndimage.maximum_filter(minimum_trib, size)
 
-# subtraction from the original to obtain the tophat filter
+# subtraction from the original to obtain the top-hat filter
 tophat_trib = tribolium-max_of_min_trib
 
 fig, (ax1, ax2, ax3, ax4) = plt.subplots(1, 4, figsize =(20,20))
