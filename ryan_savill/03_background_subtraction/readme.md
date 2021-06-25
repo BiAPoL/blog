@@ -41,7 +41,7 @@ ax3.set_title('Original - Minimum')
     
 
 
-This already works quite well but we can see that there still is some background that isn't removed around the outside of the embryo. This is why in the tophat filter the minimum image is corrected with a maximum filter. This maximum filter assures that the whole background is included
+This already works quite well but we can see that there still is some background that isn't removed around the outside of the embryo. This is why in the top-hat filter the minimum image is corrected with a maximum filter. This maximum filter assures that the whole background is included.
 
 
 ```python
