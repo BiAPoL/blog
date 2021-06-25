@@ -170,7 +170,7 @@ For testing the plugin, you can use example data StarDist provides. You can find
 ![](images/use_stardist1.png)
 
 Then you should be able to activate the plugin from the menu `Plugins > StarDist : StarDist`. 
-As the default-values fit well to the example data, you can just click on `Run` in the bottom right:
+As the default-values fit to the example data, you can just click on `Run` in the bottom right:
 
 ![](images/use_stardist2.png)
 
