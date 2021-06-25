@@ -274,7 +274,7 @@ ax2.set_title('DoG Image')
     
 
 
-Difference of gaussian is not only helpful as a background filter but it can also be used in spot- or blob-detection, which we will look at in the [next post]! Until then happy coding!
+Difference of Gaussian is not only helpful as a background subtraction filter, it can also be used in spot- or blob-detection, which we will look at in the [next post]! Until then happy coding!
 
 ## [Home](https://biapol.github.io/blog/ryan_savill/)
 
