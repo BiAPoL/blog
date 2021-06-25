@@ -100,7 +100,7 @@ plt.show()
     
 
 
-From these plots we can see that keeping the filtersizes the same yields the best results, but having the maximum filter slightly smaller than the minimum filter also produces plausible results. Any large differences between the values seem to distort the image substancially. Since equal values seem to work the best we will modify our function to only have one filter size as input:
+From these plots we can see that keeping the filter sizes the same yields the best results, but having the maximum filter slightly smaller than the minimum filter also produces plausible results. Any large differences between the values seem to distort the image substancially. Since equal values seem to work the best we will modify our function to only have one filter size as input:
 
 
 ```python
