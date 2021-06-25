@@ -145,7 +145,7 @@ str_el
 
 
 
-Now that we can generate the structuring element we can use the tophat filter in scikit image on our max projection:
+Now that we can generate the structuring element we can use the top-hat filter in scikit image on our maximum projection image:
 
 
 ```python
