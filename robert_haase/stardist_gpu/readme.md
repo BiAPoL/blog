@@ -2,7 +2,7 @@
 [Robert Haase](https://biapol.github.io/blog/robert_haase), June 19th 2021
 
 3D segmentation using deep learning is computationally costly, it might be necessary from a practical perspective to do it on computers
-with powerful graphics processing units (GPUs). One option is to do this in the cloud via Google Colab and therefore it is recommended to take a look at [ZeroCostDeepLearning4Microscopy](https://github.com/HenriquesLab/ZeroCostDL4Mic/wiki).
+with powerful graphics processing units (GPUs). One option is to do this in the cloud via Google Colab and for that it is recommended to take a look at [ZeroCostDeepLearning4Microscopy](https://github.com/HenriquesLab/ZeroCostDL4Mic/wiki).
 If you are greedy, as I am, and want to run everything on your own Windows computer, you can follow the instructions provided here.
 
 The [StarDist](https://github.com/stardist/stardist/) developers Uwe Schmidt and Martin Weigert recently release a 
