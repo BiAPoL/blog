@@ -7,7 +7,7 @@ If you are greedy, as I am, and want to run everything on your own Windows compu
 
 The [StarDist](https://github.com/stardist/stardist/) developers Uwe Schmidt and Martin Weigert recently released a 
 [napari plugin](https://github.com/napari/napari) named [stardist-napari](https://github.com/stardist/stardist-napari).
-This eventually gives 3D nuclei segmentation using StarDist into the hands of end-users. 
+This finally puts 3D nuclei segmentation using StarDist into the hands of end-users. 
 You can see it in action in this [Youtube video](https://www.youtube.com/watch?v=Km1_TnUQ4FM&list=PLilvrWT8aLuZCaOkjucLjvDu2YRtCS-JT&index=5).
 
 Under the hood StarDist uses 
