@@ -3,15 +3,30 @@ Most of us study and work at the [Bio-image Analysis Technology Development grou
 We blog about image data science, knowledge exchange and research data management in the life sciences.
 
 <hr/>
+## [Background Subtraction](https://biapol.github.io/blog/ryan_savill/03_background_subtraction) <small>Ryan Savill, June 25th, 2021</small>
+<img style="float: right; height:100px; width:100px" src="images/skimage_logo.png">
+We will now take a more in depth look at how background subtraction works by showing the top-hat filter and Difference of Gaussian (DoG) filter, 
+which both can achieve background subtraction. 
+In general, we want to use background subtraction if there is a sharp signal we want to isolate from moderate signal that is evenly distributed in the background. 
+Some simple functions allow us to find the background image and subtract it from our original image, only leaving the signals we want to isolate.
+
+<hr/>
+## [Introduction to Image Analysis Basics in Python with Scikit Image](https://biapol.github.io/blog/ryan_savill/02_intro_to_skimage) <small>Ryan Savill, June 25th, 2021</small>
+<img style="float: right; height:100px; width:100px" src="images/skimage_logo.png">
+Now that we have a grasp of the basics of python it's time to get started with some proper image analysis! 
+For the purpose of trying out image analysis I have a picture of a tribolium embryo with stained nuclei. 
+It previously was a 3D image but we are working with a maximum projection to keep it simple.
+
+<hr/>
 ## [Using StarDist in napari with GPU-support in Windows](https://biapol.github.io/blog/robert_haase/stardist_gpu)  <small>Robert Haase, June 19th, 2021</small>
-<img style="float: right; height:60px" src="images/stardist_logo.png">
+<img style="float: right; height:100px; width:100px" src="images/stardist_logo.png">
 3D segmentation using deep learning is computationally costly, it might be necessary from a practical perspective to do it on computers
 with powerful graphics processing units (GPUs). One option is to do this in the cloud via Google Colab and therefore it is recommended to take a look at ZeroCostDeepLearning4Microscopy.
 If you are greedy, as I am, and want to run everything on your own Windows computer, you can follow the instructions provided here.
 
 <hr/>
 ## [Introduction to Using Python for Image Analysis](https://biapol.github.io/blog/ryan_savill/01_intro_to_python)  <small>Ryan Savill, June 17th, 2021</small>
-<img style="float: right; height:60px" src="images/python_logo.png">
+<img style="float: right; height:100px; width:100px" src="images/python_logo.png">
 To get started using python the first step is the installation and there are several ways you can do it. To make it easier for your future self it's a good idea to set up a virtual environment.
 
 <hr/>

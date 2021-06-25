@@ -1,3 +1,5 @@
+The python logo was adapted from this source: https://www.python.org/community/logos/
+
 Guidelines for Use
 The Python logo is a trademark of the Python Software Foundation, which is responsible for defending against any damaging or confusing uses of the trademark.
 

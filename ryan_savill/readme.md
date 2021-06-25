@@ -8,7 +8,6 @@ Below you'll find an index of topics that I'll cover, which will be updated with
 * [Introduction to Using Python for Image Analysis](https://biapol.github.io/blog/ryan_savill/01_intro_to_python/)
 * [Introduction to Image Analysis Basics in Python with Scikit Image](https://biapol.github.io/blog/ryan_savill/02_intro_to_skimage)
 * [Background Subtraction](https://biapol.github.io/blog/ryan_savill/03_background_subtraction)
-* [Spot Detection in Scikit Image]
 
 ## Other Interesting Stuff
 * [Principal Feature Analysis - What It Does and Python Implementation](https://biapol.github.io/blog/ryan_savill/principal_feature_analysis)
