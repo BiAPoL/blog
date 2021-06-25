@@ -90,7 +90,7 @@ plt.show()
     
 
 
-Now that we have learnt how to look at our image we can move on to manipulating it! First we will perform simple thresholding with a median filter as preprocessing and otsu as the tresholding method. As you will see thresholding works slightly different to ImageJ and cellprofiler as we only get the value of the threshold. This value can then be used to check each pixel. Since our image is a numpy array this is really easy and only one line of code! To look at the original image side by side we will use matplotlib to display the results:
+Now that we have learnt how to look at our image we can move on to manipulating it! First we will apply a median filter as preprocessing and afterwards [Otsu's thresholding method](https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=4310076). As you will see thresholding works slightly different compared to ImageJ and [CellProfiler](https://cellprofiler.org/) as we only get the value of the threshold. This value can then be used to compare each pixel to. Since our image is a numpy array, this is really easy and only one line of code! To look at the original image side by side, we will use matplotlib to display the results:
 
 
 ```python
