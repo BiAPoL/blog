@@ -9,7 +9,7 @@ The first step in any program is to import the libraries needed. You can import 
 import numpy as np
 ```
 
-Or we can import parts of a library that we need for example from scikit image or matplotlib
+Or we can import parts of a library that we need for example from [scikit image](https://scikit-image.org/) or [matplotlib](https://matplotlib.org/).
 
 
 ```python
