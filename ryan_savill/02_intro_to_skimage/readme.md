@@ -64,7 +64,7 @@ io.imshow(tribolium)
     
 
 
-We can also display images with matplotlib. This needs more lines of code but we also have some more options regarding the plots like title. A detailed description of different plotting techniques can be found [here](https://matplotlib.org/3.1.0/gallery/subplots_axes_and_figures/subplots_demo.html)
+We can also display images with matplotlib. This needs more lines of code but we also have some more options regarding the plots like specifying a title. A detailed description of different plotting techniques can be found [here](https://matplotlib.org/3.1.0/gallery/subplots_axes_and_figures/subplots_demo.html)
 
 
 ```python
