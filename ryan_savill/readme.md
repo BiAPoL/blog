@@ -11,4 +11,10 @@ Below you'll find an index of topics that I'll cover, which will be updated with
 
 ## Other Interesting Stuff
 * [Principal Feature Analysis - What It Does and Python Implementation](https://biapol.github.io/blog/ryan_savill/principal_feature_analysis)
+
+## Links
+* [Twitter](https://twitter.com/RyanSavill4)
+* [Research Gate](https://www.researchgate.net/profile/Ryan-Savill)
+* Email: ryan_george.savill@mailbox.tu-dresden.de
+
 #### Have Fun Coding!
