@@ -43,7 +43,7 @@ def pca_comp_inf_dataframe(pca_object,regprops_df,n_components):
     return df_comps
 
 # loading our test dataset
-location_prefix = 'C://Users//ryans//OneDrive//Documents//'
+location_prefix = 'data/folder/'
 
 timepoint = 9
 regionpropspath = location_prefix + 'Master Thesis//First Coding Tries//regionprops_all_timepoints_lund//regprops t{}.csv'.format(timepoint)
