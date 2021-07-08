@@ -68,7 +68,7 @@ A_readable = pca_comp_inf_dataframe(pca,regprops,len(regprops.keys())).transpose
 A_readable
 ```
 
-    No Predictions in Regionprops of C://Users//ryans//OneDrive//Documents//Master Thesis//First Coding Tries//regionprops_all_timepoints_lund//regprops t9.csv
+    No Predictions in Regionprops of data/folder/Master Thesis/First Coding Tries/regionprops_all_timepoints_lund/regprops t9.csv
     
 
 
