@@ -637,7 +637,7 @@ If you have read the paper or are following along with the paper we have just co
 
 We can see that the choice of the cluster-number will determine how many features we choose. Y. Lu et al. recommend choosing the cluster-number: p, as: `p >= q` because we can't be completely sure that the variance that we chose is explained when `p = q`. We can just opt for a slightly larger `p` (arbitrary choice of 2  larger than `q`) but there is room for improvement in terms of an automated choice here OR it could be a parameter that we can implement later.
 
-Since K-means is implemented well in scikit-learn this procedure is just a couple of lines:
+Since K-means-clustering is implemented well in [scikit-learn](https://scikit-learn.org/stable/modules/clustering.html) this procedure is just a couple of lines:
 
 
 ```python
