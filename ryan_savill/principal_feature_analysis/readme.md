@@ -421,7 +421,7 @@ A_readable
 
 
 
-Now we have a massive matrix of our eigenvectors sorted by eigenvalues, but since every feature has equal influence on the eigenvectors we need to take a subset of matrix A called A_q. 'q' represents the number of eigenvectors we take into account and the value of q will influence how much variance we can explain with the subset of the principal components. We can turn this question around and set a threshold of how much variance should at least be explained and then find the corresponding subset A-q of matrix A:
+Now we have a massive matrix of our eigenvectors sorted by eigenvalues, but since every feature has equal influence on the eigenvectors we need to take a subset of matrix `A` called `A_q`. `q` represents the number of eigenvectors we take into account and the value of `q` will influence how much variance we can explain with the subset of the principal components. We can turn this question around and set a threshold of how much variance should at least be explained and then find the corresponding subset `A-q` of matrix `A`:
 
 
 ```python
