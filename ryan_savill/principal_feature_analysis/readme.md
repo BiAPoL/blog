@@ -15,7 +15,7 @@ If you have not heard of PCA before I would advise you to check out [this video]
 
 Once you have grasped these concepts this explanation should be a breeze!
 
-What principal feature analysis does is take advantage of some of the transformations in PCA to find out which features explain the variance. The first steps in PFA are to create the covariance matrix and find the orthonormal eigenvectors and sort them by their eigenvectors, creating a matrix A. This in effect is what PCA does as well since the principal components are the eigenvectors of the covariance matrix. We can output them in [scikit-learn](https://scikit-learn.org/stable/) with the command '.components_'. 
+Principal feature analysis takes advantage of some of the transformations in PCA to find out which features explain the variance. The first steps in PFA are to create the covariance matrix and find the orthonormal eigenvectors and sort them by their eigenvalues, creating a matrix A. This in effect is what PCA does as well since the principal components are the eigenvectors of the covariance matrix. We can output them in [scikit-learn](https://scikit-learn.org/stable/) with the command '.components_'. 
 
 
 ```python
