@@ -787,7 +787,7 @@ dists
 
 
 
-In our dists dictionary eah cluster has a list of tupules associated with it. Each tuple contains:
+In our `dists` dictionary each cluster has a list of tuples associated with it. Each tuple contains:
 (feature index, distance to cluster center)
 We can see that for the clusters with only one tupule associated (5,6,1,4), the features all have distance 0 since the cluster center IS the feature. For all other clusters we still have to determine which feature is closest to the cluster center. Once the features have been determined we can transform our original dataset to only include these features:
 
