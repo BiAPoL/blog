@@ -635,7 +635,7 @@ A_q_readable
 
 If you have read the paper or are following along with the paper we have just completed step 3 of the explained algorithm. What is done now is that we perform clustering on the matrix A_q with K-means clustering. Essentially what we are trying to do is find clusters of features as features that are clustered in this matrix have similar influences on the principal components and are thus correlating and not telling us much. This way we can just choose the feature that is closest to the cluster centre and it will be chosen as a principal feature. 
 
-We can see that the choice of the cluster-number will determine how many features we choose. Y. Lu et al. recommend choosing the cluster-number: p, as: p >= q because we can't be completely sure that the variance that we chose is explained when p = q. We can just opt for a slightly larger p (arbitrary choice of 2  larger than q) but there is room for improvement in terms of an automated choice here OR it could be a parameter that we can implement later.
+We can see that the choice of the cluster-number will determine how many features we choose. Y. Lu et al. recommend choosing the cluster-number: p, as: `p >= q` because we can't be completely sure that the variance that we chose is explained when `p = q`. We can just opt for a slightly larger `p` (arbitrary choice of 2  larger than `q`) but there is room for improvement in terms of an automated choice here OR it could be a parameter that we can implement later.
 
 Since K-means is implemented well in scikit-learn this procedure is just a couple of lines:
 
