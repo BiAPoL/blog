@@ -3,6 +3,18 @@ Most of us study and work at the [Bio-image Analysis Technology Development grou
 We blog about image data science, knowledge exchange and research data management in the life sciences.
 
 <hr/>
+## [Installing Microsoft buildtools on Windows](https://biapol.github.io/blog/robert_haase/ms_build_tools) <small>Robert Haase, July 9th, 2021</small>
+<img style="float: right; height:100px; width:100px" src="images/python_logo.png">
+Installing python libraries on Windows can be tricky. When using `pip install` on a Windows computer that is not regularily visited by a hardcore programmer, a typical error message is "error: Microsoft Visual C++ 14.0 or greater is required.".
+This blog post shows how to deal with it and also hints how to avoid installing software that is not necessary.
+
+<hr/>
+## [Principal Feature Analysis](https://biapol.github.io/blog/ryan_savill/principal_feature_analysis) <small>Ryan Savill, July 8th, 2021</small>
+<img style="float: right; height:100px; width:100px" src="images/python_logo.png">
+Principal feature analysis (PFA) is a method for selecting a subset of features that describe most of the variability in the dataset based on Y. Lu et al. published in ACM, 2007. 
+This sounds oddly similar to principal component analysis (PCA), which is no coincidence as the methodologies are intertwined. PCA also does a similar thing but instead of choosing features that describe the variability to a certain threshold we choose a subset of principal components. ...
+
+<hr/>
 ## [Background Subtraction](https://biapol.github.io/blog/ryan_savill/03_background_subtraction) <small>Ryan Savill, June 25th, 2021</small>
 <img style="float: right; height:100px; width:100px" src="images/skimage_logo.png">
 We will now take a more in depth look at how background subtraction works by showing the top-hat filter and Difference of Gaussian (DoG) filter, 
