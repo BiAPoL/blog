@@ -24,7 +24,7 @@ The "Download Build Tools" link is pretty obvious and clicking it leads us to an
 
 ![](download2.png)
 
-The second website it a bit misleading as it appears we downloaded "Visual Studio" and are going to install it. 
+The second website is a bit misleading as it appears we downloaded "Visual Studio" and are going to install it. 
 We didn't. And we don't need to.
 This website appeasrs to me as an advertisement for Microsoft's Integrated Development Environemnt, we don't need this time.
 The download of the buildtools will start a couple of seconds later and we just need to execute that "vs_buildtools__1234567.8901234.exe" that appears, e.g. on the bottom of the screen in the Chrome Browser. 
