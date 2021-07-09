@@ -51,4 +51,4 @@ pip install tvb-gdist
 
 ![](success.png)
 
-In the future, on this particular computer, installation of python packages might be easier then.
+In the future, on this particular computer, installation of python packages might be easier.
