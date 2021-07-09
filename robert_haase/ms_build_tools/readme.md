@@ -33,7 +33,7 @@ No need to download or install anything else.
 
 ## Installing buildtools
 After starting the installer, the following form shows up. 
-One needs to only activate a single checkbox, "Desktop Development with C++", and click on "Install" in the bottom right.
+One only needs to activate a single checkbox, "Desktop Development with C++", and click on "Install" in the bottom right.
 
 ![](install.png)
 
