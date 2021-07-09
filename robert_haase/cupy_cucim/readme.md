@@ -21,6 +21,7 @@ You can also go through this blog post as a [google colab notebook](https://cola
 
 We can check the installation by importing all libraries we need.
 ```
+import numpy as np
 import cupy as cp
 import cucim
 from skimage.io import imread, imshow
@@ -57,7 +58,7 @@ single_channel_gpu = image_gpu[:,:,1]
 # imshow(single_channel_gpu)
 
 # get single channel image back from GPU memory and show it
-single_channel = cp.asnumpy(single_channel_gpu)
+single_channel = np.asarray(single_channel_gpu)
 imshow(single_channel)
 ```
 ![](cupy_cucim/cu2.png)
@@ -65,7 +66,7 @@ imshow(single_channel)
 We can also do this within a convenience function, making our following code shorter and easier to read.
 ```python
 def gpu_imshow(image_gpu):
-    image = cp.asnumpy(image_gpu)
+    image = np.asarray(image_gpu)
     imshow(image)
 ```
 
@@ -170,6 +171,7 @@ pd.DataFrame(table)
 ```
 ![](cupy_cucim/cu8.png)
 
+Note: As alternative, one may want to dive into [cuDF](https://github.com/rapidsai/cudf) the CUDA-based counterpart for pandas DataFrames.
 
 
 
