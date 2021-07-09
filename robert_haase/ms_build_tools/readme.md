@@ -1,6 +1,6 @@
 # Installing Microsoft buildtools on Windows
 Installing python libraries on Windows can be tricky. When using `pip install` on a Windows computer that is not regularily visited by a hardcore programmer, a typical error message is "error: Microsoft Visual C++ 14.0 or greater is required.".
-This blog post shows how to deal with it and hints also how to avoid installing software that is not necessary.
+This blog post shows how to deal with it and also hints how to avoid installing software that is not necessary.
 
 ## Symptoms: Installations fail
 I hit that issue today on a freshly installed Windows computer when installing `tvb-gdist`. This command failed unfortunately:
