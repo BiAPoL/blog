@@ -45,17 +45,24 @@ setOption("BlackBackground", true);
 run("Convert to Mask");
 run("Analyze Particles...", "  show=[Count Masks]");
 ```
-Note, ImageJ's [Particle Analyzer](https://imagej.net/imaging/particle-analysis#analyze-particles) produced a perfectly fine label image when "Count masks" is selected in the "Show" pulldown.
+Note, ImageJ's [Particle Analyzer](https://imagej.net/imaging/particle-analysis#analyze-particles) produces a label image when "Count masks" is selected in the "Show" pulldown.
 
 In order to integrate this ImageJ Macro into python code, we start with python code for initializing imagej:
 ```python
 import imagej
-ij = imagej.init()
+ij = imagej.init('2.1.0')
 ```
+
+The parameter here specifies which version of ImageJ we would like to use. 
+It's an optional parameter which is important to make this script reproducible later on. 
+That particular version can be downloaded from a [maven repository]() together with all dependencies.
 
 This can take a while (< 5 minutes) if you run that for the first time. In the background it is now downloading and installing ImageJ.
 
-Next, we transfer an image into ImageJ and "show" it so that ImageJ Macro notices it as the currently selected image. It doesn't show anything by the way because pyimagej entirely runs without graphical user interface. For figuring out how to do this, [this notebook](https://github.com/uw-loci/Notebooks/blob/9ed90842f06c93b1c206d36fef2b13555e7273d9/PyImageJ/Rigid%20registration%20with%20pyimagej.ipynb) and [this one](https://github.com/imagej/pyimagej/blob/master/doc/PyImageJ-Tutorial.ipynb) were very helpful.
+Next, we transfer an image into ImageJ and "show" it so that ImageJ Macro notices it as the currently selected image. 
+It doesn't show anything by the way because pyimagej entirely runs without graphical user interface. 
+For figuring out how to do this, [this notebook](https://github.com/uw-loci/Notebooks/blob/9ed90842f06c93b1c206d36fef2b13555e7273d9/PyImageJ/Rigid%20registration%20with%20pyimagej.ipynb) and 
+[this one](https://github.com/imagej/pyimagej/blob/master/doc/PyImageJ-Tutorial.ipynb) were very helpful.
 
 ```python
 
