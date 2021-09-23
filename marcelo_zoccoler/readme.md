@@ -1,6 +1,6 @@
 # Marcelo Zoccoler
 
-Hi! My name is Marcelo (not pronounced "Martchelo" in my case 😆) and I am an Electrical Engineer by formation, but also Life Sciences and Bio-Image Analysis aficionado!
+Hi! My name is Marcelo and I am an Electrical Engineer by formation, but also Life Sciences enthusiast and Bio-Image analyst!
 I have always felt myself fluctuating between Engineering and Biology. Then I realized THAT could be exactly my place!
 Still, I am formally an Engineer and not a Biologist, nor a Physicist, therefore most of my work has been done on tools and softwares for image analysis focused on microscopy data.
 During my Masters and PhD in Biomedical Engineering, I have worked with measuring microtubules stiffness by image analysis and modeling in UJF (now Université Grenoble Alpes) in France. Then, I have performed experiments with single cardiomyocytes under electrical fields in a fluorescence microscope that was assembled by our group at UNICAMP in Brazil. There, I started developing algorithms and softwares for bio-image analysis in MATLAB and Python! I also used a lot of Fiji as well for sure! The goals were to quantify calcium concentration and membrane potential in these cells. Most recently, I have contributed in the development of a software to analyze Giant Unilamellar Vesicles (GUV) data and an online simulator as a tool to teach students about electrochemical balance accross a semipermeable membrane.
