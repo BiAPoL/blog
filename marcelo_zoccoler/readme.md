@@ -9,7 +9,7 @@ Since 2021, as a researcher for the Bio-image Analysis Technology Development gr
 
 # Blog posts
 
-  * Jamovi: statistical analysis made easy and visual with R (work in progress...)
+  * # Jamovi: statistical analysis made visual and easy (powered with R) (in progess...)
 
 # Links
   * <img src="https://pbs.twimg.com/media/DoG8b8CX0AANQo8.jpg" alt="pol" width="25"/> [BiA-PoL website](https://physics-of-life.tu-dresden.de/en/research/core-groups/bio-image-analysis)
