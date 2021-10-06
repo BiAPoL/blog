@@ -64,7 +64,7 @@ And generate plots related to the [t-test](https://en.wikipedia.org/wiki/Student
 
 ## Correlation analysis
 
-Another analysis we could run is correlation. Let's check if roundness and aspect ratio are correlated.
+Another analysis we could run is [correlation](https://en.wikipedia.org/wiki/Correlation). Let's check if roundness and aspect ratio are correlated.
 In the Analyses tab, click "Regression -> Correlation Matrix". Then just assign the variables "Round" and "AR" to right box, choose the correlations you want, like Pearson and Spearman, and activate some plot by checking checkboxes.
 
 ![](images/screen5a.PNG)
