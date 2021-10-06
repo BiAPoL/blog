@@ -1,6 +1,6 @@
 # Jamovi: statistical analysis made visual and easy (powered with R)
 
-Statistical analysis softwares exist for decades. So why care about "just another one". Well, for one main reason: simplicity. And I mean simplicity by a clean convidative interface and an easy usage. Besides that, [Jamovi](https://www.jamovi.org/) is open-source and developed in R, a powerful programming language to perform statistical tests.
+Statistical analysis software exist for decades. So why care about "just another one". Well, for one main reason: simplicity. And I mean simplicity by a clean convidative interface and an easy usage. Besides that, [Jamovi](https://www.jamovi.org/) is open-source and developed in R, a powerful programming language to perform statistical tests.
 
 Almost every field in science uses statistical analysis as a tool to validate or refuse a hypothesis. Thus, popular commercial softwares, like SPSS, SAS, Origin, Stata, Prism, as well as Excel itself, have been and are used. They are all very powerful platforms, but their initial interface with too many menus and buttons may intimidate new users (besides the price). There is a free similar option to SPSS called PSPP, but since it mimics the latter, their interfaces are similar.
 Another options would be using programming languages like Python and R, but that still wards off all non-programmers. 
