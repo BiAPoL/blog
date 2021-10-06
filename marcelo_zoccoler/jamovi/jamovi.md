@@ -54,7 +54,7 @@ Then let's do a t-test. Go to "Analyses ->  T-tests -> Independent Samples T-Tes
 
 ![](images/screen4a.PNG)
 
-Since our data seems to be not normally distributed, we will perform a Mann-Whitney U test (shown below in red). We can also perform normality and homoscedasticity tests to check our assumptions (shown in green).
+Since our data seems to be not normally distributed, we will perform a [Mann-Whitney U test](https://en.wikipedia.org/wiki/Mann%E2%80%93Whitney_U_test) (shown below in red). We can also perform [normality](https://en.wikipedia.org/wiki/Normal_distribution) and [homoscedasticity](https://en.wikipedia.org/wiki/Homoscedasticity) tests to check our assumptions (shown in green).
 
 ![](images/screen4b.PNG)
 
