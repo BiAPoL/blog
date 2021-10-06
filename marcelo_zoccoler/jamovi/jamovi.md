@@ -58,7 +58,7 @@ Since our data seems to be not normally distributed, we will perform a [Mann-Whi
 
 ![](images/screen4b.PNG)
 
-And generate plots related to the t-test (check "Descriptives plots" below in red) and a Q-Q plot (shown in green).
+And generate plots related to the [t-test](https://en.wikipedia.org/wiki/Student%27s_t-test) (check "Descriptives plots" below in red) and a [Q-Q plot](https://en.wikipedia.org/wiki/Q%E2%80%93Q_plot) (shown in green).
 
 ![](images/screen4c.PNG)
 
