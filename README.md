@@ -3,6 +3,12 @@ Most of us study and work at the [Bio-image Analysis Technology Development grou
 We blog about image data science, knowledge exchange and research data management in the life sciences.
 
 <hr/>
+## [Jamovi: statistical analysis made visual and easy (powered with R)](https://biapol.github.io/blog/marcelo_zoccoler/jamovi) <small>Marcelo Zoccoler, October 7th, 2021</small>
+<img style="float: right; height:100px; width:100px" src="marcelo_zoccoler/jamovi/images/jamovi-icon.png">
+Jamovi is a fairly new, free and open statistical software. It has a very friendly GUI that serves as a welcome door to anyone who wants to perform statistical tests on their data. It was developed with R, one of the best open programming languages for statistical computing and graphics.
+This blog post introduces you to this program by performing some statistical tests onto data extracted from a sample image.
+
+<hr/>
 ## [Installing Microsoft buildtools on Windows](https://biapol.github.io/blog/robert_haase/ms_build_tools) <small>Robert Haase, July 9th, 2021</small>
 <img style="float: right; height:100px; width:100px" src="images/python_logo.png">
 Installing python libraries on Windows can be tricky. When using `pip install` on a Windows computer that is not regularily visited by a hardcore programmer, a typical error message is "error: Microsoft Visual C++ 14.0 or greater is required.".
