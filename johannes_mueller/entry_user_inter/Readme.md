@@ -7,7 +7,7 @@ In this blog, we will cover a few interesting and versatile methods for you to c
 
 Blogs on this topic will cover:
 * [Getting started](https://github.com/BiAPoL/blog/new/blog_entry_UI/johannes_mueller#getting-started)
-* Creating standalone GUIs
+* [Creating standalone GUIs](https://github.com/BiAPoL/blog/new/blog_entry_UI/johannes_mueller#creating-advanced-standalone-guis)
 * Creating napari GUIs
 
 
@@ -156,5 +156,5 @@ New number: 4
 ...
 ```
 
-That's it - you are able to create and interact with basic GUIs! For more advanced options on user interfaces, proceed to the next part on GUIs!
+That's it - you are able to create and interact with basic GUIs! For more advanced options on user interfaces, proceed to the [next part on GUIs](https://github.com/BiAPoL/blog/new/blog_entry_UI/johannes_mueller#creating-advanced-standalone-guis)!
 
