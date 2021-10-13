@@ -156,3 +156,5 @@ New number: 4
 ...
 ```
 
+That's it - you are able to create and interact with basic GUIs! For more advanced options on user interfaces, proceed to the next part on GUIs!
+
