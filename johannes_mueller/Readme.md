@@ -1,6 +1,6 @@
 # Johannes Müller
 
-<img src="(https://github.com/BiAPoL/blog/blob/blog_entry_UI/images/johannes_mueller.jpg" width="150" height="230">
+<img src="https://github.com/BiAPoL/blog/blob/blog_entry_UI/images/johannes_mueller.jpg" alt="pol" width="150"/>
 
 Hi! My name is Johannes and I originally studied physics. No coding, no biology, just classic physics: lasers, calculations, stuff like that.
 As I started to progress through the academic cycle, I began to be more and more interested into the life sciences: I worked on thermographic imaging of breast
