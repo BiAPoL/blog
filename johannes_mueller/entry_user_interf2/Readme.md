@@ -11,10 +11,19 @@ Blogs on this topic will cover:
 * Creating napari GUIs
 
 
-## Creating advanced standalone GUIs
+# Creating advanced standalone GUIs
 The [previous entry](https://github.com/BiAPoL/blog/new/blog_entry_UI/johannes_mueller#getting-started) showed you how to create basic GUIs by setting up a ```QMainWindow``` object and adding basic objects, such as buttons to it. However, especially if user interfaces become more complex, the approach of manually adding elements to your window will become harder and harder to control. This part of the tutorial will cover the creation of advanced user interfaces for PyQt.
 
-### Creating your environment
+## Table of contents
+* Creating your environment
+* The Qt Designer
+* Designing a simple GUI with the Designer
+* Convert GUI to .py file and GUI creation
+* Adding functionality to GUI (aka signals and slots)
+* Adding a matplotlib widget to a GUI with Qt Designer
+* Bonus: Adding a cool style to your GUI
+
+## Creating your environment
 It is highly recommended to create a separate conda environment. Many programs in the Python ecosystem somehow rely on PyQt, so messing around with PyQt in environments can easily break things (Been there, done that). In the Anaconda command line, navigate to your desired folder and create a new conda environment:
 
 ```
@@ -39,7 +48,7 @@ Create a main window by clicking selecting "Main Window" from the list and then 
 * *Layouts* (blue): Once you have dropped widgets on your main window, you can either leave them as they are, or arrange them in a **layout**. This will align them nicely and allow Qt to rescale your items propperly if the size of the main window is changed.
 * *Widget properties* (purple): Every widget has a set of properties, all of which are displayed in the rightmost box. For instance, every placed widget has a property ```objectName```, which is the name by which you can address it lateron in your code. It also allows to set **default values or allowed ranges for input** (e.g., min/max values for sliders)
 
-### Creating a simple GUI with the Designer
+## Creating a simple GUI with the Designer
 In order to create a functioning GUI for Python, a few steps are necessary. First, lets's create a simple GUI by adding a SpinBox, a Button and a Textlabel two the GUI (top row). The bottom row consists of a horizontal slider and another textlabel widget. Doubleclicking on the pushButton allows you to change the text on the button. Selecting the grid layout from the layouts box arranges these in a nice fashion:
 
 ![simple_GUI](https://user-images.githubusercontent.com/38459088/137158206-c35b8fa2-6d9e-46d0-b98a-fd56a2de75dd.JPG)
@@ -51,7 +60,7 @@ Inspecting the widgets properties tells us that the widgets have the following d
 * Lower textlabel widget: ```label_2```
 * Horizontal slider widget: ```horizontalSlider```
 
-### Convert GUI to .py file and GUI creation
+## Convert GUI to .py file and GUI creation
 Now, save your design file in your project directory as ```MyGUI.ui```. The generated .ui file is at this point not readable for Python. Then use an anconda command prompt and navigate to the location of ```MyGUI.ui```. You can convert it to a Python file with the following command:
 ```
 pyuic5 MainWindow.ui -o MainWindow.py
@@ -148,7 +157,7 @@ app.exec_()
 
 ```
 
-### Adding functionality to GUI
+## Adding functionality to GUI (a.k.a. signals and slots)
 Now that we have created the GUI, we want to interact with its elements. This tutorial will cover two examples:
 
 1. Using a button to read the value from a SpinBox and print it to a textfield
@@ -237,7 +246,7 @@ window.show()
 app.exec_()
 ```
 
-### Add a matplotlib widget to a GUI with Qt Designer
+## Adding a matplotlib widget to a GUI with Qt Designer
 Often, we want GUIs not only to show us buttons or sliders, but also results, which, often enough are displayed on figures. To do this, you need to define your own custom matplotlib widget to use the functionalities of both PyQt and matplotlib. First, we need to define our own, custom matplotlib widget. To do this, generate a new python script ```matplotlibwidgetFile.py``` in your project directory with the following content:
 
 ```python
@@ -338,7 +347,9 @@ plotWidget.canvas.axes.imshow(image, cmap='gray')
 plotWidget.canvas.draw()
 ```
 
-### Bonus: Adding a cool style to your GUI
+Note: All code used for this example with matplotlib in your GUI is provided [here](https://github.com/BiAPoL/blog/tree/blog_entry_UI/johannes_mueller/entry_user_interf2/scripts)
+
+## Bonus: Adding a cool style to your GUI
 Often, well, sometimes, we do not only want the GUI to be functional but to also have a nice look and feel. Changing the looks (e.g., face colors, font types, etc.) is, for once, possible directly in the **Porperties** box in the Qt Designer. However, it can be a bit troublesome to change the colors and properties of every element in your GUI one by one. To make this easier, Qt allows you to import so-called *style-sheets*. These files ([cool example here](https://github.com/BiAPoL/blog/blob/blog_entry_UI/johannes_mueller/entry_user_interf2/scripts/style_dark_orange.qss) define how certain widgets behave look-wise. If you want to use this example for your GUI, simply download it and save it in your project directory. Then add it to your GUI by adding the following to your code **before ```app.exec()```**:
 
 ```python
