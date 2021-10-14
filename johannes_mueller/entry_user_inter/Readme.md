@@ -24,7 +24,10 @@ It is highly recommended to create a separate conda environment. Many programs i
 ```
 conda create -n PyQt_GUI jupyter
 conda activate PyQt_GUI
-conda install jupyter
+```
+I work mostly with jupyter notebooks or Spyder, so you can download both and pick your preferred platform
+```
+conda install jupyter spyder
 ```
 
 ### Creating a basic GUI
@@ -103,6 +106,15 @@ In terms of the above figure, Function X has been triggered three times. One exe
 
 This has one major practical consequence: If your functions take long to execute, all other functionality of the GUI is irresponsive in the meantime since the event executioner is busy with something else (i.e., Job 2), which will let your GUI *appear* to be frozen. Triggering other functions will, however, still be recorded by the listener and will be added to the queue.
 
+### Closing the GUI
+You may have noticed that your Python code editor of choice will not allow you to run the code to start your GUI using the same Python kernel twice. The reason for this behaviour is, that closing the GUI (for instance by clicking the X in the corner in Windows) will **not stop the event loop**. In order to properly close your GUI, add the following to your MainWindow class:
+
+```python
+    def closeEvent(self, event):
+        self.close()  # this closes the window
+        app.quit()  # this stops the event loop
+```
+
 ### Signals and slots
 Signals and slots are PyQts way of connecting interaction with the GUI (e.g., clicking a button or drawing a slider) with the execution of functions. There are a number of different ways to implement such functions (see [here](https://www.tutorialspoint.com/pyqt/pyqt_signals_and_slots.htm)) but we will stick to the most convenient one:
 ```python
@@ -135,9 +147,12 @@ class MainWindow(QMainWindow):
         
     def count_up(self):
         "Count up the stored number"    
-        
         self.number += 1
         print(f'New number: {self.number}')
+       
+    def closeEvent(self, event):
+        self.close()  # this closes the window
+        app.quit()  # this stops the event loop
 
 # Start the application
 app = QApplication(sys.argv)
