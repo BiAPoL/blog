@@ -1,5 +1,7 @@
 # Johannes Müller
 
+<img src="(https://github.com/BiAPoL/blog/blob/blog_entry_UI/images/johannes_mueller.jpg" width="150" height="230">
+
 Hi! My name is Johannes and I originally studied physics. No coding, no biology, just classic physics: lasers, calculations, stuff like that.
 As I started to progress through the academic cycle, I began to be more and more interested into the life sciences: I worked on thermographic imaging of breast
 cancer lesions in my Master thesis and micro-environmental features of head-and neck tumors in mice during my PhD thesis.
