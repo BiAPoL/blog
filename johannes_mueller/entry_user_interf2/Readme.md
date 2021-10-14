@@ -15,16 +15,19 @@ Blogs on this topic will cover:
 The [previous entry](https://github.com/BiAPoL/blog/new/blog_entry_UI/johannes_mueller#getting-started) showed you how to create basic GUIs by setting up a ```QMainWindow``` object and adding basic objects, such as buttons to it. However, especially if user interfaces become more complex, the approach of manually adding elements to your window will become harder and harder to control. This part of the tutorial will cover the creation of advanced user interfaces for PyQt.
 
 ### Creating your environment
-Again, it is highly recommended to create a separate conda environment. Many programs in the Python ecosystem somehow rely on PyQt, so messing around with PyQt in environments can easily break things (Been there, done that). In the Anaconda command line, navigate to your desired folder and create a new conda environment:
+It is highly recommended to create a separate conda environment. Many programs in the Python ecosystem somehow rely on PyQt, so messing around with PyQt in environments can easily break things (Been there, done that). In the Anaconda command line, navigate to your desired folder and create a new conda environment:
 
 ```
 conda create -n PyQt_GUI jupyter
 conda activate PyQt_GUI
-conda install jupyter
+```
+I work mostly with jupyter notebooks or Spyder, so you can download both and pick your preferred platform
+```
+conda install jupyter spyder
 ```
 
 ## The Qt Designer
-The Qt Designer is one of the hidden champions of programs that are shipped with Anaconda Navigator. If you have Anaconda installed, you can find it in windows by simply searching for "designer". Otherwise, it is usually located at ```C:\Users\USername\anaconda3\Library\bin\designer.exe```. Starting it brings up this dialogue:
+The Qt Designer is one of the hidden champions of programs that are shipped with Anaconda Navigator. If you have Anaconda installed, you can find it in Windows by simply searching for "designer". Otherwise, it is usually located at ```C:\Users\USername\anaconda3\Library\bin\designer.exe```. Starting it brings up this dialogue:
 
 ![designer_start](https://user-images.githubusercontent.com/38459088/137153642-d0372482-4f1b-453d-81ce-6a82d8b73c8c.JPG)
 
@@ -32,21 +35,21 @@ Create a main window by clicking selecting "Main Window" from the list and then 
 
 ![designer_overview](https://user-images.githubusercontent.com/38459088/137155868-38158b26-2ad3-4065-ac9d-6846de3ef349.png)
 
-* Widgets (orange): This part of the designer lists all available widgets, like buttons or sliders, but also more advanced items like drop down menus or tab windows that allow you to generate several pages in your GUI (similar to tabs in your browser). You can put widgets onto your main window simply by drag & drop.
-* Layouts (blue): Once you have dropped widgets on your main window, you can either leave them as they are, or arrange them in a layout. This will align them nicely and allow Qt to rescale your items propperly if the size of the main window is changed.
-* Widget properties (pruple): Every widget has a set of properties, all of which are displayed in the rightmost box. For instance, every placed widget has a property ```objectName```, which is the name by which you can address it lateron in your code. It also allows to set default values or allowed ranges for input (e.g., min/max values for sliders)
+* *Widgets* (orange): This part of the designer lists all available widgets, like buttons or sliders, but also more advanced items like dropdown menus or tab windows that allow you to generate several pages in your GUI (similar to tabs in your browser). You can put widgets onto your main window simply by **drag & drop**.
+* *Layouts* (blue): Once you have dropped widgets on your main window, you can either leave them as they are, or arrange them in a **layout**. This will align them nicely and allow Qt to rescale your items propperly if the size of the main window is changed.
+* *Widget properties* (purple): Every widget has a set of properties, all of which are displayed in the rightmost box. For instance, every placed widget has a property ```objectName```, which is the name by which you can address it lateron in your code. It also allows to set **default values or allowed ranges for input** (e.g., min/max values for sliders)
 
 ### Creating a simple GUI with the Designer
-In order to create a functioning GUI for Python, a few simple steps are necessary. First, lets's create a simple GUI by adding a SpinBox, a Button and a Textlabel two the GUI (top row). The bottom row consists of a horizontal slider and another textlabel widget. Doubleclicking on the pushButton allows you to change the text on the button. Selecting the grid layout from the layouts box arranges these in a nice fashion:
+In order to create a functioning GUI for Python, a few steps are necessary. First, lets's create a simple GUI by adding a SpinBox, a Button and a Textlabel two the GUI (top row). The bottom row consists of a horizontal slider and another textlabel widget. Doubleclicking on the pushButton allows you to change the text on the button. Selecting the grid layout from the layouts box arranges these in a nice fashion:
 
 ![simple_GUI](https://user-images.githubusercontent.com/38459088/137158206-c35b8fa2-6d9e-46d0-b98a-fd56a2de75dd.JPG)
 
-Inspecting the widgets properties tells us that the widgets have the following ```objectName```:
+Inspecting the widgets properties tells us that the widgets have the following default ```objectName``` (You can change this to any value you like, but every widget has to have a **unique name**):
 * SpinBox widget: ```spinBox```
 * Button widget: ```pushButton```
 * Upper textlabel widget: ```label```
 * Lower textlabel widget: ```label_2```
-* ....
+* Horizontal slider widget: ```horizontalSlider```
 
 ### Convert GUI to .py file and GUI creation
 Now, save your design file in your project directory as ```MyGUI.ui```. The generated .ui file is at this point not readable for Python. Then use an anconda command prompt and navigate to the location of ```MyGUI.ui```. You can convert it to a Python file with the following command:
@@ -110,7 +113,7 @@ class Ui_MainWindow(object):
         self.label.setText(_translate("MainWindow", "TextLabel"))
 ```
 
-Tada, this is all the Python needs to know to interact with the GUI. As you can see, it would be very complicated to generate a window layout like this from code alone. As the (autogenerated) note on the top says: It makes no sense to make changes to this file, as it will be overwritten whenever you make changes to you MainWindow.ui (for instance by adding or renaming widgets) and run ```pyuic5```.
+Tada, this is all the Python needs to know to create the GUI. As you can see, it would be very complicated to generate a window layout like this from code alone. As the (autogenerated) note on the top says: It makes no sense to make changes to this file, as it will be overwritten whenever you make changes to you MainWindow.ui (for instance by adding or renaming widgets) and run ```pyuic5```.
 
 Now, let's write a little script that is able to load and use our layout. The important part is the call of ```self.setupUi(self)```, which has been automatically defined in MainWindow.py. Adding ```Ui_MainWindow``` as an argument to the definition of ```class MainWindow(...)``` allows us to use its functions (e.g., ```setupUi()```) for our own GUI:
 
@@ -130,6 +133,10 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         
         #Initialize GUI
         self.setupUi(self)
+        
+    def closeEvent(self, event):
+        self.close()
+        app.quit()
 
 # Start the application
 app = QApplication(sys.argv)
@@ -216,6 +223,10 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         
         # print value to textlabel
         self.label_2.setText(f'{value}')
+        
+    def closeEvent(self, event):
+        self.close()
+        app.quit()
 
 # Start the application
 app = QApplication(sys.argv)
@@ -276,7 +287,7 @@ Next, we have to import this widget definition into our MainWindow in the Qt Des
 
 ![designer_main_promote_1](https://user-images.githubusercontent.com/38459088/137171680-3230a5ee-1db9-4d86-b55d-c8043ea84667.png)
 
-Now, promote this widget to a matplotlib widget by ```Right-click widget -> Promote to...```. This way, we tell the designer that our currently useless widget will be promoted to a widget with some self-defined functionality. In the window that pops up, enter the following, and click ```Add -> Promote``` to promote the widget to a matplotlibwidget. 
+Now, promote this widget to a matplotlib widget by ```Right-click widget -> Promote to...```. This way, we tell the designer that our currently useless widget will be promoted to a widget with some self-defined functionality. In the window that pops up, enter the following, and click ```Add -> Promote``` to promote the widget to a matplotlibwidget. Note that the entry in **Promoted class name** must refer to the name of the class we defined above in matplotlibwidgetFile.py ```class matplotlibWidget(QWidget):``` 
 
 ![designer_main_promote_3](https://user-images.githubusercontent.com/38459088/137174317-a4be907d-9aca-4fd8-85f1-f96a7de3fdd0.JPG)
 
@@ -299,6 +310,10 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         
         #Initialize GUI
         self.setupUi(self)
+    
+    def closeEvent(self, event):
+        self.close()
+        app.quit()
         
 
 # Start the application
@@ -322,3 +337,17 @@ plotWidget.canvas.draw()
 plotWidget.canvas.axes.imshow(image, cmap='gray')
 plotWidget.canvas.draw()
 ```
+
+### Bonus: Adding a cool style to your GUI
+Often, well, sometimes, we do not only want the GUI to be functional but to also have a nice look and feel. Changing the looks (e.g., face colors, font types, etc.) is, for once, possible directly in the **Porperties** box in the Qt Designer. However, it can be a bit troublesome to change the colors and properties of every element in your GUI one by one. To make this easier, Qt allows you to import so-called *style-sheets*. These files ([cool example here](https://github.com/BiAPoL/blog/blob/blog_entry_UI/johannes_mueller/entry_user_interf2/scripts/style_dark_orange.qss) define how certain widgets behave look-wise. If you want to use this example for your GUI, simply download it and save it in your project directory. Then add it to your GUI by adding the following to your code **before ```app.exec()```**:
+
+```python
+import os
+
+stylefile = os.path.join(os.getcwd(), 'stylefile.qss')
+window.setStyleSheet(open(stylefile, "r").read())
+```
+
+![simple_GUI_styled](https://user-images.githubusercontent.com/38459088/137293734-cb6bf103-fda2-4496-aea2-ae3caf292a33.png)
+
+...which looks pretty cool, right?
