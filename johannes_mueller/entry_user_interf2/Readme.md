@@ -15,13 +15,13 @@ Blogs on this topic will cover:
 The [previous entry](https://github.com/BiAPoL/blog/new/blog_entry_UI/johannes_mueller#getting-started) showed you how to create basic GUIs by setting up a ```QMainWindow``` object and adding basic objects, such as buttons to it. However, especially if user interfaces become more complex, the approach of manually adding elements to your window will become harder and harder to control. This part of the tutorial will cover the creation of advanced user interfaces for PyQt.
 
 ## Table of contents
-* Creating your environment
-* The Qt Designer
-* Designing a simple GUI with the Designer
-* Convert GUI to .py file and GUI creation
-* Adding functionality to GUI (aka signals and slots)
-* Adding a matplotlib widget to a GUI with Qt Designer
-* Bonus: Adding a cool style to your GUI
+* [Creating your environment](https://github.com/BiAPoL/blog/blob/blog_entry_UI/johannes_mueller/entry_user_interf2/Readme.md#creating-your-environment)
+* [The Qt Designer](https://github.com/BiAPoL/blog/blob/blog_entry_UI/johannes_mueller/entry_user_interf2/Readme.md#the-qt-designer)
+* [Designing a simple GUI with the Designer](https://github.com/BiAPoL/blog/blob/blog_entry_UI/johannes_mueller/entry_user_interf2/Readme.md#creating-a-simple-gui-with-the-designer)
+* [Converting the GUI to .py file and GUI creation](https://github.com/BiAPoL/blog/blob/blog_entry_UI/johannes_mueller/entry_user_interf2/Readme.md#convert-gui-to-py-file-and-gui-creation)
+* [Adding functionality to GUI (a.k.a. signals and slots)](https://github.com/BiAPoL/blog/blob/blog_entry_UI/johannes_mueller/entry_user_interf2/Readme.md#adding-functionality-to-gui-aka-signals-and-slots)
+* [Adding a matplotlib widget to a GUI with Qt Designer](https://github.com/BiAPoL/blog/blob/blog_entry_UI/johannes_mueller/entry_user_interf2/Readme.md#adding-a-matplotlib-widget-to-a-gui-with-qt-designer)
+* [Bonus: Adding a cool style to your GUI](https://github.com/BiAPoL/blog/blob/blog_entry_UI/johannes_mueller/entry_user_interf2/Readme.md#bonus-adding-a-cool-style-to-your-gui)
 
 ## Creating your environment
 It is highly recommended to create a separate conda environment. Many programs in the Python ecosystem somehow rely on PyQt, so messing around with PyQt in environments can easily break things (Been there, done that). In the Anaconda command line, navigate to your desired folder and create a new conda environment:
