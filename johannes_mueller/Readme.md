@@ -11,7 +11,7 @@ In 2021, I became part of the bio-image analysis group of Robert Haase at Physic
 educate others to empower them to develop their own workflows and develop new methods such that they can be deployed by as many researchers as possible.
 
 ## Blog posts
-* [GUIs in Python -getting started](https://github.com/BiAPoL/blog/blob/blog_entry_UI/johannes_mueller/entry_user_inter/Readme.md)
+* [GUIs in Python - getting started](https://github.com/BiAPoL/blog/blob/blog_entry_UI/johannes_mueller/entry_user_inter/Readme.md)
 * [advanced GUIs with Qt designer](https://github.com/BiAPoL/blog/blob/blog_entry_UI/johannes_mueller/entry_user_interf2/Readme.md)
 
 ## Links
