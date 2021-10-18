@@ -22,7 +22,7 @@ Blogs on this topic will cover:
 It is highly recommended to create a separate conda environment. Many programs in the Python ecosystem somehow rely on PyQt, so messing around with PyQt in environments can easily break things (Been there, done that). In the Anaconda command line, navigate to your desired folder and create a new conda environment:
 
 ```
-conda create -n PyQt_GUI jupyter
+conda create -n PyQt_GUI
 conda activate PyQt_GUI
 ```
 I work mostly with jupyter notebooks or Spyder, so you can download both and pick your preferred platform
@@ -62,7 +62,7 @@ window.show()
 app.exec()
 
 ```
-And that's it, you have created your first GUI! 
+Run this script from SPyder or from a Jupyter Notebook and that's it, you have created your first GUI! 
 
 ![Basic_UI_1| 50%](https://user-images.githubusercontent.com/38459088/137125025-4700ba83-fb56-430e-b394-55485ca4e3f4.JPG)
 
@@ -73,7 +73,7 @@ class MainWindow(QMainWindow):
     super().__init__()
     ....
 ```
-This definition creates an object of type ```QMainWindow```. The ```__init__(self):``` function is used add *widgets* (buttons, sliders, figures, etc) to the window or can be used to store data in your applciation (see below). Also, it inherits all properties of a QMainWindow with the ```super().__init__()``` statement. In this example, the GUI is given a title ("My App") and a pushable button (class: QPushButton) is added to the GUI.
+This definition creates an object of type ```QMainWindow```. The ```__init__(self):``` function is used to add *widgets* (buttons, sliders, figures, etc) to the window or can be used to store data in your applciation (see below). Also, it inherits all properties of a QMainWindow with the ```super().__init__()``` statement. In this example, the GUI is given a title ("My App") and a pushable button (class: QPushButton) is added to the GUI.
 
 
 ```python
