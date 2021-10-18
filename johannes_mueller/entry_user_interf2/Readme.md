@@ -298,8 +298,7 @@ Next, we have to import this widget definition into our MainWindow in the Qt Des
 
 Now, promote this widget to a matplotlib widget by ```Right-click widget -> Promote to...```. This way, we tell the designer that our currently useless widget will be promoted to a widget with some self-defined functionality. In the window that pops up, enter the following, and click ```Add -> Promote``` to promote the widget to a matplotlibwidget. Note that the entry in **Promoted class name** must refer to the name of the class we defined above in matplotlibwidgetFile.py ```class matplotlibWidget(QWidget):``` 
 
-![designer_main_promote_3](https://user-images.githubusercontent.com/38459088/137174317-a4be907d-9aca-4fd8-85f1-f96a7de3fdd0.JPG)
-
+![designer_main_promote_3](https://user-images.githubusercontent.com/38459088/137757180-ccf1cbc0-1b67-4d18-82b5-8492f4ad395d.JPG)
 
 The widget is now a matplotlib widget! Now, don't forget to save the .ui file and run ```pyuic5```. We can then set up the main window as before with the following code and display our new widget, that contains all the familiar tools of a matplotlib figure, such as the toolbar to pan/zoom/save images:
 
