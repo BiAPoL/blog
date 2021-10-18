@@ -336,19 +336,27 @@ app.exec_()
 ```
 ![simple_GUI2](https://user-images.githubusercontent.com/38459088/137174851-6ba7257f-62fd-40b4-9f74-603ac7524e5c.JPG)
 
-You can draw data on this figure similarly as you would usually do in matplotlib. If your widget in the designer is called ```plotWidget```, plotting a curve would look like this in the code:
+You can draw data on this figure similarly as you would usually do in matplotlib. If your widget in the designer is called ```plotWidget```, plotting a curve would look like this in the code. With this code you could, for instance, use a ```SpinBox``` to read a value and pass this value to your plot function:
 ```python
-# Plot a curve:
-import numpy as np
-x = np.linspace(0, np.pi, 100)
-y = np.sin(x)
-plotWidget.canvas.axes.plot(x, y, color='red')
-plotWidget.canvas.draw()
+    def plot_curve(self):
+        # Plot a curve:
+        import numpy as np
+        x = np.linspace(0, np.pi, 100)
+        
+        # Read value from SpinBox
+        value = self.SpinBox.value()
+        
+        y = value * np.sin(x)
+        self.plotWidget.canvas.axes.clear()
+        self.plotWidget.canvas.axes.plot(x, y, color='red')
+        self.plotWidget.canvas.draw()
 
-# Display an image:
-image = np.random.randInt(0,10,100).reshape(10,-1)
-plotWidget.canvas.axes.imshow(image, cmap='gray')
-plotWidget.canvas.draw()
+    def display_image(self):
+        # Display an image:
+        image = np.random.randInt(0,10,100).reshape(10,-1)
+        self.plotWidget.canvas.axes.clear()
+        plotWidget.canvas.axes.imshow(image, cmap='gray')
+        plotWidget.canvas.draw()
 ```
 
 Note: All code used for this example with matplotlib in your GUI is provided [here](https://github.com/BiAPoL/blog/tree/blog_entry_UI/johannes_mueller/entry_user_interf2/scripts)
