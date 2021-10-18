@@ -1,4 +1,4 @@
-# Custom user interfaces for Python and Napari
+# Custom user interfaces for Python
 
 ## Introduction
 Graphical user interfaces (*GUIs*) are powerful tools to make your scripts and functions available to users that are not necessarily familiar with a lot of coding, development platforms (e.g. Spyder or PyCharm) - and shouldn't be experienced programmers in order to use your tools.
@@ -8,7 +8,6 @@ In this blog, we will cover a few interesting and versatile methods for you to c
 Blogs on this topic will cover:
 * [Getting started](https://github.com/BiAPoL/blog/new/blog_entry_UI/johannes_mueller#getting-started)
 * [Creating standalone GUIs](https://github.com/BiAPoL/blog/new/blog_entry_UI/johannes_mueller#creating-advanced-standalone-guis)
-* Creating napari GUIs
 
 
 # Getting started
