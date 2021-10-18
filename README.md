@@ -8,7 +8,7 @@ We blog about image data science, knowledge exchange and research data managemen
 Sometimes, graphical user interfaces (GUIs) become too complex to be handled in pure code. This blog will show ways to create more complex graphical user interfaces using the Qt Designer, which allows to create and configure advanced GUIs in a visual interface and create Python-readable configuration files. 
 
 <hr/>
-## [GUIs: Creating graphical user interfaces with/for Python, Part I](https://github.com/BiAPoL/blog/blob/blog_entry_UI/johannes_mueller/entry_user_inter) <small>Johannes Müller, October 18th, 2021</small>
+## [GUIs: Creating graphical user interfaces with/for Python, Part I](https://biapol.github.io/blog/johannes_mueller/entry_user_inter) <small>Johannes Müller, October 18th, 2021</small>
 <img style="float: right; height:100px; width:100px" src="images/python_logo.png">
 Graphical user interfaces - GUIs - can make using scripts and code much easier, as they allow to access functions in ways that are more intuitive than writing pure code. In this blog entry, you will be introduced on how to create basic GUIs for simple jobs in Python and how to connect elements of your GUI with Pyhton functions.
 
