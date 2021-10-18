@@ -245,7 +245,7 @@ window.show()
 
 app.exec_()
 ```
-You find all code from this example [here](https://github.com/BiAPoL/blog/tree/blog_entry_UI/johannes_mueller/entry_user_interf2/scripts/example_1)
+You find all code from this example [here](https://github.com/BiAPoL/blog/tree/blog_entry_UI/johannes_mueller/entry_user_interf2/scripts/example_1).
 
 ## Adding a matplotlib widget to a GUI with Qt Designer
 Often, we want GUIs not only to show us buttons or sliders, but also results, which, often enough are displayed on figures. To do this, you need to define your own custom matplotlib widget to use the functionalities of both PyQt and matplotlib. First, we need to define our own, custom matplotlib widget. To do this, generate a new python script ```matplotlibwidgetFile.py``` in your project directory with the following content:
@@ -360,10 +360,10 @@ You can draw data on this figure similarly as you would usually do in matplotlib
         plotWidget.canvas.draw()
 ```
 
-Note: All code used for this example with matplotlib in your GUI is provided [here](https://github.com/BiAPoL/blog/tree/blog_entry_UI/johannes_mueller/entry_user_interf2/scripts/example_2)
+Note: All code used for this example with matplotlib in your GUI is provided [here](https://github.com/BiAPoL/blog/tree/blog_entry_UI/johannes_mueller/entry_user_interf2/scripts/example_2).
 
 ## Bonus: Adding a cool style to your GUI
-Often, well, sometimes, we do not only want the GUI to be functional but also to have a nice look and feel. Changing the looks (e.g., face colors, font types, etc.) is, for once, possible directly in the **Porperties** box in the Qt Designer. However, it can be a bit troublesome to change the colors and properties of every element in your GUI one by one. To make this easier, Qt allows you to import so-called *style-sheets*. These files ([cool example here](https://github.com/BiAPoL/blog/blob/blog_entry_UI/johannes_mueller/entry_user_interf2/scripts/style_dark_orange.qss) define how certain widgets behave look-wise. If you want to use this example for your GUI, simply download it and save it in your project directory. Then add it to your GUI by adding the following to your code **before ```app.exec()```**:
+Often, well, sometimes, we do not only want the GUI to be functional but also to have a nice look and feel. Changing the looks (e.g., face colors, font types, etc.) is, for once, possible directly in the **Porperties** box in the Qt Designer. However, it can be a bit troublesome to change the colors and properties of every element in your GUI one by one. To make this easier, Qt allows you to import so-called *style-sheets*. These files ([cool example here](https://github.com/BiAPoL/blog/blob/blog_entry_UI/johannes_mueller/entry_user_interf2/scripts/example_3/style_dark_orange.qss) define how certain widgets behave look-wise. If you want to use this example for your GUI, simply download it and save it in your project directory. Then add it to your GUI by adding the following to your code **before ```app.exec()```**:
 
 ```python
 import os
@@ -376,4 +376,4 @@ window.setStyleSheet(open(stylefile, "r").read())
 
 ...which looks pretty cool, right?
 
-PS: Code for this example can be found [here](https://github.com/BiAPoL/blog/tree/blog_entry_UI/johannes_mueller/entry_user_interf2/scripts/example_3)
+PS: Again, code for the example can be found [here](https://github.com/BiAPoL/blog/tree/blog_entry_UI/johannes_mueller/entry_user_interf2/scripts/example_3).
