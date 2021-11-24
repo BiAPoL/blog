@@ -4,7 +4,7 @@ We blog about image data science, knowledge exchange and research data managemen
 
 <hr/>
 ## [Automated package documentation with Sphinx](https://biapol.github.io/blog/johannes_mueller/entry_sphinx) <small>Johannes Müller, Novemmber 24th, 2021</small>
-<img style="float: right; height:100px; width:100px" src="images/sphinx_logo.png">
+<img style="float: right; height:100px; width:300px" src="images/sphinx_logo.png">
 Good documentation can be a major obstacle towards getting a tool the visibility and usability it needs to make an impact. This blog entry shows how to autocreate documentation pages from function docstrings using Sphinx and how to have the result hosted on Github pages.
 
 <hr/>
