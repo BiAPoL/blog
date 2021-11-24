@@ -10,7 +10,7 @@ Enter Sphinx: [Sphinx](https://www.sphinx-doc.org/en/master/) is a tool that can
 This blog entry will walk you through the generation of documentation html pages for an exemplary github library using Sphinx and a few extensions.
 
 Blogs on this topic will cover:
-* [Getting started](https://github.com/BiAPoL/blog/new/blog_entry_UI/johannes_mueller#getting-started)
+* [Getting started](https://github.com/BiAPoL/blog/blob/sphinx-entry/johannes_mueller/entry_sphinx/Readme.md#getting-started)
 * [Running Sphinx](https://github.com/BiAPoL/blog/new/blog_entry_UI/johannes_mueller#creating-advanced-standalone-guis)
 * [Hosting pages on Github](https://github.com/BiAPoL/blog/new/blog_entry_UI/johannes_mueller#creating-advanced-standalone-guis)
 
