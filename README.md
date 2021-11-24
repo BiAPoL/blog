@@ -3,6 +3,11 @@ Most of us study and work at the [Bio-image Analysis Technology Development grou
 We blog about image data science, knowledge exchange and research data management in the life sciences.
 
 <hr/>
+## [Automated package documentation with Sphinx](https://biapol.github.io/blog/johannes_mueller/entry_sphinx) <small>Johannes Müller, Novemmber 24th, 2021</small>
+<img style="float: right; height:100px; width:100px" src="images/sphinx_logo.png">
+Good documentation can be a major obstacle towards getting a tool the visibility and usability it needs to make an impact. This blog entry shows how to autocreate documentation pages from function docstrings using Sphinx and how to have the result hosted on Github pages.
+
+<hr/>
 ## [GUIs: Creating graphical user interfaces with/for Python, Part II](https://biapol.github.io/blog/johannes_mueller/entry_user_interf2) <small>Johannes Müller, October 18th, 2021</small>
 <img style="float: right; height:100px; width:100px" src="images/qt_logo.png">
 Sometimes, graphical user interfaces (GUIs) become too complex to be handled in pure code. This blog will show ways to create more complex graphical user interfaces using the Qt Designer, which allows to create and configure advanced GUIs in a visual interface and create Python-readable configuration files. 
