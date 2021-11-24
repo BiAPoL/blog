@@ -143,4 +143,41 @@ Indices and tables
 
 ![screenshot_2](https://user-images.githubusercontent.com/38459088/143237808-3ba93245-b601-4a0b-9158-cc8be359a914.JPG)
 
-  
+## More advanced documentation
+Now that we have created our first documentation draft, this section will list a few tips and tricks to make your documentation a bit more clean and structured. The first thing we'd like to do, is to move function definitions to a separate API reference page.
+
+### Creating an API reference page.
+Creating such a page is not dificult. Create a new directory in your `docs` directory and name it `_include`. Move into this file and create a new file `api_reference.rst`. Change its content to
+```
+API Reference
+=============
+This age contaians the API reference of a very good package.
+
+Submodule A
+------------------
+This submodule can add and subtract numbers.
+
+.. automodule:: verygoodpackage.subpackage_a
+    :members:
+    :imported-members:
+```
+
+In `index.rst`, remove the automodule-directive from the file and add a link to `api_reference.rst` instead,,, then re-run `make html`:
+```
+Welcome to Very good package's documentation!
+=============================================
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Contents:
+
+   _include/api_reference
+
+Indices and tables
+==================
+
+* :ref:`genindex`
+* :ref:`modindex`
+* :ref:`search`
+```
+
