@@ -203,7 +203,7 @@ extensions = [
   'sphinx.ext.mathjax'  # Print mathematical expressions
 ]
 ```
-To use mathematical formatting, indicate it in the docstring like this: `.. math:: c = a + b`. Following the `.. math::` expression, you can use LaTeX-style formatting for equations, such as `a = \frac{b}{c}` in order to write a fraction of two numbers.
+To use mathematical formatting, indicate it in the docstring like this: `.. math:: c = a + b`. Following the `.. math::` expression, you can use LaTeX-style formatting for equations, such as `a = \frac{b}{c}` in order to write a fraction of two numbers. (Never worked with LaTeX= See [here](http://www.sciweavers.org/free-online-latex-equation-editor) for easy LaTeX-style formula-syntax generation!)
 
 ### Parsing Jupyter notebooks
 Jupyter notebooks are a very handy tool to illustrate workflows and computations. Sphinx provides a tool to add Jupyter notebooks to documentation pages, which can be very helpful to set up an Examples subpage on your documentation. To make this run, download `nbsphinx` and `pandoc`:
