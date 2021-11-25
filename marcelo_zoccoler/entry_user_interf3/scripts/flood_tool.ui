@@ -6,14 +6,20 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>251</width>
-    <height>104</height>
+    <width>240</width>
+    <height>115</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Flood Tool</string>
   </property>
   <widget class="QWidget" name="centralwidget">
+   <property name="minimumSize">
+    <size>
+     <width>240</width>
+     <height>76</height>
+    </size>
+   </property>
    <layout class="QGridLayout" name="gridLayout">
     <item row="0" column="2">
      <widget class="QDoubleSpinBox" name="doubleSpinBox"/>
@@ -25,17 +31,17 @@
       </property>
      </widget>
     </item>
-    <item row="0" column="5">
-     <widget class="QLabel" name="label">
-      <property name="text">
-       <string>Temperature Increase</string>
-      </property>
-     </widget>
-    </item>
     <item row="1" column="5">
      <widget class="QLabel" name="label_2">
       <property name="text">
        <string>Water Level</string>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="5">
+     <widget class="QLabel" name="label">
+      <property name="text">
+       <string>Temperature Increase</string>
       </property>
      </widget>
     </item>
@@ -46,6 +52,19 @@
       </property>
      </widget>
     </item>
+    <item row="2" column="2">
+     <spacer name="verticalSpacer">
+      <property name="orientation">
+       <enum>Qt::Vertical</enum>
+      </property>
+      <property name="sizeHint" stdset="0">
+       <size>
+        <width>20</width>
+        <height>40</height>
+       </size>
+      </property>
+     </spacer>
+    </item>
    </layout>
   </widget>
   <widget class="QMenuBar" name="menubar">
@@ -53,7 +72,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>251</width>
+     <width>240</width>
      <height>20</height>
     </rect>
    </property>
