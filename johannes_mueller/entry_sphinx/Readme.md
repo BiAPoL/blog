@@ -31,6 +31,8 @@ conda create -n sphinx-tutorial
 conda activate sphinx-tutorial
 ```
 
+In order to get started with Sphinx, download Sphinx using `conda install -c anaconda sphinx`. Now, create a new directory in the project and call it `docs/` and go into the new directory(`cd docs/`).
+
 The repository has a typical structure: It consists of a top-level module (`verygoodpackage`) and a submodule (`subpackage_a`) that consists of function definitions in `_operations.py`. There are two functions (`add` and `subtract`) which we would like to document:
 ```bash
 root
@@ -42,8 +44,6 @@ root
             ├─── add(...)
             └─── subtract(...)
 ```
-
-In order to get started with Sphinx, download Sphinx using `pip install sphinx`. Now, create a new directory in the project and call it `docs/` and go into the new directory(`cd docs/`).
 
 ## Running Sphinx
 
