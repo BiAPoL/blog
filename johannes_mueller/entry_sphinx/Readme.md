@@ -1,7 +1,7 @@
 # Automated package documentation with Sphinx
 
 ## Introduction
-We've all been there. We have written this wonderful piece of software that will essentially solve science's most pressing problems, the only *minor* thing left to do is propper documentation. And this, although it's only the lat few meters until the finish lines, is where good projects often turn into bad projects.
+We've all been there. We have written this wonderful piece of software that will essentially solve science's most pressing problems, the only *minor* thing left to do is proper documentation. And this, although it's only the last few meters until the finish lines, is where good projects often turn into bad projects.
 
 <img src="https://user-images.githubusercontent.com/38459088/143226848-c0765ba7-43bc-4b9d-99ce-8426f2177cfa.jpg" width="400" height="400">
 
@@ -24,14 +24,14 @@ git clone https://github.com/BiAPoL/example-repo-sphinx.git
 cd example-repo-sphinx/
 ```
 
-*Optional, but recommended*: Create a new environment for this tutorial using 
+*Optional, but recommended*: Create a new environment for this tutorial using
 
 ```
 conda create -n sphinx-tutorial
 conda activate sphinx-tutorial
 ```
 
-The repository has a typical structure: It consists of a top-level module (`verygoodpackage`) and a submodule (`subpackage_a`) that consists function definitions in `_operations.py`. There are two functions (`add` and `subtract`) which we would like to document:
+The repository has a typical structure: It consists of a top-level module (`verygoodpackage`) and a submodule (`subpackage_a`) that consists of function definitions in `_operations.py`. There are two functions (`add` and `subtract`) which we would like to document:
 ```bash
 root
 └───verygoodpackage
@@ -43,7 +43,7 @@ root
             └─── subtract(...)
 ```
 
-In order to get started with Sphinx, download Sphinx using `pip install sphinx`. Now, create a new directory in the project and calll it `docs/` and go into the new directory(`cd docs/`).
+In order to get started with Sphinx, download Sphinx using `pip install sphinx`. Now, create a new directory in the project and call it `docs/` and go into the new directory(`cd docs/`).
 
 ## Running Sphinx
 
@@ -51,7 +51,7 @@ Now we have everything we need to run Sphinx for the first time. To set everythi
 
 ```
 Separate source and build directories (y/n) [n]:
-``` 
+```
 Selecting `n` will lead to  Sphinx creating directories `_build`, `_static` and `_templates` at this location. From what I see, this choice is largely up to what you prefer in terms of directory organisation. In this tutorial, we'll proceed with the default option (`n`).
 ```bash
 > Project name: Very good package
@@ -84,7 +84,7 @@ This looks nice, but as you see, there's nothing on this page yet. Before we fin
   sys.path.insert(0, os.path.abspath('../'))
   ```
   This tells Sphinx where to look for modules are classes to be documented.
-  
+
 2. Sphinx by itself is not able to parse docstrings of Python functions, but rather relies on extensions that take care of such things. In order to document functions or modules, we need to add the *autodoc* extension to Sphinx:
 ```Python
 extensions = [
@@ -143,11 +143,11 @@ Indices and tables
 Now that we have created our first documentation draft, this section will list a few tips and tricks to make your documentation a bit more clean and structured. The first thing we'd like to do, is to move function definitions to a separate API reference page.
 
 ### Creating a separate API reference page.
-Creating such a page is not dificult. Create a new directory in your `docs` directory and name it `_include`. Move into this file and create a new file `api_reference.rst`. Change its content to
+Creating such a page is not difficult. Create a new directory in your `docs` directory and name it `_include`. Move into this file and create a new file `api_reference.rst`. Change its content to
 ```
 API Reference
 =============
-This age contaians the API reference of a very good package.
+This age contains the API reference of a very good package.
 
 Submodule A
 ------------------
@@ -189,7 +189,7 @@ extensions = [
 ]
 ```
 
-The numpy docstring, for instance, can be added in Spyder automatically by writting `"""` after a function/class definition and selecting the linted docstring option.
+The numpy docstring, for instance, can be added in Spyder automatically by writing `"""` after a function/class definition and selecting the linted docstring option.
 
 ### Parsing mathematical expressions
 Sphinx is not per-se able to turn mathematical expressions into docstrings. This can be achieved using the [mathjax extension](https://www.sphinx-doc.org/en/master/usage/extensions/math.html) for Sphinx, which can be added using
@@ -197,22 +197,22 @@ Sphinx is not per-se able to turn mathematical expressions into docstrings. This
 extensions = [
   'sphinx.ext.autodoc',  # Parses (sub)modules
   'sphinx.ext.napoleon',  # Parses Numpy docstrings
-  'sphinx.ext.mathjax'  # Print mmathematical expressions
+  'sphinx.ext.mathjax'  # Print mathematical expressions
 ]
 ```
 To use mathematical formatting, indicate it in the docstring like this: `.. math:: c = a + b`. Following the `.. math::` expression, you can use LaTeX-style formatting for equations, such as `a = \frac{b}{c}` in order to write a fraction of two numbers.
 
 ### Parsing Jupyter notebooks
-Jupyter nnotebooks are a very handy tool to illustrate workflows and computations. Sphinx provides a tool to add Jupyter notebooks to documentation pages, which can be very helpful to set up an Examples subpage on your documentation. To make this run, download `nbsphinx` and `pandoc`:
+Jupyter notebooks are a very handy tool to illustrate workflows and computations. Sphinx provides a tool to add Jupyter notebooks to documentation pages, which can be very helpful to set up an Examples subpage on your documentation. To make this run, download `nbsphinx` and `pandoc`:
 
 ```pip install nbsphinx pandoc```
 
-and add the extension to `conf.py` with 
+and add the extension to `conf.py` with
 ```Python
 extensions = [
   'sphinx.ext.autodoc',  # Parses (sub)modules
   'sphinx.ext.napoleon',  # Parses Numpy docstrings
-  'sphinx.ext.mathjax',  # Print mmathematical expressions
+  'sphinx.ext.mathjax',  # Print mathematical expressions
   'nbsphinx'  # link notebooks
 ]
 ```
@@ -258,12 +258,12 @@ and re-run `make html`. This generates an entry with the notebook within the new
 ![screenshot_5](https://user-images.githubusercontent.com/38459088/143249686-0e443b44-7076-40d1-94d5-ac4b39e52cea.JPG)
 
 ### Make a functions overview
-Sometime, especially when the package inncludes a very large number of functions, it is desirable to generate a list of functions ([such as here in scikit-image](https://scikit-image.org/docs/stable/api/skimage.data.html)). To do this, add the autosummary extension to the list of extensions in `conf.py`:
+Sometime, especially when the package includes a very large number of functions, it is desirable to generate a list of functions ([such as here in scikit-image](https://scikit-image.org/docs/stable/api/skimage.data.html)). To do this, add the autosummary extension to the list of extensions in `conf.py`:
 ```Python
 extensions = [
   'sphinx.ext.autodoc',  # Parses (sub)modules
   'sphinx.ext.napoleon',  # Parses Numpy docstrings
-  'sphinx.ext.mathjax',  # Print mmathematical expressions
+  'sphinx.ext.mathjax',  # Print mathematical expressions
   'nbsphinx',  # link notebooks
   'sphinx.ext.autosummary',  # Make module lists in table
 ]
@@ -273,7 +273,7 @@ In the above-generated api-reference stub (`api_reference.rst`), replace the aut
 ```
 API Reference
 =============
-This age contaians the API reference of a very good package.
+This age contains the API reference of a very good package.
 
 Submodule A
 ------------------
@@ -292,16 +292,16 @@ This will create a list page with every function in a neat table, whereas clicki
 ![screenshot_6](https://user-images.githubusercontent.com/38459088/143251553-b6299c7c-4ef7-419f-af73-4fcf79e36b8c.JPG)
 
 ## Host your documentation on Github
-There are plenty of options to have your documentation hosted online (e.g., https://readthedocs.org/), but one of the choices offering a bit more seemless integration is to have your documentation hosted directly on github. To do so, navigate to your repository on github and go to the `Settings --> Pages` tab. Here, you can choose the root directory for your documentation, which, in our case, should be set to `main/docs/`. This means that Github will look for `index.html` in the docs directory - which obviously is not at this location. 
+There are plenty of options to have your documentation hosted online (e.g., https://readthedocs.org/), but one of the choices offering a bit more seamless integration is to have your documentation hosted directly on github. To do so, navigate to your repository on github and go to the `Settings --> Pages` tab. Here, you can choose the root directory for your documentation, which, in our case, should be set to `main/docs/`. This means that Github will look for `index.html` in the docs directory - which obviously is not at this location.
 
 Hence, we create an html file in `/docs`, that redirects to the actual `index.html`-file, which was generated by Sphinx. To do so, create a new file `index.html` with the following content:
 ```html
 <meta http-equiv="refresh" content="0; url=./_build/html/index.html" />
 ```
 
-With that, you shhould be good to go and have your documentation ready on github pages :)
+With that, you should be good to go and have your documentation ready on github pages :)
 
 ### 404 error
-If you use a Sphinx-defined theme for your pages (e.g., [alabaster](https://pypi.org/project/alabaster/)), you may get a 404 error if you follow the link that is provided on Github pages. To counteract this error, create en empty file `.nojekyll` in `/docs`.
+If you use a Sphinx-defined theme for your pages (e.g., [alabaster](https://pypi.org/project/alabaster/)), you may get a 404 error if you follow the link that is provided on Github pages. To counteract this error, create an empty file `.nojekyll` in `/docs`.
 
 That's it for now on this topic - this post is now long enough. Hope it helps and have fun!
