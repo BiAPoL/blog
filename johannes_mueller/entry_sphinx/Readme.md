@@ -261,7 +261,7 @@ and re-run `make html`. This generates an entry with the notebook within the new
 ![screenshot_5](https://user-images.githubusercontent.com/38459088/143249686-0e443b44-7076-40d1-94d5-ac4b39e52cea.JPG)
 
 ### Make a functions overview
-Sometime, especially when the package includes a very large number of functions, it is desirable to generate a list of functions ([such as here in scikit-image](https://scikit-image.org/docs/stable/api/skimage.data.html)). To do this, add the autosummary extension to the list of extensions in `conf.py`:
+Sometimes, especially when the package includes a very large number of functions, it is desirable to generate a list of functions ([such as here in scikit-image](https://scikit-image.org/docs/stable/api/skimage.data.html)). To do this, add the autosummary extension to the list of extensions in `conf.py`:
 ```Python
 extensions = [
   'sphinx.ext.autodoc',  # Parses (sub)modules
