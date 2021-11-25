@@ -208,7 +208,7 @@ To use mathematical formatting, indicate it in the docstring like this: `.. math
 ### Parsing Jupyter notebooks
 Jupyter notebooks are a very handy tool to illustrate workflows and computations. Sphinx provides a tool to add Jupyter notebooks to documentation pages, which can be very helpful to set up an Examples subpage on your documentation. To make this run, download `nbsphinx` and `pandoc`:
 
-```pip install nbsphinx pandoc```
+```conda install -c conda-forge nbsphinx pandoc```
 
 and add the extension to `conf.py` with
 ```Python
