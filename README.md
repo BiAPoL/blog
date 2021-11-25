@@ -3,6 +3,22 @@ Most of us study and work at the [Bio-image Analysis Technology Development grou
 We blog about image data science, knowledge exchange and research data management in the life sciences.
 
 <hr/>
+## [GUIs: Creating graphical user interfaces with/for Python, Part II](https://biapol.github.io/blog/johannes_mueller/entry_user_interf2) <small>Johannes Müller, October 18th, 2021</small>
+<img style="float: right; height:100px; width:100px" src="images/qt_logo.png">
+Sometimes, graphical user interfaces (GUIs) become too complex to be handled in pure code. This blog will show ways to create more complex graphical user interfaces using the Qt Designer, which allows to create and configure advanced GUIs in a visual interface and create Python-readable configuration files. 
+
+<hr/>
+## [GUIs: Creating graphical user interfaces with/for Python, Part I](https://biapol.github.io/blog/johannes_mueller/entry_user_inter) <small>Johannes Müller, October 18th, 2021</small>
+<img style="float: right; height:100px; width:100px" src="images/python_logo.png">
+Graphical user interfaces - GUIs - can make using scripts and code much easier, as they allow to access functions in ways that are more intuitive than writing pure code. In this blog entry, you will be introduced on how to create basic GUIs for simple jobs in Python and how to connect elements of your GUI with Pyhton functions.
+
+<hr/>
+## [Jamovi: statistical analysis made visual and easy (powered with R)](https://biapol.github.io/blog/marcelo_zoccoler/jamovi/jamovi) <small>Marcelo Zoccoler, October 7th, 2021</small>
+<img style="float: right; height:100px; width:100px" src="marcelo_zoccoler/jamovi/images/jamovi-icon.png">
+Jamovi is a fairly new, free and open statistical software. It has a very friendly GUI that serves as a welcome door to anyone who wants to perform statistical tests on their data. It was developed with R, one of the best open programming languages for statistical computing and graphics.
+This blog post introduces you to this program by performing some statistical tests onto data extracted from a sample image.
+
+<hr/>
 ## [Installing Microsoft buildtools on Windows](https://biapol.github.io/blog/robert_haase/ms_build_tools) <small>Robert Haase, July 9th, 2021</small>
 <img style="float: right; height:100px; width:100px" src="images/python_logo.png">
 Installing python libraries on Windows can be tricky. When using `pip install` on a Windows computer that is not regularily visited by a hardcore programmer, a typical error message is "error: Microsoft Visual C++ 14.0 or greater is required.".
