@@ -188,8 +188,8 @@ extensions = [
   'sphinx.ext.napoleon'  # Parses Numpy docstrings
 ]
 ```
-
 The numpy docstring, for instance, can be added in Spyder automatically by writing `"""` after a function/class definition and selecting the linted docstring option:
+*Note*: Don't forget to comma-separate the entries in the Python-list `extensions`!
 
 ![screenshot_7](https://user-images.githubusercontent.com/38459088/143504648-7a4b558f-da7e-413c-810c-ba2e9bb1a7ac.JPG)
 
