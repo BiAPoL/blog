@@ -189,7 +189,10 @@ extensions = [
 ]
 ```
 
-The numpy docstring, for instance, can be added in Spyder automatically by writing `"""` after a function/class definition and selecting the linted docstring option.
+The numpy docstring, for instance, can be added in Spyder automatically by writing `"""` after a function/class definition and selecting the linted docstring option:
+
+![screenshot_7](https://user-images.githubusercontent.com/38459088/143504648-7a4b558f-da7e-413c-810c-ba2e9bb1a7ac.JPG)
+
 
 ### Parsing mathematical expressions
 Sphinx is not per-se able to turn mathematical expressions into docstrings. This can be achieved using the [mathjax extension](https://www.sphinx-doc.org/en/master/usage/extensions/math.html) for Sphinx, which can be added using
