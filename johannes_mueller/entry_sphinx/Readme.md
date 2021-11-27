@@ -85,6 +85,7 @@ sys.path.insert(0, os.path.abspath('../'))
   This tells Sphinx where to look for modules or functions to be documented.
 
 2. Sphinx by itself is not able to parse docstrings of Python functions, but rather relies on extensions that take care of such things. In order to document functions or modules, we need to add the *autodoc* extension to Sphinx:
+
 ```Python
 extensions = [
   'sphinx.ext.autodoc',  # Parses docstrings
