@@ -81,8 +81,8 @@ import os
 import sys
 sys.path.insert(0, os.path.abspath('../'))
 ```
-  
-  This tells Sphinx where to look for modules or functions to be documented.
+
+This tells Sphinx where to look for modules or functions to be documented.
 
 2. Sphinx by itself is not able to parse docstrings of Python functions, but rather relies on extensions that take care of such things. In order to document functions or modules, we need to add the *autodoc* extension to Sphinx:
 
@@ -136,6 +136,7 @@ Indices and tables
 * :ref:`modindex`
 * :ref:`search`
 ```
+
 5. Re-run `make html`. If you open `index.html` again, the result will now look much closer to something like an actual documentation!
 
 ![screenshot_2](images/screenshot_2.JPG)
