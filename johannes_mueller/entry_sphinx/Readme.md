@@ -178,7 +178,7 @@ Indices and tables
 ```
 The front-page and the API-reference page will now look like this:
 
-<img src="images/screenshot_3.jpg" width="400" height="200"> <img src="images/screenshot_4.jpg" width="400" height="300">
+<img src="images/screenshot_3.JPG" width="400" height="150"> <img src="images/screenshot_4.JPG" width="400" height="300">
 
 ### Parsing pre-formatted docstrings
 Naturally, Sphinx only understands its associated markdown format (*Restructured text* aka rst-files). By adding the [napoleon-extension](https://www.sphinx-doc.org/en/master/usage/extensions/napoleon.html) to the Sphinx extensions in ```conf.py```, Sphinx will be able to parse the typically used Numpy or Google-format docstrings. The extension is used by adding it to the list of extensions, e.g.
