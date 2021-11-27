@@ -3,8 +3,6 @@
 ## Introduction
 We've all been there. We have written this wonderful piece of software that will essentially solve science's most pressing problems, the only *minor* thing left to do is proper documentation. And this, although it's only the last few meters until the finish lines, is where good projects often turn into bad projects.
 
-<img src="https://user-images.githubusercontent.com/38459088/143226848-c0765ba7-43bc-4b9d-99ce-8426f2177cfa.jpg" width="400" height="400">
-
 Enter Sphinx: [Sphinx](https://www.sphinx-doc.org/en/master/) is a tool that can *automatically* generate documentation in various formats (html, pdf, etc) based on the docstrings in your code. Popular examples for documentation pages that have been built with Sphinx, are [scitkit-learn](https://scikit-learn.org/stable/index.html) or [scikit-image](https://scikit-image.org/).
 
 This blog entry will walk you through the generation of documentation html pages for an exemplary github library using Sphinx and a few extensions.
