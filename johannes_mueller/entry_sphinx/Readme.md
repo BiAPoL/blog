@@ -70,7 +70,7 @@ docs/
 The `make.bat` allows you to generate html pages from the existing files, which is very handy. Create your first html pages using the command
 ```make html```. If you navigate into `docs/_build/html` afterwards, you see a number of created html files. The most important of these files is `index.html`, which serves as your documentation's frontpage:
 
-![screenshot_1](https://user-images.githubusercontent.com/38459088/143234166-e048ebc5-903f-4eec-821c-afb6693318a0.JPG)
+![screenshot_1](images/screenshot_1.JPG)
 
 This looks nice, but as you see, there's nothing on this page yet. Before we find our packages and modules on this page, we have to adjust a few settings in the configuration, which is done by making changes to `conf.py`.
 
@@ -135,7 +135,7 @@ Indices and tables
 ```
 5. Re-run `make html`. If you open `index.html` again, the result will now look much closer to something like an actual documentation!
 
-![screenshot_2](https://user-images.githubusercontent.com/38459088/143237808-3ba93245-b601-4a0b-9158-cc8be359a914.JPG)
+![screenshot_2](images/screenshot_2.JPG)
 
 ## More advanced documentation
 Now that we have created our first documentation draft, this section will list a few tips and tricks to make your documentation a bit more clean and structured. The first thing we'd like to do, is to move function definitions to a separate API reference page.
@@ -176,7 +176,7 @@ Indices and tables
 ```
 The front-page and the API-reference page will now look like this:
 
-<img src="https://user-images.githubusercontent.com/38459088/143241158-34cf05cd-2b9b-43d9-a1bf-e521da96695e.JPG" width="400" height="200"> <img src="https://user-images.githubusercontent.com/38459088/143241184-8404731f-de5a-44bc-9a60-2872f07b655a.JPG" width="400" height="300">
+<img src="images/screenshot_3.jpg" width="400" height="200"> <img src="images/screenshot_4.jpg" width="400" height="300">
 
 ### Parsing pre-formatted docstrings
 Naturally, Sphinx only understands its associated markdown format (*Restructured text* aka rst-files). By adding the [napoleon-extension](https://www.sphinx-doc.org/en/master/usage/extensions/napoleon.html) to the Sphinx extensions in ```conf.py```, Sphinx will be able to parse the typically used Numpy or Google-format docstrings. The extension is used by adding it to the list of extensions, e.g.
@@ -189,7 +189,7 @@ extensions = [
 The numpy docstring, for instance, can be added in Spyder automatically by writing `"""` after a function/class definition and selecting the linted docstring option:
 *Note*: Don't forget to comma-separate the entries in the Python-list `extensions`!
 
-![screenshot_7](https://user-images.githubusercontent.com/38459088/143504648-7a4b558f-da7e-413c-810c-ba2e9bb1a7ac.JPG)
+![screenshot_7](images/generate_docstring.png)
 
 
 ### Parsing mathematical expressions
@@ -256,7 +256,7 @@ Indices and tables
 ```
 
 and re-run `make html`. This generates an entry with the notebook within the newly generated Examples page:
-![screenshot_5](https://user-images.githubusercontent.com/38459088/143249686-0e443b44-7076-40d1-94d5-ac4b39e52cea.JPG)
+![screenshot_5](images/screenshot_5.JPG)
 
 ### Make a functions overview
 Sometimes, especially when the package includes a very large number of functions, it is desirable to generate a list of functions ([such as here in scikit-image](https://scikit-image.org/docs/stable/api/skimage.data.html)). To do this, add the autosummary extension to the list of extensions in `conf.py`:
@@ -290,7 +290,7 @@ This submodule can add and subtract numbers.
     subpackage_a.subtract
 ```
 This will create a list page with every function in a neat table, whereas clicking on the entry will lead to a separate page that hosts the documentation for this function.
-![screenshot_6](https://user-images.githubusercontent.com/38459088/143251553-b6299c7c-4ef7-419f-af73-4fcf79e36b8c.JPG)
+![screenshot_6](images/screenshot_6.JPG)
 
 ## Host your documentation on Github
 There are plenty of options to have your documentation hosted online (e.g., https://readthedocs.org/), but one of the choices offering a bit more seamless integration is to have your documentation hosted directly on github. To do so, navigate to your repository on github and go to the `Settings --> Pages` tab. Here, you can choose the root directory for your documentation, which, in our case, should be set to `main/docs/`. This means that Github will look for `index.html` in the docs directory - which obviously is not at this location.
