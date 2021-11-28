@@ -61,8 +61,8 @@ import napari
 from skimage.io import imread
 
 viewer = napari.Viewer()
-napari_image = imread('../images/21_Map_of_Tabuaeran_Kiribati_blue.png')   # This line reads an  image from file
-viewer.add_image(napari_image, name='napari_island')                       # This command adds the image to the viewer and give the image layer a name
+napari_image = imread('../images/21_Map_of_Tabuaeran_Kiribati_blue.png')   # Reads an image from file
+viewer.add_image(napari_image, name='napari_island')                       # Adds the image to the viewer and give the image layer a name
 ```
 
 After executing this code, you should get the image below (`No module named 'skimage'`? Install scikit-image in your environment with `conda install -c conda-forge scikit-image`):
