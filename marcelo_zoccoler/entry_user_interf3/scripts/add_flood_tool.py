@@ -39,10 +39,11 @@ class MainWindow(QMainWindow,  Ui_MainWindow):
         self.horizontalSlider.setValue(level)
 
 napari_image = imread('../images/21_Map_of_Tabuaeran_Kiribati_blue.png')
-viewer = napari.Viewer()
-viewer.add_image(napari_image, name='napari_island')#, colormap='viridis')   
+with napari.gui_qt():
+    viewer = napari.Viewer()
+    viewer.add_image(napari_image, name='napari_island')  
 
-flood_widget = MainWindow(viewer)
+# flood_widget = MainWindow(viewer)
 
-dw_instance = viewer.window.add_dock_widget(flood_widget, area='right')
-napari.run()  # start the event loop and show viewer
+# dw_instance = viewer.window.add_dock_widget(flood_widget, area='right')
+# napari.run()  # start the event loop and show viewer
