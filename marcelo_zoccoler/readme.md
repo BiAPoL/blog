@@ -1,6 +1,6 @@
 # Marcelo Zoccoler
 
-<img src="https://github.com/BiAPoL/blog/blob/blog_entry_UI/images/marcelo_zoccoler_photo.jpg" alt="pol" width="300"/>
+![](/images/marcelo_zoccoler_photo.jpg)
 
 Hi! My name is Marcelo and I am an Electrical Engineer who has specialized in Life Sciences and Image Analysis!
 Most of my work has been done on tools and software for image analysis focused on microscopy data.
