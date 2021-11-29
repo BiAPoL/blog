@@ -50,6 +50,6 @@ class Ui_MainWindow(object):
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "Flood Tool"))
-        self.label_2.setText(_translate("MainWindow", "Water Level:"))
+        self.label_2.setText(_translate("MainWindow", "Sea Level (dm):"))
         self.label.setText(_translate("MainWindow", "Temperature Increase (Δ°C):"))
         self.pushButton.setText(_translate("MainWindow", "Apply"))
