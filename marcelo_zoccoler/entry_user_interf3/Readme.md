@@ -22,6 +22,7 @@ The [previous entry](https://biapol.github.io/blog/johannes_mueller/entry_user_i
 * [Creating a callback function](#creating-a-callback-function)
 * [Automatically creating a GUI from a function with magicgui](#automatically-creating-a-gui-from-a-function-with-magicgui)
 * [Creating a GUI from FunctionGui](#creating-a-gui-from-functiongui)
+* Conclusion(#conclusion)
 
 ## Installing and running napari
 
