@@ -21,11 +21,24 @@ The [previous entry](https://biapol.github.io/blog/marcelo_zoccoler/entry_user_i
 
 ## Creating a plugin template structure with cookiecutter
 
-We have done 3 different implementations of a GUI into napari. They look great! How can we distribute them so other people can use them?
-If you didn't bet on turning them into napari plugins, I think I lost you somewhere 😟
-Well, let's turn them into plugins! 🚀
+Well, first things first: [create a new conda environment](https://biapol.github.io/blog/johannes_mueller/entry_user_interf2/Readme.md#creating-your-environment). ("Another one?" 😩) Yes, better safe than sorry 😉. Don't forget to activate it.
 
-napari website has a complete [tutorial](https://napari.org/plugins/stable/for_plugin_developers.html) for that, and I would say the easiest way is by using [cookiecutter](https://napari.org/plugins/stable/for_plugin_developers.html#cookiecutter-template).
+Napari website has a complete [tutorial](https://napari.org/plugins/stable/for_plugin_developers.html) for creating plugins, and I would say the easiest way is by using [cookiecutter](https://napari.org/plugins/stable/for_plugin_developers.html#cookiecutter-template).
+
+So, let's install and run cookiecutter:
+
+```
+pip install cookiecutter
+cookiecutter https://github.com/napari/cookiecutter-napari-plugin
+```
+(`'pip' is not recognized as ...`? -> `conda install pip`)
+(`'git' is not installed.`? -> `conda install git`)
+
+The cookiecutter will then start asking you questions about your project. Let's take a look at them below:
+
+
+
+
 
 
 ## Putting your GUI into the template
