@@ -12,6 +12,7 @@ Since 2021, as a researcher for the Bio-image Analysis Technology Development gr
 # Blog posts
 
   * ### [Jamovi: statistical analysis made visual and easy (powered with R)](jamovi/jamovi.md)
+  * ### [Creating advanced GUIs for napari](entry_user_interf3/Readme.md)
 
 # Links
   * <img src="https://pbs.twimg.com/media/DoG8b8CX0AANQo8.jpg" alt="pol" width="25"/> [BiA-PoL website](https://physics-of-life.tu-dresden.de/en/research/core-groups/bio-image-analysis)
