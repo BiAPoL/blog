@@ -195,8 +195,8 @@ Now when we increase the tempearture and click Apply, the island starts to flood
 
 ## Automatically creating a GUI from a function with magicgui
 
-What if we could 'magically' simplify all that and just say: 'hey computer, please create me a GUI for my function'?
-We can (almost) do that with [magicgui](https://napari.org/magicgui/index.html)! If we put some annotations right next to the variables in our function, we can create the GUI with one line of code :heart_eyes_cat:! So let's not wait any longer and add those annotations to our function:
+What if we could 'magically' simplify all that and just say: 'hey computer, please create a GUI for my function'?
+We can ~~literally~~ (almost) do that with 🧙‍♂️[magicgui](https://napari.org/magicgui/index.html)! If we put some annotations right next to the variables in our function, we can create the GUI with one line of code :heart_eyes_cat:! So let's not wait any longer and add those annotations to our function:
 
 ```
 from napari.types import ImageData, LabelsData
@@ -208,11 +208,11 @@ def flood(image: ImageData, delta: float=0, new_level: int=0) -> LabelsData:
     return(label_image)
 ```
 
-Here we are specifying that `image` is a data from a napari image layer, `delta` is `float`, `new_level` is `integer` and the output `label_image` will hold data from a napari labels layer.
+Here we are specifying that `image` is a data from a napari image layer (`ImageData`), `delta` is `float`, `new_level` is `integer` and the output `label_image` will hold data from a napari labels layer (`LabelsData`).
 
 You may have noticed that we placed `new_level` as input instead of output. That's because magicgui creates widgets (like buttons, bars, etc) based on the input variables.
 
-Now, here it comes the one-liner :fireworks::
+Now, here it comes the one-liner 🥁🥁:  
 
 `flood_widget = magicgui(flood)`
 
@@ -245,7 +245,7 @@ Neat! Just a couple of things missing though. We only get Spinboxes now, what ab
 ```
 flood_widget = magicgui(flood, delta={'label': 'Temperature Increase (Δ°C):', 
                                            'min': 0, 'max' : 3, 'step': 0.1},
-                                level={'label':'Sea Level (dm):', 'widget_type':'Slider',
+                                new_level={'label':'Sea Level (dm):', 'widget_type':'Slider',
                                            'min': 0, 'max' : 255})
 ```
 
