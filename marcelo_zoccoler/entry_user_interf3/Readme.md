@@ -9,7 +9,7 @@ Blogs on this topic will cover:
 * [Getting started (Part 1)](https://biapol.github.io/blog/johannes_mueller/entry_user_interf#getting-started)
 * [Creating standalone GUIs (Part 2)](https://biapol.github.io/blog/johannes_mueller/entry_user_interf2#creating-advanced-standalone-guis)
 * [Creating GUIs for napari (Part 3)](https://biapol.github.io/blog/marcelo_zoccoler/entry_user_interf3#creating-advanced-guis-for-napari)
-* [Turning napari GUI into plugins (Part 4)()
+* [Turning napari GUI into plugins (Part 4)](https://biapol.github.io/blog/marcelo_zoccoler/entry_user_interf3#turning-napari-gui-into-plugins)
 
 
 # Creating advanced GUIs for napari
@@ -346,3 +346,4 @@ viewer.window.add_dock_widget(flood_widget, area='right')                  # Add
 
 ## Conclusion
 
+We have implemented our GUI in 3 different ways! Check which way is advantageous for you and play with it a little bit, because in the next part we will teach you how to turn it into a napari plugin and distribute it 🎉
