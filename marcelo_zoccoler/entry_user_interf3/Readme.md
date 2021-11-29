@@ -42,7 +42,7 @@ Download the image above and drop it into napari by drag and drop (or use the us
 
 ![](images/napari_window_in_napari.png)
 
-Wow! We have napari inside napari! ~~And that's how you add a GUI to napari! 😆~~
+**Wow! We have napari inside napari!** ~~And that's how you add a GUI to napari! 😆~~
 
 ## Calling napari from script
 
@@ -69,9 +69,9 @@ After executing the block of code above, you should get the image below (`No mod
 
 ![](images/napari_island_in_napari.png)
 
-Wow! We have napari inside napari! \[2\]
+**Wow! We have napari inside napari! \[2\]**
 
-Side-note: the napari island is part of the Kiribati country, which like Fiji, is also vulnerable to [climate change effect](https://storymaps.arcgis.com/stories/7f455136b85f4edd8655d15a89b5039f).
+*Side-note: the napari island is part of the Kiribati country, which like Fiji, is also vulnerable to [climate change effect](https://storymaps.arcgis.com/stories/7f455136b85f4edd8655d15a89b5039f).*
 
 ## Importing your fancy GUI to napari
 
@@ -118,6 +118,24 @@ When you run the script now, you should see the screen below:
 It is now embedded into napari framework! Sweet 🍬!
 
 ## Creating a callback function
+
+As you may have noticed, our GUI is there, but it does nothing yet. We need to link widgets to callback functions.
+Just for fun, let's create a function that relates temperature increases to sea level.
+
+**Disclaimer:** This specific function, although based on the fact that global warming contributes to incrase sea levels, has no scientific background to support it and it was completely made-up just for a fun illustration. Climate change is a complex subject that involves many internal and external factors which I do not have the expertise to explain.
+
+```
+def flood(image, delta):
+    new_level = delta*85
+    label_image = image <= new_level
+    label_image = label_image.astype(int)*13     # label number 13 is blue in napari
+    return(label_image, new_level)
+```
+
+This function takes an `image` and a `delta` (temperature) as inputs. It converts delta into `new_level` (new sea level) and creates a label image where the labeled region corresponds to grayscale levels which are below `new_level`. It returns `label_image` and `new_level`. It can be simplified, but let's keep it like this for future reasons.
+
+Now, we need to link this function to the `Apply` button. This can be done with the general command `pushButton.clicked.connect(flood)`.
+
 
 
 
