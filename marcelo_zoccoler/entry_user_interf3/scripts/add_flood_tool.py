@@ -7,11 +7,8 @@ from PyQt5.QtWidgets import QMainWindow
 
 def flood(image, delta):
     new_level = delta*85
-    
     label_image = image <= new_level
-    
     label_image = label_image.astype(int)*13 # label 13 is blue in napari
-
     return(label_image, new_level)
 
 # Define the main window class
@@ -39,11 +36,10 @@ class MainWindow(QMainWindow,  Ui_MainWindow):
         self.horizontalSlider.setValue(level)
 
 napari_image = imread('../images/21_Map_of_Tabuaeran_Kiribati_blue.png')
-with napari.gui_qt():
-    viewer = napari.Viewer()
-    viewer.add_image(napari_image, name='napari_island')  
+viewer = napari.Viewer()
+viewer.add_image(napari_image, name='napari_island')  
 
-# flood_widget = MainWindow(viewer)
+flood_widget = MainWindow(viewer)
 
-# dw_instance = viewer.window.add_dock_widget(flood_widget, area='right')
+dw_instance = viewer.window.add_dock_widget(flood_widget, area='right')
 # napari.run()  # start the event loop and show viewer
