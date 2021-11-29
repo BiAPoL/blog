@@ -8,11 +8,12 @@ In this blog, we will cover a few interesting and versatile methods for you to c
 Blogs on this topic will cover:
 * [Getting started (Part 1)](https://biapol.github.io/blog/johannes_mueller/entry_user_interf#getting-started)
 * [Creating standalone GUIs (Part 2)](https://biapol.github.io/blog/johannes_mueller/entry_user_interf2#creating-advanced-standalone-guis)
-* [Creating GUIs for napari (part 3)](https://biapol.github.io/blog/marcelo_zoccoler/entry_user_interf3#creating-advanced-guis-for-napari)
+* [Creating GUIs for napari (Part 3)](https://biapol.github.io/blog/marcelo_zoccoler/entry_user_interf3#creating-advanced-guis-for-napari)
+* [Turning napari GUI into plugins (Part 4)()
 
 
 # Creating advanced GUIs for napari
-The [previous entry](https://biapol.github.io/blog/johannes_mueller/entry_user_interf2#creating-advanced-standalone-guis) showed you how to create more advanced GUIs with the aid of the designer tool. This last part will teach you how to impot those GUIs to napari and how to produce them straight from python functions using [magicgui](https://napari.org/magicgui/index.html).
+The [previous entry](https://biapol.github.io/blog/johannes_mueller/entry_user_interf2#creating-advanced-standalone-guis) showed you how to create more advanced GUIs with the aid of the designer tool. This third part will teach you how to import those GUIs to napari and how to produce them straight from python functions using [magicgui](https://napari.org/magicgui/index.html).
 
 ## Table of contents
 * [Installing and running napari](#installing-and-running-napari)
@@ -21,7 +22,6 @@ The [previous entry](https://biapol.github.io/blog/johannes_mueller/entry_user_i
 * [Creating a callback function](#creating-a-callback-function)
 * [Automatically creating a GUI from a function with magicgui](#automatically-creating-a-gui-from-a-function-with-magicgui)
 * [Creating a GUI from FunctionGui](#creating-a-gui-from-functiongui)
-* [Turning your GUI into a napari plugin](#turning-your-gui-into-a-napari-plugin) 
 
 ## Installing and running napari
 
@@ -344,4 +344,5 @@ viewer.window.add_dock_widget(flood_widget, area='right')                  # Add
 ```
 ![](images/napari_flood_tool5.png)
 
-## Turning your GUI into a napari plugin
+## Conclusion
+
