@@ -196,7 +196,7 @@ Now when we increase the tempearture and click Apply, the island starts to flood
 ## Automatically creating a GUI from a function with magicgui
 
 What if we could 'magically' simplify all that and just say: 'hey computer, please create me a GUI for my function'?
-We can (almost) do that with [magicgui](https://napari.org/magicgui/index.html)! If we put some tags right next to the variables in our function, we can create the GUI with one line of code :heart_eyes_cat:! So let's not wait any longer and add those tags to our function:
+We can (almost) do that with [magicgui](https://napari.org/magicgui/index.html)! If we put some annotations right next to the variables in our function, we can create the GUI with one line of code :heart_eyes_cat:! So let's not wait any longer and add those annotations to our function:
 
 ```
 from napari.types import ImageData, LabelsData
@@ -249,7 +249,9 @@ flood_widget = magicgui(flood, delta={'label': 'Temperature Increase (Δ°C):',
                                            'min': 0, 'max' : 255})
 ```
 
-Now, you get the same result as the earlier approach. If you don't know the widget options, take a look [here](https://napari.org/magicgui/usage/widget_overview.html) to find the widget you want and its parameters.
+Now, you get the same result as the earlier approach. If you don't know the widget options, take a look [here](https://napari.org/magicgui/usage/widget_overview.html) to find the widget you want and discover its parameters.
+
+![](images/napari_flood_tool4.png)
 
 One limitation of this approach is that the 'Sea level' slider does not get updated since it is an input now. If you need that kind of interaction, you have to either stick to [importing/writing the GUI with Qt](#importing-your-fancy-gui-to-napari) or [modify the FunctionGui](#creating-a-gui-from-functiongui), which is our next session.
 
