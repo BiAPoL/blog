@@ -54,18 +54,19 @@ viewer = napari.Viewer()
 ```
 
 The code above can be called from [Jupyter Notebook or JupyterLab](https://jupyter.org/), [Spyder](https://www.spyder-ide.org/), or your IDE of preference.
-It is also possible to add images to the viewer from code. Let's expand the code a bit:
+It is also possible to add images to the viewer from code. Download [this image](https://github.com/zoccoler/blog/tree/napari_plugin_desing/marcelo_zoccoler/entry_user_interf3/images/21_Map_of_Tabuaeran_Kiribati_blue.png) and put it in the same folder as the code. Let's expand the code a bit:
 
 ```
 import napari
 from skimage.io import imread
 
 viewer = napari.Viewer()
-napari_image = imread('../images/21_Map_of_Tabuaeran_Kiribati_blue.png')   # Reads an image from file
-viewer.add_image(napari_image, name='napari_island')                       # Adds the image to the viewer and give the image layer a name
+napari_image = imread('21_Map_of_Tabuaeran_Kiribati_blue.png')      # Reads an image from file
+viewer.add_image(napari_image, name='napari_island')                # Adds the image to the viewer and give the image layer a name
 ```
 
-After executing the block of code above, you should get the image below (`No module named 'skimage'`? Remember to install scikit-image in your environment with `conda install -c conda-forge scikit-image`):
+After executing the block of code above, you should get the image below:
+(`No module named 'skimage'`? Remember to install scikit-image in your environment with `conda install -c conda-forge scikit-image`)
 
 ![](images/napari_island_in_napari.png)
 
@@ -79,7 +80,7 @@ Here, I modified a bit the GUI from the [previous post](https://biapol.github.io
 
 ![](images/flood_tool_gui.png)
 
-You can find the '.ui' file to open this GUI with the designer [here]()   !!!! Insert link to file!!! and then [convert it to python file](https://biapol.github.io/blog/johannes_mueller/entry_user_interf2#convert-gui-to-py-file-and-gui-creation) with `pyuic5 flood_tool.ui -o flood_tool.py`.
+You can find the '.ui' file to open this GUI with the designer [here](https://github.com/zoccoler/blog/tree/napari_plugin_desing/marcelo_zoccoler/entry_user_interf3/scripts/flood_tool.ui). Download it and then [convert it to python file](https://biapol.github.io/blog/johannes_mueller/entry_user_interf2#convert-gui-to-py-file-and-gui-creation) with `pyuic5 flood_tool.ui -o flood_tool.py` (remeber to navigate to the folder where flood_tool.ui in order to do that).
 
 Now let's add it to napari! Put the 'flood_tool.py' file in the same folder as our script and modify the script as shown below:
 
@@ -97,11 +98,11 @@ class FancyGUI(QMainWindow,  Ui_MainWindow):
         self.setupUi(self)                      # Initialize GUI
 
 viewer = napari.Viewer()
-napari_image = imread('./images/21_Map_of_Tabuaeran_Kiribati_blue.png')    # Reads an image from file
-viewer.add_image(napari_image, name='napari_island')                       # Adds the image to the viewer and give the image layer a name
+napari_image = imread('21_Map_of_Tabuaeran_Kiribati_blue.png')      # Reads an image from file
+viewer.add_image(napari_image, name='napari_island')                # Adds the image to the viewer and give the image layer a name
 
-flood_widget = FancyGUI(viewer)                                            # Create instance from our class
-viewer.window.add_dock_widget(flood_widget, area='right')                  # Add our gui instance to napari viewer
+flood_widget = FancyGUI(viewer)                                     # Create instance from our class
+viewer.window.add_dock_widget(flood_widget, area='right')           # Add our gui instance to napari viewer
 ```
 
 The main bullet points here are:
@@ -210,9 +211,9 @@ def flood(image: ImageData, delta: float=0, new_level: int=0) -> LabelsData:
 
 Here we are specifying that `image` is a data from a napari image layer (`ImageData`), `delta` is `float`, `new_level` is `integer` and the output `label_image` will hold data from a napari labels layer (`LabelsData`).
 
-You may have noticed that we placed `new_level` as input instead of output. That's because magicgui creates widgets (like buttons, bars, etc) based on the input variables.
+You may have noticed that we placed `new_level` as input instead of output. That's because magicgui creates widgets (like buttons, sliders, etc) based on the input variables.
 
-Now, here it comes the one-liner 🥁🥁:  
+Now, here it comes... the one-liner: 🥁🥁
 
 `flood_widget = magicgui(flood)`
 
@@ -231,11 +232,11 @@ def flood(image: ImageData, delta: float=0, new_level: int=0) -> LabelsData:
     return(label_image)
 
 viewer = napari.Viewer()
-napari_image = imread('./images/21_Map_of_Tabuaeran_Kiribati_blue.png')    # Reads an image from file
-viewer.add_image(napari_image, name='napari_island')                       # Adds the image to the viewer and give the image layer a name 
+napari_image = imread('21_Map_of_Tabuaeran_Kiribati_blue.png')    # Reads an image from file
+viewer.add_image(napari_image, name='napari_island')              # Adds the image to the viewer and give the image layer a name 
 
-flood_widget = magicgui(flood)                                             # Create GUI with magicgui
-viewer.window.add_dock_widget(flood_widget, area='right')                  # Add our gui instance to napari viewer
+flood_widget = magicgui(flood)                                    # Create GUI with magicgui
+viewer.window.add_dock_widget(flood_widget, area='right')         # Add our gui instance to napari viewer
 ```
 
 <img alt="figure 3" id="figure3" src="images/napari_flood_tool3.png" />
@@ -261,7 +262,7 @@ You can look for further documentation and tutorials at [magicgui quickstart](ht
 
 The third approach is kind of the middle ground between the first two approaches. By using and modifying FunctionGui (the type that is returned by magicgui), we still get the benefits of magicgui annotations, but we have extra editing capabilities. It doesn't necessarily mean it is the best approach, it depends on your demands.
 
-We keep the annotated version of our function, but instead of passing it to magicgui, we will define a new FunctionGui class, based on [this example](https://napari.org/guides/stable/magicgui.html#magicgui-widgets-functiongui) and pass our function to FunctionGui. So, I will start with the code shown below:
+We keep the annotated version of our function, but instead of passing it to magicgui, we will define a new FunctionGui class, based on [this example](https://napari.org/guides/stable/magicgui.html#magicgui-widgets-functiongui) and pass our flood function to FunctionGui. So, I will start with the code shown below:
 
 ```
 def flood(image: ImageData, delta: float=0, new_level: int=0) -> LabelsData: 
@@ -281,7 +282,7 @@ class MyGui(FunctionGui):
         # do whatever other initialization you want here
 ```
 
-If we open napari, add our image and add MyGui to napari, we get the same result as shown [before](#figure3).
+If we open napari, add our image and add MyGui to napari, we get the same result as shown [before](#figure3) (full code at the end of this section).
 
 Similarly, to match the widgets style we want (like in [previous results](#figure4)), we can provide dictionnaires to the `param_options`, like this:
 
@@ -302,7 +303,7 @@ class MyGui(FunctionGui):
         # do whatever other initialization you want here
 ```
 
-Up to this point, it looks very similar to magicgui with extra code. But, with this approach, we can modify the `__init()__` and the `__call()__` functions to gain access to other elements and get/send other variables which are not images. For example, besides `label_image`, we can make our function return `new_level` again as an annotation and use its value to change the slider when the user hits the 'Run' button. Check the complete code and result below:
+Up to this point, it looks very similar to magicgui, but with extra code. However, with this approach, we can modify the `__init()__` and the `__call()__` functions to gain access to other widgtes and get/send other variables that are not images. For example, besides `label_image`, we can make our function return `new_level` again as an annotation and use its value to change the slider when the user hits the 'Run' button. Check the complete code and result below:
 
 ```
 import napari
@@ -336,11 +337,11 @@ class MyGui(FunctionGui):
         self.new_level.value = new_level                                # apply 'new_level' to slider ( which is 'self.new_level')
 
 viewer = napari.Viewer()
-napari_image = imread('./images/21_Map_of_Tabuaeran_Kiribati_blue.png')    # Reads an image from file
-viewer.add_image(napari_image, name='napari_island')                       # Adds the image to the viewer and give the image layer a name 
+napari_image = imread('21_Map_of_Tabuaeran_Kiribati_blue.png')    # Reads an image from file
+viewer.add_image(napari_image, name='napari_island')              # Adds the image to the viewer and give the image layer a name 
 
-flood_widget = MyGui()                                                     # Create GUI from FunctionGui
-viewer.window.add_dock_widget(flood_widget, area='right')                  # Add our gui instance to napari viewer
+flood_widget = MyGui()                                            # Create GUI from FunctionGui
+viewer.window.add_dock_widget(flood_widget, area='right')         # Add our gui instance to napari viewer
 ```
 ![](images/napari_flood_tool5.png)
 
