@@ -6,8 +6,8 @@ Graphical user interfaces (*GUIs*) are powerful tools to make your scripts and f
 In this blog, we will cover a few interesting and versatile methods for you to create customized [Qt](https://qt.io)-based GUIs for Python in general. Since our work revolves mostly around the visualization and processing of **images**, we will also show you a few ways to create great user interfaces for [napari](https://napari.org/).
 
 Blogs on this topic will cover:
-* [Getting started](https://github.com/BiAPoL/blog/new/blog_entry_UI/johannes_mueller#getting-started)
-* [Creating standalone GUIs](https://github.com/BiAPoL/blog/new/blog_entry_UI/johannes_mueller#creating-advanced-standalone-guis)
+* [Getting started](https://biapol.github.io/blog/johannes_mueller/entry_user_interf#getting-started)
+* [Creating standalone GUIs](https://biapol.github.io/blog/johannes_mueller/entry_user_interf2#creating-advanced-standalone-guis)
 * [Creating GUIs for napari](https://biapol.github.io/blog/marcelo_zoccoler/entry_user_interf3#creating-advanced-guis-for-napari)
 
 
@@ -25,7 +25,7 @@ The [previous entry](https://biapol.github.io/blog/johannes_mueller/entry_user_i
 
 ## Installing and running napari
 
-The [napari website](https://napari.org/) has an [installation tutorial](https://napari.org/tutorials/fundamentals/installation.html). Overall, you should [create a new conda environment](https://biapol.github.io/blog/johannes_mueller/entry_user_interf2/Readme.md#creating-your-environment) and then type
+The [napari website](https://napari.org/) has a more complete [installation tutorial](https://napari.org/tutorials/fundamentals/installation.html), but, overall, you should [create a new conda environment](https://biapol.github.io/blog/johannes_mueller/entry_user_interf2/Readme.md#creating-your-environment) and then type
 
 `conda install -c conda-forge napari`
 
@@ -33,7 +33,7 @@ or
 
 `pip install napari[all]`
 
-in the command line. You can check if the installation was successful by calling `napari` also from the command line and verify if this window opens:
+in the command line. You can check if the installation was successful by calling `napari` from the command line and verifying if this window opens:
 
 ![](images/napari_window.png)
 
@@ -54,7 +54,7 @@ viewer = napari.Viewer()
 ```
 
 The code above can be called from [Jupyter Notebook or JupyterLab](https://jupyter.org/), [Spyder](https://www.spyder-ide.org/), or your IDE of preference.
-It is also possible to add images to the viewer from code. Let's expand a bit the code:
+It is also possible to add images to the viewer from code. Let's expand the code a bit:
 
 ```
 import napari
@@ -65,17 +65,61 @@ napari_image = imread('../images/21_Map_of_Tabuaeran_Kiribati_blue.png')   # Rea
 viewer.add_image(napari_image, name='napari_island')                       # Adds the image to the viewer and give the image layer a name
 ```
 
-After executing this code, you should get the image below (`No module named 'skimage'`? Install scikit-image in your environment with `conda install -c conda-forge scikit-image`):
+After executing the block of code above, you should get the image below (`No module named 'skimage'`? Remember to install scikit-image in your environment with `conda install -c conda-forge scikit-image`):
 
 ![](images/napari_island_in_napari.png)
 
 Wow! We have napari inside napari! \[2\]
 
+Side-note: the napari island is part of the Kiribati country, which like Fiji, is also vulnerable to [climate change effect](https://storymaps.arcgis.com/stories/7f455136b85f4edd8655d15a89b5039f).
 
 ## Importing your fancy GUI to napari
 
+Here, I modified a bit the GUI from the [previous post](https://biapol.github.io/blog/johannes_mueller/entry_user_interf2#creating-a-simple-gui-with-the-designer) and it looks like this:
+
+![](images/flood_tool_gui.png)
+
+You can find the '.ui' file to open this GUI with the designer [here]()   !!!! Insert link to file!!! and then [convert it to python file](https://biapol.github.io/blog/johannes_mueller/entry_user_interf2#convert-gui-to-py-file-and-gui-creation) with `pyuic5 flood_tool.ui -o flood_tool.py`.
+
+Now let's add it to napari! Put the 'flood_tool.py' file in the same folder as our script and modify the script as shown below:
+
+```
+import napari
+from skimage.io import imread
+from flood_tool import Ui_MainWindow
+from PyQt5.QtWidgets import QMainWindow
+
+# Define the main window class
+class FancyGUI(QMainWindow,  Ui_MainWindow):
+    def __init__(self, napari_viewer):          # include napari_viewer as argument (it has to have this name)
+        super().__init__()
+        self.viewer = napari_viewer
+        #Initialize GUI
+        self.setupUi(self)
+
+viewer = napari.Viewer()
+napari_image = imread('./images/21_Map_of_Tabuaeran_Kiribati_blue.png')    # Reads an image from file
+viewer.add_image(napari_image, name='napari_island')                       # Adds the image to the viewer and give the image layer a name
+
+flood_widget = FancyGUI(viewer)                                            # Create instance from our class
+viewer.window.add_dock_widget(flood_widget, area='right')                  # Add our gui instance to napari viewer
+```
+
+The main bullet points here are:
+* Import your GUI (with `from flood_tool import Ui_MainWindow`);
+* Define a class that initializes your GUI (named 'FancyGUI' in this case);
+* Pass the napari viewer as an argument to this class (with `def __init__(self, napari_viewer):`);
+* Add an instance of this class to the viewer (`viewer.window.add_dock_widget(flood_widget, area='right')`).
+
+When you run the script now, you should see the screen below:
+
+![](images/napari_flood_tool1.png)
+
+It is now embedded into napari framework! Sweet 🍬!
 
 ## Creating a callback function
+
+
 
 ## Automatically creating a GUI from a function with magicgui
 
