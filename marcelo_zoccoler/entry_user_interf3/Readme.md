@@ -122,7 +122,7 @@ It is now embedded into napari framework! Sweet 🍬!
 As you may have noticed, our GUI is there, but it does nothing yet. We need to link widgets to callback functions.
 Just for fun, let's create a function that relates temperature increases to sea level.
 
-**Disclaimer:** This specific function, although based on the fact that global warming contributes to incrase sea levels, has no scientific background to support it and it was completely made-up just for a fun illustration. Climate change is a complex subject that involves many internal and external factors which I do not have the expertise to explain.
+***Disclaimer:** This specific function, although based on the fact that global warming contributes to incrase sea levels, has no scientific background to support it and it was completely made-up just for a fun illustration. Climate change is a complex subject that involves many internal and external factors which I do not have the expertise to explain.*
 
 ```
 def flood(image, delta):
@@ -134,7 +134,7 @@ def flood(image, delta):
 
 This function takes an `image` and a `delta` (temperature) as inputs. It converts delta into `new_level` (new sea level) and creates a label image where the labeled region corresponds to grayscale levels which are below `new_level`. It returns `label_image` and `new_level`. It can be simplified, but let's keep it like this for future reasons.
 
-Now, we need to link this function to the `Apply` button. This can be done with the general command `pushButton.clicked.connect(flood)`.
+Now, we need to link this function to the 'Apply' button. This can be done with the general command `pushButton.clicked.connect(flood)`.
 
 
 
