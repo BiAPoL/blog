@@ -1,6 +1,6 @@
 # Marcelo Zoccoler
 
-![](/images/marcelo_zoccoler_photo.jpg)
+<img src="https://github.com/BiAPoL/blog/blob/blog_entry_UI/images/marcelo_zoccoler_photo.jpg" alt="pol" width="300"/>
 
 Hi! My name is Marcelo and I am an Electrical Engineer who has specialized in Life Sciences and Image Analysis!
 Most of my work has been done on tools and software for image analysis focused on microscopy data.
@@ -12,7 +12,6 @@ Since 2021, as a researcher for the Bio-image Analysis Technology Development gr
 # Blog posts
 
   * ### [Jamovi: statistical analysis made visual and easy (powered with R)](jamovi/jamovi.md)
-  * ### [Creating advanced GUIs for napari](entry_user_interf3/Readme.md)
 
 # Links
   * <img src="https://pbs.twimg.com/media/DoG8b8CX0AANQo8.jpg" alt="pol" width="25"/> [BiA-PoL website](https://physics-of-life.tu-dresden.de/en/research/core-groups/bio-image-analysis)
