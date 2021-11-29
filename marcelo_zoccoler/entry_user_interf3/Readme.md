@@ -1,4 +1,4 @@
-# Custom user interfaces for Python
+# Custom user interfaces for Python (Part 3)
 
 ## Introduction
 Graphical user interfaces (*GUIs*) are powerful tools to make your scripts and functions available to users that are not necessarily familiar with a lot of coding, development platforms (e.g. Spyder or PyCharm) - and shouldn't be experienced programmers in order to use your tools.
@@ -6,9 +6,9 @@ Graphical user interfaces (*GUIs*) are powerful tools to make your scripts and f
 In this blog, we will cover a few interesting and versatile methods for you to create customized [Qt](https://qt.io)-based GUIs for Python in general. Since our work revolves mostly around the visualization and processing of **images**, we will also show you a few ways to create great user interfaces for [napari](https://napari.org/).
 
 Blogs on this topic will cover:
-* [Getting started](https://biapol.github.io/blog/johannes_mueller/entry_user_interf#getting-started)
-* [Creating standalone GUIs](https://biapol.github.io/blog/johannes_mueller/entry_user_interf2#creating-advanced-standalone-guis)
-* [Creating GUIs for napari](https://biapol.github.io/blog/marcelo_zoccoler/entry_user_interf3#creating-advanced-guis-for-napari)
+* [Getting started (Part 1)](https://biapol.github.io/blog/johannes_mueller/entry_user_interf#getting-started)
+* [Creating standalone GUIs (Part 2)](https://biapol.github.io/blog/johannes_mueller/entry_user_interf2#creating-advanced-standalone-guis)
+* [Creating GUIs for napari (part 3)](https://biapol.github.io/blog/marcelo_zoccoler/entry_user_interf3#creating-advanced-guis-for-napari)
 
 
 # Creating advanced GUIs for napari
@@ -196,7 +196,7 @@ Now when we increase the tempearture and click Apply, the island starts to flood
 ## Automatically creating a GUI from a function with magicgui
 
 What if we could 'magically' simplify all that and just say: 'hey computer, please create a GUI for my function'?
-We can ~~literally~~ (almost) do that with 🧙‍♂️[magicgui](https://napari.org/magicgui/index.html)! If we put some annotations right next to the variables in our function, we can create the GUI with one line of code :heart_eyes_cat:! So let's not wait any longer and add those annotations to our function:
+We can ~~literally~~ almost do that with 🧙‍♂️[magicgui](https://napari.org/magicgui/index.html)! If we put some annotations right next to the variables in our function, we can create the GUI with one line of code :heart_eyes_cat:! So let's not wait any longer and add those annotations to our function:
 
 ```
 from napari.types import ImageData, LabelsData
@@ -238,7 +238,7 @@ flood_widget = magicgui(flood)                                             # Cre
 viewer.window.add_dock_widget(flood_widget, area='right')                  # Add our gui instance to napari viewer
 ```
 
-![](images/napari_flood_tool3.png)
+<img alt="figure 3" id="figure3" src="images/napari_flood_tool3.png" />
 
 Neat! Just a couple of things missing though. We only get Spinboxes now, what about the Slider? Don't worry, we can fix this still maintaining the one-liner, although a bigger one now :grimacing:. We can add widget options as python dictionnaries, like this:
 
@@ -249,7 +249,7 @@ flood_widget = magicgui(flood, delta={'label': 'Temperature Increase (Δ°C):',
                                            'min': 0, 'max' : 255})
 ```
 
-Now, you get the same result as the earlier approach. If you don't know the widget options, take a look [here](https://napari.org/magicgui/usage/widget_overview.html) to find the widget you want and discover its parameters.
+Now, you get practically the same result as the earlier approach. If you don't know the widget options, take a look [here](https://napari.org/magicgui/usage/widget_overview.html) to find the widget you want and discover its parameters.
 
 ![](images/napari_flood_tool4.png)
 
@@ -259,6 +259,79 @@ You can look for further documentation and tutorials at [magicgui quickstart](ht
 
 ## Creating a GUI from FunctionGui
 
+The third approach is kind of the middle ground between the first two approaches. By using and modifying FunctionGui (the type that is returned by magicgui), we still get the benefits of magicgui annotations, but we have extra editing capabilities. It doesn't necessarily mean it is the best approach, it depends on your demands.
 
+We keep the annotated version of our function, but instead of passing it to magicgui, we will define a new FunctionGui class, based on [this example](https://napari.org/guides/stable/magicgui.html#magicgui-widgets-functiongui) and pass our function to FunctionGui. So, I will start with the code shown below:
+
+```
+def flood(image: ImageData, delta: float=0, new_level: int=0) -> LabelsData: 
+    new_level = delta*85
+    label_image = image <= new_level
+    label_image = label_image.astype(int)*13 # label 13 is blue in napari
+    return(label_image)
+    
+class MyGui(FunctionGui):
+    def __init__(self):
+        super().__init__(
+          flood,                # Here is where we pass our custom annotated function to FunctionGui
+          call_button=True,
+          layout='vertical',
+          param_options={}
+        )
+        # do whatever other initialization you want here
+```
+
+If we open napari, add our image and add MyGui to napari, we get the same result as shown [here](#figure3) and [here](https://biapol.github.io/blog/marcelo_zoccoler/entry_user_interf3#figure3).
+
+We just need to provide dictionnaires to the `param_options` to match the style we want, like this:
+
+```
+class MyGui(FunctionGui):
+    def __init__(self):
+        super().__init__(
+          flood,                # Here is where we pass our custom annotated function to FunctionGui
+          call_button=True,
+          layout='vertical',
+          param_options={'delta':
+                             {'label': 'Temperature Increase (Δ°C):', 
+                              'min': 0, 'max' : 3, 'step': 0.1},
+                        'new_level':
+                            {'label':'Sea Level (dm):', 'widget_type':'Slider',
+                             'min': 0, 'max' : 255, 'step' : 1}}
+        )
+        # do whatever other initialization you want here
+```
+
+
+```
+import napari
+from skimage.io import imread
+from magicgui import magicgui
+from napari.types import ImageData, LabelsData
+from magicgui.widgets import FunctionGui
+
+def flood(image: ImageData, delta: float=0, new_level: int=0) -> LabelsData: 
+    new_level = delta*85
+    label_image = image <= new_level
+    label_image = label_image.astype(int)*13 # label 13 is blue in napari
+    return(label_image)
+
+class MyGui(FunctionGui):
+    def __init__(self):
+        super().__init__(
+          flood,                # Here is where we pass our custom annotated function to FunctionGui
+          call_button=True,
+          layout='vertical',
+          param_options={}
+        )
+        # do whatever other initialization you want here
+
+viewer = napari.Viewer()
+napari_image = imread('./images/21_Map_of_Tabuaeran_Kiribati_blue.png')    # Reads an image from file
+viewer.add_image(napari_image, name='napari_island')                       # Adds the image to the viewer and give the image layer a name 
+
+flood_widget = MyGui()                                                     # Create GUI from FunctionGui
+viewer.window.add_dock_widget(flood_widget, area='right')                  # Add our gui instance to napari viewer
+```
 
 ## Turning your GUI into a napari plugin
