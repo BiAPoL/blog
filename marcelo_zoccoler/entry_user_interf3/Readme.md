@@ -204,7 +204,7 @@ We can ~~literally~~ almost do that with 🧙‍♂️[magicgui](https://napari.
 ```
 from napari.types import ImageData, LabelsData
 
-def flood(image: ImageData, delta: float=0, new_level: int=0) -> LabelsData: 
+def flood(image: ImageData, delta: float = 0, new_level: int = 0) -> LabelsData: 
     new_level = delta*85
     label_image = image <= new_level
     label_image = label_image.astype(int)*13 # label 13 is blue in napari
