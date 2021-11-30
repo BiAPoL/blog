@@ -45,7 +45,7 @@ Download the image above and drop it into napari by drag and drop (or use the us
 
 **Wow! We have napari inside napari!** ~~And that's how you add a GUI to napari! 😆~~
 
-## Calling napari from script
+## Calling napari from a script
 
 Sometimes, it may be convenient to call the napari viewer from a script in order to display a series of image processing steps pre-defined in a Python code. This can be done in a couple lines:
 
