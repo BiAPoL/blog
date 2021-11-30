@@ -3,8 +3,8 @@ Most of us study and work at the [Bio-image Analysis Technology Development grou
 We blog about image data science, knowledge exchange and research data management in the life sciences.
 
 <hr/>
-## [GUIs: Creating graphical user interfaces with/for Python, Part III](https://biapol.github.io/blog/marcelo_zoccoler/entry_user_interfe) <small>Marcelo Zoccoler, November 29th, 2021</small>
-<img style="float: right; height:100px; width:100px" src="images/qt_logo.png">
+## [GUIs: Creating graphical user interfaces with/for Python, Part III](https://biapol.github.io/blog/marcelo_zoccoler/entry_user_interf3) <small>Marcelo Zoccoler, November 29th, 2021</small>
+<img style="float: right; height:100px; width:100px" src="images/napari_logo.png">
 After learning how to create GUIs, one may want to integrate them into a pre-existing software. This third part will teach you a few ways design GUIs and embbed them into the popular python image viewer napari, either with the help of the Designer or straight from python functions using magicgui. 
 
 <hr/>
