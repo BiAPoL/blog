@@ -82,7 +82,7 @@ Here, I modified a bit the GUI from the [previous post](https://biapol.github.io
 
 ![](images/flood_tool_gui.png)
 
-You can find the '.ui' file to open this GUI with the designer [here](https://github.com/zoccoler/blog/tree/napari_plugin_desing/marcelo_zoccoler/entry_user_interf3/scripts/flood_tool.ui). Download it and then [convert it to python file](https://biapol.github.io/blog/johannes_mueller/entry_user_interf2#convert-gui-to-py-file-and-gui-creation) with `pyuic5 flood_tool.ui -o flood_tool.py` (remeber to navigate to the folder where flood_tool.ui in order to do that).
+You can find the '.ui' file to open this GUI with the designer [here](scripts/flood_tool.ui). Download it and then [convert it to python file](https://biapol.github.io/blog/johannes_mueller/entry_user_interf2#convert-gui-to-py-file-and-gui-creation) with `pyuic5 flood_tool.ui -o flood_tool.py` (remeber to navigate to the folder where flood_tool.ui in order to do that).
 
 Now let's add it to napari! Put the 'flood_tool.py' file in the same folder as our script and modify the script as shown below:
 
