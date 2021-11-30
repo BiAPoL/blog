@@ -124,7 +124,7 @@ It is now embedded into napari! Sweet 🍬!
 As you may have noticed, our GUI is there, but it does nothing yet. We need to link click events to callback functions.
 Just for fun, let's create a function that relates temperature increases to sea level.
 
-***Disclaimer:** This specific function, although based on the fact that global warming contributes to incrase sea levels, has no scientific background to support it and it was completely made-up just for a fun illustration. Climate change is a complex subject that involves many internal and external factors which I do not have the expertise to explain.*
+***Disclaimer:** This specific function, although based on the fact that global warming contributes to increase sea levels, has no scientific background to support it, and it was completely made-up just for a fun illustration. Climate change is a complex subject that involves many internal and external factors which I do not have the expertise to explain.*
 
 ```
 def flood(image, delta):
