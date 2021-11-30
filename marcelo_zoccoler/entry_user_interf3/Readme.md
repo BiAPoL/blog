@@ -243,7 +243,7 @@ viewer.window.add_dock_widget(flood_widget, area='right')         # Add our gui 
 
 <img alt="figure 3" id="figure3" src="images/napari_flood_tool3.png" />
 
-Neat! Just a couple of things missing though. We only get Spinboxes now, what about the Slider? Don't worry, we can fix this still maintaining the one-liner, although a bigger one now :grimacing:. We can add widget options as python dictionnaries, like this:
+Neat! Just a couple of things missing though. We only get Spinboxes now, what about the Slider? Don't worry, we can fix this still maintaining the one-liner, although a bigger one now :grimacing:. We can add widget options as python dictionaries, like this:
 
 ```
 flood_widget = magicgui(flood, delta={'label': 'Temperature Increase (Δ°C):', 
