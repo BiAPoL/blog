@@ -198,7 +198,7 @@ Now when we increase the tempearture and click Apply, the island starts to flood
 
 ## Automatically creating a GUI from a function with magicgui
 
-What if we could 'magically' simplify all that and just say: 'hey computer, please create a GUI for my function'?
+What if we could 'magically' simplify all that and just say: 'Dear computer, please create a GUI for my function'?
 We can ~~literally~~ almost do that with 🧙‍♂️[magicgui](https://napari.org/magicgui/index.html)! If we put some annotations right next to the variables in our function, we can create the GUI with one line of code :heart_eyes_cat:! So let's not wait any longer and add those annotations to our function:
 
 ```
