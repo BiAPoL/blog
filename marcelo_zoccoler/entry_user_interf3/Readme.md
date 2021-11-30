@@ -67,7 +67,7 @@ napari_image = imread('21_Map_of_Tabuaeran_Kiribati_blue.png')      # Reads an i
 viewer.add_image(napari_image, name='napari_island')                # Adds the image to the viewer and give the image layer a name
 ```
 
-After executing the block of code above, you should get the image below:
+After executing the block of code above, you should see the napari window like this:
 (`No module named 'skimage'`? Remember to install scikit-image in your environment with `conda install -c conda-forge scikit-image`)
 
 ![](images/napari_island_in_napari.png)
