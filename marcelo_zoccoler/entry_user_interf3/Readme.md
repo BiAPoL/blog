@@ -113,7 +113,7 @@ This code does:
 * Pass the napari viewer as an argument to this class (with `def __init__(self, napari_viewer):`);
 * Add an instance of this class to the viewer (`viewer.window.add_dock_widget(flood_widget, area='right')`).
 
-When you run the script now, you should see the screen below:
+When you run the script, you should see the screen below:
 
 ![](images/napari_flood_tool1.png)
 
