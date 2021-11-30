@@ -211,7 +211,7 @@ def flood(image: ImageData, delta: float = 0, new_level: int = 0) -> LabelsData:
     return(label_image)
 ```
 
-Here we are specifying that `image` is a data from a napari image layer (`ImageData`), `delta` is `float`, `new_level` is `integer` and the output `label_image` will hold data from a napari labels layer (`LabelsData`).
+Here we are specifying that `image` is data from a napari image layer (`ImageData`), `delta` is `float`, `new_level` is `integer` and the output `label_image` will hold data from a napari labels layer (`LabelsData`).
 
 You may have noticed that we placed `new_level` as input instead of output. That's because magicgui creates widgets (like buttons, sliders, etc) based on the input variables.
 
