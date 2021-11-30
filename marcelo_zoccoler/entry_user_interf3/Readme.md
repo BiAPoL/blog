@@ -107,7 +107,7 @@ flood_widget = FancyGUI(viewer)                                     # Create ins
 viewer.window.add_dock_widget(flood_widget, area='right')           # Add our gui instance to napari viewer
 ```
 
-The main bullet points here are:
+This code does:
 * Import your GUI (with `from flood_tool import Ui_MainWindow`);
 * Define a class that initializes your GUI (named 'FancyGUI' in this case);
 * Pass the napari viewer as an argument to this class (with `def __init__(self, napari_viewer):`);
