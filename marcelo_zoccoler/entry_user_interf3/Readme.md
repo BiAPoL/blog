@@ -54,7 +54,7 @@ import napari
 viewer = napari.Viewer()
 ```
 
-The code above can be called from [Jupyter Notebook or JupyterLab](https://jupyter.org/), [Spyder](https://www.spyder-ide.org/), or your IDE of preference.
+The code above can be called from [Jupyter Notebook or JupyterLab](https://jupyter.org/), [Spyder](https://www.spyder-ide.org/), or your editor of preference.
 It is also possible to add images to the viewer from code. Download [this image](https://github.com/zoccoler/blog/tree/napari_plugin_desing/marcelo_zoccoler/entry_user_interf3/images/21_Map_of_Tabuaeran_Kiribati_blue.png) and put it in the same folder as the code. Let's expand the code a bit:
 
 ```
