@@ -117,7 +117,7 @@ When you run the script, you should see the screen below:
 
 ![](images/napari_flood_tool1.png)
 
-It is now embedded into napari framework! Sweet 🍬!
+It is now embedded into napari! Sweet 🍬!
 
 ## Creating a callback function
 
