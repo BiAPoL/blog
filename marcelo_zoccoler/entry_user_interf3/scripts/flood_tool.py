@@ -43,9 +43,12 @@ class Ui_MainWindow(object):
         self.horizontalSlider.setObjectName("horizontalSlider")
         self.gridLayout.addWidget(self.horizontalSlider, 2, 1, 2, 3)
         self.pushButton = QtWidgets.QPushButton(self.centralwidget)
+        self.pushButton.setMinimumSize(QtCore.QSize(30, 20))
         self.pushButton.setStyleSheet("background-color: rgb(0, 0, 255);\n"
 "color: rgb(255, 255, 255);\n"
-"font: 75 12pt \"MS Shell Dlg 2\";")
+"font: 75 12pt \"MS Shell Dlg 2\";\n"
+"border: 2px solid white;\n"
+"border-radius: 5px;")
         self.pushButton.setObjectName("pushButton")
         self.gridLayout.addWidget(self.pushButton, 4, 0, 1, 4)
         MainWindow.setCentralWidget(self.centralwidget)

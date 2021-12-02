@@ -91,10 +91,18 @@
     </item>
     <item row="4" column="0" colspan="4">
      <widget class="QPushButton" name="pushButton">
+      <property name="minimumSize">
+       <size>
+        <width>30</width>
+        <height>20</height>
+       </size>
+      </property>
       <property name="styleSheet">
        <string notr="true">background-color: rgb(0, 0, 255);
 color: rgb(255, 255, 255);
-font: 75 12pt &quot;MS Shell Dlg 2&quot;;</string>
+font: 75 12pt &quot;MS Shell Dlg 2&quot;;
+border: 2px solid white;
+border-radius: 5px;</string>
       </property>
       <property name="text">
        <string>Apply</string>
