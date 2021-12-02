@@ -13,13 +13,13 @@ Blogs on this topic will cover:
 
 
 # Turning napari GUI into plugins
-The [previous entry](https://biapol.github.io/blog/marcelo_zoccoler/entry_user_interf3#creating-advanced-guis-for-napari) showed you three different ways to create GUIs and embbed them into napari locally. This forth and last part will teach you how to transform them into napari plugins
+The [previous entry](https://biapol.github.io/blog/marcelo_zoccoler/entry_user_interf3#creating-advanced-guis-for-napari) showed you three different ways to create GUIs and embbed them into napari locally. This forth and last part will teach you how to transform them into napari plugins! 🏝️ 🚀
 
 ## Table of contents
-* [Creating a plugin template structure with cookiecutter](#creating-a-plugin-template-structure-with-cookiecutter)
+* [Creating a plugin template with cookiecutter](#creating-a-plugin-template-with-cookiecutter)
 * [Putting your GUI into the template](#putting-your-gui-into-the-template)
 
-## Creating a plugin template structure with cookiecutter
+## Creating a plugin template with cookiecutter
 
 Well, first things first: [create a new conda environment](https://biapol.github.io/blog/johannes_mueller/entry_user_interf2/Readme.md#creating-your-environment). ("Another one?" 😩) Yes, better safe than sorry 😉. Don't forget to activate it.
 
@@ -31,11 +31,52 @@ So, let's install and run cookiecutter:
 pip install cookiecutter
 cookiecutter https://github.com/napari/cookiecutter-napari-plugin
 ```
-(`'pip' is not recognized as ...`? -> `conda install pip`)
-(`'git' is not installed.`? -> `conda install git`)
+(`'pip' is not recognized as ...`? 🙀 -> `conda install pip` 😸)
 
-The cookiecutter will then start asking you questions about your project. Let's take a look at them below:
+(`'git' is not installed.`? 😾 -> `conda install git` 😸)
 
+The cookiecutter will then start asking you questions about your project. We will answer them one by one, but here is an overview of all of them:
+
+⚠️Spoiler alert⚠️
+![](images/cookiecutter_questions2.png)
+
+  1. `full_name [Napari Developer]:` ***type your name***
+  2. `email [yourname@example.com]:` ***type your email**, so that people can reach you to talk about your new plugin*
+  3. `github_username_or_organization [githubuser]:` ***type your github username** (if you don't have a Github account, you should [create one now](https://github.com/signup?ref_cta=Sign+up&ref_loc=header+logged+out&ref_page=%2F&source=header-home))*
+  4. `plugin_name [napari-foobar]:` ***type your plugin name** ex: 'flood-napari'*
+  5. `Select github_repository_url:`  
+     `    1 - https://github.com/your_github_username/your_plugin_name`  
+     `    2 - provide later`  
+     `Choose from 1, 2 [1]:`  ***type '1'**, even if you did not create your repository yet, we'll do that later*  
+    *Obs: values or words inside square brackets `[]` are the default option if you just hit 'Enter'*
+  
+  6. `module_name [flood_napari]:` ***type your plugin module name** our plugin has a single module, ex: 'flood_napari'*
+  7. `short_description [A simple plugin to use with napari]:` ***type a brief description of your plugin***
+  8. `include_reader_plugin [y]:` ***type 'n'**, because our example plugin is not a plugin for reading certain image file types*
+  9. `include_writer_plugin [y]:` ***type ''**, because our example plugin does not write anything*
+  10. `include_dock_widget_plugin [y]:` ***type 'y' or just hit 'Enter'**, because we want to dock our plugin to napari framework*
+  11. `include_function_plugin [y]:` ***type 'n' for this example**, however it could be useful to organize functions into separate files*
+  12. `use_git_tags_for_versioning [n]:` ***hit 'Enter'***
+  13. `Select docs_tool:`  
+       `1 - mkdocs`  
+       `2 - sphinx`  
+       `3 - none`  
+      `Choose from 1, 2, 3 [1]:` ***type '2' for this example**, check [this post] to learn more about sphinx*  
+  14. `Select license:`  
+       `1 - BSD-3`  
+       `2 - MIT`  
+       `3 - Mozilla Public License 2.0`  
+       `4 - Apache Software License 2.0`  
+       `5 - GNU LGPL v3.0`  
+       `6 - GNU GPL v3.0`  
+      `Choose from 1, 2, 3, 4, 5, 6 [1]:` ***we like to use '1'**, you can also change this later if you want, check options [here](https://ufal.github.io/public-license-selector/)*
+      
+      
+     
+     
+     
+     
+  
 
 
 
