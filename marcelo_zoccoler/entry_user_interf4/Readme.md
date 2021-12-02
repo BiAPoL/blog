@@ -17,7 +17,9 @@ The [previous entry](https://biapol.github.io/blog/marcelo_zoccoler/entry_user_i
 
 ## Table of contents
 * [Creating a plugin template with cookiecutter](#creating-a-plugin-template-with-cookiecutter)
+* [Adding your local repository to Github](#adding-your-local-repository-to-github)
 * [Putting your GUI into the template](#putting-your-gui-into-the-template)
+* [Publishing your plugin](#publishing-your-plugin)
 
 ## Creating a plugin template with cookiecutter
 
@@ -71,10 +73,13 @@ The cookiecutter will then start asking you questions about your project. We wil
        `6 - GNU GPL v3.0`  
       `Choose from 1, 2, 3, 4, 5, 6 [1]:` ***we like to use '1'**, you can also change this later if you want, check options [here](https://ufal.github.io/public-license-selector/)*
       
-      
-     
-     
-     
+Done! Your plugin template should be a directory located in the address where you typed your commands (typically 'C:/Users/Name' for Windows). Here is a picture of the directory items:
+
+!([](images/directory_items.png)
+
+## Adding your local repository to Github
+
+
      
   
 
