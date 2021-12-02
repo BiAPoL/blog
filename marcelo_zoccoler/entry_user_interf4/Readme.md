@@ -73,18 +73,48 @@ The cookiecutter will then start asking you questions about your project. We wil
        `6 - GNU GPL v3.0`  
       `Choose from 1, 2, 3, 4, 5, 6 [1]:` ***we like to use '1'**, you can also change this later if you want, check options [here](https://ufal.github.io/public-license-selector/)*
       
-Done! Your plugin template should be a directory located in the address where you typed your commands (typically 'C:/Users/Name' for Windows). Here is a picture of the directory items:
+Done! You will see the screen below with further instructions. We will just do instruction number 1 to install this default napari plugin locally:
 
-!([](images/directory_items.png)
+```
+cd flood-napari    # replace 'flood-napari' by your plugin name to go to the right directory
+pip install -e .   # install your plugin locally
+```
+
+If you didn't already, install napari in your environment (`pip install napari[all]`) and run napari with `napari`.
+When you go to the 'Plugins' menu now in napari, you will see your plugin name there.
+
+![](images/napari_plugin1.png)
+
+
+
 
 ## Adding your local repository to Github
 
+Download github desktop
 
+![](images/github_desktop1.png)
+
+Your plugin template address should be a directory located where you were when you typed cookiecutter commands (typically 'C:/Users/Name' for Windows). Here is a picture of its contents:
+
+![](images/directory_items.png)
+
+
+![](images/github_desktop1b.png)
+
+
+![](images/github_desktop1c.png)
+
+
+![](images/github_repo_page.png)
      
-  
+ Notice the contents are the same as the ones in your local folder!
 
 
 
 
 
 ## Putting your GUI into the template
+
+
+
+## Publishing your plugin
