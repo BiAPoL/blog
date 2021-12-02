@@ -40,7 +40,7 @@ cookiecutter https://github.com/napari/cookiecutter-napari-plugin
 The cookiecutter will then start asking you questions about your project. We will answer them one by one, but here is an overview of all of them:
 
 ⚠️Spoiler alert⚠️
-![](images/cookiecutter_questions2.png)
+![](images/cookiecutter_questions1.png)
 
   1. `full_name [Napari Developer]:` ***type your name***
   2. `email [yourname@example.com]:` ***type your email**, so that people can reach you to talk about your new plugin*
@@ -73,14 +73,17 @@ The cookiecutter will then start asking you questions about your project. We wil
        `6 - GNU GPL v3.0`  
       `Choose from 1, 2, 3, 4, 5, 6 [1]:` ***we like to use '1'**, you can also change this later if you want, check options [here](https://ufal.github.io/public-license-selector/)*
       
-Done! You will see the screen below with further instructions. We will just do instruction number 1 to install this default napari plugin locally:
+Done! You will see the screen below with further instructions. 
 
+![](images/cookiecutter_questions2.png)
+
+We will just do instruction number 1 to install this default napari plugin locally:
 ```
 cd flood-napari    # replace 'flood-napari' by your plugin name to go to the right directory
 pip install -e .   # install your plugin locally
 ```
 
-If you didn't already, install napari in your environment (`pip install napari[all]`) and run napari with `napari`.
+Install napari in your environment (`pip install napari[all]`) and run napari with `napari`.
 When you go to the 'Plugins' menu now in napari, you will see your plugin name there.
 
 ![](images/napari_plugin1.png)
