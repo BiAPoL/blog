@@ -119,6 +119,18 @@ When you run the script, you should see the screen below:
 
 It is now embedded into napari! Sweet 🍬!
 
+If you want to update your GUI layout, let's say, by changing a button color, you can go back to designer, select the button and fill the `styleSheet` field by clicking on `...`:
+
+![](images/designer_stylesheet0.png)
+
+and choosing colors (background, border, etc) by clicking on the small arrowhead next to "Add color":
+
+![](images/designer_stylesheet.png)
+
+It will add a line with the chosen color in [CSS syntax](https://www.w3schools.com/css/css_syntax.asp). Many lines can be added (each ending with `;`) to further elaborate the style.
+
+![](images/napari_flood_tool1b.png)
+
 ## Creating a callback function
 
 As you may have noticed, our GUI is there, but it does nothing yet. We need to link click events to callback functions.
