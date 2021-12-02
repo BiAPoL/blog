@@ -19,6 +19,9 @@
   <property name="windowTitle">
    <string>Flood Tool</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true"/>
+  </property>
   <widget class="QWidget" name="centralwidget">
    <property name="minimumSize">
     <size>
@@ -66,6 +69,15 @@
     </item>
     <item row="2" column="1" rowspan="2" colspan="3">
      <widget class="QSlider" name="horizontalSlider">
+      <property name="minimumSize">
+       <size>
+        <width>0</width>
+        <height>14</height>
+       </size>
+      </property>
+      <property name="styleSheet">
+       <string notr="true"/>
+      </property>
       <property name="minimum">
        <number>0</number>
       </property>
@@ -79,6 +91,11 @@
     </item>
     <item row="4" column="0" colspan="4">
      <widget class="QPushButton" name="pushButton">
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(0, 0, 255);
+color: rgb(255, 255, 255);
+font: 75 12pt &quot;MS Shell Dlg 2&quot;;</string>
+      </property>
       <property name="text">
        <string>Apply</string>
       </property>
