@@ -84,37 +84,35 @@ pip install -e .   # install your plugin locally
 ```
 
 Install napari in your environment (`pip install napari[all]`) and run napari with `napari`.
-When you go to the 'Plugins' menu now in napari, you will see your plugin name there.
+When you go to the 'Plugins' menu now, you will see your plugin name there.
 
 ![](images/napari_plugin1.png)
 
-
-
-
 ## Adding your local repository to Github
 
-Download github desktop
+We will use [Github Desktop](https://desktop.github.com/) to publish our local repository into the Github page. It has a great user interface and integration. So first [download](https://desktop.github.com/) and install Github Desktop. It should be a straight-forward [installation procedure](https://docs.github.com/en/desktop/installing-and-configuring-github-desktop/installing-and-authenticating-to-github-desktop/installing-github-desktop). If this is your first time using it, you will need to authenticate your account as explained [here](https://docs.github.com/en/desktop/installing-and-configuring-github-desktop/installing-and-authenticating-to-github-desktop/authenticating-to-github).
+
+Now open it and let's add our local repository by clicking on 'File -> Add local repository...'.
 
 ![](images/github_desktop1.png)
 
-Your plugin template address should be a directory located where you were when you typed cookiecutter commands (typically 'C:/Users/Name' for Windows). Here is a picture of its contents:
+After that, you have to specify your local plugin address. It should be a directory located where you were when you typed cookiecutter commands (typically 'C:/Users/Name' for Windows). It has the plugin name and the contents shown below:
 
 ![](images/directory_items.png)
 
+Find it and click on 'Add repository'. You will see that it now appears as the current repository and you will add it to Github.com by clicking on 'Publish repository'.
 
 ![](images/github_desktop1b.png)
 
+Then a small window should pop-up. Specify the name of your repository (same name of your plugin) and click on 'Publish Repository'.
 
 ![](images/github_desktop1c.png)
 
+Now, if you log in into your Github account through the browser and look at your repositories, you should see your new repository there, like this:
 
 ![](images/github_repo_page.png)
      
- Notice the contents are the same as the ones in your local folder!
-
-
-
-
+Notice how the contents are the same as the ones in your local folder!
 
 ## Putting your GUI into the template
 
