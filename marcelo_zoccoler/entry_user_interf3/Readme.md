@@ -86,7 +86,7 @@ You can find the '.ui' file to open this GUI with the designer [here](scripts/fl
 
 Now let's add it to napari! Put the 'flood_tool.py' file in the same folder as our script and modify the script as shown below:
 
-```
+```Python
 import napari
 from skimage.io import imread
 from flood_tool import Ui_MainWindow
