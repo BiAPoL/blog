@@ -19,6 +19,7 @@ The [previous entry](https://biapol.github.io/blog/marcelo_zoccoler/entry_user_i
 * [Creating a plugin template with cookiecutter](#creating-a-plugin-template-with-cookiecutter)
 * [Adding your local repository to Github](#adding-your-local-repository-to-github)
 * [Putting your GUI into the template](#putting-your-gui-into-the-template)
+* [Updating Github repository](#updating-github-repository)
 * [Publishing your plugin](#publishing-your-plugin)
 
 ## Creating a plugin template with cookiecutter
@@ -112,9 +113,15 @@ Now, if you log in into your Github account through the browser and look at your
 
 ![](images/github_repo_page.png)
      
-Notice how the contents are the same as [the ones in your local folder](#directory_items)!
+Notice how the contents are the same as [the ones in your local folder](#directory_items). Our template is online!
 
 ## Putting your GUI into the template
+
+Now we will modify the code to add our widgets. In Github Desktop, let's create a separate branch for our modifications. Click on the current branch, type a new branch name and click on 'Create new branch':
+
+![](images/new_branch.png)
+
+Good, now all modifications will go into our new branch!
 
 First, in order for our 'qt designer version' to work (see [previous post](https://biapol.github.io/blog/marcelo_zoccoler/entry_user_interf3#importing-your-fancy-gui-to-napari)), we have to copy its interface (`flood_tool.py`, found [here](https://github.com/BiAPoL/blog/blob/master/marcelo_zoccoler/entry_user_interf3/scripts/flood_tool.py)) to our local repository address (look for where you created your local version, something like `C:/Users/Your_user_name/flood-napari/src/flood_napari`).
 
@@ -281,6 +288,24 @@ If you now call `napari` again, your plugin, along with each of the 3 sub-menu v
 
 ![](images/flood_plugin_v1.png)
 
-Obs: remember we wrote our qt_designer version to work with a specific layer name (`napari_island`). You can choose another way of selecting the appropriated layer, like order, type, etc. 
+Obs: remember we wrote our qt_designer version to work with a specific layer name (`napari_island`). There are other ways of selecting the appropriated layer, like by order, type, etc. You can have access to available layers through the viewer instance `viewer.layers`.
+
+## Updating Github repository
+
+We have our updates locally in our separated branch. Let's push them into our Github repository. If you open Github Desktop again now, you should see all the changes we made listed in the left of the screen. Write a description to these changes and click on 'commit to 'branch name'':
+
+![](images/flood_plugin_commit.png)
+
+After that, create on the 'Create Pull Request' button, and you will be prompted a browser tab with your github online repository. There, click on 'Create Pull Request'. 
+
+![](images/flood_plugin_PR.png)
+
+After the page updates itself, click on 'Merge Pull Request' and confirm it if required.
+
+![](images/flood_plugin_merge.png)
+
+At the end, you should see the image below, which means our online repository is now updated with your new code!
+
+![merge_done](https://user-images.githubusercontent.com/26173597/145111544-dea73c05-a8a5-47bb-85c4-d9431ca0de0e.png)
 
 ## Publishing your plugin
