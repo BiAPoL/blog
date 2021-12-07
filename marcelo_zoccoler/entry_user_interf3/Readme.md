@@ -213,7 +213,7 @@ Now when we increase the tempearture and click Apply, the island starts to flood
 What if we could 'magically' simplify all that and just say: 'Dear computer, please create a GUI for my function'?
 We can ~~literally~~ almost do that with 🧙‍♂️[magicgui](https://napari.org/magicgui/index.html)! If we put some annotations right next to the variables in our function, we can create the GUI with one line of code :heart_eyes_cat:! So let's not wait any longer and add those annotations to our function:
 
-```
+```Python
 from napari.types import ImageData, LabelsData
 
 def flood(image: ImageData, delta: float = 0, new_level: int = 0) -> LabelsData: 
