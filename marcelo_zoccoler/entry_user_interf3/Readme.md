@@ -278,7 +278,7 @@ The third approach is kind of the middle ground between the first two approaches
 
 We keep the annotated version of our function, but instead of passing it to magicgui, we will define a new FunctionGui class, based on [this example](https://napari.org/guides/stable/magicgui.html#magicgui-widgets-functiongui) and pass our flood function to FunctionGui. So, I will start with the code shown below:
 
-```
+```Python
 def flood(image: ImageData, delta: float=0, new_level: int=0) -> LabelsData: 
     new_level = delta*85
     label_image = image <= new_level
