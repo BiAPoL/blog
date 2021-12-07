@@ -300,7 +300,7 @@ If we open napari, add our image and add MyGui to napari, we get the same result
 
 Similarly, to match the widgets style we want (like in [previous results](#figure4)), we can provide dictionnaires to the `param_options`, like this:
 
-```
+```Python
 class MyGui(FunctionGui):
     def __init__(self):
         super().__init__(
