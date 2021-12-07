@@ -138,7 +138,7 @@ Just for fun, let's create a function that relates temperature increases to sea 
 
 ***Disclaimer:** This specific function, although based on the fact that global warming contributes to increase sea levels, has no scientific background to support it, and it was completely made-up just for a fun illustration. Climate change is a complex subject that involves many internal and external factors which I do not have the expertise to explain.*
 
-```
+```Python
 def flood(image, delta):
     new_level = delta*85
     label_image = image <= new_level
