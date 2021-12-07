@@ -277,8 +277,10 @@ def napari_experimental_provide_dock_widget():
     # you can return either a single widget, or a sequence of widgets
     return [Qt_Designer_flood, flood_magic_factory, FunctionGui_flood]
 ```
+If you now call `napari` again, your plugin, along with each of the 3 sub-menu versions, should be available and working!
 
 ![](images/flood_plugin_v1.png)
 
+Obs: remember we wrote our qt_designer version to work with a specific layer name (`napari_island`). You can choose another way of selecting the appropriated layer, like order, type, etc. 
 
 ## Publishing your plugin
