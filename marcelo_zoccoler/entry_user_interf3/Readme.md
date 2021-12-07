@@ -233,7 +233,7 @@ Now, here it comes... the one-liner: 🥁🥁
 
 Done! GUI was created and stored in `flood_widget`. The full code and the result become like this:
 
-```
+```Python
 import napari
 from skimage.io import imread
 from magicgui import magicgui
