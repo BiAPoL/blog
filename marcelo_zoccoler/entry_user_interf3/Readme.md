@@ -17,12 +17,12 @@ The [previous entry](https://biapol.github.io/blog/johannes_mueller/entry_user_i
 
 ## Table of contents
 * [Installing and running napari](#installing-and-running-napari)
-* [Calling napari from script](#calling-napari-from-script)
+* [Calling napari from a script](#calling-napari-from-a-script)
 * [Importing your fancy GUI to napari](#importing-your-fancy-gui-to-napari)
 * [Creating a callback function](#creating-a-callback-function)
 * [Automatically creating a GUI from a function with magicgui](#automatically-creating-a-gui-from-a-function-with-magicgui)
 * [Creating a GUI from FunctionGui](#creating-a-gui-from-functiongui)
-* Conclusion(#conclusion)
+* [Conclusion](#conclusion)
 
 ## Installing and running napari
 
@@ -55,10 +55,10 @@ viewer = napari.Viewer()
 ```
 
 The code above can be called from [Jupyter Notebook or JupyterLab](https://jupyter.org/), [Spyder](https://www.spyder-ide.org/), or your editor of preference.
-It is also possible to add images to the viewer from code. Download this image: [Astronaut photo of Tabuaeran, Kiribati with villages and main landmarks](https://github.com/zoccoler/blog/tree/napari_plugin_desing/marcelo_zoccoler/entry_user_interf3/images/21_Map_of_Tabuaeran_Kiribati_blue.png) by Government of USA, Government of Kiribati, under license CC BY-SA 3.0 <https://creativecommons.org/licenses/by-sa/3.0>, via Wikimedia Commons, where the following changes were made: green and red channels removed, then image was inverted regarding intensity.
+It is also possible to add images to the viewer from code. Download this image: [Astronaut photo of Tabuaeran, Kiribati with villages and main landmarks](https://github.com/BiAPoL/blog/tree/master/marcelo_zoccoler/entry_user_interf3/images/21_Map_of_Tabuaeran_Kiribati_blue.png) by Government of USA, Government of Kiribati, under license CC BY-SA 3.0 <https://creativecommons.org/licenses/by-sa/3.0>, via Wikimedia Commons, where the following changes were made: green and red channels removed, then image was inverted regarding intensity.
 Put the image in the same folder as the code and let's expand it a bit:
 
-```
+```Python
 import napari
 from skimage.io import imread
 
@@ -82,11 +82,11 @@ Here, I modified a bit the GUI from the [previous post](https://biapol.github.io
 
 ![](images/flood_tool_gui.png)
 
-You can find the '.ui' file to open this GUI with the designer [here](scripts/flood_tool.ui). Download it and then [convert it to python file](https://biapol.github.io/blog/johannes_mueller/entry_user_interf2#convert-gui-to-py-file-and-gui-creation) with `pyuic5 flood_tool.ui -o flood_tool.py` (remeber to navigate to the folder where flood_tool.ui in order to do that).
+You can find the '.ui' file to open this GUI with the designer [here](scripts/flood_tool.ui). Download it and then [convert it to python file](https://biapol.github.io/blog/johannes_mueller/entry_user_interf2#convert-gui-to-py-file-and-gui-creation) with `pyuic5 flood_tool.ui -o flood_tool.py` (remeber to navigate to the folder where flood_tool.ui is in order to do that).
 
 Now let's add it to napari! Put the 'flood_tool.py' file in the same folder as our script and modify the script as shown below:
 
-```
+```Python
 import napari
 from skimage.io import imread
 from flood_tool import Ui_MainWindow
@@ -138,7 +138,7 @@ Just for fun, let's create a function that relates temperature increases to sea 
 
 ***Disclaimer:** This specific function, although based on the fact that global warming contributes to increase sea levels, has no scientific background to support it, and it was completely made-up just for a fun illustration. Climate change is a complex subject that involves many internal and external factors which I do not have the expertise to explain.*
 
-```
+```Python
 def flood(image, delta):
     new_level = delta*85
     label_image = image <= new_level
@@ -151,7 +151,7 @@ This function takes an `image` and a `delta` (temperature) as inputs. It convert
 Now, we need to link this function to the 'Apply' button. This can be done with the general command `pushButton.clicked.connect(callback_function)`.
 Let's write a callback function that calls our flood function:
 
-```
+```Python
 def on_flood(self):
     label, level = flood(image, delta)
 ```
@@ -164,7 +164,7 @@ We now have to specify to our callback where it gets the vaiables `image` and `d
 
 Lastly, we use a flag (`self.label_layer`) to update the label layer rather than creating a new one every time. The code now looks like this:
 
-```
+```Python
 import napari
 from flood_tool import Ui_MainWindow
 from skimage.io import imread
@@ -211,9 +211,9 @@ Now when we increase the tempearture and click Apply, the island starts to flood
 ## Automatically creating a GUI from a function with magicgui
 
 What if we could 'magically' simplify all that and just say: 'Dear computer, please create a GUI for my function'?
-We can ~~literally~~ almost do that with 🧙‍♂️[magicgui](https://napari.org/magicgui/index.html)! If we put some annotations right next to the variables in our function, we can create the GUI with one line of code :heart_eyes_cat:! So let's not wait any longer and add those annotations to our function:
+We can ~~literally~~ almost do that with 🧙‍♂️[magicgui](https://napari.org/magicgui/index.html)! If we put some annotations right next to the variables in our function, we can create the GUI with one line of code 😻 ! So let's not wait any longer and add those annotations to our function:
 
-```
+```Python
 from napari.types import ImageData, LabelsData
 
 def flood(image: ImageData, delta: float = 0, new_level: int = 0) -> LabelsData: 
@@ -233,7 +233,7 @@ Now, here it comes... the one-liner: 🥁🥁
 
 Done! GUI was created and stored in `flood_widget`. The full code and the result become like this:
 
-```
+```Python
 import napari
 from skimage.io import imread
 from magicgui import magicgui
@@ -255,9 +255,9 @@ viewer.window.add_dock_widget(flood_widget, area='right')         # Add our gui 
 
 <img alt="figure 3" id="figure3" src="images/napari_flood_tool3.png" />
 
-Neat! Just a couple of things missing though. We only get Spinboxes now, what about the Slider? Don't worry, we can fix this still maintaining the one-liner, although a bigger one now :grimacing:. We can add widget options as python dictionaries, like this:
+Neat! Just a couple of things missing though. We only get Spinboxes now, what about the Slider? Don't worry, we can fix this still maintaining the one-liner, although a bigger one now 😬 . We can add widget options as python dictionaries, like this:
 
-```
+```Python
 flood_widget = magicgui(flood, delta={'label': 'Temperature Increase (Δ°C):', 
                                            'min': 0, 'max' : 3, 'step': 0.1},
                                 new_level={'label':'Sea Level (dm):', 'widget_type':'Slider',
@@ -276,9 +276,9 @@ You can look for further documentation and tutorials at [magicgui quickstart](ht
 
 The third approach is kind of the middle ground between the first two approaches. By using and modifying FunctionGui (the type that is returned by magicgui), we still get the benefits of magicgui annotations, but we have extra editing capabilities. It doesn't necessarily mean it is the best approach, it depends on your demands.
 
-We keep the annotated version of our function, but instead of passing it to magicgui, we will define a new FunctionGui class, based on [this example](https://napari.org/guides/stable/magicgui.html#magicgui-widgets-functiongui) and pass our flood function to FunctionGui. So, I will start with the code shown below:
+We keep the annotated version of our function, but instead of passing it to magicgui, we will define a new `FunctionGui` class, based on [this example](https://napari.org/guides/stable/magicgui.html#magicgui-widgets-functiongui) and pass our flood function to `FunctionGui`. So, I will start with the code shown below:
 
-```
+```Python
 def flood(image: ImageData, delta: float=0, new_level: int=0) -> LabelsData: 
     new_level = delta*85
     label_image = image <= new_level
@@ -300,7 +300,7 @@ If we open napari, add our image and add MyGui to napari, we get the same result
 
 Similarly, to match the widgets style we want (like in [previous results](#figure4)), we can provide dictionnaires to the `param_options`, like this:
 
-```
+```Python
 class MyGui(FunctionGui):
     def __init__(self):
         super().__init__(
@@ -319,7 +319,7 @@ class MyGui(FunctionGui):
 
 Up to this point, it looks very similar to magicgui, but with extra code. However, with this approach, we can modify the `__init()__` and the `__call()__` functions to gain access to other widgtes and get/send other variables that are not images. For example, besides `label_image`, we can make our function return `new_level` again as an annotation and use its value to change the slider when the user hits the 'Run' button. Check the complete code and result below:
 
-```
+```Python
 import napari
 from skimage.io import imread
 from magicgui import magicgui
