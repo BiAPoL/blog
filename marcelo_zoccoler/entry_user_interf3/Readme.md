@@ -257,7 +257,7 @@ viewer.window.add_dock_widget(flood_widget, area='right')         # Add our gui 
 
 Neat! Just a couple of things missing though. We only get Spinboxes now, what about the Slider? Don't worry, we can fix this still maintaining the one-liner, although a bigger one now :grimacing:. We can add widget options as python dictionaries, like this:
 
-```
+```Python
 flood_widget = magicgui(flood, delta={'label': 'Temperature Increase (Δ°C):', 
                                            'min': 0, 'max' : 3, 'step': 0.1},
                                 new_level={'label':'Sea Level (dm):', 'widget_type':'Slider',
