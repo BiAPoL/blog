@@ -9,7 +9,7 @@ Blogs on this topic will cover:
 * [Getting started (Part 1)](https://biapol.github.io/blog/johannes_mueller/entry_user_interf#getting-started)
 * [Creating standalone GUIs (Part 2)](https://biapol.github.io/blog/johannes_mueller/entry_user_interf2#creating-advanced-standalone-guis)
 * [Creating GUIs for napari (Part 3)](https://biapol.github.io/blog/marcelo_zoccoler/entry_user_interf3#creating-advanced-guis-for-napari)
-* [Turning napari GUI into plugins (Part 4)](https://biapol.github.io/blog/marcelo_zoccoler/entry_user_interf3#turning-napari-gui-into-plugins)
+* [Turning napari GUI into plugins (Part 4)](https://biapol.github.io/blog/marcelo_zoccoler/entry_user_interf4#turning-napari-gui-into-plugins)
 
 
 # Turning napari GUI into plugins
@@ -33,9 +33,9 @@ So, let's install and run cookiecutter:
 pip install cookiecutter
 cookiecutter https://github.com/napari/cookiecutter-napari-plugin
 ```
-(`'pip' is not recognized as ...`? 🙀 -> `conda install pip` 😸)
+(`'pip' is not recognized as ...` ?? 🙀 -> `conda install pip` 😸)
 
-(`'git' is not installed.`? 😾 -> `conda install git` 😸)
+(`'git' is not installed.` ?? 🙀 -> `conda install git` 😸)
 
 The cookiecutter will then start asking you questions about your project. We will answer them one by one, but here is an overview of all of them:
 
@@ -52,10 +52,10 @@ The cookiecutter will then start asking you questions about your project. We wil
      `Choose from 1, 2 [1]:`  ***type '1'**, even if you did not create your repository yet, we'll do that later*  
     *Obs: values or words inside square brackets `[]` are the default option if you just hit 'Enter'*
   
-  6. `module_name [flood_napari]:` ***type your plugin module name** our plugin has a single module, ex: 'flood_napari'*
+  6. `module_name [flood_napari]:` ***type your plugin module name** (our plugin has a single module, ex: 'flood_napari')*
   7. `short_description [A simple plugin to use with napari]:` ***type a brief description of your plugin***
   8. `include_reader_plugin [y]:` ***type 'n'**, because our example plugin is not a plugin for reading certain image file types*
-  9. `include_writer_plugin [y]:` ***type ''**, because our example plugin does not write anything*
+  9. `include_writer_plugin [y]:` ***type 'n'**, because our example plugin does not write anything*
   10. `include_dock_widget_plugin [y]:` ***type 'y' or just hit 'Enter'**, because we want to dock our plugin to napari framework*
   11. `include_function_plugin [y]:` ***type 'n' for this example**, however it could be useful to organize functions into separate files*
   12. `use_git_tags_for_versioning [n]:` ***hit 'Enter'***
@@ -63,7 +63,7 @@ The cookiecutter will then start asking you questions about your project. We wil
        `1 - mkdocs`  
        `2 - sphinx`  
        `3 - none`  
-      `Choose from 1, 2, 3 [1]:` ***type '2' for this example**, check [this post] to learn more about sphinx*  
+      `Choose from 1, 2, 3 [1]:` ***type '2' for this example**, check [this post](https://biapol.github.io/blog/johannes_mueller/entry_sphinx/) to learn more about sphinx*  
   14. `Select license:`  
        `1 - BSD-3`  
        `2 - MIT`  
@@ -84,7 +84,7 @@ pip install -e .   # install your plugin locally
 ```
 
 Install napari in your environment (`pip install napari[all]`) and run napari with `napari`.
-When you go to the 'Plugins' menu now, you will see your plugin name there.
+When you go to the 'Plugins' menu now, you will see your plugin name there. Don't worry now with the sub-menus, we will edit them afterwards.
 
 ![](images/napari_plugin1.png)
 
@@ -96,15 +96,15 @@ Now open it and let's add our local repository by clicking on 'File -> Add local
 
 ![](images/github_desktop1.png)
 
-After that, you have to specify your local plugin address. It should be a directory located where you were when you typed cookiecutter commands (typically 'C:/Users/Name' for Windows). It has the plugin name and the contents shown below:
+After that, you have to specify your local plugin address. It should be a directory located where you were when you typed cookiecutter commands (typically 'C:/Users/Your_user_name' for Windows). It has the plugin name and the following contents:
 
-![](images/directory_items.png)
+<img alt="directory_items" id="directory_items" src="images/directory_items.png" />
 
 Find it and click on 'Add repository'. You will see that it now appears as the current repository and you will add it to Github.com by clicking on 'Publish repository'.
 
 ![](images/github_desktop1b.png)
 
-Then a small window should pop-up. Specify the name of your repository (same name of your plugin) and click on 'Publish Repository'.
+Then a small window should pop-up. Specify the name of your repository (same name of your plugin, cookiecutter question 4) and click on 'Publish Repository'.
 
 ![](images/github_desktop1c.png)
 
@@ -112,7 +112,7 @@ Now, if you log in into your Github account through the browser and look at your
 
 ![](images/github_repo_page.png)
      
-Notice how the contents are the same as the ones in your local folder!
+Notice how the contents are the same as [the ones in your local folder](#directory_items)!
 
 ## Putting your GUI into the template
 
