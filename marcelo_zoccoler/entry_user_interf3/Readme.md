@@ -319,7 +319,7 @@ class MyGui(FunctionGui):
 
 Up to this point, it looks very similar to magicgui, but with extra code. However, with this approach, we can modify the `__init()__` and the `__call()__` functions to gain access to other widgtes and get/send other variables that are not images. For example, besides `label_image`, we can make our function return `new_level` again as an annotation and use its value to change the slider when the user hits the 'Run' button. Check the complete code and result below:
 
-```
+```Python
 import napari
 from skimage.io import imread
 from magicgui import magicgui
