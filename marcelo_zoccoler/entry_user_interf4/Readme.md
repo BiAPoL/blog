@@ -116,6 +116,169 @@ Notice how the contents are the same as [the ones in your local folder](#directo
 
 ## Putting your GUI into the template
 
+First, in order for our 'qt designer version' to work (see [previous post](https://biapol.github.io/blog/marcelo_zoccoler/entry_user_interf3#importing-your-fancy-gui-to-napari)), we have to copy its interface (`flood_tool.py`, found [here](https://github.com/BiAPoL/blog/blob/master/marcelo_zoccoler/entry_user_interf3/scripts/flood_tool.py)) to our local repository address (look for where you created your local version, something like `C:/Users/Your_user_name/flood-napari/src/flood_napari`).
+
+Then, let's replace the default `Example Q Widget` and `example_magic_widget` by our GUI. With your favorite editor, open the file `_dock_widget.py` located in our local repository address. It should contain this code:
+
+```Python
+"""
+This module is an example of a barebones QWidget plugin for napari
+
+It implements the ``napari_experimental_provide_dock_widget`` hook specification.
+see: https://napari.org/docs/dev/plugins/hook_specifications.html
+
+Replace code below according to your needs.
+"""
+from napari_plugin_engine import napari_hook_implementation
+from qtpy.QtWidgets import QWidget, QHBoxLayout, QPushButton
+from magicgui import magic_factory
+
+
+class ExampleQWidget(QWidget):
+    # your QWidget.__init__ can optionally request the napari viewer instance
+    # in one of two ways:
+    # 1. use a parameter called `napari_viewer`, as done here
+    # 2. use a type annotation of 'napari.viewer.Viewer' for any parameter
+    def __init__(self, napari_viewer):
+        super().__init__()
+        self.viewer = napari_viewer
+
+        btn = QPushButton("Click me!")
+        btn.clicked.connect(self._on_click)
+
+        self.setLayout(QHBoxLayout())
+        self.layout().addWidget(btn)
+
+    def _on_click(self):
+        print("napari has", len(self.viewer.layers), "layers")
+
+
+@magic_factory
+def example_magic_widget(img_layer: "napari.layers.Image"):
+    print(f"you have selected {img_layer}")
+
+
+@napari_hook_implementation
+def napari_experimental_provide_dock_widget():
+    # you can return either a single widget, or a sequence of widgets
+    return [ExampleQWidget, example_magic_widget]
+```
+
+We will delete the `ExampleQWidget` and the `example_magic_widget` (I will also delete initial comments for clarity). We are left with this:
+```Python
+from napari_plugin_engine import napari_hook_implementation
+from qtpy.QtWidgets import QWidget, QHBoxLayout, QPushButton
+from magicgui import magic_factory
+
+@napari_hook_implementation
+def napari_experimental_provide_dock_widget():
+    # you can return either a single widget, or a sequence of widgets
+    return [ExampleQWidget, example_magic_widget]
+```
+
+The function decorated with `@napari_hook_implementation` appends its outputs to our plugin menu in napari. So, let's add all 3 GUI versions of our flood widget before it. Although they all refer to the same function, for clarity, we will rename our `flood` function to 3 different versions: `flood_qt`, `flood_magic_factory` and `flood_fgui`. Also, we will rename the Qt class from `MainWindow` to `Qt_Designer_flood` and the `FunctionGui` class from `MyGui` to `FunctionGui_flood`. 
+
+Once we add them to the code (along with importing necessary libraries), it becomes like this:
+
+```Python
+from napari_plugin_engine import napari_hook_implementation
+from qtpy.QtWidgets import QWidget, QHBoxLayout, QPushButton
+from magicgui import magic_factory
+
+"""
+Qt Designer version
+"""
+from flood_tool import Ui_MainWindow
+from skimage.io import imread
+from PyQt5.QtWidgets import QMainWindow
+
+def flood_qt(image, delta):
+    new_level = delta*85
+    label_image = image <= new_level
+    label_image = label_image.astype(int)*13 # label 13 is blue in napari
+    return(label_image, new_level)
+
+# Define the main window class
+class Qt_Designer_flood(QMainWindow,  Ui_MainWindow):
+    def __init__(self, napari_viewer):          # include napari_viewer as argument (it has to have this name)
+        super().__init__()
+        self.viewer = napari_viewer
+        self.setupUi(self)                     # Initialize GUI
+        
+        self.label_layer = None                # stored label layer variable
+        self.pushButton.clicked.connect(self._apply_delta)
+    
+    def _apply_delta(self):
+        image = self.viewer.layers['napari_island'].data    # We use the layer name to find the correct image layer
+        delta = self.doubleSpinBox.value()
+        label, level = flood_qt(image, delta)
+        if self.label_layer is None:
+            self.label_layer = self.viewer.add_labels(label)
+        else:
+            self.label_layer.data = label
+        self.horizontalSlider.setValue(level)
+        
+"""
+magicgui version
+"""
+from magicgui import magicgui
+from napari.types import ImageData, LabelsData
+@magic_factory(delta={'label': 'Temperature Increase (Δ°C):', 
+                                           'min': 0, 'max' : 3, 'step': 0.1},
+               new_level={'label':'Sea Level (dm):', 'widget_type':'Slider',
+                         'min': 0, 'max' : 255})
+def flood_magic_factory(image: ImageData, delta: float=0, new_level: int=0) -> LabelsData: 
+    new_level = delta*85
+    label_image = image <= new_level
+    label_image = label_image.astype(int)*13 # label 13 is blue in napari
+    return(label_image)
+
+"""
+FunctionGui version
+"""
+from magicgui.widgets import FunctionGui
+from napari.types import LayerDataTuple
+def flood_fgui(image: ImageData, delta: float=0, new_level: int=0) -> LayerDataTuple: 
+    new_level = delta*85
+    label_image = image <= new_level
+    label_image = label_image.astype(int)*13 # label 13 is blue in napari
+    return((label_image, {'name': 'flood result','metadata': {'new_level':new_level}}))
+
+class FunctionGui_flood(FunctionGui):
+    def __init__(self):
+        super().__init__(
+          flood_fgui,
+          call_button=True,
+          layout='vertical',
+          param_options={'delta':
+                             {'label': 'Temperature Increase (Δ°C):', 
+                              'min': 0, 'max' : 3, 'step': 0.1},
+                        'new_level':
+                            {'label':'Sea Level (dm):', 'widget_type':'Slider',
+                             'min': 0, 'max' : 255}}
+        )
+        
+    def __call__(self):
+        label_image = super().__call__()
+        new_level = round(label_image[1]['metadata']['new_level'])
+        self.new_level.value = new_level
+
+@napari_hook_implementation
+def napari_experimental_provide_dock_widget():
+    # you can return either a single widget, or a sequence of widgets
+    return [ExampleQWidget, example_magic_widget]
+```
+
+Last thing is to replace `napari_experimental_provide_dock_widget` outputs by our own. In our case, it should look like this:
+
+```Python
+@napari_hook_implementation
+def napari_experimental_provide_dock_widget():
+    # you can return either a single widget, or a sequence of widgets
+    return [Qt_Designer_flood, flood_magic_factory, FunctionGui_flood]
+```
+
+![](images/flood_plugin_v1.png)
 
 
 ## Publishing your plugin
