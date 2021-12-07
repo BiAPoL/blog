@@ -292,11 +292,11 @@ Obs: remember we wrote our qt_designer version to work with a specific layer nam
 
 ## Updating Github repository
 
-We have our updates locally in our separated branch. Let's push them into our Github repository. If you open Github Desktop again now, you should see all the changes we made listed in the left of the screen. Write a description to these changes and click on 'commit to 'branch name'':
+We have our updates locally in our separated branch. Let's push them into our Github repository. If you open Github Desktop again now, you should see all the changes we made listed in the left of the screen. Write a description to these changes (step 1.), click on 'commit to 'branch name'' (step 2.), and then publish your new branch (step 3.):
 
 ![](images/flood_plugin_commit.png)
 
-After that, create on the 'Create Pull Request' button, and you will be prompted a browser tab with your github online repository. There, click on 'Create Pull Request'. 
+After that, click on the 'Create Pull Request' button, and you will be prompted to a browser tab with your github online repository. There, click on 'Create Pull Request'. 
 
 ![](images/flood_plugin_PR.png)
 
