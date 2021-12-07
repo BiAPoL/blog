@@ -3,6 +3,11 @@ Most of us study and work at the [Bio-image Analysis Technology Development grou
 We blog about image data science, knowledge exchange and research data management in the life sciences.
 
 <hr/>
+## [GUIs: Creating graphical user interfaces with/for Python, Part III](https://biapol.github.io/blog/marcelo_zoccoler/entry_user_interf3) <small>Marcelo Zoccoler, November 29th, 2021</small>
+<img style="float: right; height:100px; width:100px" src="images/napari_logo.png">
+After learning how to create GUIs, one may want to integrate them into a pre-existing software. This third part will teach you a few ways design GUIs and embbed them into the popular python image viewer napari, either with the help of the Designer or straight from python functions using magicgui. 
+
+<hr/>
 ## [Automated package documentation with Sphinx](https://biapol.github.io/blog/johannes_mueller/entry_sphinx) <small>Johannes Müller, Novemmber 24th, 2021</small>
 <img style="float: right; height:100px; width:300px" src="images/sphinx_logo.png">
 Good documentation can be a major obstacle towards getting a tool the visibility and usability it needs to make an impact. This blog entry shows how to autocreate documentation pages from function docstrings using Sphinx and how to have the result hosted on Github pages.

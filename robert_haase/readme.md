@@ -20,7 +20,7 @@ I serve here as editor and I'm supporting students, employees and collaborators 
 * [Installing Microsoft buildtools on Windows](https://biapol.github.io/blog/robert_haase/ms_build_tools)
 
 ## Links
-* [BiA-PoL group website](https://physics-of-life.tu-dresden.de/en/research/technology-development-groups/bio-image-analysis)
+* [BiA-PoL group website](https://physics-of-life.tu-dresden.de/en/research/core-groups/bio-image-analysis)
 * [Robert on twitter](https://twitter.com/haesleinhuepf)
 * [Robert on github](https://github.com/haesleinhuepf)
 * [Robert on youtube](https://youtube.com/haesleinhuepf)
