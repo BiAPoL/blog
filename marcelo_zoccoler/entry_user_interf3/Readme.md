@@ -151,7 +151,7 @@ This function takes an `image` and a `delta` (temperature) as inputs. It convert
 Now, we need to link this function to the 'Apply' button. This can be done with the general command `pushButton.clicked.connect(callback_function)`.
 Let's write a callback function that calls our flood function:
 
-```
+```Python
 def on_flood(self):
     label, level = flood(image, delta)
 ```
