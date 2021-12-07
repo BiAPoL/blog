@@ -164,7 +164,7 @@ We now have to specify to our callback where it gets the vaiables `image` and `d
 
 Lastly, we use a flag (`self.label_layer`) to update the label layer rather than creating a new one every time. The code now looks like this:
 
-```
+```Python
 import napari
 from flood_tool import Ui_MainWindow
 from skimage.io import imread
