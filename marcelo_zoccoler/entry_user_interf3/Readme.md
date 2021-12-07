@@ -17,12 +17,12 @@ The [previous entry](https://biapol.github.io/blog/johannes_mueller/entry_user_i
 
 ## Table of contents
 * [Installing and running napari](#installing-and-running-napari)
-* [Calling napari from script](#calling-napari-from-script)
+* [Calling napari from a script](#calling-napari-from-a-script)
 * [Importing your fancy GUI to napari](#importing-your-fancy-gui-to-napari)
 * [Creating a callback function](#creating-a-callback-function)
 * [Automatically creating a GUI from a function with magicgui](#automatically-creating-a-gui-from-a-function-with-magicgui)
 * [Creating a GUI from FunctionGui](#creating-a-gui-from-functiongui)
-* Conclusion(#conclusion)
+* [Conclusion](#conclusion)
 
 ## Installing and running napari
 
