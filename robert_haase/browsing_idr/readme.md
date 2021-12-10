@@ -21,8 +21,8 @@ You can copy this link, change it a little and use it in your python code to dow
 ```python
 from skimage.io import imread, imshow
 
-original_link = 'https://idr.openmicroscopy.org/webclient/render_image_download/9621401/?format=tif'
-edited_link = 'https://idr.openmicroscopy.org/webclient/render_image/9621401/'
+original_link = 'https://idr.openmicroscopy.org/webclient/render_image_download/9629351/?format=tif'
+edited_link = 'https://idr.openmicroscopy.org/webclient/render_image/9629351/'
 
 image = imread(edited_link)
 
@@ -43,7 +43,7 @@ You can see the identifier of the image on the bottom of your browser when hover
 Using pythons [string format](https://www.w3schools.com/python/ref_string_format.asp) function, we can assemble a generic unified resource locator (URL) with the specific image identifier to a specific link:
 ```python
 generic_image_url = "https://idr.openmicroscopy.org/webclient/render_image/{image_id}/"
-image_id = 9621401
+image_id = 9629351
 
 # combine generic url with image ID
 image_url = generic_image_url.format(**{"image_id":image_id})
