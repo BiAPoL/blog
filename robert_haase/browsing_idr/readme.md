@@ -1,5 +1,6 @@
 # Browsing the Open Microscopy Image Data Resource with Python
-[Robert Haase](https://biapol.github.io/blog/robert_haase), June 6th 2021
+[Robert Haase](https://biapol.github.io/blog/robert_haase), June 6th 2021;
+[Marcelo Zoccoler](https://biapol.github.io/blog/marcelo_zoccoler), updated on December 10th 2021
 
 The [Image Data Resource (IDR)](https://idr.openmicroscopy.org/) is an online database of microscopy research image data where scientist can publish their data if it is part of a scientific publication. It is a fantastic resource not just for biologists searching for images of samples they are interested in. It is also a fantastic source of data for image data scientists who develop new algorithms. For automated access of the underlying data base, an application programming interface (API) is accessible via python allowing you to programmatically browse the database, search for images with certain properties and download them for dedicated image analysis. 
 For downloading images from the IDR, you only need a link, e.g. for requesting the data in tif format. You can then use [scikit-image](https://scikit-image.org/) to open the image.
@@ -16,11 +17,14 @@ On the [IDR website](https://idr.openmicroscopy.org), we can navigate inside the
 After selecting an image, there will be download link in the top right corner.
 ![img_1.png](idr_api/idr1.png)
 
-You can copy this link and use it in your python code to download and show the image.
+You can copy this link, change it a little and use it in your python code to download and show the image.
 ```python
 from skimage.io import imread, imshow
 
-image = imread('https://idr.openmicroscopy.org/webclient/render_image_download/9621401/?format=tif')
+original_link = 'https://idr.openmicroscopy.org/webclient/render_image_download/9621401/?format=tif'
+edited_link = 'https://idr.openmicroscopy.org/webclient/render_image/9621401/'
+
+image = imread(edited_link)
 
 imshow(image)
 ```
@@ -29,7 +33,7 @@ imshow(image)
 
 This also works from [Google Colab](https://colab.research.google.com/github/BiAPoL/blog/blob/master/robert_haase/browsing_idr/browse_idr.ipynb).
 
-![img_2.png](idr_api/idr2.png)
+![img_2.png](idr_api/idr_collab.png)
 
 Furthermore, you can assemble the link from a generic link if you know the image identifier of the image you want to download. 
 You can see the identifier of the image on the bottom of your browser when hovering with the mouse over the download link:
@@ -38,7 +42,7 @@ You can see the identifier of the image on the bottom of your browser when hover
 
 Using pythons [string format](https://www.w3schools.com/python/ref_string_format.asp) function, we can assemble a generic unified resource locator (URL) with the specific image identifier to a specific link:
 ```python
-generic_image_url = "https://idr.openmicroscopy.org/webclient/render_image_download/{image_id}/?format=tif"
+generic_image_url = "https://idr.openmicroscopy.org/webclient/render_image/{image_id}/"
 image_id = 9621401
 
 # combine generic url with image ID
@@ -176,7 +180,7 @@ for row in grid['grid']:
 In order to retrieve the whole 2D image, we can use the code shown on top.
 
 ```python
-generic_image_url = "https://idr.openmicroscopy.org/webclient/render_image_download/{image_id}/?format=tif"
+generic_image_url = "https://idr.openmicroscopy.org/webclient/render_image/{image_id}/"
 
 # combine generic url with image ID
 image_url = generic_image_url.format(**{"image_id":image_id})
