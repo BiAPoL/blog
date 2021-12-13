@@ -309,3 +309,27 @@ At the end, you should see the image below, which means our online repository is
 ![merge_done](https://user-images.githubusercontent.com/26173597/145111544-dea73c05-a8a5-47bb-85c4-d9431ca0de0e.png)
 
 ## Publishing your plugin
+Publishing the plugin on [PyPi](https://pypi.org/) may sound like a big ordeal, but is, in fact, very simple. To do so, first create an account on [PyPi](https://pypi.org/account/register/). After this is done, open an anaconda command prompt and `cd` into your project repository. 
+
+Next, you need to create the necessary packaging information from your sourcefiles. You can do so by either creating a *source distribution* of your package with 
+```bash
+python setup.py sdist
+```
+
+or a *wheel* using
+```bash
+python setup.py bdist_wheel
+```
+
+The difference between both is, in short, that the source distribution provides, as the name suggests, the soure files that can be downloaded and have to be compiled upon installation of the package. Python wheels, on the contrary, come pre-built, which leads to faster installation. This can be convenient for large packages. For a more in-depth on the advantages of either strategy, see [this blog](https://medium.com/ochrona/understanding-python-package-distribution-types-25d53308a9a). For simple projects, there is no damage in simply providing both. 
+
+Lastly, upload your package to PyPi with `twine` (use `pip install twine` if not present already):
+```
+twine upload dist/*
+```
+This will prompt you to enter your login credentials for PyPi in the command line and then upload your package to PyPi - congrats! For more information on building your package for publication on PyPi, see the [official documentation.](https://packaging.python.org/en/latest/tutorials/packaging-projects/). Your plugin should soon be available at the [Napari plugin hub](https://www.napari-hub.org/). It should also pop up as a notification in the [napari zulib stream](https://napari.zulipchat.com/login/#narrow/stream/290453-hub-updates), which is open to everyone.
+
+*Note*: If you do not feel confident with making your plugin public to the whole world *just yet*, you can upload your package to a [test version of PyPi](https://test.pypi.org/) with the same login credentials using 
+```
+twine upload --repository testpypi dist/*
+```
