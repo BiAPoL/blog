@@ -28,7 +28,7 @@ Well, first things first: [create a new conda environment](https://biapol.github
 
 The napari website has a complete [tutorial](https://napari.org/plugins/stable/for_plugin_developers.html) for creating plugins, and I would say the easiest way is by using [cookiecutter](https://napari.org/plugins/stable/for_plugin_developers.html#cookiecutter-template).
 
-So, let's install and run cookiecutter:
+So, let's install and run the cookiecutter as suggested in the [template readme](https://github.com/napari/cookiecutter-napari-plugin):
 
 ```
 pip install cookiecutter
