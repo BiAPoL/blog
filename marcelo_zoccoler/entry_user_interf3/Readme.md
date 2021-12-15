@@ -90,7 +90,7 @@ Now let's add it to napari! Put the 'flood_tool.py' file in the same folder as o
 import napari
 from skimage.io import imread
 from flood_tool import Ui_MainWindow
-from PyQt5.QtWidgets import QMainWindow
+from qtpy.QtWidgets import QMainWindow
 
 # Define the main window class
 class FancyGUI(QMainWindow,  Ui_MainWindow):
