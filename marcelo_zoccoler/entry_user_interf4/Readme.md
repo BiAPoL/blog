@@ -22,7 +22,7 @@ The [previous entry](https://biapol.github.io/blog/marcelo_zoccoler/entry_user_i
 * [Updating Github repository](#updating-github-repository)
 * [Publishing your plugin](#publishing-your-plugin)
 
-## Creating a plugin template with cookiecutter
+## Creating a plugin from a template using the cookiecutter
 
 Well, first things first: [create a new conda environment](https://biapol.github.io/blog/johannes_mueller/entry_user_interf2/Readme.md#creating-your-environment). ("Another one?" 😩) Yes, better safe than sorry 😉. Don't forget to activate it.
 
