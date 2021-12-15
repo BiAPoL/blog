@@ -168,7 +168,7 @@ Lastly, we use a flag (`self.label_layer`) to update the label layer rather than
 import napari
 from flood_tool import Ui_MainWindow
 from skimage.io import imread
-from PyQt5.QtWidgets import QMainWindow
+from qtpy.QtWidgets import QMainWindow
 
 def flood(image, delta):
     new_level = delta*85
