@@ -3,7 +3,7 @@ Most of us study and work at the [Bio-image Analysis Technology Development grou
 We blog about image data science, knowledge exchange and research data management in the life sciences.
 
 <hr/>
-## [GUIs: Creating graphical user interfaces with/for Python, Part IV](https://biapol.github.io/blog/marcelo_zoccoler/entry_user_interf4) <small>Marcelo Zoccoler, Johannes Müller, December 13th, 2021</small>
+## [GUIs: Creating graphical user interfaces with/for Python, Part IV](https://biapol.github.io/blog/marcelo_zoccoler/entry_user_interf4) <small>Marcelo Zoccoler, Johannes Müller, December 15th, 2021</small>
 <img style="float: right; height:100px; width:100px" src="images/napari_logo.png">
 Last part of this series, this post will teach you how to turn your napari GUI/widget into a napari plugin and publish it on Pypi, so everyone can access it, install it and benefit from your contribution. 
 
