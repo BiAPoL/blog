@@ -48,8 +48,8 @@ The cookiecutter will then start asking you questions about your project. We wil
   3. `github_username_or_organization [githubuser]:` ***type your github username** (if you don't have a Github account, you should [create one now](https://github.com/signup?ref_cta=Sign+up&ref_loc=header+logged+out&ref_page=%2F&source=header-home))*
   4. `plugin_name [napari-foobar]:` ***type your plugin name** ex: 'flood-napari'*
   5. `Select github_repository_url:`  
-     `    1 - https://github.com/your_github_username/your_plugin_name`  
-     `    2 - provide later`  
+     `1 - https://github.com/your_github_username/your_plugin_name`  
+     `2 - provide later`  
      `Choose from 1, 2 [1]:`  ***type '1'**, even if you did not create your repository yet, we'll do that later*  
     *Obs: values or words inside square brackets `[]` are the default option if you just hit 'Enter'*
   
