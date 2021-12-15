@@ -321,7 +321,7 @@ or a *wheel* using
 python setup.py bdist_wheel
 ```
 
-The difference between both is, in short, that the source distribution provides, as the name suggests, the soure files that can be downloaded and have to be compiled upon installation of the package. Python wheels, on the contrary, come pre-built, which leads to faster installation. This can be convenient for large packages. For a more in-depth on the advantages of either strategy, see [this blog](https://medium.com/ochrona/understanding-python-package-distribution-types-25d53308a9a). For simple projects, there is no damage in simply providing both. 
+The difference between both is, in short, that the source distribution provides, as the name suggests, the source files that can be downloaded and have to be compiled upon installation of the package. Python wheels, on the contrary, come pre-built, which leads to faster installation. This can be convenient for large packages. For a more in-depth on the advantages of either strategy, see [this blog](https://medium.com/ochrona/understanding-python-package-distribution-types-25d53308a9a). For simple projects, there is no damage in simply providing both. 
 
 Lastly, upload your package to PyPi with `twine` (use `pip install twine` if not present already):
 ```
