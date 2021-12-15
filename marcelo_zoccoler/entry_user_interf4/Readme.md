@@ -309,6 +309,7 @@ At the end, you should see the image below, which means our online repository is
 ![merge_done](https://user-images.githubusercontent.com/26173597/145111544-dea73c05-a8a5-47bb-85c4-d9431ca0de0e.png)
 
 ## Publishing your plugin
+After you developed your plugin to a point where you think it's ready to share it with the world, it's time so submit it to the python package index (PyPI).
 Publishing the plugin on [PyPi](https://pypi.org/) may sound like a big ordeal, but is, in fact, very simple. To do so, first create an account on [PyPi](https://pypi.org/account/register/). After this is done, open an anaconda command prompt and `cd` into your project repository. 
 
 Next, you need to create the necessary packaging information from your sourcefiles. You can do so by either creating a *source distribution* of your package with 
