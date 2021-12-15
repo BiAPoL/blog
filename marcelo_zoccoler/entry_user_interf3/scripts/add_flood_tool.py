@@ -1,7 +1,7 @@
 import napari
 from flood_tool import Ui_MainWindow
 from skimage.io import imread
-from PyQt5.QtWidgets import QMainWindow
+from qtpy.QtWidgets import QMainWindow
 
 def flood(image, delta):
     new_level = delta*85
