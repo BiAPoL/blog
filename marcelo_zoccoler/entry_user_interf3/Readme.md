@@ -84,7 +84,7 @@ Here, I modified a bit the GUI from the [previous post](https://biapol.github.io
 
 You can find the '.ui' file to open this GUI with the designer [here](scripts/flood_tool.ui). Download it and then [convert it to python file](https://biapol.github.io/blog/johannes_mueller/entry_user_interf2#convert-gui-to-py-file-and-gui-creation) with `pyuic5 flood_tool.ui -o flood_tool.py` (remeber to navigate to the folder where flood_tool.ui is in order to do that).
 
-Now let's add it to napari! Put the 'flood_tool.py' file in the same folder as our script and modify the script as shown below:
+Now let's add it to napari! Just a single edition to the 'flood_tool.py' file before that: replace `from PyQt5 import QtCore, QtWidgets` with `from qtpy import QtCore, QtWidgets` and save it (do this everytime after you run the `pyuic5` command above). Put the 'flood_tool.py' file in the same folder as our script and modify the script as shown below:
 
 ```Python
 import napari
