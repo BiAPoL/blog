@@ -6,10 +6,10 @@ Graphical user interfaces (*GUIs*) are powerful tools to make your scripts and f
 In this blog, we will cover a few interesting and versatile methods for you to create customized [Qt](https://qt.io)-based GUIs for Python in general. Since our work revolves mostly around the visualization and processing of **images**, we will also show you a few ways to create great user interfaces for [Napari](https://napari.org/).
 
 Blogs on this topic will cover:
-* [Getting started (Part 1)](https://biapol.github.io/blog/johannes_mueller/entry_user_interf#getting-started)
+* [Getting started (Part 1)](https://biapol.github.io/blog/johannes_mueller/entry_user_inter#getting-started)
 * [Creating standalone GUIs (Part 2)](https://biapol.github.io/blog/johannes_mueller/entry_user_interf2#creating-advanced-standalone-guis)
 * [Creating GUIs for napari (Part 3)](https://biapol.github.io/blog/marcelo_zoccoler/entry_user_interf3#creating-advanced-guis-for-napari)
-* [Turning napari GUI into plugins (Part 4)](https://biapol.github.io/blog/marcelo_zoccoler/entry_user_interf3#turning-napari-gui-into-plugins)
+* [Turning napari GUI into plugins (Part 4)](https://biapol.github.io/blog/marcelo_zoccoler/entry_user_interf4#turning-napari-gui-into-plugins)
 
 
 # Creating advanced standalone GUIs

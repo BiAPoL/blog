@@ -30,7 +30,14 @@
     </size>
    </property>
    <layout class="QGridLayout" name="gridLayout">
-    <item row="5" column="2">
+    <item row="1" column="3">
+     <widget class="QSpinBox" name="spinBox">
+      <property name="maximum">
+       <number>255</number>
+      </property>
+     </widget>
+    </item>
+    <item row="4" column="2">
      <spacer name="verticalSpacer">
       <property name="orientation">
        <enum>Qt::Vertical</enum>
@@ -42,16 +49,6 @@
        </size>
       </property>
      </spacer>
-    </item>
-    <item row="2" column="0">
-     <widget class="QLabel" name="label_2">
-      <property name="toolTip">
-       <string>Represents current gray value</string>
-      </property>
-      <property name="text">
-       <string>Water Level:</string>
-      </property>
-     </widget>
     </item>
     <item row="1" column="0">
      <widget class="QLabel" name="label">
@@ -83,30 +80,13 @@
       </property>
      </widget>
     </item>
-    <item row="4" column="0" colspan="4">
-     <widget class="QPushButton" name="pushButton">
-      <property name="minimumSize">
-       <size>
-        <width>30</width>
-        <height>20</height>
-       </size>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">background-color: rgb(0, 0, 255);
-color: rgb(255, 255, 255);
-font: 75 12pt &quot;MS Shell Dlg 2&quot;;
-border: 2px solid white;
-border-radius: 5px;</string>
+    <item row="2" column="0">
+     <widget class="QLabel" name="label_2">
+      <property name="toolTip">
+       <string>Represents current gray value</string>
       </property>
       <property name="text">
-       <string>Apply</string>
-      </property>
-     </widget>
-    </item>
-    <item row="1" column="3">
-     <widget class="QSpinBox" name="spinBox">
-      <property name="maximum">
-       <number>255</number>
+       <string>Water Level:</string>
       </property>
      </widget>
     </item>

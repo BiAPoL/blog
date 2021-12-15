@@ -9,7 +9,7 @@ Blogs on this topic will cover:
 * [Getting started (Part 1)](https://biapol.github.io/blog/johannes_mueller/entry_user_inter#getting-started)
 * [Creating standalone GUIs (Part 2)](https://biapol.github.io/blog/johannes_mueller/entry_user_interf2#creating-advanced-standalone-guis)
 * [Creating GUIs for napari (Part 3)](https://biapol.github.io/blog/marcelo_zoccoler/entry_user_interf3#creating-advanced-guis-for-napari)
-* Turning napari GUI into plugins (Part 4) (will be out soon)
+* [Turning napari GUI into plugins (Part 4)](https://biapol.github.io/blog/marcelo_zoccoler/entry_user_interf4#turning-napari-gui-into-plugins)
 
 
 # Creating advanced GUIs for napari
@@ -90,7 +90,7 @@ Now let's add it to napari! Put the 'flood_tool.py' file in the same folder as o
 import napari
 from skimage.io import imread
 from flood_tool import Ui_MainWindow
-from PyQt5.QtWidgets import QMainWindow
+from qtpy.QtWidgets import QMainWindow
 
 # Define the main window class
 class FancyGUI(QMainWindow,  Ui_MainWindow):
