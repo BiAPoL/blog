@@ -9,7 +9,7 @@ Blogs on this topic will cover:
 * [Getting started (Part 1)](https://biapol.github.io/blog/johannes_mueller/entry_user_inter#getting-started)
 * [Creating standalone GUIs (Part 2)](https://biapol.github.io/blog/johannes_mueller/entry_user_interf2#creating-advanced-standalone-guis)
 * [Creating GUIs for napari (Part 3)](https://biapol.github.io/blog/marcelo_zoccoler/entry_user_interf3#creating-advanced-guis-for-napari)
-* [Turning napari GUI into plugins (Part 4)](https://biapol.github.io/blog/marcelo_zoccoler/entry_user_interf3#turning-napari-gui-into-plugins)
+* Turning napari GUI into plugins (Part 4) (will be out soon)
 
 
 # Creating advanced GUIs for napari
