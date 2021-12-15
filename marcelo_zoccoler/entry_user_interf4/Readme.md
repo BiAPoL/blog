@@ -6,7 +6,7 @@ Graphical user interfaces (*GUIs*) are powerful tools to make your scripts and f
 In this blog, we will cover a few interesting and versatile methods for you to create customized [Qt](https://qt.io)-based GUIs for Python in general. Since our work revolves mostly around the visualization and processing of **images**, we will also show you a few ways to create great user interfaces for [napari](https://napari.org/).
 
 Blogs on this topic will cover:
-* [Getting started (Part 1)](https://biapol.github.io/blog/johannes_mueller/entry_user_interf#getting-started)
+* [Getting started (Part 1)](https://biapol.github.io/blog/johannes_mueller/entry_user_inter#getting-started)
 * [Creating standalone GUIs (Part 2)](https://biapol.github.io/blog/johannes_mueller/entry_user_interf2#creating-advanced-standalone-guis)
 * [Creating GUIs for napari (Part 3)](https://biapol.github.io/blog/marcelo_zoccoler/entry_user_interf3#creating-advanced-guis-for-napari)
 * [Turning napari GUI into plugins (Part 4)](https://biapol.github.io/blog/marcelo_zoccoler/entry_user_interf4#turning-napari-gui-into-plugins)
@@ -288,7 +288,7 @@ If you now start `napari` from the terminal again, your plugin, along with each 
 
 ![](images/flood_plugin_v1.png)
 
-Obs: remember we wrote our qt_designer version to work with a specific layer name (`napari_island`). There are other ways of selecting the appropriated layer, like by order, type, etc. You can have access to available layers through the viewer instance `viewer.layers`.
+Reminder: we wrote our qt_designer version to work with a specific layer name (`napari_island`). There are other ways of selecting the appropriated layer, like by order, type, etc. You can have access to available layers through the viewer instance `viewer.layers`.
 
 ## Updating Github repository
 
