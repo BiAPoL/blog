@@ -284,7 +284,7 @@ def napari_experimental_provide_dock_widget():
     # you can return either a single widget, or a sequence of widgets
     return [Qt_Designer_flood, flood_magic_factory, FunctionGui_flood]
 ```
-If you now call `napari` again, your plugin, along with each of the 3 sub-menu versions, should be available and working!
+If you now start `napari` from the terminal again, your plugin, along with each of the 3 sub-menu versions, should be available and working!
 
 ![](images/flood_plugin_v1.png)
 
