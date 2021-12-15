@@ -93,7 +93,7 @@ When you go to the 'Plugins' menu now, you will see your plugin name there. Don'
 
 We will use [Github Desktop](https://desktop.github.com/) to publish our local repository into the Github page. It has a great user interface and integration. So first [download](https://desktop.github.com/) and install Github Desktop. It should be a straight-forward [installation procedure](https://docs.github.com/en/desktop/installing-and-configuring-github-desktop/installing-and-authenticating-to-github-desktop/installing-github-desktop). If this is your first time using it, you will need to authenticate your account as explained [here](https://docs.github.com/en/desktop/installing-and-configuring-github-desktop/installing-and-authenticating-to-github-desktop/authenticating-to-github).
 
-Now open it and let's add our local repository by clicking on 'File -> Add local repository...'.
+Now open it and let's add your local repository by clicking on 'File -> Add local repository...'.
 
 ![](images/github_desktop1.png)
 
@@ -113,19 +113,19 @@ Now, if you log in into your Github account through the browser and look at your
 
 ![](images/github_repo_page.png)
      
-Notice how the contents are the same as [the ones in your local folder](#directory_items). Our template is online!
+Notice how the contents are the same as [the ones in your local folder](#directory_items). Your template is online!
 
 ## Putting your GUI into the template
 
-Now we will modify the code to add our widgets. In Github Desktop, let's create a separate branch for our modifications. Click on the current branch, type a new branch name and click on 'Create new branch':
+Now we will modify the code to add our widgets. In Github Desktop, let's create a separate branch for your modifications. Click on the current branch, type a new branch name and click on 'Create new branch':
 
 ![](images/new_branch.png)
 
-Good, now all modifications will go into our new branch!
+Good, now all modifications will go into your new branch!
 
-First, in order for our 'qt designer version' to work (see [previous post](https://biapol.github.io/blog/marcelo_zoccoler/entry_user_interf3#importing-your-fancy-gui-to-napari)), we have to copy its interface (`flood_tool.py`, found [here](https://github.com/BiAPoL/blog/blob/master/marcelo_zoccoler/entry_user_interf3/scripts/flood_tool.py)) to our local repository address (look for where you created your local version, something like `C:/Users/Your_user_name/flood-napari/src/flood_napari`).
+First, in order for our 'qt designer version' to work (see [previous post](https://biapol.github.io/blog/marcelo_zoccoler/entry_user_interf3#importing-your-fancy-gui-to-napari)), we have to copy its interface (`flood_tool.py`, found [here](https://github.com/BiAPoL/blog/blob/master/marcelo_zoccoler/entry_user_interf3/scripts/flood_tool.py)) to your local repository address (look for where you created your local version, something like `C:/Users/Your_user_name/flood-napari/src/flood_napari`).
 
-Then, let's replace the default `Example Q Widget` and `example_magic_widget` by our GUI. With your favorite editor, open the file `_dock_widget.py` located in our local repository address. It should contain this code:
+Then, let's replace the default `Example Q Widget` and `example_magic_widget` by your GUI. With your favorite editor, open the file `_dock_widget.py` located in your local repository address. It should contain this code:
 
 ```Python
 """
@@ -183,7 +183,7 @@ def napari_experimental_provide_dock_widget():
     return [ExampleQWidget, example_magic_widget]
 ```
 
-The function decorated with `@napari_hook_implementation` appends its outputs to our plugin menu in napari. So, let's add all 3 GUI versions of our flood widget before it. Although they all refer to the same function, for clarity, we will rename our `flood` function to 3 different versions: `flood_qt`, `flood_magic_factory` and `flood_fgui`. Also, we will rename the Qt class from `MainWindow` to `Qt_Designer_flood` and the `FunctionGui` class from `MyGui` to `FunctionGui_flood`. 
+The function decorated with `@napari_hook_implementation` appends its outputs to your plugin menu in napari. So, let's add all 3 GUI versions of our flood widget before it. Although they all refer to the same function, for clarity, we will rename our `flood` function to 3 different versions: `flood_qt`, `flood_magic_factory` and `flood_fgui`. Also, we will rename the Qt class from `MainWindow` to `Qt_Designer_flood` and the `FunctionGui` class from `MyGui` to `FunctionGui_flood`. 
 
 Once we add them to the code (along with importing necessary libraries), it becomes like this:
 
@@ -197,7 +197,7 @@ Qt Designer version
 """
 from flood_tool import Ui_MainWindow
 from skimage.io import imread
-from PyQt5.QtWidgets import QMainWindow
+from qtpy.QtWidgets import QMainWindow
 
 def flood_qt(image, delta):
     new_level = delta*85
@@ -276,7 +276,7 @@ def napari_experimental_provide_dock_widget():
     return [ExampleQWidget, example_magic_widget]
 ```
 
-Last thing is to replace `napari_experimental_provide_dock_widget` outputs by our own. In our case, it should look like this:
+Last thing is to replace `napari_experimental_provide_dock_widget` outputs by your own. In our case, it should look like this:
 
 ```Python
 @napari_hook_implementation
@@ -288,11 +288,11 @@ If you now start `napari` from the terminal again, your plugin, along with each 
 
 ![](images/flood_plugin_v1.png)
 
-Reminder: we wrote our qt_designer version to work with a specific layer name (`napari_island`). There are other ways of selecting the appropriated layer, like by order, type, etc. You can have access to available layers through the viewer instance `viewer.layers`.
+Reminder: we wrote our qt_designer version to work with a specific layer name (`napari_island`). There are other ways of selecting the appropriated layer, like by order, type, etc, which will not be considered in this tutorial. You can have access to available layers through the viewer instance `viewer.layers`.
 
 ## Updating Github repository
 
-We have our updates locally in our separated branch. Let's push them into our Github repository. If you open Github Desktop again now, you should see all the changes we made listed in the left of the screen. Write a description to these changes (step 1.), click on 'commit to 'branch name'' (step 2.), and then publish your new branch (step 3.):
+You have your updates locally in your separate branch. Let's push them into your Github repository. If you open Github Desktop again now, you should see all the changes we made listed in the left of the screen. Write a description to these changes (step 1.), click on 'commit to 'branch name'' (step 2.), and then publish your new branch (step 3.):
 
 ![](images/flood_plugin_commit.png)
 
@@ -304,7 +304,7 @@ After the page updates itself, click on 'Merge Pull Request' and confirm it if r
 
 ![](images/flood_plugin_merge.png)
 
-At the end, you should see the image below, which means our online repository is now updated with your new code!
+At the end, you should see the image below, which means your online repository is now updated with your new code!
 
 ![merge_done](https://user-images.githubusercontent.com/26173597/145111544-dea73c05-a8a5-47bb-85c4-d9431ca0de0e.png)
 
