@@ -1,4 +1,5 @@
 # Automated package documentation with Sphinx
+[Johannes Müller](https://biapol.github.io/blog/johannes_mueller), November 24th 2021
 
 ## Introduction
 We've all been there. We have written this wonderful piece of software that will essentially solve science's most pressing problems, the only *minor* thing left to do is proper documentation. And this, although it's only the last few meters until the finish lines, is where good projects often turn into bad projects.

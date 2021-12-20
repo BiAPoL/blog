@@ -1,4 +1,5 @@
 # Custom user interfaces for Python (Part 2)
+[Johannes Müller](https://biapol.github.io/blog/johannes_mueller), October 18th 2021
 
 ## Introduction
 Graphical user interfaces (*GUIs*) are powerful tools to make your scripts and functions available to users that are not necessarily familiar with a lot of coding, development platforms (e.g. Spyder or PyCharm) - and shouldn't be experienced programmers in order to use your tools.

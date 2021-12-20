@@ -1,4 +1,6 @@
 # Background Subtraction
+[Ryan Savill](https://biapol.github.io/blog/ryan_savill), June 25th 2021
+
 In the [previous blog post](https://biapol.github.io/blog/02_intro_to_skimage) we saw how background subtraction can improve segmentation substantially. We will now take a more in depth look at how background subtraction works by showing the top-hat filter and Difference of Gaussian (DoG) filter, which both can achieve background subtraction. In general, we want to use background subtraction if there is a sharp signal (high localised intensity) we want to isolate from moderate signal that is evenly distributed in the background. Some simple functions allow us to find the background image and subtract it from our original image, only leaving the signals we want to isolate. 
 
 ## Top-hat Filter

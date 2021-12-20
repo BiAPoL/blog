@@ -1,4 +1,5 @@
 # Jamovi: statistical analysis made visual and easy (powered with R)
+[Marcelo Zoccoler](https://biapol.github.io/blog/marcelo_zoccoler), October 7th 2021
 
 Statistical analysis software exist for decades. So why care about "just another one". Well, for one main reason: simplicity. And I mean simplicity by a clean convidative interface and an easy usage. Besides that, [Jamovi](https://www.jamovi.org/) is open-source and developed in R, a powerful programming language to perform statistical tests.
 
