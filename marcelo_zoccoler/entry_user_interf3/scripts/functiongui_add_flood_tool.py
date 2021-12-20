@@ -1,10 +1,7 @@
 import napari
-
-# This imports the previously generated UI file
 from skimage.io import imread
-
-from magicgui.widgets import FunctionGui
 from napari.types import ImageData, LabelsData, LayerDataTuple
+from magicgui.widgets import FunctionGui
 
 def flood(image: ImageData, delta: float=0, new_level: int=0) -> LayerDataTuple:
     new_level = delta*85
@@ -16,7 +13,8 @@ class MyGui(FunctionGui):
     def __init__(self):
         super().__init__(
           flood,
-          call_button=True,
+          call_button=False,
+          auto_call=True,
           layout='vertical',
           param_options={'delta':
                              {'label': 'Temperature Increase (Δ°C):',
@@ -37,6 +35,4 @@ viewer = napari.Viewer()
 viewer.add_image(napari_image, name='napari_island')
 
 flood_widget = MyGui()
-
 viewer.window.add_dock_widget(flood_widget, area='right')
-napari.run()  # start the event loop and show viewer
