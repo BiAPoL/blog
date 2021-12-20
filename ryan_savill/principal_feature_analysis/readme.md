@@ -1,4 +1,6 @@
 # Principal Feature Analysis
+[Ryan Savill](https://biapol.github.io/blog/ryan_savill), July 8th 2021
+
 ## Background
 Principal feature analysis (PFA) is a method for selecting a subset of features that describe most of the variability in the dataset based on [this paper](http://venom.cs.utsa.edu/dmz/techrep/2007/CS-TR-2007-011.pdf) by Y. Lu et al. published in ACM, 2007. Most of the code for the implementation below was provided in a [stackexchange comment section](https://stats.stackexchange.com/questions/108743/methods-in-r-or-python-to-perform-feature-selection-in-unsupervised-learning/203978#203978) and is greatly appreciated! 
 
