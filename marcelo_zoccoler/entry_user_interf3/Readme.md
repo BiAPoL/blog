@@ -201,8 +201,8 @@ class FancyGUI(QMainWindow):
         self.horizontalSlider.setValue(level)
 
 viewer = napari.Viewer()
-napari_image = imread('../images/21_Map_of_Tabuaeran_Kiribati_blue.png')    # Reads an image from file
-viewer.add_image(napari_image, name='napari_island')                       # Adds the image to the viewer and give the image layer a name
+napari_image = imread('21_Map_of_Tabuaeran_Kiribati_blue.png')    # Reads an image from file
+viewer.add_image(napari_image, name='napari_island')              # Adds the image to the viewer and give the image layer a name
 
 flood_widget = FancyGUI(viewer)                                          # Create instance from our class
 viewer.window.add_dock_widget(flood_widget, area='right')                  # Add our gui instance to napari viewer
@@ -367,7 +367,7 @@ class MyGui(FunctionGui):
         self.new_level.value = new_level
 
 
-napari_image = imread('../images/21_Map_of_Tabuaeran_Kiribati_blue.png')
+napari_image = imread('21_Map_of_Tabuaeran_Kiribati_blue.png')
 viewer = napari.Viewer()
 viewer.add_image(napari_image, name='napari_island')
 
