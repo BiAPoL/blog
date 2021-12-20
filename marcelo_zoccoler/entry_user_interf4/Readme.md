@@ -195,9 +195,10 @@ from magicgui import magic_factory
 """
 Qt Designer version
 """
-from flood_tool import Ui_MainWindow
 from skimage.io import imread
 from qtpy.QtWidgets import QMainWindow
+from qtpy import uic
+from pathlib import Path
 
 def flood_qt(image, delta):
     new_level = delta*85
@@ -210,7 +211,8 @@ class Qt_Designer_flood(QMainWindow,  Ui_MainWindow):
     def __init__(self, napari_viewer):          # include napari_viewer as argument (it has to have this name)
         super().__init__()
         self.viewer = napari_viewer
-        self.setupUi(self)                     # Initialize GUI
+        self.UI_FILE = str(Path(__file__).parent / "flood_tool.ui")  # path to .ui file
+        uic.loadUi(self.UI_FILE, self)           # load QtDesigner .ui file
         
         self.label_layer = None                # stored label layer variable
         self.pushButton.clicked.connect(self._apply_delta)
@@ -233,7 +235,8 @@ from napari.types import ImageData, LabelsData
 @magic_factory(delta={'label': 'Temperature Increase (Δ°C):', 
                                            'min': 0, 'max' : 3, 'step': 0.1},
                new_level={'label':'Sea Level (dm):', 'widget_type':'Slider',
-                         'min': 0, 'max' : 255})
+                         'min': 0, 'max' : 255, "enabled": False},
+               auto_call=True)
 def flood_magic_factory(image: ImageData, delta: float=0, new_level: int=0) -> LabelsData: 
     new_level = delta*85
     label_image = image <= new_level
@@ -255,14 +258,15 @@ class FunctionGui_flood(FunctionGui):
     def __init__(self):
         super().__init__(
           flood_fgui,
-          call_button=True,
+          call_button=False,
+          auto_call=True,
           layout='vertical',
           param_options={'delta':
                              {'label': 'Temperature Increase (Δ°C):', 
                               'min': 0, 'max' : 3, 'step': 0.1},
                         'new_level':
                             {'label':'Sea Level (dm):', 'widget_type':'Slider',
-                             'min': 0, 'max' : 255}}
+                             'min': 0, 'max' : 255, 'enabled' : False}}
         )
         
     def __call__(self):
