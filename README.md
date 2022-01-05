@@ -1,6 +1,6 @@
 # The BiA-PoL blog
 Most of us study and work at the [Bio-image Analysis Technology Development group](https://physics-of-life.tu-dresden.de/bia) at the [DFG Cluster of Excellence "Physics of Life" at the TU Dresden](https://physics-of-life.tu-dresden.de/). 
-We blog about image data science, knowledge exchange and research data management in the life sciences.
+We blog about image data science, knowledge exchange and research data management in the life sciences. The contents of this blog are licensed by the respective authors under [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/) license unless a different license is specified.
 
 <hr/>
 ## [GUIs: Creating graphical user interfaces with/for Python, Part IV](https://biapol.github.io/blog/marcelo_zoccoler/entry_user_interf4) <small>Marcelo Zoccoler, Johannes Müller, December 15th, 2021</small>
