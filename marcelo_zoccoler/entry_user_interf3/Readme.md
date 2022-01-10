@@ -83,22 +83,24 @@ Here, I modified a bit the GUI from the [previous post](https://biapol.github.io
 
 ![](images/flood_tool_gui.png)
 
-You can find the '.ui' file to open this GUI with the designer [here](scripts/flood_tool.ui). Download it and then [convert it to python file](https://biapol.github.io/blog/johannes_mueller/entry_user_interf2#convert-gui-to-py-file-and-gui-creation) with `pyuic5 flood_tool.ui -o flood_tool.py` (remeber to navigate to the folder where flood_tool.ui is in order to do that).
+You can find the '.ui' file to open this GUI with the designer [here](scripts/flood_tool.ui). Download it and save it to the same folder of your code.
 
-Now let's add it to napari! Just a single edition to the 'flood_tool.py' file before that: replace `from PyQt5 import QtCore, QtWidgets` with `from qtpy import QtCore, QtWidgets` and save it (do this everytime after you run the `pyuic5` command above). Put the 'flood_tool.py' file in the same folder as our script and modify the script as shown below:
+Now let's add it to napari! Modify the script as shown below:
 
 ```Python
 import napari
 from skimage.io import imread
-from flood_tool import Ui_MainWindow
 from qtpy.QtWidgets import QMainWindow
+from qtpy import uic
+from pathlib import Path
 
 # Define the main window class
-class FancyGUI(QMainWindow,  Ui_MainWindow):
+class FancyGUI(QMainWindow):
     def __init__(self, napari_viewer):          # include napari_viewer as argument (it has to have this name)
         super().__init__()
         self.viewer = napari_viewer
-        self.setupUi(self)                      # Initialize GUI
+        self.UI_FILE = str(Path(__file__).parent / "flood_tool.ui")  # path to .ui file
+        uic.loadUi(self.UI_FILE, self)           # load QtDesigner .ui file
 
 viewer = napari.Viewer()
 napari_image = imread('21_Map_of_Tabuaeran_Kiribati_blue.png')      # Reads an image from file
@@ -109,9 +111,9 @@ viewer.window.add_dock_widget(flood_widget, area='right')           # Add our gu
 ```
 
 This code does:
-* Import your GUI (with `from flood_tool import Ui_MainWindow`);
 * Define a class that initializes your GUI (named 'FancyGUI' in this case);
 * Pass the napari viewer as an argument to this class (with `def __init__(self, napari_viewer):`);
+* Import and applies your GUI (with `uic.loadUi(self.UI_FILE, self)`);
 * Add an instance of this class to the viewer (`viewer.window.add_dock_widget(flood_widget, area='right')`).
 
 When you run the script, you should see the screen below:
@@ -134,7 +136,7 @@ It will add a line with the chosen color in [CSS syntax](https://www.w3schools.c
 
 ## Creating a callback function
 
-As you may have noticed, our GUI is there, but it does nothing yet. We need to link click events to callback functions.
+As you may have noticed, our GUI is there, but it does nothing yet. We need to link click/change events to callback functions.
 Just for fun, let's create a function that relates temperature increases to sea level.
 
 ***Disclaimer:** This specific function, although based on the fact that global warming contributes to increase sea levels, has no scientific background to support it, and it was completely made-up just for a fun illustration. Climate change is a complex subject that involves many internal and external factors which I do not have the expertise to explain.*
@@ -153,42 +155,44 @@ Now, we need to link this function to the 'Apply' button. This can be done with 
 Let's write a callback function that calls our flood function:
 
 ```Python
-def on_flood(self):
+def apply_delta(self):
     label, level = flood(image, delta)
 ```
 
-We now have to specify to our callback where it gets the vaiables `image` and `delta`.
+We now have to specify to our callback where it gets the variables `image` and `delta`.
 * `image` is the input image layer in napari, so let's store it as a numpy array with `image = self.viewer.layers['napari_island'].data`;
 * `delta` is the input value inside the Spinbox widget, so let's get it with `delta = self.doubleSpinBox.value()`;
 * `label` is the output label image, we have to add it to the viewer with `self.viewer.add_labels(label)`;
-* `level` is the output sea level, which we want also to show in our Slider widget, so we set it with `self.horizontalSlider.setValue(level)`.
+* `level` is the output sea level, which we want also to show as our Slider widget, so we set it with `self.horizontalSlider.setValue(level)`.
 
 Lastly, we use a flag (`self.label_layer`) to update the label layer rather than creating a new one every time. The code now looks like this:
 
 ```Python
 import napari
-from flood_tool import Ui_MainWindow
 from skimage.io import imread
 from qtpy.QtWidgets import QMainWindow
+from qtpy import uic
+from pathlib import Path
 
 def flood(image, delta):
     new_level = delta*85
     label_image = image <= new_level
-    label_image = label_image.astype(int)*13 # label 13 is blue in napari
+    label_image = label_image.astype(int)*13  # label 13 is blue in napari
     return(label_image, new_level)
 
 # Define the main window class
-class MainWindow(QMainWindow,  Ui_MainWindow):
+class FancyGUI(QMainWindow):
     def __init__(self, napari_viewer):          # include napari_viewer as argument (it has to have this name)
         super().__init__()
         self.viewer = napari_viewer
-        self.setupUi(self)                     # Initialize GUI
-        
+        self.UI_FILE = str(Path(__file__).parent / "flood_tool.ui")  # path to .ui file
+        uic.loadUi(self.UI_FILE, self)           # load QtDesigner .ui file
+
         self.label_layer = None                # stored label layer variable
-        self.pushButton.clicked.connect(self._apply_delta)
-    
-    def _apply_delta(self):
-        image = self.viewer.layers['napari_island'].data    # We use the layer name to find the correct image layer
+        self.pushButton.clicked.connect(self.apply_delta)
+
+    def apply_delta(self):
+        image = self.viewer.layers['napari_island'].data    # We chose to use the layer name to find the correct image layer
         delta = self.doubleSpinBox.value()
         label, level = flood(image, delta)
         if self.label_layer is None:
@@ -198,10 +202,10 @@ class MainWindow(QMainWindow,  Ui_MainWindow):
         self.horizontalSlider.setValue(level)
 
 viewer = napari.Viewer()
-napari_image = imread('./images/21_Map_of_Tabuaeran_Kiribati_blue.png')    # Reads an image from file
-viewer.add_image(napari_image, name='napari_island')                       # Adds the image to the viewer and give the image layer a name
+napari_image = imread('21_Map_of_Tabuaeran_Kiribati_blue.png')    # Reads an image from file
+viewer.add_image(napari_image, name='napari_island')              # Adds the image to the viewer and give the image layer a name
 
-flood_widget = MainWindow(viewer)                                          # Create instance from our class
+flood_widget = FancyGUI(viewer)                                          # Create instance from our class
 viewer.window.add_dock_widget(flood_widget, area='right')                  # Add our gui instance to napari viewer
 ```
 
@@ -224,7 +228,11 @@ def flood(image: ImageData, delta: float = 0, new_level: int = 0) -> LabelsData:
     return(label_image)
 ```
 
-Here we are specifying that `image` is data from a napari image layer (`ImageData`), `delta` is `float`, `new_level` is `integer` and the output `label_image` will hold data from a napari labels layer (`LabelsData`).
+Here we are specifying that:
+* `image` is data from a napari image layer (`ImageData`);
+* `delta` is `float`;
+* `new_level` is `integer`;
+* output `label_image` will hold data from a napari labels layer (`LabelsData`).
 
 You may have noticed that we placed `new_level` as input instead of output. That's because magicgui creates widgets (like buttons, sliders, etc) based on the input variables.
 
@@ -256,26 +264,34 @@ viewer.window.add_dock_widget(flood_widget, area='right')         # Add our gui 
 
 <img alt="figure 3" id="figure3" src="images/napari_flood_tool3.png" />
 
-Neat! Just a couple of things missing though. We only get Spinboxes now, what about the Slider? Don't worry, we can fix this still maintaining the one-liner, although a bigger one now 😬 . We can add widget options as python dictionaries, like this:
+Neat! Just a couple of things missing though. We only get Spinboxes now, what about the Slider? Don't worry, we can fix this still maintaining the "one-liner", although a bigger one now 😬 . We can add widget options as python dictionaries, like this:
 
 ```Python
 flood_widget = magicgui(flood, delta={'label': 'Temperature Increase (Δ°C):', 
                                            'min': 0, 'max' : 3, 'step': 0.1},
                                 new_level={'label':'Sea Level (dm):', 'widget_type':'Slider',
-                                           'min': 0, 'max' : 255})
+                                           'min': 0, 'max' : 255, 'enabled' : False},
+                                auto_call=True)
 ```
 
-Now, you get practically the same result as the earlier approach. If you don't know the widget options, take a look [here](https://napari.org/magicgui/usage/widget_overview.html) to find the widget you want and discover its parameters.
+Now, you get practically the same result as the earlier approach. If you don't know the widget options, take a look [here](https://napari.org/magicgui/usage/widget_overview.html) to find the widget you want and discover more about its parameters.
+We discarded the button here by using `auto_call=True`. This means that the callback function will be executed whenever the user change any of the inputs. This results in a smoother usability, but be careful, because if the callback function is too slow, it may get called several times before returning, which can lead to frozen screens.
 
 <img alt="figure 4" id="figure4" src="images/napari_flood_tool4.png" />
 
-One limitation of this approach is that the 'Sea level' slider does not get updated since it is an input now. If you need that kind of interaction, you have to either stick to [importing/writing the GUI with Qt](#importing-your-fancy-gui-to-napari) or [modify the FunctionGui](#creating-a-gui-from-functiongui), which is our next session.
+One thing missing is that the 'Sea level' slider does not get updated since it is an input now. But, we can append a callback function to the spibox that updates the slider every time delta changes! Add the following code after creating the widget with magicgui (thanks Talley Lambert for this tip!):
+
+```
+@flood_widget.delta.changed.connect  # Connect a function to delta (spinbox widget)
+def update_level(delta: float):
+    flood_widget.new_level.value = delta * 85  # Update slider when spinbox changes
+```
 
 You can look for further documentation and tutorials at [magicgui quickstart](https://napari.org/magicgui/usage/quickstart.html) and [magicgui in napari](https://napari.org/guides/stable/magicgui.html).
 
 ## Creating a GUI from FunctionGui
 
-The third approach is kind of the middle ground between the first two approaches. By using and modifying FunctionGui (the type that is returned by magicgui), we still get the benefits of magicgui annotations, but we have extra editing capabilities. It doesn't necessarily mean it is the best approach, it depends on your demands.
+The third approach is a more straightforward one. By using and modifying FunctionGui (the type that is returned by magicgui), we can have a more direct access to all options.
 
 We keep the annotated version of our function, but instead of passing it to magicgui, we will define a new `FunctionGui` class, based on [this example](https://napari.org/guides/stable/magicgui.html#magicgui-widgets-functiongui) and pass our flood function to `FunctionGui`. So, I will start with the code shown below:
 
@@ -318,16 +334,15 @@ class MyGui(FunctionGui):
         # do whatever other initialization you want here
 ```
 
-Up to this point, it looks very similar to magicgui, but with extra code. However, with this approach, we can modify the `__init()__` and the `__call()__` functions to gain access to other widgtes and get/send other variables that are not images. For example, besides `label_image`, we can make our function return `new_level` again as an annotation and use its value to change the slider when the user hits the 'Run' button. Check the complete code and result below:
+We can modify the `__init()__` and the `__call()__` functions to gain access to other widgtes and get/send other variables that are not images. For example, besides `label_image`, we can make our function return `new_level` again as an annotation and use its value to change the slider when the user hits the 'Run' button. Check the complete code and result below:
 
 ```Python
 import napari
 from skimage.io import imread
-from magicgui import magicgui
 from napari.types import ImageData, LabelsData, LayerDataTuple
 from magicgui.widgets import FunctionGui
 
-def flood(image: ImageData, delta: float=0, new_level: int=0) -> LayerDataTuple: 
+def flood(image: ImageData, delta: float=0, new_level: int=0) -> LayerDataTuple:
     new_level = delta*85
     label_image = image <= new_level
     label_image = label_image.astype(int)*13 # label 13 is blue in napari
@@ -336,27 +351,30 @@ def flood(image: ImageData, delta: float=0, new_level: int=0) -> LayerDataTuple:
 class MyGui(FunctionGui):
     def __init__(self):
         super().__init__(
-          flood,                 # Here is where we pass our custom annotated function to FunctionGui
-          call_button=True,
+          flood,
+          call_button=False,
+          auto_call=True,
           layout='vertical',
           param_options={'delta':
-                             {'label': 'Temperature Increase (Δ°C):', 
+                             {'label': 'Temperature Increase (Δ°C):',
                               'min': 0, 'max' : 3, 'step': 0.1},
                         'new_level':
                             {'label':'Sea Level (dm):', 'widget_type':'Slider',
-                             'min': 0, 'max' : 255}}
-        ) 
-    def __call__(self):                                                 # Editing default call function (callback function after clicking 'Run')
+                             'min': 0, 'max' : 255, 'enabled' : False}}
+        )
+
+    def __call__(self):
         label_image = super().__call__()
-        new_level = round(label_image[1]['metadata']['new_level'])      # Get metadata 'new_level'
-        self.new_level.value = new_level                                # apply 'new_level' to slider ( which is 'self.new_level')
+        new_level = round(label_image[1]['metadata']['new_level'])
+        self.new_level.value = new_level
 
+
+napari_image = imread('21_Map_of_Tabuaeran_Kiribati_blue.png')
 viewer = napari.Viewer()
-napari_image = imread('21_Map_of_Tabuaeran_Kiribati_blue.png')    # Reads an image from file
-viewer.add_image(napari_image, name='napari_island')              # Adds the image to the viewer and give the image layer a name 
+viewer.add_image(napari_image, name='napari_island')
 
-flood_widget = MyGui()                                            # Create GUI from FunctionGui
-viewer.window.add_dock_widget(flood_widget, area='right')         # Add our gui instance to napari viewer
+flood_widget = MyGui()
+viewer.window.add_dock_widget(flood_widget, area='right')
 ```
 ![](images/napari_flood_tool5.png)
 
