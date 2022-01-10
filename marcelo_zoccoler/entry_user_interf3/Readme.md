@@ -273,7 +273,8 @@ flood_widget = magicgui(flood, delta={'label': 'Temperature Increase (Δ°C):',
                                 auto_call=True)
 ```
 
-Now, you get practically the same result as the earlier approach. We even discarded the button by using `auto_call=True`. If you don't know the widget options, take a look [here](https://napari.org/magicgui/usage/widget_overview.html) to find the widget you want and discover more about its parameters.
+Now, you get practically the same result as the earlier approach. If you don't know the widget options, take a look [here](https://napari.org/magicgui/usage/widget_overview.html) to find the widget you want and discover more about its parameters.
+We discarded the button here by using `auto_call=True`. This means that the callback function will be executed whenever the user change any of the inputs. This results in a smoother usability, but be careful, because if the callback function is too slow, it may get called several times before returning, which can lead to frozen screens.
 
 <img alt="figure 4" id="figure4" src="images/napari_flood_tool4.png" />
 
