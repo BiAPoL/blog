@@ -53,19 +53,19 @@ Great! You have finished the setup 👍
 
 ## Using conda
 
-Although Anaconda provides a graphical user interface, it is rather common to use Anaconda from the command line. Hence, we will stick to using it for the rest of this tutorial. 
+Although Anaconda provides a graphical user interface, it is rather common to use Anaconda from the command line. Hence, we will stick to using it for the rest of this tutorial. If you are not used to using the command line, Robert Haase explains a few concepts [here](https://youtu.be/MOEPe9TGBK0?t=1146). 
 
-First, we open a command line prompt. In Windows, you can simply hit the Windows-button, type `cmd` and hit `Enter` to spawn a command line prompt. **Add info on how to do this on Mac or Linux**. 
-
-*Note*: If, for any reason, you did not check the environment path option above, you will need to open your command line differently. In Windows, hit the Windows button, type `anaconda` and select the application `Anaconda Prompt (anaconda3)`:
-
-![](https://github.com/BiAPoL/blog/blob/getting-started-with-anaconda/johannes_mueller/anaconda_getting_started/imgs/3_create_environments_1.jpg?raw=true)
-
-This will also open a command line **Add info on how to do this on Mac or Linux**.
+First, we open a command line prompt. In Windows, you can simply hit the Windows-button, type `cmd` and hit `Enter` to spawn a command line prompt. In [Mac OS](https://support.apple.com/guide/terminal/open-or-quit-terminal-apd5265185d-f365-44cb-8b09-71a064a42125/mac), click the Launchpad icon in the Dock, type `Terminal` in the search field, then click `Terminal`. In Linux, you typically find the Terminal application listed on the left-hand side application panel.
 
 You can now start Anaconda by typing `conda activate`, which should add the prefix `(base)` at the start of the line:
 
 ![](https://github.com/BiAPoL/blog/blob/getting-started-with-anaconda/johannes_mueller/anaconda_getting_started/imgs/3_create_environments_3.jpg?raw=true)
+
+*Note*: If, for any reason, you did not check the environment path option above, you will need to open your command line differently. In Windows, hit the Windows button, type `anaconda` and select the application `Anaconda Prompt (anaconda3)`. Similarly, this application should exist on other platforms (Mac, Linux) in the list of installed applications.
+
+![](https://github.com/BiAPoL/blog/blob/getting-started-with-anaconda/johannes_mueller/anaconda_getting_started/imgs/3_create_environments_1.jpg?raw=true)
+
+This will also open a command line which will directly activate the `base` environment and you can continue normally from here.
 
 ## Creating a new environment
 
