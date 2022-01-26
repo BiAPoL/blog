@@ -2,6 +2,14 @@
 
 [Johannes Müller](https://biapol.github.io/blog/johannes_mueller), January 26th, 2022
 
+Table of contents:
+- [Introduction](https://github.com/BiAPoL/blog/tree/getting-started-with-anaconda/johannes_mueller/anaconda_getting_started#introduction)
+- [Installation](https://github.com/BiAPoL/blog/tree/getting-started-with-anaconda/johannes_mueller/anaconda_getting_started#installation)
+- [Using conda](https://github.com/BiAPoL/blog/tree/getting-started-with-anaconda/johannes_mueller/anaconda_getting_started#using-conda)
+- [Creating new environments](https://github.com/BiAPoL/blog/tree/getting-started-with-anaconda/johannes_mueller/anaconda_getting_started#creating-a-new-environment)
+- [Installing new packages](https://github.com/BiAPoL/blog/tree/getting-started-with-anaconda/johannes_mueller/anaconda_getting_started#installing-packages)
+- [Working with Jupyter lab](https://github.com/BiAPoL/blog/tree/getting-started-with-anaconda/johannes_mueller/anaconda_getting_started#working-with-jupyter-lab)
+
 ## Introduction
 This blog entry will cover all necessary steps to download and setup Anaconda - and, along with it, Python - on your machine and guide you through some essential setup steps to have it ready for some Bio-image analysis.
 
