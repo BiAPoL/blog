@@ -127,7 +127,7 @@ The newly created notebook will look like this:
 
 A few notes at what can be done here.
 
-- Jupyter notebooks are organized in so-called *cells*. Each cell can be populated either by Python code or Markdown text. Markdown is a lightweight text formatting language - the same one is actually used for this blog :) You can use the cells to write a workflow in Python code and annotate it with formatted text of your own.
+- Jupyter notebooks are organized in so-called *cells*. Each cell can be populated either by Python code or Markdown text. Markdown is a lightweight text formatting language - the same one is actually used for this blog - see [this page](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet) for an overview over availablw formatting You can use the cells to write a workflow in Python code and annotate it with formatted text of your own.
 - Use the `+` icon in the top bar to add new cells
 - Use the `scissor-icon` in the top bar to delete the currently selected cell
 - Use the `run` (triangle) button to run the currently selected cell. You can also do this by hitting `Shift + Enter` on your keyboard
