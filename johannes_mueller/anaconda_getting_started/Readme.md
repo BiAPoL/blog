@@ -52,7 +52,7 @@ Great! You have finished the setup 👍
 
 ## Using conda
 
-Although Anaconda provides a graphical user interface, it is rather common to use Anaconda from the command line. Hence, we will stick to using it for the rest of this tutorial. If you are not used to using the command line, Robert Haase explains a few concepts [here](https://youtu.be/MOEPe9TGBK0?t=1146). 
+Although Anaconda provides a graphical user interface, it is rather common to use Anaconda from the command line. Hence, we will stick to using it for the rest of this tutorial. If you are not used to using the command line, Robert explains a few concepts [here](https://youtu.be/MOEPe9TGBK0?t=1146). 
 
 First, we open a command line prompt. In Windows, you can simply hit the Windows-button, type `cmd` and hit `Enter` to spawn a command line prompt. In [Mac OS](https://support.apple.com/guide/terminal/open-or-quit-terminal-apd5265185d-f365-44cb-8b09-71a064a42125/mac), click the Launchpad icon in the Dock, type `Terminal` in the search field, then click `Terminal`. In Linux, you typically find the Terminal application listed on the left-hand side application panel.
 
