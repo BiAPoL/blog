@@ -40,7 +40,7 @@ When Anaconda has finished downloading, follow these steps during the installati
 
 ![](https://github.com/BiAPoL/blog/blob/getting-started-with-anaconda/johannes_mueller/anaconda_getting_started/imgs/2_anaconda_install_4.jpg?raw=true)
 
-- The installer now asks you to "*dd Anaconda3 to my PATH environment variable*. We suggest to do this, for reasons explained below. This may require administrator privileges. If you do not have such access rights on your machine, don't worry - you will still be able to access all functionality lateron. There is one minor difference which will also be explained below.
+- The installer now asks you to "*Add Anaconda3 to my PATH environment variable*. We suggest to do this and explain it below.
 
 ![](https://github.com/BiAPoL/blog/blob/getting-started-with-anaconda/johannes_mueller/anaconda_getting_started/imgs/2_anaconda_install_5.jpg?raw=true)
 
