@@ -2,7 +2,7 @@
 
 [Johannes Müller](https://biapol.github.io/blog/johannes_mueller), January 26th, 2022
 
-Table of contents:
+## Table of contents
 - [Introduction](https://github.com/BiAPoL/blog/tree/getting-started-with-anaconda/johannes_mueller/anaconda_getting_started#introduction)
 - [Installation](https://github.com/BiAPoL/blog/tree/getting-started-with-anaconda/johannes_mueller/anaconda_getting_started#installation)
 - [Using conda](https://github.com/BiAPoL/blog/tree/getting-started-with-anaconda/johannes_mueller/anaconda_getting_started#using-conda)
