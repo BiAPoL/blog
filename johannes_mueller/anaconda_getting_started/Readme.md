@@ -115,7 +115,7 @@ As programming environment, we will use [Jupyer lab](https://jupyter.org/), a co
 jupyter-lab
 ```
 
-which should open the Jupyter starting window. If you are wondering why this is opening in your browser - this is exactly how it is intented to be. Now we can start a new notebook by clicking on the highlighted icon:
+Jupyter will then start in your browser. If you are wondering why this is opening in your browser - this is exactly how it is intented to be. Now we can start a new notebook by clicking on the highlighted icon:
 
 ![](https://github.com/BiAPoL/blog/blob/getting-started-with-anaconda/johannes_mueller/anaconda_getting_started/imgs/4_jupyter_lab.jpg?raw=true)
 
