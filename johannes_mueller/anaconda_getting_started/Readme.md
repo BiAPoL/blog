@@ -98,7 +98,7 @@ conda install -c conda-forge napari pyopencl jupyter
 
 Conda will again ask you for your confirmation (`y` and `Enter`) to proceed with the installation. Other than that, you are now ready for some basic coding! 👍
 
-*Note*: When installing packages from behind a proxy server (e.g., from within the networks of large institutions or companies), you have to specify these proxy settings to conda. To do so, locate the file `.condarc` on your computer. On Windows, it is typically located at `C:\Users\YourUserName\.condarc`. Open it with a text editor of your choice and add the following lines to the file:
+*Note*: When installing packages from behind a proxy server (e.g., from within the networks of university hospitals or companies), you have to specify these proxy settings to conda. To do so, locate the file `.condarc` on your computer. On Windows, it is typically located at `C:\Users\YourUserName\.condarc`. Open it with a text editor of your choice and add the following lines to the file:
 
 ```
 proxy_servers:
