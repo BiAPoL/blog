@@ -20,7 +20,7 @@ Before we start, why do we need Anaconda in the first place to use Python? Rober
 ## Installation
 This tutorial is done on Windows, but should work equally on Mac OS. In order to download Anaconda, go to https://www.anaconda.com/products/individual and click on `Download`:
 
-![](https://github.com/BiAPoL/blog/blob/getting-started-with-anaconda/johannes_mueller/anaconda_getting_started/imgs/1_anaconda_download.jpg?raw=true)
+![](imgs/1_anaconda_download.jpg)
 
 When Anaconda has finished downloading, follow these steps during the installation:
 
