@@ -11,7 +11,7 @@
 - [Working with Jupyter lab](#working-with-jupyter-lab)
 
 ## Introduction
-This blog entry will cover all necessary steps to download and setup Anaconda - and, along with it, Python - on your machine and guide you through some essential setup steps to have it ready for some Bio-image analysis.
+This blog post will cover all necessary steps to download and setup Anaconda and Python on your machine and guide you through some steps to have it ready for some Bio-image analysis.
 
 First off, why do you need Anaconda in the first place in order to use Python? Robert Haase explains it in greater detail [here](https://youtu.be/MOEPe9TGBK0?t=1806), but a few key features are:
 - Python is organized as a programming language for which everyone can write his or her own module, so-called *libraries* or *packages*. Python in general and such libraries in particular are subject to version changes - Anaconda helps you to manage the libraries you use to ensure compatibility.
