@@ -110,7 +110,7 @@ Ask your local IT admin to get the name of your institution's proxy server.
 
 ## Working with Jupyter Lab:
 
-If you were able to complete the above installation instructions, you can now launch Jupyter lab from your console by simply typing
+As programming environment, we will use [Jupyer lab](https://jupyter.org/), a convenient environment for python programming in the browser. If you were able to complete the above installation instructions, you can now launch Jupyter lab from your console by simply typing
 ```
 jupyter-lab
 ```
