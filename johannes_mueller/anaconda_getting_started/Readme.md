@@ -72,7 +72,7 @@ This will also open a command line which will directly activate the `base` envir
 
 With this out of the way, you can create a new environment with the following command:
 ```
-conda create -n my_first_env Python=3.8
+conda create -n my_first_env Python=3.9
 ```
 This will create a new environment with the name `my_first_env` and with Python version 3.8. Conda will then download a few basic packages that are shipped along with the environment and ask you to `Proceed ([y]/n)` which you have to confirm with typing `y` and hitting `Enter`. Conda will now proceed to download and install some necessary packages.
 
