@@ -60,7 +60,7 @@ You can now start Anaconda by typing `conda activate`, which should add the pref
 
 ![](https://github.com/BiAPoL/blog/blob/getting-started-with-anaconda/johannes_mueller/anaconda_getting_started/imgs/3_create_environments_3.jpg?raw=true)
 
-*Note*: If, for any reason, you did not check the environment path option above, you will need to open your command line differently. In Windows, hit the Windows button, type `anaconda` and select the application `Anaconda Prompt (anaconda3)`. Similarly, this application should exist on other platforms (Mac, Linux) in the list of installed applications.
+*Note*: If, for any reason, you did not check the "Add to PATH" option above, you will need to open your command line differently. In Windows, hit the Windows button, type `anaconda` and select the application `Anaconda Prompt (anaconda3)`. Similarly, this application should exist on other platforms (Mac, Linux) in the list of installed applications.
 
 ![](https://github.com/BiAPoL/blog/blob/getting-started-with-anaconda/johannes_mueller/anaconda_getting_started/imgs/3_create_environments_1.jpg?raw=true)
 
