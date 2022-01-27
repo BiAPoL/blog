@@ -30,23 +30,23 @@ When Anaconda has finished downloading, follow these steps during the installati
 
 - Click `I Agree`:
 
-![](https://github.com/BiAPoL/blog/blob/getting-started-with-anaconda/johannes_mueller/anaconda_getting_started/imgs/2_anaconda_install_2.jpg?raw=true)
+![](imgs/2_anaconda_install_2.jpg)
 
 - Now you have to make the choice whether conda should be installed for `All users` or not. We suggest to click `Just me`, as installing Anaconda for all users requires Administrator privileges and can cause trouble if other users on the same machine install  Anaconda, too.
 
-![](https://github.com/BiAPoL/blog/blob/getting-started-with-anaconda/johannes_mueller/anaconda_getting_started/imgs/2_anaconda_install_3.jpg?raw=true)
+![](imgs/2_anaconda_install_3.jpg)
 
 - Install Anaconda into the default location:
 
-![](https://github.com/BiAPoL/blog/blob/getting-started-with-anaconda/johannes_mueller/anaconda_getting_started/imgs/2_anaconda_install_4.jpg?raw=true)
+![](imgs/2_anaconda_install_4.jpg)
 
 - The installer now asks you to "*Add Anaconda3 to my PATH environment variable*. We suggest to do this and explain it below.
 
-![](https://github.com/BiAPoL/blog/blob/getting-started-with-anaconda/johannes_mueller/anaconda_getting_started/imgs/2_anaconda_install_5.jpg?raw=true)
+![](imgs/2_anaconda_install_5.jpg)
 
 - Follow the next windows until you arrive here. No need to check these boxes - that's what you are here for, anyways :) Click `Finish` to exit the setup.
 
-![](https://github.com/BiAPoL/blog/blob/getting-started-with-anaconda/johannes_mueller/anaconda_getting_started/imgs/2_anaconda_install_6.jpg?raw=true)
+![](imgs/2_anaconda_install_6.jpg)
 
 Great! You have finished the setup 👍
 
@@ -58,11 +58,11 @@ First, we open a command line prompt. In Windows, you can simply hit the Windows
 
 You can now start Anaconda by typing `conda activate`, which should add the prefix `(base)` at the start of the line:
 
-![](https://github.com/BiAPoL/blog/blob/getting-started-with-anaconda/johannes_mueller/anaconda_getting_started/imgs/3_create_environments_3.jpg?raw=true)
+![](imgs/3_create_environments_3.jpg)
 
 *Note*: If, for any reason, you did not check the "Add to PATH" option above, you will need to open your command line differently. In Windows, hit the Windows button, type `anaconda` and select the application `Anaconda Prompt (anaconda3)`. Similarly, this application should exist on other platforms (Mac, Linux) in the list of installed applications.
 
-![](https://github.com/BiAPoL/blog/blob/getting-started-with-anaconda/johannes_mueller/anaconda_getting_started/imgs/3_create_environments_1.jpg?raw=true)
+![](imgs/3_create_environments_1.jpg)
 
 This will also open a command line which will directly activate the `base` environment and you can continue normally from here.
 
@@ -84,7 +84,7 @@ conda activate my_first_env
 
 This should lead to the prefix `my_first_env` to appear at the beginning of your command line:
 
-![](https://github.com/BiAPoL/blog/blob/getting-started-with-anaconda/johannes_mueller/anaconda_getting_started/imgs/3_create_environments_4.jpg?raw=true)
+![](imgs/3_create_environments_4.jpg)
 
 That's it - you have created and activated your environment 👍
 
@@ -117,11 +117,11 @@ jupyter-lab
 
 Jupyter will then start in your browser. If you are wondering why this is opening in your browser - this is exactly how it is intented to be. Now we can start a new notebook by clicking on the highlighted icon:
 
-![](https://github.com/BiAPoL/blog/blob/getting-started-with-anaconda/johannes_mueller/anaconda_getting_started/imgs/4_jupyter_lab.jpg?raw=true)
+![](imgs/4_jupyter_lab.png)
 
 The newly created notebook will look like this:
 
-![](https://github.com/BiAPoL/blog/blob/getting-started-with-anaconda/johannes_mueller/anaconda_getting_started/imgs/4_jupyter_lab2.jpg?raw=true)
+![](imgs/4_jupyter_lab2.png)
 
 A few notes at what can be done here.
 
@@ -137,6 +137,6 @@ Finally, test your notebook by typing the obligatory
 print('Hello World!')
 ```
 
-![](https://github.com/BiAPoL/blog/blob/getting-started-with-anaconda/johannes_mueller/anaconda_getting_started/imgs/4_jupyter_lab3.jpg?raw=true)
+![](imgs/4_jupyter_lab3.png)
 
 Happy coding!
