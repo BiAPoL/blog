@@ -13,10 +13,9 @@
 ## Introduction
 This blog post will cover all necessary steps to download and setup Anaconda and Python on your machine and guide you through some steps to have it ready for some Bio-image analysis.
 
-First off, why do you need Anaconda in the first place in order to use Python? Robert Haase explains it in greater detail [here](https://youtu.be/MOEPe9TGBK0?t=1806), but a few key features are:
-- Python is organized as a programming language for which everyone can write his or her own module, so-called *libraries* or *packages*. Python in general and such libraries in particular are subject to version changes - Anaconda helps you to manage the libraries you use to ensure compatibility.
-- **conda environments**: Anaconda allows you to create so-called environments. They are usually created specifically for each projects and provide the possibility to only install the packages you really need for this particular project. This makes it much easier to maintain compatibility!
-- A propos conda environments: These are also a great tool to pack up entire workflows, upload them to a hosting service such as github and *restore* them when needed.
+Before we start, why do we need Anaconda in the first place to use Python? Robert Haase explains it in a bit more detail [here](https://youtu.be/MOEPe9TGBK0?t=1806). A few key features are:
+- Python is a programming language simplifying collaboration and exchange between scientists from different disciplines. Everyone can write their own scripts and modules, and share them with everybody else. While this exchange enables collaborative data science projects on an entire new level, it is sometimes tricky to install the right versions of the right modules to make scripts run on each other's computer. Anaconda helps you to manage the modules and ensures compatibility.
+- Anaconda allows you to create so-called "conda" environments. It is recommended to create one conda environment for every project, just like you have one text document for one publication. This makes it much easier to maintain python code and modules that are relevant for the given project. 
 
 ## Installation
 This tutorial is done on Windows, but should work equally on Mac OS. In order to download Anaconda, go to https://www.anaconda.com/products/individual and click on `Download`:
