@@ -26,7 +26,7 @@ When Anaconda has finished downloading, follow these steps during the installati
 
 - Click `Next`:
 
-![](https://github.com/BiAPoL/blog/blob/getting-started-with-anaconda/johannes_mueller/anaconda_getting_started/imgs/2_anaconda_install_1.jpg?raw=true)
+![](imgs/2_anaconda_install_1.jpg)
 
 - Click `I Agree`:
 
