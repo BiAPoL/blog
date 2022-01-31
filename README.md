@@ -3,6 +3,11 @@ Most of us study and work at the [Bio-image Analysis Technology Development grou
 We blog about image data science, knowledge exchange and research data management in the life sciences. The contents of this blog are licensed by the respective authors under [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/) license unless a different license is specified.
 
 <hr/>
+## [Getting started with Python and Anaconda](https://biapol.github.io/blog/johannes_mueller/anaconda_getting_started) <small>Johannes Müller, January 26th, 2022</small>
+<img style="float: right; height:100px; width:100px" src="images/python_logo.png">
+This post will help you to get started with using Python. More specifically, it will help you set up Anaconda environments which can be used to control installed packages effectively.
+
+<hr/>
 ## [GUIs: Creating graphical user interfaces with/for Python, Part IV](https://biapol.github.io/blog/marcelo_zoccoler/entry_user_interf4) <small>Marcelo Zoccoler, Johannes Müller, December 15th, 2021</small>
 <img style="float: right; height:100px; width:100px" src="images/napari_logo.png">
 Last part of this series, this post will teach you how to turn your napari GUI/widget into a napari plugin and publish it on Pypi, so everyone can access it, install it and benefit from your contribution. 
