@@ -18,7 +18,7 @@ Before we start, why do we need Anaconda in the first place to use Python? Rober
 - Anaconda allows you to create so-called "conda" environments. It is recommended to create one conda environment for every project, just like you have one text document for one publication. This makes it much easier to maintain python code and modules that are relevant for the given project. 
 
 ## Installation
-This tutorial is done on Windows, but should work equally on Mac OS. In order to download Anaconda, go to https://www.anaconda.com/products/individual and click on `Download`:
+This tutorial is done on Windows, but should work equally on Mac OS. In order to download Anaconda, go to [https://www.anaconda.com/products/individual](https://www.anaconda.com/products/individual) and click on `Download`:
 
 ![](imgs/1_anaconda_download.jpg)
 
@@ -72,7 +72,7 @@ This will also open a command line which will directly activate the `base` envir
 
 With this out of the way, you can create a new environment with the following command:
 ```
-conda create -n my_first_env Python=3.9
+conda create --name my_first_env Python=3.9
 ```
 This will create a new environment with the name `my_first_env` and with Python version 3.9. Conda will then download a few basic packages that are shipped along with the environment and ask you to `Proceed ([y]/n)` which you have to confirm with typing `y` and hitting `Enter`. Conda will now proceed to download and install some necessary packages.
 
