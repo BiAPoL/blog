@@ -93,7 +93,7 @@ That's it - you have created and activated your environment 👍
 In order to do some actual coding and image processing we still need a programm that allows us to actual write, edit and execute some code. For this we will be using [Jupyter lab](https://jupyter.org/), which you can convieniently install through conda. We will also need a few other packages for proper image processing, namely [Napari](https://napari.org/) and [Pyopencl](https://pypi.org/project/pyopencl/). To install these type the following command:
 
 ```
-conda install -c conda-forge napari pyopencl jupyter
+conda install -c conda-forge napari pyopencl jupyterlab
 ```
 
 Conda will again ask you for your confirmation (`y` and `Enter`) to proceed with the installation. Other than that, you are now ready for some basic coding! 👍
