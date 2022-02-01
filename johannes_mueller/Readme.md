@@ -13,8 +13,10 @@ In 2021, I became part of the bio-image analysis group of Robert Haase at Physic
 educate others to empower them to develop their own workflows and develop new methods such that they can be deployed by as many researchers as possible.
 
 ## Blog posts
-* [GUIs in Python - getting started](https://github.com/BiAPoL/blog/blob/blog_entry_UI/johannes_mueller/entry_user_inter/Readme.md)
-* [advanced GUIs with Qt designer](https://github.com/BiAPoL/blog/blob/blog_entry_UI/johannes_mueller/entry_user_interf2/Readme.md)
+* [GUIs in Python - getting started](https://biapol.github.io/blog/johannes_mueller/entry_user_inter/)
+* [Advanced GUIs with Qt designer](https://biapol.github.io/blog/johannes_mueller/entry_user_interf2/)
+* [Automated package documentation with Sphinx](https://biapol.github.io/blog/johannes_mueller/entry_sphinx/)
+* [Getting started with Python and Anaconda](https://biapol.github.io/blog/johannes_mueller/anaconda_getting_started/)
 
 ## Links
 * [BiA-PoL group website](https://physics-of-life.tu-dresden.de/en/research/technology-development-groups/bio-image-analysis)
