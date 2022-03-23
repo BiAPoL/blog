@@ -3,6 +3,11 @@ Most of us study and work at the [Bio-image Analysis Technology Development grou
 We blog about image data science, knowledge exchange and research data management in the life sciences. The contents of this blog are licensed by the respective authors under [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/) license unless a different license is specified.
 
 <hr/>
+## [Mini-Sabbatical Experience at Bia-PoL](https://biapol.github.io/blog/marcelo_zoccoler/mini_sabbatical_rike) <small>Friederike Kessel, February 28th, 2022</small>
+<img style="float: right; height:100px; width:100px" src="images/2290861_computer_laptop_network_notebook_share_icon.png">
+This is a blog post about the personal experience of Rike, a post-doc who had just finished her PhD at the University Clinic in Dresden. She spent a two weeks training period at BiA-PoL working with image analysis.
+
+<hr/>
 ## [Getting started with Python and Anaconda](https://biapol.github.io/blog/johannes_mueller/anaconda_getting_started) <small>Johannes Müller, January 26th, 2022</small>
 <img style="float: right; height:100px; width:100px" src="images/python_logo.png">
 This post will help you to get started with using Python. More specifically, it will help you set up Anaconda environments which can be used to control installed packages effectively.
