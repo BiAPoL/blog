@@ -1,7 +1,7 @@
 # Mini-Sabbatical Experience at Bia-PoL
 Friederike Kessel, February 28th 2022
 
-Hello, my name is Rike. For the last four years I have been a PhD student in experimental nephrology at the University clinic in Dresden. During this time I started diving into the possibilities of bioimage analysis with Fiji. By using the ImageJ Macro language I helped colleagues to automatize workflows for the quantification of fluorescent signals in histology and intravital microscopy in mice.
+Hello, my name is Rike. For the last four years I have been a PhD student in experimental nephrology at the University Hospital Carl Gustav Carus in Dresden. During this time I started diving into the possibilities of bioimage analysis with Fiji. By using the ImageJ Macro language I helped colleagues to automatize workflows for the quantification of fluorescent signals in histology and intravital microscopy in mice.
  
 I contacted Robert at the BiAPoL because I was looking for something different, interesting to do for a short time between finishing my PhD and starting a new job as PostDoc in the field of neuroregeneration. Surprisingly, he already had the concept of a mini-sabbatical for this kind of scenario in mind – so for four weeks in November 2021 I joined him and his group for some exploration in the field of bioimage analysis.
  
