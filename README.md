@@ -3,7 +3,7 @@ Most of us study and work at the [Bio-image Analysis Technology Development grou
 We blog about image data science, knowledge exchange and research data management in the life sciences. The contents of this blog are licensed by the respective authors under [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/) license unless a different license is specified.
 
 <hr/>
-## [Running Deep-learning Scripts in BiA-PoL Omero Server](https://biapol.github.io/blog/marcelo_zoccoler/omero_scripts) <small>Marcelo Zoccoler, May 2nd, 2022</small>
+## [Running Deep-learning Scripts in the BiA-PoL Omero Server](https://biapol.github.io/blog/marcelo_zoccoler/omero_scripts) <small>Marcelo Zoccoler, May 2nd, 2022</small>
 <img style="float: right; height:100px; width:100px" src="images/ome-logomark.png">
 This blog post explains how to run omero scripts in the BiA-PoL omero server. In this example, we execute a script on the server that runs a 2D [Stardist](https://github.com/stardist/stardist) model on a sample image.
 
