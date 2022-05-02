@@ -3,6 +3,12 @@ Most of us study and work at the [Bio-image Analysis Technology Development grou
 We blog about image data science, knowledge exchange and research data management in the life sciences. The contents of this blog are licensed by the respective authors under [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/) license unless a different license is specified.
 
 <hr/>
+## [Running Deep-learning Scripts in BiA-PoL Omero Server](https://biapol.github.io/blog/marcelo_zoccoler/omero_scripts) <small>Marcelo Zoccoler, May 2nd, 2022</small>
+<img style="float: right; height:100px; width:100px" src="images/ome-logomark.png">
+This blog post explains how to run omero scripts in the BiA-PoL omero server. In this example, we execute a script on the server that runs a 2D [Stardist](https://github.com/stardist/stardist) model on a sample image.
+
+
+<hr/>
 ## [Mini-Sabbatical Experience at Bia-PoL](https://biapol.github.io/blog/marcelo_zoccoler/mini_sabbatical_rike) <small>Friederike Kessel, February 28th, 2022</small>
 <img style="float: right; height:100px; width:100px" src="images/2290861_computer_laptop_network_notebook_share_icon.png">
 This is a blog post about the personal experience of Rike, a post-doc who had just finished her PhD at the University Clinic in Dresden. She spent a two weeks training period at BiA-PoL working with image analysis.
