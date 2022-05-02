@@ -24,7 +24,7 @@ After installing the application, you will need to provide the server address (s
 
 After logging in, you should get to the following screen:
 
-![](omero_screen1.png)
+![](figures/omero_screen1.png)
 
 Images in Omero are usually organized as:
 ```
@@ -37,24 +37,24 @@ User/Client
 
 The Orphaned Images is the place where images are stored if they have no Project associated to them. You can browse through this file structure by clicking on the `+` buttons to open these directories. Once you reach the Dataset level, you can see image thumbnails in the main panel. If you click on them, you can get the corresponding information on the right side. One of the most important properties is the Project/Dataset/Image ID (red arrow in the figure below), which you will usually need to provide to scripts.
 
-![](omero_screen2.png)
+![](figures/omero_screen2.png)
 
 Omero scripts can be run by clicking on the small button with two gears and a green triangle at Omero Insight toolbar. A pop-up menu should open where you can select the origin of your scripts (`omero` or `CMCB`). 
 
-![](omero_screen3.png)
+![](figures/omero_screen3.png)
 
 In `omero`, you can run the standard omero scripts and in `CMCB` you can run one of the plugins we are developing. Most of them are work in progress, that is why you may find names starting with 'testing'. In this tutorial, we will use "apply_stardist2D". Clicking on it open a new small window:
 
-![](omero_screen4.png)
+<img src="figures/omero_screen4.png" width="300">
 
 There you should provide 3 parameters: the "Data Type" (Dataset or Image), the corresponding ID and one of the pretrained Stardist2D models. Then, click on the "Run Script" button. The activities window should pop-up indicating the status of execution. After the script finish running, it should look like this:
 
-![](omero_screen5.png)
+<img src="figures/omero_screen5.png" width="300">
 
 You can download the "Info" and "Error" as text files. "Error" may contain errors or, in this case, just some warnings that can be ignored. "Info" contains information returned from print statements within the script.
 
-The resulting labeled image may not be visible after that. If that is the case, refresh the files by clicking on the refresh button (![](refresh.png)).
+The resulting labeled image may not be visible after that. If that is the case, refresh the files by clicking on the refresh button (<img src="figures/refresh.png" width="15">).
 
-![](omero_screen6.png)
+![](figures/omero_screen6.png)
 
-The output image should now appear in the same place as the input image/dataset. It gets the name 'label_2D' + the chosen model + the input image name. It also gets some tags and key/pair values assigned to it to indicated how it was produced (right side panel).
+The output image should now appear in the same place as the input image/dataset. It gets the name 'label_2D' + the chosen model + the input image name. It also gets some tags and key/pair values assigned to it to indicate how it was produced (right side panel).
