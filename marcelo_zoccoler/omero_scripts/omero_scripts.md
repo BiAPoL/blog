@@ -1,4 +1,4 @@
-# Loading Images and Running Scripts in BiA-PoL Omero Server
+# Running Deep-Learning Scripts in the BiA-PoL Omero Server
 [Marcelo Zoccoler](https://biapol.github.io/blog/marcelo_zoccoler), May 2nd 2022
 
 ## Getting access to the BiA-PoL Omero Server
