@@ -18,7 +18,7 @@ The Omero webpage has a good step-by-step tutorial of how to import images to th
 
 - [Import data using the Desktop Client](https://omero-guides.readthedocs.io/projects/upload/en/latest/import-desktop-client.html#setup)
 
-After installing the application, you will need to provide the server address (step 2 of the link above). The server address is https://omero-web.biotec.tu-dresden.de . Then, provide the same ZIH username and password to connect to the server. Remember to be connected to the VPN!
+After installing the application, you will need to provide the server address (step 2 of the link above). The server address (with Omero Insight) is https://omero-int.biotec.tu-dresden.de . Then, provide the same ZIH username and password to connect to the server. Remember to be connected to the VPN!
 
 ## Running Omero Scripts
 
