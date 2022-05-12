@@ -48,7 +48,7 @@ In `omero`, you can run the standard omero scripts. If you are logged to BiA-PoL
 
 <img src="figures/omero_screen4.png" width="300">
 
-There you should provide 3 parameters: the "Data Type" (Dataset or Image), the corresponding ID and one of the pretrained Stardist2D models. Then, click on the "Run Script" button. The Activities window (magenta square below) should pop-up on the top left, indicating the status of execution. After the script finish running, it should look like this:
+There you should provide 3 parameters: the "Data Type" (Dataset or Image), the corresponding ID and one of the pretrained Stardist2D models. Then, click on the "Run Script" button. The Activities window (magenta square below) should pop-up on the top, indicating the status of execution. After the script finish running, it should look like this:
 
 <img src="figures/omero_screen5.png" width="300">
 
@@ -56,7 +56,7 @@ You can download the "Info" (green arrow above) and "Error" (cyan arrow above) a
 
 The resulting labeled image may not be visible after that. If that is the case, refresh the files by clicking on the refresh button:
 
-<img src="figures/refresh.png" width="15">
+<img src="figures/refresh.png" width="300">
 
 ![](figures/omero_screen6.png)
 
