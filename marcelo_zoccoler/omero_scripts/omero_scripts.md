@@ -1,9 +1,20 @@
 # Running Deep-Learning Scripts in the BiA-PoL Omero Server
 [Marcelo Zoccoler](https://biapol.github.io/blog/marcelo_zoccoler), May 2nd 2022
 
+## Omero Server
+
+OMERO is client-server software for managing, visualizing and analyzing microscopy images and associated metadata. Once configured, it can be accessed from a few different interfaces, which are:
+  - A command line;
+  - A web browser;
+  - A Desktop application.
+
+Viewing images and running scripts can be done from any of these interfaces, but importing images to the server can only be done via command line or the desktop application. Thus, in this tutorial, we show 
+  1. how to load data using the desktop application, called Omero Insight;
+  2. how to run a script for deep-learning (Stardist 2D) through the browser. 
+
 ## Getting access to the BiA-PoL Omero Server
 
-OMERO is client-server software for managing, visualizing and analyzing microscopy images and associated metadata. The Bio-Image Analysis group from the Physics of Life Cluster of Excellence has an Omero server. In this tutorial, we will explain how you can import data to the server and run a custom Stardist2D omero script. If you have access to your own omero server, you may skip to the next section.
+The Bio-Image Analysis group from the Physics of Life Cluster of Excellence has an Omero server. If you have access to your own omero server, you may skip to the next section.
 
 Access to the BiA-PoL Omero server may be provided to local users through the following steps:
 
@@ -14,12 +25,12 @@ Access to the BiA-PoL Omero server may be provided to local users through the fo
 
 ## Importing data to the Omero Server
 
-You can import data to the server either via command line or via the Desktop Client. Here, we will explain the second option (Omero Insight application).
-The Omero webpage has a good step-by-step tutorial of how to import images to the server using the Desktop client application `Omero.insight`. When asked (step 2 of the link below), provide you omero server address. For the BiA-PoL server, the address is https://omero-int.biotec.tu-dresden.de .
+As mentioned before, you can import data to the server either via command line or via the Desktop Client. Here, we will explain the second option (Omero Insight application).
+The Omero webpage has a good step-by-step tutorial of how to import images to the server using the Desktop client application `Omero.insight`. When asked (step 2 of the link below), provide your omero server address. For the BiA-PoL server, the address is https://omero-int.biotec.tu-dresden.de .
 
 - [Import data using the Desktop Client](https://omero-guides.readthedocs.io/projects/upload/en/latest/import-desktop-client.html#setup)
 
-After installing Omero Insight and loading some images, you can access the server either from Omero Insight or from the browser. From this point forward, we will only be accessing it from the browser. The server address from the browser is slightly different: https://omero-web.biotec.tu-dresden.de . There, provide the same ZIH username and password to connect to the server. Remember to be connected to the VPN!
+After installing Omero Insight and loading some images, you can access the server from Omero Insight, from command line or from the browser. From this point forward, we will only be accessing it from the browser. The server address from the browser is slightly different: https://omero-web.biotec.tu-dresden.de . There, provide the same ZIH username and password to connect to the server. Remember to be connected to the VPN!
 
 ## Running Omero Scripts
 
