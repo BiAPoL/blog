@@ -3,8 +3,9 @@
 
 ## Getting access to the BiA-PoL Omero Server
 
-The Bio-Image Analysis group from the Physics of Life Cluster of Excellence has an Omero server **provide some information about the server**.
-Access to it may be provided to local users through the following steps:
+OMERO is client-server software for managing, visualizing and analyzing microscopy images and associated metadata. The Bio-Image Analysis group from the Physics of Life Cluster of Excellence has an Omero server. In this tutorial, we will explain how you can import data to the server and run a custom Stardist2D omero script. If you have access to your own omero server, you may skip to the next section.
+
+Access to the BiA-PoL Omero server may be provided to local users through the following steps:
 
 1. Contact BiA-PoL members to check if you are allowed to get access to the server by email.
 2. One of the BiA-PoL members will ask the IT department to create an account for you. You need a ZIH account for that.
@@ -13,12 +14,12 @@ Access to it may be provided to local users through the following steps:
 
 ## Importing data to the Omero Server
 
-You can import data to the server either via command line or via the Desktop Client. Here, we will explain the second option.
-The Omero webpage has a good step-by-step tutorial of how to import images to the server using the Desktop client application `Omero.insight`:
+You can import data to the server either via command line or via the Desktop Client. Here, we will explain the second option (Omero Insight application).
+The Omero webpage has a good step-by-step tutorial of how to import images to the server using the Desktop client application `Omero.insight`. When asked (step 2 of the link below), provide you omero server address. For the BiA-PoL server, the address is https://omero-int.biotec.tu-dresden.de .
 
 - [Import data using the Desktop Client](https://omero-guides.readthedocs.io/projects/upload/en/latest/import-desktop-client.html#setup)
 
-After installing the application, you will need to provide the server address (step 2 of the link above). The server address (with Omero Insight) is https://omero-int.biotec.tu-dresden.de . Then, provide the same ZIH username and password to connect to the server. Remember to be connected to the VPN!
+After installing Omero Insight and loading some images, you can access the server either from Omero Insight or from the browser. From this point forward, we will only be accessing it from the browser. The server address from the browser is slightly different: https://omero-web.biotec.tu-dresden.de . There, provide the same ZIH username and password to connect to the server. Remember to be connected to the VPN!
 
 ## Running Omero Scripts
 
