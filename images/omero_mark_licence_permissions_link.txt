@@ -1,0 +1,13 @@
+https://www.openmicroscopy.org/artwork/
+
+Feel free to:
+ Use the OME logo or mark to link to our website
+ Use the mark in social buttons to link to our website
+ Change the dimension so long as you maintain the aspect ratio
+
+Please DON’T:
+ Integrate the OME logo or mark into your logo (e.g. placing your logo "inside" of ours)
+ Use any of our logos for your application’s icon
+ Create a modified version of any of our logos
+ Change the colors of our logos
+ Change the dimensions or add your own text/images
