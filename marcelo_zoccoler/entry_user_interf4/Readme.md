@@ -325,11 +325,11 @@ Let's report the package's version. We will update two files for that:
 
 Now, remember to [update your Github repository](#updating_github_repository) again (commit changes, push/publish branch, create Pull request, merge).
 
-The last step of versioning is to provide a version tag. On the Github repository main page, at the right side on Releases, click on "Create a new release" and the following page should load.
+The last step of versioning is to provide a version tag. On the Github repository's main page, at the right side, on Releases, click on "Create a new release" and the following page should load.
 
 ![](images/github_release.png)
 
-Fill the field highlighted by green boxes and click on "Publish Release". 
+Fill the fields highlighted by green boxes and click on "Publish Release". 
 
 ### Create source files
 
