@@ -1,5 +1,5 @@
 # Custom user interfaces for Python (Part 4)
-[Marcelo Zoccoler](https://biapol.github.io/blog/marcelo_zoccoler), [Johannes Müller](https://biapol.github.io/blog/johannes_mueller), December 15th 2021
+[Marcelo Zoccoler](https://biapol.github.io/blog/marcelo_zoccoler), [Johannes Müller](https://biapol.github.io/blog/johannes_mueller), December 15th 2021, updated on July 20th 2022
 
 ## Introduction
 Graphical user interfaces (*GUIs*) are powerful tools to make your scripts and functions available to users that are not necessarily familiar with a lot of coding, development platforms (e.g. Spyder or PyCharm) - and shouldn't be experienced programmers in order to use your tools.
@@ -315,7 +315,25 @@ At the end, you should see the image below, which means your online repository i
 
 ## Publishing your plugin
 After you developed your plugin to a point where you think it's ready to share it with the world, it's time so submit it to the python package index (PyPI).
-Publishing the plugin on [PyPi](https://pypi.org/) may sound like a big ordeal, but is, in fact, very simple. To do so, first create an account on [PyPi](https://pypi.org/account/register/). After this is done, open an anaconda command prompt and `cd` into your project repository. 
+Publishing the plugin on [PyPi](https://pypi.org/) may sound like a big ordeal, but is, in fact, very simple. To do so, first create an account on [PyPi](https://pypi.org/account/register/).
+
+### Versioning
+
+Let's report the package's version. We will update two files for that:
+   1. Go to your project repository and open the `setup.cfg` file. On this file, at around the third line, you should find something like `version == 0.0.1`. If you are releasing a newer version, replace `0.0.1` by your new version number. To know more about versioning standards, check [this post](https://py-pkgs.org/07-releasing-versioning.html#version-numbering). 
+   2. Open the `__inti__.py` located in the same folder where your plugin code resides - which in this example is flood-napari/src/flood_napari - update the version inside this file as well and save it. If you prefer, there are ways to [automate version bumping](https://py-pkgs.org/07-releasing-versioning.html#automatic-version-bumping).
+
+Now, remember to [update your Github repository](#updating_github_repository) again (commit changes, push/publish branch, create Pull request, merge).
+
+The last step of versioning is to provide a version tag. On the Github repository main page, at the right side on Releases, click on "Create a new release" and the following page should load.
+
+![](images/github_release.png)
+
+Fill the field highlighted by green boxes and click on "Publish Release". 
+
+### Create source files
+
+After this is done, open an anaconda command prompt and `cd` into your project repository. 
 
 Next, you need to create the necessary packaging information from your sourcefiles. You can do so by either creating a *source distribution* of your package with 
 ```bash
@@ -327,11 +345,15 @@ or a *wheel* using
 python setup.py bdist_wheel
 ```
 
-The difference between both is, in short, that the source distribution provides, as the name suggests, the source files that can be downloaded and have to be compiled upon installation of the package. Python wheels, on the contrary, come pre-built, which leads to faster installation. This can be convenient for large packages. For a more in-depth on the advantages of either strategy, see [this blog](https://medium.com/ochrona/understanding-python-package-distribution-types-25d53308a9a). For simple projects, there is no damage in simply providing both. 
+The difference between both is, in short, that the source distribution provides, as the name suggests, the source files that can be downloaded and have to be compiled upon installation of the package. Python wheels, on the contrary, come pre-built, which leads to faster installation. This can be convenient for large packages. For a more in-depth on the advantages of either strategy, see [this blog](https://medium.com/ochrona/understanding-python-package-distribution-types-25d53308a9a). For simple projects, there is no damage in simply providing both, like ```python setup.py sdist bdist_wheel ```
+
+A new folder should appear in your repository, called `dist`, with a couple files inside. Before uploading to PyPi, check if this folder contains only files related to the latest version. If files named after previous versions are present, you can manually delete them.
+
+### Upload to PyPi
 
 Lastly, upload your package to PyPi with `twine` (use `pip install twine` if not present already):
 ```
-twine upload dist/*
+python -m twine upload --repository pypi dist/*
 ```
 This will prompt you to enter your login credentials for PyPi in the command line and then upload your package to PyPi - congrats! For more information on building your package for publication on PyPi, see the [official documentation.](https://packaging.python.org/en/latest/tutorials/packaging-projects/). Your plugin should soon be available at the [Napari plugin hub](https://www.napari-hub.org/). It should also pop up as a notification in the [napari zulib stream](https://napari.zulipchat.com/login/#narrow/stream/290453-hub-updates), which is open to everyone.
 
