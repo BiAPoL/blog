@@ -323,7 +323,7 @@ Let's report the package's version. We will update two files for that:
    1. Go to your project repository and open the `setup.cfg` file. On this file, at around the third line, you should find something like `version == 0.0.1`. If you are releasing a newer version, replace `0.0.1` by your new version number. To know more about versioning standards, check [this post](https://py-pkgs.org/07-releasing-versioning.html#version-numbering). 
    2. Open the `__inti__.py` located in the same folder where your plugin code resides - which in this example is flood-napari/src/flood_napari - update the version inside this file as well and save it. If you prefer, there are ways to [automate version bumping](https://py-pkgs.org/07-releasing-versioning.html#automatic-version-bumping).
 
-Now, remember to [update your Github repository](#updating_github_repository) again (commit changes, push/publish branch, create Pull request, merge).
+Now, remember to [update your Github repository](#updating-github-repository) again (commit changes, push/publish branch, create Pull request, merge).
 
 The last step of versioning is to provide a version tag. On the Github repository's main page, at the right side, on Releases, click on "Create a new release" and the following page should load.
 
