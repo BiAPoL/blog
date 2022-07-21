@@ -353,7 +353,7 @@ A new folder should appear in your repository, called `dist`, with a couple file
 
 Lastly, upload your package to PyPi with `twine` (use `pip install twine` if not present already):
 ```
-python -m twine upload --repository pypi dist/*
+python -m twine upload dist/*
 ```
 This will prompt you to enter your login credentials for PyPi in the command line and then upload your package to PyPi - congrats! For more information on building your package for publication on PyPi, see the [official documentation.](https://packaging.python.org/en/latest/tutorials/packaging-projects/). Your plugin should soon be available at the [Napari plugin hub](https://www.napari-hub.org/). It should also pop up as a notification in the [napari zulib stream](https://napari.zulipchat.com/login/#narrow/stream/290453-hub-updates), which is open to everyone.
 
