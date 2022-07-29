@@ -22,7 +22,7 @@ This blog post explains how to run your own jupyter notebooks using [napari](htt
 ### See also
 * [ZIH HPC Documentation](https://doc.zih.tu-dresden.de/)
 
-## Step 1: Gett access to the ZIH cluster
+## Step 1: Get access to the ZIH cluster
 Ask [Robert Haase](https://biapol.github.io/blog/robert_haase/) to add you to the `bioimage` project on the TUD HPC cluster.
 
 ## Step 2: Start a Jupyter session on the ZIH cluster
@@ -43,7 +43,7 @@ Once you are happy with your configuration, click the orange button `Spawn` at t
 
 <img src="images/3_configure_node.png" width="500" />
 
-You will now see a wait bar. Do not worry if it does not move, this bar is always at 50%. I usually takes 2-5 min to get a node.
+You will now see a wait bar. Do not worry if it does not move, this bar is always at 50%. It usually takes 2-5 min to get a node.
 
 <img src="images/4_wait.png" width="500" />
 
@@ -110,29 +110,7 @@ conda env export | grep -v "^prefix: " > environment.yml
 If you send us that file, we should have all the information we need.
 
 
-### Sharing notebooks via github.com
-If you have a [github](https://github.com) account, you can upload a notebook also to a github repository.
-Afterwards, you can enter the location of the repository into a google colab link to share it with collaborators:
-
-For example, a notebook on github.com can have this URL:
-```
-                      https://github.com/clEsperanto/pyclesperanto_google_colab/blob/main/interactive_example.ipynb
-```
-and the corresponding Google Colab adress looks like this:
-```
-https://colab.research.google.com/github/clEsperanto/pyclesperanto_google_colab/blob/main/interactive_example.ipynb
-```
-[Try it out!](https://colab.research.google.com/github/clEsperanto/pyclesperanto_google_colab/blob/main/interactive_example.ipynb)
-
-### How much memory does my GPU have?
-You can read how much memory is available from the device object. 
-Divide the value three times by 1024 to get the amount of memory in giga bytes.
-```
-dev = cle.get_device()
-dev.device.global_mem_size / 1024 / 1024 / 1024
-```
-
-### How much memory is currently in use?
+### What hardware is the current node running on?
 If you are using an NVidia GPU, you can the [NVidia System Management Interface](https://developer.nvidia.com/nvidia-system-management-interface):
 ```
 !nvidia-smi
@@ -140,15 +118,15 @@ If you are using an NVidia GPU, you can the [NVidia System Management Interface]
 It will give an overview about what's currently going on on your GPU:
 ```
 +-----------------------------------------------------------------------------+
-| NVIDIA-SMI 465.27       Driver Version: 460.32.03    CUDA Version: 11.2     |
+| NVIDIA-SMI 470.57.02    Driver Version: 470.57.02    CUDA Version: 11.4     |
 |-------------------------------+----------------------+----------------------+
 | GPU  Name        Persistence-M| Bus-Id        Disp.A | Volatile Uncorr. ECC |
 | Fan  Temp  Perf  Pwr:Usage/Cap|         Memory-Usage | GPU-Util  Compute M. |
 |                               |                      |               MIG M. |
 |===============================+======================+======================|
-|   0  Tesla T4            Off  | 00000000:00:04.0 Off |                    0 |
-| N/A   63C    P0    30W /  70W |    106MiB / 15109MiB |      0%      Default |
-|                               |                      |                  N/A |
+|   0  NVIDIA A100-SXM...  On   | 00000000:11:00.0 Off |                    0 |
+| N/A   52C    P0    60W / 400W |      0MiB / 40536MiB |      0%      Default |
+|                               |                      |             Disabled |
 +-------------------------------+----------------------+----------------------+
                                                                                
 +-----------------------------------------------------------------------------+
@@ -156,6 +134,7 @@ It will give an overview about what's currently going on on your GPU:
 |  GPU   GI   CI        PID   Type   Process name                  GPU Memory |
 |        ID   ID                                                   Usage      |
 |=============================================================================|
+|  No running processes found                                                 |
 +-----------------------------------------------------------------------------+
 ```
 
