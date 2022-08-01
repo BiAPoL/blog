@@ -23,7 +23,7 @@ This blog post explains how to run your own jupyter notebooks using [napari](htt
 * [ZIH HPC Documentation](https://doc.zih.tu-dresden.de/)
 
 ## Step 1: Get access to the ZIH cluster
-Ask [Robert Haase](https://biapol.github.io/blog/robert_haase/) to add you to the `bioimage` project on the TUD HPC cluster.
+Fill out a project proposal and submit it to the compute center as [explained in their documentation](https://tu-dresden.de/zih/hochleistungsrechnen/zugang/projektantrag?set_language=en).
 
 ## Step 2: Start a Jupyter session on the ZIH cluster
 You will be greeted with the TUD login screen. Log in with your ZIH user name and password:
