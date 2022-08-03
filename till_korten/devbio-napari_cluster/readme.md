@@ -97,19 +97,6 @@ Run some test code to verify that the environment has everything you need. For e
 
 ## Hints
 
-### Troubleshooting
-
-Contact us if you run into problems. **Which contact details should we give here?**
-
-If some python modules are missing, we can create a custom environment for you. However, please understand that we cannot do this every few days, so make sure you tell us **all the additional modules you need at once**. Ideally, you create a minimal working environment on your machine **test it thoroughly** and then export it as an `environment.yml` file like so:
-
-```bash
-conda env export | grep -v "^prefix: " > environment.yml
-```
-
-If you send us that file, we should have all the information we need.
-
-
 ### What hardware is the current node running on?
 If you are using an NVidia GPU, you can the [NVidia System Management Interface](https://developer.nvidia.com/nvidia-system-management-interface):
 ```
