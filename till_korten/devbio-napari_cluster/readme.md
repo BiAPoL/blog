@@ -78,7 +78,7 @@ cd singularity-devbio-napari
 ./install.sh <version>
 ```
 
-replace `<version>` with the version of our devbio-napari environment you want to use. At the time of writing, the latest version was `v0.1.5`. Always specify a version (or a tag name you got from us in case we created a custom environment for you). This will ensure that your code is always executed in the same environment and your data analysis is reproducible. 
+replace `<version>` with the version of our devbio-napari environment you want to use. At the time of writing, the latest version was `v0.1.7`. Always specify a version (or a tag name you got from us in case we created a custom environment for you). This will ensure that your code is always executed in the same environment and your data analysis is reproducible. 
 
 *Note*: In order to ensure [repeatability ](https://en.wikipedia.org/wiki/Repeatability) and [reproducibility](https://en.wikipedia.org/wiki/Reproducibility) of the results you obtained from using a singularity container, we strongly recommend and encourage you to keep track of the used container's version. This way, you can ensure the integrity of your analysis workflow further down the line.
 
@@ -90,7 +90,7 @@ If everything went well, close the terminal by clicking on the small X at the to
 
 ## Step 5: Open a Jupyter Notebook with the newly installed environment
 
-Reload the browser tab. You should then see a two new icons with the name `devbio-napari_v0.1.5` in the Notebooks section. Click on it (red rectangle in the image below).
+Reload the browser tab. You should then see a two new icons with the name `devbio-napari_v0.1.7` in the Notebooks section. Click on it (red rectangle in the image below).
 
 <img src="images/7_open_notebook.png" width="250" />
 
