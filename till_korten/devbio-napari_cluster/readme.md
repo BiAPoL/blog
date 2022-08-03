@@ -6,7 +6,7 @@ This blog post explains how to run your own [jupyter notebooks](https://jupyter.
 
 ### This blog post is for you if
 * data processing takes a significant amount of time on your computer
-* the time intensive part of your data processing works without user interaction
+* the time-intensive part of your data processing works without user interaction
 * you want to use your computer for other important tasks (such as life after five) while your data are being processed
 * you have a working python script or jupyter notebook that processes your data
 * the computers available to you limit you because:
