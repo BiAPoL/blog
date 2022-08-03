@@ -37,7 +37,12 @@ Afterwards, you should see a single button `Start My Server`. Click on it:
 
 Now you get to configure the computing node you want your session to run on. Switch to the advanced configuration by clicking the button `Advanced`. Then you should see something like the image below. 
 
-Start by choosing a preset (click on 1). You should choose a GPU node preset (2). You can choose either an Ampere A100 or a Tesla K80 card. Choose according to the your needs and the current utilization (the bars above the preset chooser) (the A100 are on `alpha`, the K80 are on `gpu2`) If the partition is very full, you may have to wait a long time or not get a session at all. Choose the number of CPUs and memory per cpu as needed. Note that the memory is per CPU, so if you choose more CPUs, you get more memory.
+1. Start by choosing a preset (click on 1). 
+2. You should choose a GPU node preset (2). You can choose between
+   * Ampere A100 -> more powerful than any gaming GPU, 40GB graphics memory. However these machines are often more used and it may take longer to get a node on the cluster
+   * Tesla K80 -> half as as powerful as a GTX 1080, but 12GB graphics memory. This is useful for testing whether your workflows work on a GPU on the cluster and for tasks that are not time critical.
+
+Choose according to the your needs and the current utilization (the bars above the preset chooser) (the A100 are on the bar labeled `alpha`, the K80 are on the bar labeled `gpu2`) If the partition is very full, you may have to wait a long time or not get a session at all. Choose the number of CPUs and memory per cpu as needed. Note that the memory is per CPU, so if you choose more CPUs, you get more memory. It is recommended to increase the number of CPUs rather than increasing the default value for memory per CPU because the default memory per CPU evenly divides the available memory to all CPUs (meaning that increasing mem-per-CPU effectively blocks more CPUs anyways).
 
 Once you are happy with your configuration, click the orange button `Spawn` at the very bottom.
 
