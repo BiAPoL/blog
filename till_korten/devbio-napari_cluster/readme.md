@@ -1,7 +1,7 @@
 # GPU-accelerated image processing on the TUD HPC cluster
 [Till Korten](https://biapol.github.io/blog/till_korten), July 29th 2022
 
-The TUD HPC cluster provides a lot of computing performance including GPU support.
+The [High Performance Computing (HPC) cluster at the compute center (ZIH) of the TU Dresden](https://tu-dresden.de/zih/hochleistungsrechnen/hpc?set_language=en) provides a lot of computational resources including GPU support, we can use for analyzing data in the life-sciences.
 This blog post explains how to run your own jupyter notebooks using [napari](https://napari.org) and/or [clEsperanto](https://clesperanto.net) on the cluster.
 
 ### This blog post is for you if:
