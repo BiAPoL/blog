@@ -91,7 +91,42 @@ Reload the browser tab. You should then see a two new icons with the name `devbi
 
 Run some test code to verify that the environment has everything you need. For example:
 
-<img src="images/8_tests.png" width="500" />
+```python
+import pyclesperanto_prototype as cle
+from skimage.io import imread, imsave
+```
+```python
+# initialize GPU
+device = cle.select_device("A100")
+print("Used GPU: ", device)
+```
+Used GPU:  \<NVIDIA A100-SXM4-40GB on Platform: NVIDIA CUDA (1 refs)\>
+```python
+# load data
+image = imread('https://imagej.nih.gov/ij/images/blobs.gif')
+
+# process the image
+inverted = cle.subtract_image_from_scalar(image, scalar=255)
+blurred = cle.gaussian_blur(inverted, sigma_x=1, sigma_y=1)
+binary = cle.threshold_otsu(blurred)
+labeled = cle.connected_components_labeling_box(binary)
+
+# The maxmium intensity in a label image corresponds to the number of objects
+num_labels = cle.maximum_of_all_pixels(labeled)
+
+# print out result
+print("Num objects in the image: " + str(num_labels))
+
+# save image to disc
+imsave("result.tif", cle.pull(labeled))
+```
+Num objects in the image: 62.0
+
+*/tmp/ipykernel_13/2798962990.py:17: UserWarning: result.tif is a low contrast image imsave("result.tif", cle.pull(labeled))*
+```python
+cle.available_device_names()
+```
+\['NVIDIA A100-SXM4-40GB', 'cupy backend (experimental)'\]
 
 <!-- we should also add instructions on how to get data onto the cluster from the fileserver. -> use material from issue #22 after testing this -->
 
