@@ -17,7 +17,7 @@ This blog post explains how to run your own [jupyter notebooks](https://jupyter.
 
 ### You may need to look elsewhere if
 * you are still actively developing on your workflow and are installing/removing python packages on a regular basis. We are working with [singularity containers](https://sylabs.io/singularity/) and it is not feasible to frequently build new containers for you with new python packages. You may want to look at Roberts article on [using google colab](../../robert_haase/clesperanto_google_colab/) if you need more ressources for your workflow but are still in the process of active development rather than deployment.
-* your workflow needs a graphical user interface other than standard jupyter notebook stuff
+* your workflow needs a graphical user interface other than what jupyter notebooks can provide
 
 ### See also
 * [ZIH HPC Documentation](https://doc.zih.tu-dresden.de/)
