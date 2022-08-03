@@ -16,7 +16,7 @@ This blog post explains how to run your own [jupyter notebooks](https://jupyter.
   * not enough CPUs
 
 ### You may need to look elsewhere if:
-* you are still actively developing on your workflow and are installing/removing python packages on a regular basis. We are working with singularity images and it is not feasible to frequently build new images for you with new python packages. You may want to look at Roberts article on [using google colab](../../robert_haase/clesperanto_google_colab/).
+* you are still actively developing on your workflow and are installing/removing python packages on a regular basis. We are working with [singularity containers](https://sylabs.io/singularity/) and it is not feasible to frequently build new images for you with new python packages. You may want to look at Roberts article on [using google colab](../../robert_haase/clesperanto_google_colab/).
 * your workflow needs a graphical user interface other than standard jupyter notebook stuff
 
 ### See also
