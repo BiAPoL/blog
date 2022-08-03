@@ -35,7 +35,7 @@ Afterwards, you should see a single button `Start My Server`. Click on it:
 
 <img src="images/2_start_server.png" width="500" />
 
-Now you get to configure the computing node you want your session to run on. Switch to the Advanced configuration by clicking the button `Advanced`. Then you should see something like the image below. 
+Now you get to configure the computing node you want your session to run on. Switch to the advanced configuration by clicking the button `Advanced`. Then you should see something like the image below. 
 
 Start by choosing a preset (click on 1). You should choose a GPU node preset (2). You can choose either a n Ampere A100 or a Tesla K80 card. Choose according to the your needs and the current utilization (the bars above the preset chooser) (the A100 are on `alpha`, the K80 are on `gpu2`) If the partition is very full, you may have to wait a long time or not get a session at all. Choose the number of CPUs and memory per cpu as needed. Note that the memory is per CPU, so if you choose more CPUs, you get more memory.
 
