@@ -4,7 +4,7 @@
 The [High Performance Computing (HPC) cluster at the compute center (ZIH) of the TU Dresden](https://tu-dresden.de/zih/hochleistungsrechnen/hpc?set_language=en) provides a lot of computational resources including GPU support, we can use for analyzing data in the life-sciences.
 This blog post explains how to run your own [jupyter notebooks](https://jupyter.org/) using some [napari](https://napari.org) plugins and GPU-accelerated image processing python libraries such as [clEsperanto](https://clesperanto.net) on the cluster.
 
-### This blog post is for you if:
+### This blog post is for you if
 * data processing takes a significant amount of time on your computer
 * the time intensive part of your data processing works without user interaction
 * you want to use your computer for other important tasks (such as life after five) while your data are being processed
@@ -15,8 +15,8 @@ This blog post explains how to run your own [jupyter notebooks](https://jupyter.
   * not enough disk space
   * not enough CPUs
 
-### You may need to look elsewhere if:
-* you are still actively developing on your workflow and are installing/removing python packages on a regular basis. We are working with [singularity containers](https://sylabs.io/singularity/) and it is not feasible to frequently build new images for you with new python packages. You may want to look at Roberts article on [using google colab](../../robert_haase/clesperanto_google_colab/).
+### You may need to look elsewhere if
+* you are still actively developing on your workflow and are installing/removing python packages on a regular basis. We are working with [singularity containers](https://sylabs.io/singularity/) and it is not feasible to frequently build new containers for you with new python packages. You may want to look at Roberts article on [using google colab](../../robert_haase/clesperanto_google_colab/).
 * your workflow needs a graphical user interface other than standard jupyter notebook stuff
 
 ### See also
