@@ -78,7 +78,9 @@ cd singularity-devbio-napari
 ./install.sh <version>
 ```
 
-replace `<version>` with the version of our devbio-napari environment you want to use. At the time of writing, the latest version was `v0.1.5`. Always specify a version (or a tag name you got from us in case we created a custom environment for you). This will ensure that your code is always executed in the same environment and your data analysis is reproducible. Note down the version you use in your lab book!
+replace `<version>` with the version of our devbio-napari environment you want to use. At the time of writing, the latest version was `v0.1.5`. Always specify a version (or a tag name you got from us in case we created a custom environment for you). This will ensure that your code is always executed in the same environment and your data analysis is reproducible. 
+
+*Note*: In order to ensure [repeatability ](https://en.wikipedia.org/wiki/Repeatability) and [reproducibility](https://en.wikipedia.org/wiki/Reproducibility) of the results you obtained from using a singularity container, we strongly recommend and encourage you to keep track of the used container's version. This way, you can ensure the integrity of your analysis workflow further down the line.
 
 Wait 2-5 min until the image is downloaded and verified. The output should look something like this:
 
