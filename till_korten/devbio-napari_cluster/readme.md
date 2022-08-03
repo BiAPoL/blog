@@ -83,7 +83,7 @@ If everything went well, close the terminal by clicking on the small X at the to
 
 ## Step 5: Open a Jupyter Notebook with the newly installed environment
 
-Reload the browser tab. You should then see a two new icons with the name `devbio-napari_v0.1.5` one in the Notebooks section and one in the Console section. Click on the former (red rectangle in the image below).
+Reload the browser tab. You should then see a two new icons with the name `devbio-napari_v0.1.5` in the Notebooks section. Click on it (red rectangle in the image below).
 
 <img src="images/7_open_notebook.png" width="250" />
 
