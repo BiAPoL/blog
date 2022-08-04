@@ -64,25 +64,15 @@ In the terminal, execute the following code:
 
 ```bash
 git clone https://gitlab.mn.tu-dresden.de/bia-pol/singularity-devbio-napari.git
-```
-You will be asked for a user name and password. Enter the following:
-
-User name: `git_pull`
-
-Password: `Bc6Yg8k5MyZzURNuWChR`
-
-Once the download has finished, enter the following:
-
-```bash
 cd singularity-devbio-napari
 ./install.sh <version>
 ```
 
-replace `<version>` with the version of our devbio-napari environment you want to use. At the time of writing, the latest version was `v0.1.7`. Always specify a version (or a tag name you got from us in case we created a custom environment for you). This will ensure that your code is always executed in the same environment and your data analysis is reproducible. 
+replace `<version>` with the [version of our devbio-napari environment](https://gitlab.mn.tu-dresden.de/bia-pol/singularity-devbio-napari/-/releases) you want to use. Always specify a version (or a tag name you got from us in case we created a custom environment for you). This will ensure that your code is always executed in the same environment and your data analysis is reproducible. 
 
 *Note*: In order to ensure [repeatability ](https://en.wikipedia.org/wiki/Repeatability) and [reproducibility](https://en.wikipedia.org/wiki/Reproducibility) of the results you obtained from using a singularity container, we strongly recommend and encourage you to keep track of the used container's version. This way, you can ensure the integrity of your analysis workflow further down the line.
 
-Wait 2-5 min until the image is downloaded and verified. The output should look something like this:
+Wait 2-15 min until the image is downloaded and verified (the time depends on how much network and disk load is on the cluster). The output should look something like this:
 
 <img src="images/6_terminal_output.png" width="500" />
 
