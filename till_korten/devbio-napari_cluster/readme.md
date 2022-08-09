@@ -125,7 +125,68 @@ cle.available_device_names()
 ```
 \['NVIDIA A100-SXM4-40GB', 'cupy backend (experimental)'\]
 
-<!-- we should also add instructions on how to get data onto the cluster from the fileserver. -> use material from issue #22 after testing this -->
+# Transfer Data to/from the HPC cluster
+
+## Step 1: Apply for Storage
+
+If you don't already have one, apply for a project space on the cluster. @Robert: Since I am neither PI nor contact person on our HPC project, I cannot see the links and user interface needed to do this. Could you please elaborate here?
+
+Make sure to note down the path to yor project space. It should start with `/projects/<project_name>/`
+
+## Step 2: Transfer your data to the cluster
+
+### Option 1: Via a Fileserver Share
+
+This option is a bit easier, because the fileserver can be accessed as a windows file share. However, it is slower, because the files are transferred over a network twice: first to the fileserver and then to the cluster. Advanced users should consider directly transferring data to the cluster as described in option 2 below.
+
+1. If you don't already have one, apply for a [group space on the fileserver](https://selfservice.zih.tu-dresden.de/l/index.php/spor/request-form/)
+2. Ask for access to the fileserver from the cluster: Write an email to [hpcsupport](mailto:hpcsupport@zih.tu-dresden.de) and ask them to give you access to your fileserver account. They will then tell you a mount point that usually starts with `/grp/<fileserver_group>/`.
+3. Copy your data to the fileserver.
+4. Synchronize the data from the fileserver to the project space on the cluster:
+   ```Python
+   from biapol_taurus import ProjectFileTransfer
+
+   source_dir = "/grp/<fileserver_group>/path/to/user/data/"
+   target_dir = "/projects/<project_name>/user/"
+   # We setup a connection:
+   pft = ProjectFileTransfer(source_dir, target_dir)
+   pft.sync_with_fileserver(direction='from fileserver')
+   ```
+5. Once you are done, you can sync the data back to the fileserver:
+   ```Python
+   pft.sync_with_fileserver(direction='to fileserver')
+   ```
+
+### Option 2: Copy data directly to the cluster
+
+This option targets more advanced users. It is faster, because it skips the transfer of data between fileserver and project space. However, it requires specialized file-transfer tools like [WinSCP](http://winscp.net/eng/download.php), [Cyberduck](https://cyberduck.io/) or [Rsync](https://man7.org/linux/man-pages/man1/rsync.1.html).
+
+1. Please follow the [instructions on how to use the ZIH Export Nodes](https://doc.zih.tu-dresden.de/data_transfer/export_nodes/).
+
+## Step 3: Work with your data
+
+1. you can read image data from the project space:
+   ```Python
+   image = pft.imread('/projects/<project_name>/user/image.tif')
+   ```
+2. And save image data to the project space:
+   ```Python
+   pft.imsave('/projects/<project_name>/user/saved_image.tif', image)
+   ```
+3. or even directly to the fileserver
+   ```Python
+   pft.imsave('/grp/<fileserver_group>/path/to/user/data/saved_image.tif', image)
+   ```
+4. If you want to write other file types, you can use [`taurus_datamover.save_to_project`](https://gitlab.mn.tu-dresden.de/bia-pol/taurus-datamover):
+   ```Python
+   from taurus_datamover import save_to_project
+   import numpy as np
+   data = np.random.normal(size=(10,10))
+   save_to_project(numpy.save, '/projects/<project_name>/user/saved_data.npy', data, allow_pickle=False)
+   ```
+   If you give `save_to_project` a path to a fileserver mount, it will also write directly to the fileserver.
+   Note: Positional arguments after the path and keyword arguments are passed down to the function given in the first argument.
+
 
 ## Hints
 
