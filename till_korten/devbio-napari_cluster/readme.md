@@ -26,7 +26,7 @@ This blog post explains how to run your own [jupyter notebooks](https://jupyter.
 Fill out a project proposal and submit it to the compute center as [explained in their documentation](https://tu-dresden.de/zih/hochleistungsrechnen/zugang/projektantrag?set_language=en).
 
 ## Step 2: Start a Jupyter session on the ZIH cluster
-Go to the [jupyter hub of the] ZIH cluster](https://taurus.hrsk.tu-dresden.de/jupyter)
+Go to the [jupyter hub of the ZIH cluster](https://taurus.hrsk.tu-dresden.de/jupyter)
 You will be greeted with the TUD login screen. Log in with your ZIH user name and password:
 
 <img src="images/1_login.png" width="500" />
