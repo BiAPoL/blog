@@ -202,7 +202,7 @@ Please follow the [instructions on how to use the ZIH Export Nodes](https://doc.
    from taurus_datamover import save_to_project
    import numpy as np
    data = np.random.normal(size=(10,10))
-   save_to_project(numpy.save, '/projects/<project_name>/user/saved_data.npy', data, allow_pickle=False)
+   save_to_project(np.save, '/projects/<project_name>/user/saved_data.npy', data, allow_pickle=False)
    ```
    If you give `save_to_project` a path to a fileserver mount, it will also write directly to the fileserver.
    Note: Positional arguments after the path and keyword arguments are passed down to the function given in the first argument.
