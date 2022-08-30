@@ -5,6 +5,7 @@ The [High Performance Computing (HPC) cluster at the compute center (ZIH) of the
 This blog post explains how to run your own [jupyter notebooks](https://jupyter.org/) using some [napari](https://napari.org) plugins and GPU-accelerated image processing python libraries such as [clEsperanto](https://clesperanto.net) on the cluster.
 
 ### This blog post is for you if
+* you want to try out using napari plugins in jupyter notebooks without a local installation
 * data processing takes a significant amount of time on your computer
 * the time-intensive part of your data processing works without user interaction
 * you want to use your computer for other important tasks (such as life after five) while your data are being processed
@@ -23,7 +24,9 @@ This blog post explains how to run your own [jupyter notebooks](https://jupyter.
 * [ZIH HPC Documentation](https://doc.zih.tu-dresden.de/)
 
 ## Step 1: Get access to the ZIH cluster
-Fill out a project proposal and submit it to the compute center as [explained in their documentation](https://tu-dresden.de/zih/hochleistungsrechnen/zugang/projektantrag?set_language=en).
+Before you can use the cluster, you need to [apply for an HPC project](https://tu-dresden.de/zih/hochleistungsrechnen/zugang/projektantrag?set_language=en).
+
+To do so, fill out a project proposal and submit it to the compute center as [explained in their documentation](https://doc.zih.tu-dresden.de/application/project_request_form/).
 
 ## Step 2: Start a Jupyter session on the ZIH cluster
 Go to the [jupyter hub of the ZIH cluster](https://taurus.hrsk.tu-dresden.de/jupyter)
@@ -40,10 +43,8 @@ Now you get to configure the computing node you want your session to run on. Swi
 
 1. Start by choosing a preset (click on 1). 
 2. You should choose a GPU node preset (2). You can choose between
-   * Ampere A100 -> more powerful than any gaming GPU, 40GB graphics memory. However these machines are often more used and it may take longer to get a node on the cluster
-   * Tesla K80 -> half as as powerful as a GTX 1080, but 12GB graphics memory. This is useful for testing whether your workflows work on a GPU on the cluster and for tasks that are not time critical.
-
-Choose according to the your needs and the current utilization (the bars above the preset chooser) (the A100 are on the bar labeled `alpha`, the K80 are on the bar labeled `gpu2`) If the partition is very full, you may have to wait a long time or not get a session at all. Choose the number of CPUs and memory per cpu as needed. Note that the memory is per CPU, so if you choose more CPUs, you get more memory. It is recommended to increase the number of CPUs rather than increasing the default value for memory per CPU because the default memory per CPU evenly divides the available memory to all CPUs (meaning that increasing mem-per-CPU effectively blocks more CPUs anyways).
+   * Ampere A100 -> This is what you want if you really need to crunch some numbers. The A100 is more powerful than any gaming GPU and has 40GB graphics memory. However these machines are often more used and it may take longer to get a node on the cluster
+   * Tesla K80 -> This is what you want for testing whether your workflows work on a GPU on the cluster and for tasks that are not time critical. The K80 is half as as powerful as a GTX 1080 and has 12GB graphics memory.
 
 Once you are happy with your configuration, click the orange button `Spawn` at the very bottom.
 
@@ -53,15 +54,27 @@ You will now see a wait bar. Do not worry if it does not move, this bar is alway
 
 <img src="images/4_wait.png" width="500" />
 
+#### Trouble shooting
+
+* Check the current utilization (the bars above the preset chooser)
+  * the A100 are on the bar labeled `alpha`
+  * the K80 are on the bar labeled `gpu2`
+  
+  If the partition is very full, you may have to wait a long time or not get a session at all. 
+* If you run out of memory or need more CPU cores, increase the number of CPUs. Note that the memory is per CPU, so if you choose more CPUs, you automatically get more memory.
+
+
 ## Step 3: Open a terminal
 
-Open a terminal by clicking on file (1 in the image below) -> new (2) -> Terminal (3)
+Open a terminal by clicking on `File` (1 in the image below) -> `New` (2) -> `Terminal` (3)
 
 <img src="images/5_open_terminal.png" width="500" />
 
 ## Step 4: Install a custom jupyter kernel for your user
 
-In the terminal, execute the following code:
+One of the advantages of our approach is, that you can always execute your code with the exac same python environment so that you always get the same result for the same data. Therefore, it is important for you that you know with which version of our python environment you were working. You can find available [versions here](https://gitlab.mn.tu-dresden.de/bia-pol/singularity-devbio-napari/-/releases). Look for the version number at the end of the title. For example `v0.2.1`.
+
+To install a devbio-napari python environment, execute the following code in the terminal:
 
 ```bash
 git clone https://gitlab.mn.tu-dresden.de/bia-pol/singularity-devbio-napari.git
@@ -69,7 +82,7 @@ cd singularity-devbio-napari
 ./install.sh <version>
 ```
 
-replace `<version>` with the [version of our devbio-napari environment](https://gitlab.mn.tu-dresden.de/bia-pol/singularity-devbio-napari/-/releases) you want to use. Always specify a version (or a tag name you got from us in case we created a custom environment for you). This will ensure that your code is always executed in the same environment and your data analysis is reproducible. 
+replace `<version>` with the latest version shown at the top of [the version list](https://gitlab.mn.tu-dresden.de/bia-pol/singularity-devbio-napari/-/releases). 
 
 *Note*: In order to ensure [repeatability ](https://en.wikipedia.org/wiki/Repeatability) and [reproducibility](https://en.wikipedia.org/wiki/Reproducibility) of the results you obtained from using a singularity container, we strongly recommend and encourage you to keep track of the used container's version. This way, you can ensure the integrity of your analysis workflow further down the line.
 
@@ -81,9 +94,19 @@ If everything went well, close the terminal by clicking on the small X at the to
 
 ## Step 5: Open a Jupyter Notebook with the newly installed environment
 
-Reload the browser tab. You should then see a two new icons with the name `devbio-napari_v0.1.7` in the Notebooks section. Click on it (red rectangle in the image below).
+Reload the browser tab. Now open a new notebook by clicking on `File` (1 in the image below) -> `New` (2) -> `Notebook` (3)
 
-<img src="images/7_open_notebook.png" width="250" />
+<img src="images/7_open_notebook.png" width="500" />
+
+Now you are asked to select a kernel. Click on the drop down button (red rectangle in the image below).
+
+<img src="images/8_select_kernel.png" width="300" />
+
+Choose the kernel you just installed (`devbio-napari-0.2.1` in the image below).
+
+<img src="images/9_select_devbio_napari.png" width="300" />
+
+NB: for an existing notebook, you can click on the kernel name (by default `Python 3`) in the top right corner of the notebook and aelect the devbio-napari kernel as described above.
 
 ## Step 6: Verify that the environment works
 
@@ -128,13 +151,9 @@ cle.available_device_names()
 
 # Transfer Data to/from the HPC cluster
 
-## Step 1: Apply for Storage
+When your HPC project is approved, you will also be assigned a project space to store data on the HPC cluster. Make sure to note down the path to yor project space. It should start with `/projects/<project_name>/`
 
-If you don't already have one, apply for a project space on the cluster. @Robert: Since I am neither PI nor contact person on our HPC project, I cannot see the links and user interface needed to do this. Could you please elaborate here?
-
-Make sure to note down the path to yor project space. It should start with `/projects/<project_name>/`
-
-## Step 2: Transfer your data to the cluster
+## Step 1: Transfer your data to the cluster
 
 ### Option 1: Via a Fileserver Share
 
@@ -162,9 +181,9 @@ This option is a bit easier, because the fileserver can be accessed as a windows
 
 This option targets more advanced users. It is faster, because it skips the transfer of data between fileserver and project space. However, it requires specialized file-transfer tools like [WinSCP](http://winscp.net/eng/download.php), [Cyberduck](https://cyberduck.io/) or [Rsync](https://man7.org/linux/man-pages/man1/rsync.1.html).
 
-1. Please follow the [instructions on how to use the ZIH Export Nodes](https://doc.zih.tu-dresden.de/data_transfer/export_nodes/).
+Please follow the [instructions on how to use the ZIH Export Nodes](https://doc.zih.tu-dresden.de/data_transfer/export_nodes/).
 
-## Step 3: Work with your data
+## Step 2: Work with your data
 
 1. you can read image data from the project space:
    ```Python
