@@ -26,7 +26,57 @@ This blog post explains how to run your own [jupyter notebooks](https://jupyter.
 ## Step 1: Get access to the ZIH cluster
 Before you can use the cluster, you need to [apply for an HPC project](https://tu-dresden.de/zih/hochleistungsrechnen/zugang/projektantrag?set_language=en).
 
-To do so, fill out a project proposal and submit it to the compute center as [explained in their documentation](https://doc.zih.tu-dresden.de/application/project_request_form/).
+In most cases, a NHR trial project will provide plenty of resources for your needs, so that you can follow our recommendations for filling out the application:
+1. Log in to the [online project application form](https://projects.hpc.tu-dresden.de/jards/WEB/application/login.php?appkind=nhr)
+2. Application List: Scroll down and click on the button "New Project Application"
+
+   <img src="images/a1_new_project_application.png" width="150" />
+
+3. Project Type: Select "trial project (< 42000 CPU hours per year)
+
+   <img src="images/a2_trial_project.png" width="500" />
+
+4. Choose PI and PC: Enter the email addresses of the principal investigator (PI) and a person to contact (PC). If you are not the PI, click on the button "change my role to Person to Contact" so that you can enter the email address of your PI.
+
+   <img src="images/a3_PI_PC_email.png" width="400" />
+
+5. Principal Investigator: Enter the personal data of your PI
+6. Person to Contact: Enter the personal data of the PC
+7. Resources: check the boxes for both CPU and GPU:
+
+   <img src="images/a4_CPU_GPU.png" width="60" />
+
+8. Project data:
+   * Choose a project duration. Enter the estimated duration of the project here (e.g. the duration of the contract of the PC). Note that no matter the total estimated project duration, all projects need to be extended after one year.
+   * Choose a title
+   * Choose a few keywords, e.g. `image processing, machine learning, data analysis`
+   * Enter a short project description, e.g. `Analysis of light-sheet microscopy images of developing organoids using python machine-learning tools such as napari`. If you already have an abstract of a project proposal, we recommend to use parts of that (note the 1500 character limit).
+   * Commmissioned research: `No` (unless the project you are doing was specifically commissioned by a company)
+   * Select sponsorship (DFG, BMBF, EU, Industry, Other)
+   * If you selected `Other`, enter the sponsor in the text field below. e.g. `TU Dresden`
+   * Classify your project according to predefined categories. E.g. "Main category": `201 Basic Research in Biology and Medicine` and "Sub category": `201-02 Biophysics`
+   * Give reasons that make the use of this supercomputer necessary: e.g. `We need to process large amounts of image data, that would require hours to days on a normal computer. Furthermore, we need a standardized, reproducible environment for data processing.`
+   * If the PI or PC were involved in other HPC projects within the last 3 years, you need to fill in the table "Other applications for compute time"
+   * Check the box that you are aware that incomplete information may lead to a significant cutback of resources or even to the rejection of the proposal
+   * Add other project members that need access to the HPC cluster (note, you can also easily add members later as needed)
+
+9. Software packages: Here is what we recommend for bioimage analysis
+   * Compilers: GCC (during installation of some python packages), 
+   * Programming Languages: Python (and R)
+   * Other packages: `singularity, OpenCL, CUDA (Inside singularity containers: PyTorch, Tensorflow, napari)`
+   * Packages developed by yourself: `(Inside singularity containers: devbio-napari, pyclesperanto)`
+   * Open source: Yes
+   * Links: `https://sylabs.io/singularity/, , https://www.khronos.org/opencl/, https://developer.nvidia.com/cuda-toolkit, https://pytorch.org/, https://www.tensorflow.org/, https://napari.org/stable/, https://github.com/haesleinhuepf/devbio-napari, https://github.com/clEsperanto/pyclesperanto_prototype`
+   * Parallelization strategy: Hybrid
+10. Data management: Fill out your estimated data requirements. Here is what we estimated for an average image analysis project:
+    
+   <img src="images/a6_data_management.png" width="600" />
+
+11. Upload of PDF files: For a trial project, you can skip this step.
+12. Finalize application: Click the button "Finalize" at the bottom.
+13. You will receive an email with a PDF document that needs to be signed (electronically) by the PI and sent back via email.
+
+For further information, refer to the [ZIH documentation for HPC project applications](https://doc.zih.tu-dresden.de/application/project_request_form/).
 
 ## Step 2: Start a Jupyter session on the ZIH cluster
 Go to the [jupyter hub of the ZIH cluster](https://taurus.hrsk.tu-dresden.de/jupyter)
