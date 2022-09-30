@@ -1,4 +1,4 @@
-# Installing `devbio-napari` on an arm64 Mac
+# Installing devbio-napari on an arm64 Mac
 
 Trying to install `devbio-napari` on one of the new Macs with the arm64-based M1 or M2 processors, I got an error message:
 
@@ -91,7 +91,7 @@ It’s exactly the same as installing Homebrew on the ARM64 architecture, but it
 sudo brew install --cask micromamba
 ```
 
-## 5. set up the environment 
+## 5. Set up the Python environment 
 
 add the following to your `~/.zsh_profile` to automatically use the correct conda and brew versions in a Rosetta (and a non-Rosetta) terminal:
 ```bash
@@ -136,10 +136,11 @@ else
 
 fi
 ```
-Make sure to not use `conda init` afterwards, because it will overwrite the paths such that the same conda version is used in both native (arm64) and Rosetta (i386) mode.
+Make sure to not use `conda init` afterwards, because it will overwrite the paths such that the same conda version (the one which you executed) is used in both native (arm64) and Rosetta (i386) mode.
 
-## 6. install devbio-napari
-we have set up zsh to use conda for environment management, hence we use conda to create the environment and mamba for installation in a second step
+## 6. Install devbio-napari
+
+We have set up zsh to use conda for environment management, hence we use conda to create the environment and mamba for installation in a second step (because conda may take several hours, while mamba takes minutes to install devbio napari).
 ```bash
 conda create -n devbio-napari-env python=3.9
 conda activate devbio-napari-env
