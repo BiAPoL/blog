@@ -114,7 +114,7 @@ imsave = pft.imsave
 
 ## Step 3: Put your data back on the fileserver
 
-Note: This step is **important** if you don't do this **you will loose your data** because it is automatically deleted after 10 days!
+Note: This step is **important** if you don't do this **you will loose any data you created/changed on the cluster** because it is automatically deleted after 10 days!
 
 Put the following at the end of your jupyter notebook:
 ```python
