@@ -65,13 +65,13 @@ Choose the kernel you just installed (`devbio-napari-0.2.1` in the image below).
 
 <img src="images/9_select_devbio_napari.png" width="300" />
 
-NB: for an existing notebook, you can click on the kernel name (by default `Python 3`) in the top right corner of the notebook and aelect the devbio-napari kernel as described above.
+Note: for an existing notebook, you can click on the kernel name (by default `Python 3`) in the top right corner of the notebook and select the devbio-napari kernel as described above.
 
 ## Step 4: Accessing your data on the HPC cluster
 
 After [setting up the ZIH account](../devbio-napari_cluster_setup/readme.md), you have a folder where your fileserver space is mapped to a folder on the cluster. It should look something like this: `/grp/<fileserver_group>/`.
 
-For security reasons, this folder is read-only. Therefore, you need to transfer the data from the fileserver to a temporary folder on the cluster before you can start working with it. Note: the data on this temporary folder will be **automatically deleted** after 10 days. So please make sure to **transfer the data back once you are done** (see Step 6 below)
+Note: For security reasons, this folder is read-only. Therefore, you need to transfer the data from the fileserver to a temporary folder on the cluster before you can start working with it. Note: the data on this temporary folder will be **automatically deleted** after 10 days. So please make sure to **transfer the data back once you are done** (see Step 6 below)
 
 To transfer your data, please insert the following **after your import statements** into your notebook:
 
