@@ -71,7 +71,7 @@ Note: for an existing notebook, you can click on the kernel name (by default `Py
 
 After [setting up the ZIH account](../devbio-napari_cluster_setup/readme.md), you have a folder where your fileserver space is mapped to a folder on the cluster. It should look something like this: `/grp/<fileserver_group>/`.
 
-Note: For security reasons, this folder is read-only. Therefore, you need to transfer the data from the fileserver to a temporary folder on the cluster before you can start working with it. Note: the data on this temporary folder will be **automatically deleted** after 10 days. So please make sure to **transfer the data back once you are done** (see Step 6 below)
+Note: For security reasons, this folder is read-only. Therefore, you need to transfer the data from the fileserver to a temporary folder on the cluster before you can start working with it. Note: the data on this temporary folder will be **automatically deleted** after 10 days. So please make sure to **transfer the data back once you are done** (see Step 3 below)
 
 To transfer your data, please insert the following **after your import statements** into your notebook:
 
@@ -111,6 +111,15 @@ imsave = pft.imsave
 4. after you analysed your data, you may want to save the results from a pandas dataframe to a csv file:
    ```python
    pft.csv_save(my_pandas_dataframe, "folder/results.csv")
+
+## Step 3: Put your data back on the fileserver
+
+Note: This step is **important** if you don't do this **you will loose your data** because it is automatically deleted after 10 days!
+
+Put the following at the end of your jupyter notebook:
+```python
+pft.sync_to_fileserver()
+```
 
 # Trouble shooting
 
