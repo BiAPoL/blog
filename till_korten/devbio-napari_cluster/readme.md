@@ -94,26 +94,37 @@ pft.sync_from_fileserver()
 imread = pft.imread
 ```
 
-## Step 2: Work with your data
+Waiting .............sending incremental file list</br>
+./</br>
+folder/</br>
+folder/filename001.tif</br>
 
-1. you can list files on the cluster
+sent 65,467 bytes  received 65 bytes  43,688.00 bytes/sec</br>
+total size is 65,220  speedup is 1.00
+
+## Step 5: Work with your data
+
+1. you can list files locally available on the cluster
 
    ```python
    pft.list_files()
    ```
 
-   ['/scratch/ws/0/tkorten-cache/is36zwh_',</br>
-   '/scratch/ws/0/tkorten-cache/test',</br>
-   '/scratch/ws/0/tkorten-cache/test/blobs19.tif',</br>
-   '/scratch/ws/0/tkorten-cache/test/measurements.csv']
+   ['/scratch/ws/0/username-cache/is36zwh_',</br>
+   '/scratch/ws/0/username-cache/folder',</br>
+   '/scratch/ws/0/username-cache/folder/filename001.tif']
 
-2. you can read image data:
+   note: the folder with the cryptic name (`is36zwh_`) is a temporary folder created and managed by `pft`.
+
+2. you can read single images:
 
    ```Python
    image = imread("folder/filename001.tif")
    ```
 
-3. you can read all images:
+   note that this is fast after syncing, while it will be slow the first time you do this without syncing.
+
+3. you can read all `.tif` images:
 
    ```Python
    images = []
@@ -128,12 +139,22 @@ imread = pft.imread
    <img src="images/10_imshow.png" width="300" />
 
 4. after you analysed your data, you may want to save the results from a pandas dataframe to a csv file:
+   * if you need the file again, or don't want to wait until it is transferred to the fileserver, save it locally:
 
-   ```python
-   pft.csv_save("folder/results.csv", my_pandas_dataframe)
-   ```
+     ```python
+     full_path = pft.cache_path / "folder/results.csv"
+     my_pandas_dataframe.to_csv(full_path)
+     ```
 
-## Step 3: Put your data back on the fileserver
+   * if you don't need the file again on the cluster, you can save it directly to the fileserver:
+
+     ```python
+     pft.csv_save("folder/results.csv", my_pandas_dataframe)
+     ```
+
+     Waiting ................target file: /grp/<fileserver_group>/path/to/your/data/folder/results.csv
+
+## Step 6: Put your data back on the fileserver
 
 Note: This step is **important** if you don't do this **you will loose any data you created/changed on the cluster** because it is automatically deleted after 10 days!
 
@@ -142,6 +163,24 @@ Put the following at the end of your jupyter notebook:
 ```python
 pft.sync_to_fileserver()
 ```
+
+Waiting .............sending incremental file list</br>
+./</br>
+folder/</br>
+folder/results.csv</br>
+
+sent 467 bytes  received 65 bytes  43,688.00 bytes/sec</br>
+total size is 567  speedup is 1.00
+
+#
+## Step 7: Clean up
+
+This step is optional, you can skip it if you want to re-analyze the same data again later. The cleanup will happen automatically after 10 days.
+
+```python
+pft.sync_to_fileserver()
+```
+
 
 ## Trouble shooting
 
