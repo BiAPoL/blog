@@ -1,10 +1,12 @@
 # Using GPU-accelerated image processing on the TUD HPC cluster
+
 [Till Korten](https://biapol.github.io/blog/till_korten), Oct 21st 2022
 
 The [High Performance Computing (HPC) cluster at the compute center (ZIH) of the TU Dresden](https://tu-dresden.de/zih/hochleistungsrechnen/hpc?set_language=en) provides a lot of computational resources including GPU support, which we can use for analyzing data in the life-sciences.
 This blog post explains how you can run your own [jupyter notebooks](https://jupyter.org/) using some [napari](https://napari.org) plugins and GPU-accelerated image processing python libraries such as [clEsperanto](https://clesperanto.net) on the cluster.
 
 ### This blog post is for you if
+
 * you want to try out using napari plugins in jupyter notebooks without a local installation
 * data processing takes a significant amount of time on your computer
 * the time-intensive part of your data processing works without user interaction
@@ -17,23 +19,26 @@ This blog post explains how you can run your own [jupyter notebooks](https://jup
   * not enough CPUs
 
 ### You may need to look elsewhere if
+
 * you are still actively developing on your workflow and are installing/removing python packages on a regular basis. We are working with [singularity containers](https://sylabs.io/singularity/) and it is not feasible to frequently build new containers for you with new python packages. You may want to look at Roberts article on [using Google colab](../../robert_haase/clesperanto_google_colab/) if you need more ressources for your workflow but are still in the process of active development rather than deployment.
 * your workflow needs a graphical user interface other than what jupyter notebooks can provide
 
 ### See also
+
 * [ZIH HPC Documentation](https://doc.zih.tu-dresden.de/)
 * [Detailed cluster setup instructions](../devbio-napari_cluster_setup/readme.md)
 * [Using Google colab](../../robert_haase/clesperanto_google_colab/)
 
 ## Step 1: Set up your account on the ZIH cluster
+
 Before you get started, you need to set up an account, which is [explained in this blog post](../devbio-napari_cluster_setup/readme.md) (and we are happy to help you with that).
 
 ## Step 2: Start a Jupyter session on the ZIH cluster
+
 Go to the [jupyter hub of the ZIH cluster](https://taurus.hrsk.tu-dresden.de/jupyter)
 You will be greeted with the TUD login screen. Log in with your ZIH user name and password:
 
 <img src="images/1_login.png" width="500" />
-
 
 Afterwards, you should see a single button `Start My Server`. Click on it:
 
@@ -63,7 +68,7 @@ Now you are asked to select a kernel. Click on the drop down button (red rectang
 
 <img src="images/8_select_kernel.png" width="300" />
 
-Choose the kernel you just installed (`devbio-napari-0.2.1` in the image below).
+Choose the kernel that starts with **devbio-napari** (`devbio-napari-0.2.1` in the image below).
 
 <img src="images/9_select_devbio_napari.png" width="300" />
 
@@ -84,22 +89,32 @@ from biapol_taurus import ProjectFileTransfer
 source_dir = "/grp/<fileserver_group>/path/to/your/data/"
 pft = ProjectFileTransfer(source_dir)
 pft.sync_from_fileserver()
+
+# make sure that images are read from the correct location
 imread = pft.imread
-imsave = pft.imsave
 ```
 
 ## Step 2: Work with your data
 
 1. you can list files on the cluster
+
    ```python
    pft.list_files()
    ```
-   ["folder/filename001.tif", "folder/filename002.tif", "folder/filename003.tif", "folder/metadata.xml"]
+
+   ['/scratch/ws/0/tkorten-cache/is36zwh_',</br>
+   '/scratch/ws/0/tkorten-cache/test',</br>
+   '/scratch/ws/0/tkorten-cache/test/blobs19.tif',</br>
+   '/scratch/ws/0/tkorten-cache/test/measurements.csv']
+
 2. you can read image data:
+
    ```Python
    image = imread("folder/filename001.tif")
    ```
+
 3. you can read all images:
+
    ```Python
    images = []
    for filename in pft.list_files():
@@ -109,25 +124,31 @@ imsave = pft.imsave
    from skimage.io import imshow
    imshow(images[0])
    ```
+
    <img src="images/10_imshow.png" width="300" />
+
 4. after you analysed your data, you may want to save the results from a pandas dataframe to a csv file:
+
    ```python
-   pft.csv_save(my_pandas_dataframe, "folder/results.csv")
+   pft.csv_save("folder/results.csv", my_pandas_dataframe)
+   ```
 
 ## Step 3: Put your data back on the fileserver
 
 Note: This step is **important** if you don't do this **you will loose any data you created/changed on the cluster** because it is automatically deleted after 10 days!
 
 Put the following at the end of your jupyter notebook:
+
 ```python
 pft.sync_to_fileserver()
 ```
 
-# Trouble shooting
+## Trouble shooting
 
 * If jupyter lab does not start within 10-15 min, maybe all A100 GPUs are in use. In that case, you can either wait (usually it is easier to get a node in the mornings before 10:00 am), or choose the "GPU Tesla K80" preset in step 2 above. Those GPUs are much less performant and thus much less used - so you should get one more easily.
 * If you run out of memory or need more CPU cores, increase the number of CPUs in the advanced configuration. Note that the memory is per CPU, so if you choose more CPUs, you automatically get more memory.
 
 
-# Acknowledgements
+## Acknowledgements
+
 I would like to thank Fabian Rost for sharing his extensive experience of how to run python notebooks within singularity containers on the TUD cluster.
