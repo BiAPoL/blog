@@ -178,7 +178,7 @@ total size is 567  speedup is 1.00
 This step is optional (but encouraged if your data is hundreds of GB), you can skip it if you want to re-analyze the same data again later. The cleanup will happen automatically after 10 days.
 
 ```python
-pft.sync_to_fileserver()
+pft.cleanup()
 ```
 
 ## Trouble shooting
