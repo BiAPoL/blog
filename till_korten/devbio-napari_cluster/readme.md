@@ -175,18 +175,16 @@ total size is 567  speedup is 1.00
 #
 ## Step 7: Clean up
 
-This step is optional, you can skip it if you want to re-analyze the same data again later. The cleanup will happen automatically after 10 days.
+This step is optional (but encouraged if your data is hundreds of GB), you can skip it if you want to re-analyze the same data again later. The cleanup will happen automatically after 10 days.
 
 ```python
 pft.sync_to_fileserver()
 ```
 
-
 ## Trouble shooting
 
 * If jupyter lab does not start within 10-15 min, maybe all A100 GPUs are in use. In that case, you can either wait (usually it is easier to get a node in the mornings before 10:00 am), or choose the "GPU Tesla K80" preset in step 2 above. Those GPUs are much less performant and thus much less used - so you should get one more easily.
 * If you run out of memory or need more CPU cores, increase the number of CPUs in the advanced configuration. Note that the memory is per CPU, so if you choose more CPUs, you automatically get more memory.
-
 
 ## Acknowledgements
 
