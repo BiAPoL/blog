@@ -5,7 +5,7 @@
 The [High Performance Computing (HPC) cluster at the compute center (ZIH) of the TU Dresden](https://tu-dresden.de/zih/hochleistungsrechnen/hpc?set_language=en) provides a lot of computational resources including GPU support, which we can use for analyzing data in the life-sciences.
 This blog post explains how you can run your own [jupyter notebooks](https://jupyter.org/) using some [napari](https://napari.org) plugins and GPU-accelerated image processing python libraries such as [clEsperanto](https://clesperanto.net) on the cluster.
 
-### This blog post is for you if
+## This blog post is for you if
 
 * you want to try out using napari plugins in jupyter notebooks without a local installation
 * data processing takes a significant amount of time on your computer
@@ -18,12 +18,12 @@ This blog post explains how you can run your own [jupyter notebooks](https://jup
   * not enough disk space
   * not enough CPUs
 
-### You may need to look elsewhere if
+## You may need to look elsewhere if
 
 * you are still actively developing on your workflow and are installing/removing python packages on a regular basis. We are working with [singularity containers](https://sylabs.io/singularity/) and it is not feasible to frequently build new containers for you with new python packages. You may want to look at Roberts article on [using Google colab](../../robert_haase/clesperanto_google_colab/) if you need more ressources for your workflow but are still in the process of active development rather than deployment.
 * your workflow needs a graphical user interface other than what jupyter notebooks can provide
 
-### See also
+## See also
 
 * [ZIH HPC Documentation](https://doc.zih.tu-dresden.de/)
 * [Detailed cluster setup instructions](../devbio-napari_cluster_setup/readme.md)
@@ -44,10 +44,10 @@ Afterwards, you should see a single button `Start My Server`. Click on it:
 
 <img src="images/2_start_server.png" width="500" />
 
-Now you get to configure the computing node you want your session to run on. Switch to the advanced configuration by clicking the button `Advanced`. Then you should see something like the image below. 
+Now you get to configure the computing node you want your session to run on. Switch to the advanced configuration by clicking the button `Advanced`. Then you should see something like the image below.
 
-1. Start by choosing a preset (click on 1). 
-2. Choose the "GPU Ampere A100" preset (2). 
+1. Start by choosing a preset (click on 1).
+2. Choose the "GPU Ampere A100" preset (2).
 3. Click the orange button `Spawn` at the very bottom.
 
 <img src="images/3_configure_node.png" width="500" />
@@ -55,8 +55,6 @@ Now you get to configure the computing node you want your session to run on. Swi
 You will now see a wait bar. Do not worry if it does not move, this bar is always at 50%. It usually takes 2-5 min to get a node.
 
 <img src="images/4_wait.png" width="500" />
-
-
 
 ## Step 3: Open a Jupyter Notebook with the devbio-napari environment
 
@@ -172,7 +170,6 @@ folder/results.csv</br>
 sent 467 bytes  received 65 bytes  43,688.00 bytes/sec</br>
 total size is 567  speedup is 1.00
 
-#
 ## Step 7: Clean up
 
 This step is optional (but encouraged if your data is hundreds of GB), you can skip it if you want to re-analyze the same data again later. The cleanup will happen automatically after 10 days.
