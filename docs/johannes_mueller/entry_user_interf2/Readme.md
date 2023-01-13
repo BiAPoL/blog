@@ -8,7 +8,7 @@ In this blog, we will cover a few interesting and versatile methods for you to c
 
 Blogs on this topic will cover:
 * [Getting started (Part 1)](../entry_user_inter/Readme.md#getting-started)
-* [Creating standalone GUIs (Part 2)](#creating-advanced-standalone-guis#creating-advanced-standalone-guis)
+* [Creating standalone GUIs (Part 2)](#creating-advanced-standalone-guis)
 * [Creating GUIs for napari (Part 3)](../../marcelo_zoccoler/entry_user_interf3/Readme.md#creating-advanced-guis-for-napari)
 * [Turning napari GUI into plugins (Part 4)](../../marcelo_zoccoler/entry_user_interf4/Readme.md#turning-napari-gui-into-plugins)
 
