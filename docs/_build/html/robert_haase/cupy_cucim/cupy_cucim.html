@@ -1,0 +1,952 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>GPU-accelerated image processing using CUPY and CUCIM &#8212; BiA-PoL blog</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../../_static/biapol_logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">BiA-PoL blog</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    Welcome!
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Blog Posts
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../marcelo_zoccoler/omero_scripts/readme.html">
+   Running Deep-Learning Scripts in the BiA-PoL Omero Server
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../marcelo_zoccoler/mini_sabbatical_rike/Readme.html">
+   Mini-Sabbatical Experience at Bia-PoL
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../johannes_mueller/anaconda_getting_started/Readme.html">
+   Getting started with Anaconda and Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../johannes_mueller/entry_sphinx/Readme.html">
+   Automated package documentation with Sphinx
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../johannes_mueller/entry_user_inter/Readme.html">
+   Custom user interfaces for Python
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../johannes_mueller/entry_user_interf2/Readme.html">
+     Custom user interfaces for Python (Part 2)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../marcelo_zoccoler/entry_user_interf3/Readme.html">
+     Custom user interfaces for Python (Part 3)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../marcelo_zoccoler/entry_user_interf4/Readme.html">
+     Custom user interfaces for Python (Part 4)
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../marcelo_zoccoler/jamovi/jamovi.html">
+   Jamovi: statistical analysis made visual and easy (powered with R)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../ms_build_tools/readme.html">
+   Installing Microsoft buildtools on Windows
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../ryan_savill/principal_feature_analysis/readme.html">
+   Principal Feature Analysis
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../ryan_savill/03_background_subtraction/readme.html">
+   Background Subtraction
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../ryan_savill/02_intro_to_skimage/readme.html">
+   Introduction to Image Analysis Basics in Python with Scikit Image
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../stardist_gpu/readme.html">
+   Using StarDist in napari with GPU-support in Windows
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../ryan_savill/01_intro_to_python/readme.html">
+   Introduction to Using Python for Image Analysis
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="readme.html">
+   GPU-accelerated image processing using cupy and cucim
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../browsing_idr/readme.html">
+   Browsing the Open Microscopy Image Data Resource with Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../clesperanto_google_colab/readme.html">
+   GPU-accelerated image processing in the cloud using Google Colab and clEsperanto
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  About the Blog
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../why_we_blog/readme.html">
+   Why we blog
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../people.html">
+   BiA-PoL blog authors
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../johannes_mueller/Readme.html">
+     Johannes Müller
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../marcelo_zoccoler/readme.html">
+     Marcelo Zoccoler
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../ryan_savill/readme.html">
+     Ryan Savill
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../readme.html">
+     Robert Haase
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../imprint.html">
+   Imprint
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/lazigu/blog/master?urlpath=tree/docs/robert_haase/cupy_cucim/cupy_cucim.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/lazigu/blog"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/lazigu/blog/issues/new?title=Issue%20on%20page%20%2Frobert_haase/cupy_cucim/cupy_cucim.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../../_sources/robert_haase/cupy_cucim/cupy_cucim.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#image-filtering-and-segmentation">
+   Image filtering and segmentation
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#quantitative-measurements">
+   Quantitative measurements
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>GPU-accelerated image processing using CUPY and CUCIM</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#image-filtering-and-segmentation">
+   Image filtering and segmentation
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#quantitative-measurements">
+   Quantitative measurements
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="gpu-accelerated-image-processing-using-cupy-and-cucim">
+<h1>GPU-accelerated image processing using CUPY and CUCIM<a class="headerlink" href="#gpu-accelerated-image-processing-using-cupy-and-cucim" title="Permalink to this headline">#</a></h1>
+<p>Processing large images with python can take time. In order to accelerate processing, graphics processing units (GPUs) can be exploited, for example using <a class="reference external" href="https://en.wikipedia.org/wiki/CUDA">NVidia CUDA</a>. For processing images with CUDA, there are a couple of libraries available. We will take a closer look at <a class="reference external" href="https://cupy.dev/">cupy</a>, which brings more general computing capabilities for CUDA compatible GPUs, and <a class="reference external" href="https://github.com/rapidsai/cucim">cucim</a>, a library of image processing specific operations using CUDA. Both together can serve as GPU-surrogate for <a class="reference external" href="https://scikit-image.org/">scikit-image</a>.</p>
+<p>See also</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://stackoverflow.com/questions/49135065/is-it-possible-to-install-cupy-on-google-colab">StackOverflow: Is it possible to install cupy on google colab?</a></p></li>
+<li><p><a class="reference external" href="https://github.com/rapidsai/cucim/blob/branch-0.20/notebooks/Welcome.ipynb">Cucim example notebooks</a></p></li>
+</ul>
+<p>Before we start, we need to install CUDA and CUCIM it properly. The following commands make this notebook run in Google Colab.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>curl<span class="w"> </span>https://colab.chainer.org/install<span class="w"> </span><span class="p">|</span><span class="w"> </span>sh<span class="w"> </span>-
+
+<span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>cucim
+<span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>scipy<span class="w"> </span>scikit-image<span class="w"> </span>cupy-cuda100
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100  1580  100  1580    0     0   5851      0 --:--:-- --:--:-- --:--:--  5851
++ apt -y -q install cuda-libraries-dev-10-0
+Reading package lists...
+Building dependency tree...
+Reading state information...
+cuda-libraries-dev-10-0 is already the newest version (10.0.130-1).
+0 upgraded, 0 newly installed, 0 to remove and 39 not upgraded.
++ pip install -q cupy-cuda100  chainer 
++ set +ex
+Installation succeeded!
+Requirement already satisfied: cucim in /usr/local/lib/python3.7/dist-packages (0.19.0)
+Requirement already satisfied: click in /usr/local/lib/python3.7/dist-packages (from cucim) (7.1.2)
+Requirement already satisfied: numpy in /usr/local/lib/python3.7/dist-packages (from cucim) (1.19.5)
+Requirement already satisfied: scipy in /usr/local/lib/python3.7/dist-packages (1.4.1)
+Requirement already satisfied: scikit-image in /usr/local/lib/python3.7/dist-packages (0.16.2)
+Requirement already satisfied: cupy-cuda100 in /usr/local/lib/python3.7/dist-packages (9.1.0)
+Requirement already satisfied: numpy&gt;=1.13.3 in /usr/local/lib/python3.7/dist-packages (from scipy) (1.19.5)
+Requirement already satisfied: pillow&gt;=4.3.0 in /usr/local/lib/python3.7/dist-packages (from scikit-image) (7.1.2)
+Requirement already satisfied: PyWavelets&gt;=0.4.0 in /usr/local/lib/python3.7/dist-packages (from scikit-image) (1.1.1)
+Requirement already satisfied: networkx&gt;=2.0 in /usr/local/lib/python3.7/dist-packages (from scikit-image) (2.5.1)
+Requirement already satisfied: matplotlib!=3.0.0,&gt;=2.0.0 in /usr/local/lib/python3.7/dist-packages (from scikit-image) (3.2.2)
+Requirement already satisfied: imageio&gt;=2.3.0 in /usr/local/lib/python3.7/dist-packages (from scikit-image) (2.4.1)
+Requirement already satisfied: fastrlock&gt;=0.5 in /usr/local/lib/python3.7/dist-packages (from cupy-cuda100) (0.6)
+Requirement already satisfied: decorator&lt;5,&gt;=4.3 in /usr/local/lib/python3.7/dist-packages (from networkx&gt;=2.0-&gt;scikit-image) (4.4.2)
+Requirement already satisfied: pyparsing!=2.0.4,!=2.1.2,!=2.1.6,&gt;=2.0.1 in /usr/local/lib/python3.7/dist-packages (from matplotlib!=3.0.0,&gt;=2.0.0-&gt;scikit-image) (2.4.7)
+Requirement already satisfied: python-dateutil&gt;=2.1 in /usr/local/lib/python3.7/dist-packages (from matplotlib!=3.0.0,&gt;=2.0.0-&gt;scikit-image) (2.8.1)
+Requirement already satisfied: cycler&gt;=0.10 in /usr/local/lib/python3.7/dist-packages (from matplotlib!=3.0.0,&gt;=2.0.0-&gt;scikit-image) (0.10.0)
+Requirement already satisfied: kiwisolver&gt;=1.0.1 in /usr/local/lib/python3.7/dist-packages (from matplotlib!=3.0.0,&gt;=2.0.0-&gt;scikit-image) (1.3.1)
+Requirement already satisfied: six&gt;=1.5 in /usr/local/lib/python3.7/dist-packages (from python-dateutil&gt;=2.1-&gt;matplotlib!=3.0.0,&gt;=2.0.0-&gt;scikit-image) (1.15.0)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">cupy</span> <span class="k">as</span> <span class="nn">cp</span>
+<span class="kn">import</span> <span class="nn">cucim</span>
+<span class="kn">from</span> <span class="nn">skimage.io</span> <span class="kn">import</span> <span class="n">imread</span><span class="p">,</span> <span class="n">imshow</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>In the following, we are using image data from Paci et al shared under  the <a class="reference external" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> license. See also: https://doi.org/10.17867/10000140</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">image</span> <span class="o">=</span> <span class="n">imread</span><span class="p">(</span><span class="s1">&#39;https://idr.openmicroscopy.org/webclient/render_image_download/9844418/?format=tif&#39;</span><span class="p">)</span>
+
+<span class="n">imshow</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x7f5901fd2d50&gt;
+</pre></div>
+</div>
+<img alt="../../_images/cupy_cucim_4_1.png" src="../../_images/cupy_cucim_4_1.png" />
+</div>
+</div>
+<p>In order to process an image using CUDA on the GPU, we need to convert it. Under the hood of this conversion, the image data is sent from computer random access memory (RAM) to the GPUs memory.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">image_gpu</span> <span class="o">=</span> <span class="n">cp</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
+
+<span class="n">image_gpu</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(640, 640, 3)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Extracting a single channel out of the three-channel image works like if we were working with numpy. Showing the image does not work, because the CUDA image is not available in memory. In order to get it back from GPU memory, we need to convert it to a numpy array.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">single_channel_gpu</span> <span class="o">=</span> <span class="n">image_gpu</span><span class="p">[:,:,</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="c1"># the following line would fail</span>
+<span class="c1"># imshow(single_channel_gpu)</span>
+
+<span class="c1"># get single channel image back from GPU memory and show it</span>
+<span class="n">single_channel</span> <span class="o">=</span> <span class="n">cp</span><span class="o">.</span><span class="n">asnumpy</span><span class="p">(</span><span class="n">single_channel_gpu</span><span class="p">)</span>
+<span class="n">imshow</span><span class="p">(</span><span class="n">single_channel</span><span class="p">)</span>
+
+<span class="c1"># we can also do this with a convenience function</span>
+<span class="k">def</span> <span class="nf">gpu_imshow</span><span class="p">(</span><span class="n">image_gpu</span><span class="p">):</span>
+  <span class="n">image</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">image_gpu</span><span class="p">)</span>
+  <span class="n">imshow</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/cupy_cucim_8_0.png" src="../../_images/cupy_cucim_8_0.png" />
+</div>
+</div>
+<section id="image-filtering-and-segmentation">
+<h2>Image filtering and segmentation<a class="headerlink" href="#image-filtering-and-segmentation" title="Permalink to this headline">#</a></h2>
+<p>The cucim developers have re-implemented many functions from sckit image, e.g. the <a class="reference external" href="https://docs.rapids.ai/api/cucim/stable/api.html#cucim.skimage.filters.gaussian">Gaussian blur filter</a>, <a class="reference external" href="https://docs.rapids.ai/api/cucim/stable/api.html#cucim.skimage.filters.threshold_otsu">Otsu Thresholding</a> after <a class="reference external" href="https://ieeexplore.ieee.org/document/4310076">Otsu et al. 1979</a>, <a class="reference external" href="https://docs.rapids.ai/api/cucim/stable/api.html#cucim.skimage.morphology.binary_erosion">binary erosion</a> and <a class="reference external" href="https://docs.rapids.ai/api/cucim/stable/api.html#cucim.skimage.measure.label">connected component labeling</a>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span> <span class="kn">from</span> <span class="nn">cucim.skimage.filters</span> <span class="kn">import</span> <span class="n">gaussian</span>
+
+ <span class="n">blurred_gpu</span> <span class="o">=</span> <span class="n">gaussian</span><span class="p">(</span><span class="n">single_channel_gpu</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+
+ <span class="n">gpu_imshow</span><span class="p">(</span><span class="n">blurred_gpu</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/cupy_cucim_10_0.png" src="../../_images/cupy_cucim_10_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">cucim.skimage.filters</span> <span class="kn">import</span> <span class="n">threshold_otsu</span>
+
+<span class="c1"># determine threshold</span>
+<span class="n">threshold</span> <span class="o">=</span> <span class="n">threshold_otsu</span><span class="p">(</span><span class="n">blurred_gpu</span><span class="p">)</span>
+
+<span class="c1"># binarize image by apply the threshold</span>
+<span class="n">binary_gpu</span> <span class="o">=</span> <span class="n">blurred_gpu</span> <span class="o">&gt;</span> <span class="n">threshold</span>
+
+<span class="n">gpu_imshow</span><span class="p">(</span><span class="n">binary_gpu</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/cupy_cucim_11_0.png" src="../../_images/cupy_cucim_11_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">cucim.skimage.morphology</span> <span class="kn">import</span> <span class="n">binary_erosion</span><span class="p">,</span> <span class="n">disk</span>
+
+<span class="n">eroded_gpu</span> <span class="o">=</span> <span class="n">binary_erosion</span><span class="p">(</span><span class="n">binary_gpu</span><span class="p">,</span> <span class="n">selem</span><span class="o">=</span><span class="n">disk</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
+
+<span class="n">gpu_imshow</span><span class="p">(</span><span class="n">eroded_gpu</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/cupy_cucim_12_0.png" src="../../_images/cupy_cucim_12_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">cucim.skimage.measure</span> <span class="kn">import</span> <span class="n">label</span>
+
+<span class="n">labels_gpu</span> <span class="o">=</span> <span class="n">label</span><span class="p">(</span><span class="n">eroded_gpu</span><span class="p">)</span>
+
+<span class="n">gpu_imshow</span><span class="p">(</span><span class="n">labels_gpu</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/local/lib/python3.7/dist-packages/skimage/io/_plugins/matplotlib_plugin.py:150: UserWarning: Low image data range; displaying image with stretched contrast.
+  lo, hi, cmap = _get_display_range(image)
+</pre></div>
+</div>
+<img alt="../../_images/cupy_cucim_13_1.png" src="../../_images/cupy_cucim_13_1.png" />
+</div>
+</div>
+<p>For visualization purposes, it is recommended to turn the label image into an RGB image, especially if you want to save it to disk.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">cucim.skimage.color</span> <span class="kn">import</span> <span class="n">label2rgb</span>
+
+<span class="n">labels_rgb_gpu</span> <span class="o">=</span> <span class="n">label2rgb</span><span class="p">(</span><span class="n">labels_gpu</span><span class="p">)</span>
+
+<span class="n">gpu_imshow</span><span class="p">(</span><span class="n">labels_rgb_gpu</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/local/lib/python3.7/dist-packages/ipykernel_launcher.py:3: FutureWarning: The new recommended value for bg_label is 0. Until version 0.19, the default bg_label value is -1. From version 0.19, the bg_label default value will be 0. To avoid this warning, please explicitly set bg_label value.
+  This is separate from the ipykernel package so we can avoid doing imports until
+</pre></div>
+</div>
+<img alt="../../_images/cupy_cucim_15_1.png" src="../../_images/cupy_cucim_15_1.png" />
+</div>
+</div>
+</section>
+<section id="quantitative-measurements">
+<h2>Quantitative measurements<a class="headerlink" href="#quantitative-measurements" title="Permalink to this headline">#</a></h2>
+<p>Also quantitative measurments using <a class="reference external" href="https://docs.rapids.ai/api/cucim/stable/api.html#cucim.skimage.measure.regionprops_table">regionprops_table</a> have been implemented in cucim. A major difference is that you need to convert its result back to numpy if you want to continue processing on the CPU, e.g. using <a class="reference external" href="https://pandas.pydata.org/">pandas</a>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">cucim.skimage.measure</span> <span class="kn">import</span> <span class="n">regionprops_table</span> 
+
+<span class="n">table_gpu</span> <span class="o">=</span> <span class="n">regionprops_table</span><span class="p">(</span><span class="n">labels_gpu</span><span class="p">,</span> <span class="n">intensity_image</span><span class="o">=</span><span class="n">single_channel_gpu</span><span class="p">,</span> <span class="n">properties</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;mean_intensity&#39;</span><span class="p">,</span> <span class="s1">&#39;area&#39;</span><span class="p">,</span> <span class="s1">&#39;solidity&#39;</span><span class="p">))</span>
+
+<span class="n">table_gpu</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;area&#39;: array([ 238, 5833, 6006, 5679, 2534, 4200, 4655, 2662, 3846, 3350, 5005,
+        2200, 3952, 3837, 4298, 4111,  139]),
+ &#39;mean_intensity&#39;: array([68.93277311, 54.14537974, 68.23676324, 59.95175207, 87.22178374,
+        71.32666667, 74.37529538, 64.63561232, 58.93213729, 66.88656716,
+        62.15684316, 50.51363636, 62.50177126, 92.24863174, 71.68776175,
+        51.80345415, 72.3381295 ]),
+ &#39;solidity&#39;: array([0.97942387, 0.95842918, 0.97785738, 0.97964464, 0.98868513,
+        0.98522167, 0.98727466, 0.99143389, 0.87171351, 0.98355843,
+        0.96864718, 0.59945504, 0.98676654, 0.98510911, 0.98397436,
+        0.97997616, 0.97887324])}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># The following line would fail.</span>
+<span class="c1"># pd.DataFrame(table_gpu)</span>
+
+<span class="c1"># We need to convert that table to numpy before we can pass it to pandas.</span>
+<span class="n">table</span> <span class="o">=</span> <span class="p">{</span><span class="n">item</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="p">:</span> <span class="n">cp</span><span class="o">.</span><span class="n">asnumpy</span><span class="p">(</span><span class="n">item</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">table_gpu</span><span class="o">.</span><span class="n">items</span><span class="p">()}</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">table</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>mean_intensity</th>
+      <th>area</th>
+      <th>solidity</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>68.932773</td>
+      <td>238</td>
+      <td>0.979424</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>54.145380</td>
+      <td>5833</td>
+      <td>0.958429</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>68.236763</td>
+      <td>6006</td>
+      <td>0.977857</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>59.951752</td>
+      <td>5679</td>
+      <td>0.979645</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>87.221784</td>
+      <td>2534</td>
+      <td>0.988685</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>71.326667</td>
+      <td>4200</td>
+      <td>0.985222</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>74.375295</td>
+      <td>4655</td>
+      <td>0.987275</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>64.635612</td>
+      <td>2662</td>
+      <td>0.991434</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>58.932137</td>
+      <td>3846</td>
+      <td>0.871714</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>66.886567</td>
+      <td>3350</td>
+      <td>0.983558</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>62.156843</td>
+      <td>5005</td>
+      <td>0.968647</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>50.513636</td>
+      <td>2200</td>
+      <td>0.599455</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>62.501771</td>
+      <td>3952</td>
+      <td>0.986767</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>92.248632</td>
+      <td>3837</td>
+      <td>0.985109</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>71.687762</td>
+      <td>4298</td>
+      <td>0.983974</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>51.803454</td>
+      <td>4111</td>
+      <td>0.979976</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>72.338129</td>
+      <td>139</td>
+      <td>0.978873</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./robert_haase\cupy_cucim"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Marcelo Zoccoler, Johannes Müller, Till Korten, Ryan Savill, Robert Haase, DFG Cluster of Excellence "Physics of Life", TU Dresden<br/>
+  
+      &copy; Copyright 2023.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>
