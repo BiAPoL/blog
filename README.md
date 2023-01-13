@@ -1,4 +1,4 @@
-# The BiA-PoL blog
+# The BiA-PoL Blog
 This repository contains a collection of blog posts explaining bio-image analysis to a broad audience, focusing on life-scientists. The content is available at
 
 https://biapol.github.io/blog/
