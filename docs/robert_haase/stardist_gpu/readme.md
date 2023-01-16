@@ -1,5 +1,5 @@
 # Using StarDist in napari with GPU-support in Windows
-[Robert Haase](../readme.md), June 19th 2021
+[Robert Haase](../readme), June 19th 2021
 
 3D segmentation using deep learning is computationally costly, it might be necessary from a practical perspective to do it on computers
 with powerful graphics processing units (GPUs). One option is to do this in the cloud via Google Colab and for that it is recommended to take a look at [ZeroCostDeepLearning4Microscopy](https://github.com/HenriquesLab/ZeroCostDL4Mic/wiki).
@@ -82,7 +82,7 @@ If these entries don't exist, you can enter them by hand. However, it is recomme
 In order to make Tensorflow use the GPU, we need to install it. 
 As there are some conflicts between different versions of CUDA, Tensorflow, Python and others, I recommend installing specifically the versions, I'm using here:
 If you don't have conda installed yet, I recommend installing [miniconda](https://docs.conda.io/en/latest/miniconda.html#windows-installers). 
-There is an [installation instruction part of our Python Bio-ImageAnalysis course](https://github.com/BiAPoL/Bio-image_Analysis_with_Python/blob/main/conda_basics/01_conda_environments.md).
+There is an [installation instruction part of our Python Bio-ImageAnalysis course](https://github.com/BiAPoL/Bio-image_Analysis_with_Python/blob/main/conda_basics/01_conda_environments).
 
 Assuming conda is set up, we start by creating a new environment and specifically installing python 3.8:
 ```shell

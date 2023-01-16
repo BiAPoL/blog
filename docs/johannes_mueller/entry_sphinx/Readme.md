@@ -1,5 +1,5 @@
 # Automated package documentation with Sphinx
-[Johannes Müller](../Readme.md), November 24th 2021
+[Johannes Müller](../Readme), November 24th 2021
 
 ## Introduction
 We've all been there. We have written this wonderful piece of software that will essentially solve science's most pressing problems, the only *minor* thing left to do is proper documentation. And this, although it's only the last few meters until the finish lines, is where good projects often turn into bad projects.
@@ -9,9 +9,9 @@ Enter Sphinx: [Sphinx](https://www.sphinx-doc.org/en/master/) is a tool that can
 This blog entry will walk you through the generation of documentation html pages for an exemplary github library using Sphinx and a few extensions.
 
 Blogs on this topic will cover:
-* [Getting started](https://github.com/BiAPoL/blog/blob/sphinx-entry/johannes_mueller/entry_sphinx/Readme.md#getting-started)
-* [Running Sphinx](https://github.com/BiAPoL/blog/blob/sphinx-entry/johannes_mueller/entry_sphinx/Readme.md#running-sphinx)
-* [Hosting pages on Github](https://github.com/BiAPoL/blog/blob/sphinx-entry/johannes_mueller/entry_sphinx/Readme.md#host-your-documentation-on-github)
+* [Getting started](https://github.com/BiAPoL/blog/blob/sphinx-entry/johannes_mueller/entry_sphinx/Readme#getting-started)
+* [Running Sphinx](https://github.com/BiAPoL/blog/blob/sphinx-entry/johannes_mueller/entry_sphinx/Readme#running-sphinx)
+* [Hosting pages on Github](https://github.com/BiAPoL/blog/blob/sphinx-entry/johannes_mueller/entry_sphinx/Readme#host-your-documentation-on-github)
 
 
 ## Getting started

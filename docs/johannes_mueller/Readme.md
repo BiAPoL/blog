@@ -13,10 +13,10 @@ In 2021, I became part of the bio-image analysis group of Robert Haase at Physic
 educate others to empower them to develop their own workflows and develop new methods such that they can be deployed by as many researchers as possible.
 
 ## Blog posts
-* [GUIs in Python - getting started](entry_user_inter/Readme.md)
-* [Advanced GUIs with Qt designer](entry_user_interf2/Readme.md)
-* [Automated package documentation with Sphinx](entry_sphinx/Readme.md)
-* [Getting started with Python and Anaconda](anaconda_getting_started/Readme.md)
+* [GUIs in Python - getting started](entry_user_inter/Readme)
+* [Advanced GUIs with Qt designer](entry_user_interf2/Readme)
+* [Automated package documentation with Sphinx](entry_sphinx/Readme)
+* [Getting started with Python and Anaconda](anaconda_getting_started/Readme)
 
 ## Links
 * [BiA-PoL group website](https://physics-of-life.tu-dresden.de/en/research/technology-development-groups/bio-image-analysis)

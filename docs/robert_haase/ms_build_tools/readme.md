@@ -1,5 +1,5 @@
 # Installing Microsoft buildtools on Windows
-[Robert Haase](../readme.md), July 9th 2021
+[Robert Haase](../readme), July 9th 2021
 
 Installing python libraries on Windows can be tricky. When using `pip install` on a Windows computer that is not regularly visited by a hardcore programmer, a typical error message is "error: Microsoft Visual C++ 14.0 or greater is required.".
 This blog post shows how to deal with it and also hints how to avoid installing software that is not necessary.

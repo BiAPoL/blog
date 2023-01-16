@@ -1,5 +1,5 @@
 # Custom user interfaces for Python (Part 2)
-[Johannes Müller](../Readme.md), October 18th 2021
+[Johannes Müller](../Readme), October 18th 2021
 
 ## Introduction
 Graphical user interfaces (*GUIs*) are powerful tools to make your scripts and functions available to users that are not necessarily familiar with a lot of coding, development platforms (e.g. Spyder or PyCharm) - and shouldn't be experienced programmers in order to use your tools.
@@ -7,14 +7,14 @@ Graphical user interfaces (*GUIs*) are powerful tools to make your scripts and f
 In this blog, we will cover a few interesting and versatile methods for you to create customized [Qt](https://qt.io)-based GUIs for Python in general. Since our work revolves mostly around the visualization and processing of **images**, we will also show you a few ways to create great user interfaces for [Napari](https://napari.org/).
 
 Blogs on this topic will cover:
-* [Getting started (Part 1)](../entry_user_inter/Readme.md#getting-started)
+* [Getting started (Part 1)](../entry_user_inter/Readme#getting-started)
 * [Creating standalone GUIs (Part 2)](#creating-advanced-standalone-guis)
-* [Creating GUIs for napari (Part 3)](../../marcelo_zoccoler/entry_user_interf3/Readme.md#creating-advanced-guis-for-napari)
-* [Turning napari GUI into plugins (Part 4)](../../marcelo_zoccoler/entry_user_interf4/Readme.md#turning-napari-gui-into-plugins)
+* [Creating GUIs for napari (Part 3)](../../marcelo_zoccoler/entry_user_interf3/Readme#creating-advanced-guis-for-napari)
+* [Turning napari GUI into plugins (Part 4)](../../marcelo_zoccoler/entry_user_interf4/Readme#turning-napari-gui-into-plugins)
 
 
 # Creating advanced standalone GUIs
-The [previous entry](../entry_user_inter/Readme.md#getting-started) showed you how to create basic GUIs by setting up a ```QMainWindow``` object and adding basic objects, such as buttons to it. However, especially if user interfaces become more complex, the approach of manually adding elements to your window will become harder and harder to control. This part of the tutorial will cover the creation of advanced user interfaces for PyQt.
+The [previous entry](../entry_user_inter/Readme#getting-started) showed you how to create basic GUIs by setting up a ```QMainWindow``` object and adding basic objects, such as buttons to it. However, especially if user interfaces become more complex, the approach of manually adding elements to your window will become harder and harder to control. This part of the tutorial will cover the creation of advanced user interfaces for PyQt.
 
 ## Table of contents
 * [Creating your environment](#creating-your-environment)

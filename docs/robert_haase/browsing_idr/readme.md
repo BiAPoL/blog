@@ -1,6 +1,6 @@
 # Browsing the Open Microscopy Image Data Resource with Python
-[Robert Haase](../readme.md), June 6th 2021;
-[Marcelo Zoccoler](../../marcelo_zoccoler/readme.md), updated on December 10th 2021
+[Robert Haase](../readme), June 6th 2021;
+[Marcelo Zoccoler](../../marcelo_zoccoler/readme), updated on December 10th 2021
 
 The [Image Data Resource (IDR)](https://idr.openmicroscopy.org/) is an online database of microscopy research image data where scientist can publish their data if it is part of a scientific publication. It is a fantastic resource not just for biologists searching for images of samples they are interested in. It is also a fantastic source of data for image data scientists who develop new algorithms. For automated access of the underlying data base, an application programming interface (API) is accessible via python allowing you to programmatically browse the database, search for images with certain properties and download them for dedicated image analysis. 
 For downloading images from the IDR, you only need a link, e.g. for requesting the data in tif format. You can then use [scikit-image](https://scikit-image.org/) to open the image.

@@ -1,5 +1,5 @@
 # Why we blog
-[Robert Haase](../readme.md), May 30th 2021
+[Robert Haase](../readme), May 30th 2021
 
 Bio-image analysis is an emerging field. 
 New technological developments in the middle ground between microscopy and data science emerge rapidly and new ways for processing image data change the way how we do research in biology and biophysics. 

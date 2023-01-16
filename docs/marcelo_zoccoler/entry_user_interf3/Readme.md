@@ -1,5 +1,5 @@
 # Custom user interfaces for Python (Part 3)
-[Marcelo Zoccoler](../readme.md), November 29th 2021
+[Marcelo Zoccoler](../readme), November 29th 2021
 
 ## Introduction
 Graphical user interfaces (*GUIs*) are powerful tools to make your scripts and functions available to users that are not necessarily familiar with a lot of coding, development platforms (e.g. Spyder or PyCharm) - and shouldn't be experienced programmers in order to use your tools.
@@ -7,14 +7,14 @@ Graphical user interfaces (*GUIs*) are powerful tools to make your scripts and f
 In this blog, we will cover a few interesting and versatile methods for you to create customized [Qt](https://qt.io)-based GUIs for Python in general. Since our work revolves mostly around the visualization and processing of **images**, we will also show you a few ways to create great user interfaces for [napari](https://napari.org/).
 
 Blogs on this topic will cover:
-* [Getting started (Part 1)](../../johannes_mueller/entry_user_inter/Readme.md#getting-started)
-* [Creating standalone GUIs (Part 2)](../../johannes_mueller/entry_user_interf2/Readme.md#creating-advanced-standalone-guis)
+* [Getting started (Part 1)](../../johannes_mueller/entry_user_inter/Readme#getting-started)
+* [Creating standalone GUIs (Part 2)](../../johannes_mueller/entry_user_interf2/Readme#creating-advanced-standalone-guis)
 * [Creating GUIs for napari (Part 3)](#creating-advanced-guis-for-napari)
-* [Turning napari GUI into plugins (Part 4)](../entry_user_interf4/Readme.md#turning-napari-gui-into-plugins)
+* [Turning napari GUI into plugins (Part 4)](../entry_user_interf4/Readme#turning-napari-gui-into-plugins)
 
 
 # Creating advanced GUIs for napari
-The [previous entry](../../johannes_mueller/entry_user_interf2/Readme.md#creating-advanced-standalone-guis) showed you how to create more advanced GUIs with the aid of the designer tool. This third part will teach you how to import those GUIs to napari and how to produce them straight from python functions using [magicgui](https://napari.org/magicgui/index.html).
+The [previous entry](../../johannes_mueller/entry_user_interf2/Readme#creating-advanced-standalone-guis) showed you how to create more advanced GUIs with the aid of the designer tool. This third part will teach you how to import those GUIs to napari and how to produce them straight from python functions using [magicgui](https://napari.org/magicgui/index.html).
 
 ## Table of contents
 * [Installing and running napari](#installing-and-running-napari)
@@ -27,7 +27,7 @@ The [previous entry](../../johannes_mueller/entry_user_interf2/Readme.md#creatin
 
 ## Installing and running napari
 
-The [napari website](https://napari.org/) has a more complete [installation tutorial](https://napari.org/tutorials/fundamentals/installation.html), but, overall, you should [create a new conda environment](https://biapol.github.io/blog/johannes_mueller/entry_user_interf2/Readme.md#creating-your-environment) and then type
+The [napari website](https://napari.org/) has a more complete [installation tutorial](https://napari.org/tutorials/fundamentals/installation.html), but, overall, you should [create a new conda environment](https://biapol.github.io/blog/johannes_mueller/entry_user_interf2/Readme#creating-your-environment) and then type
 
 `conda install -c conda-forge napari`
 
@@ -79,7 +79,7 @@ After executing the block of code above, you should see the napari window like t
 
 ## Importing your fancy GUI to napari
 
-Here, I modified a bit the GUI from the [previous post](../../johannes_mueller/entry_user_interf2/Readme.md#creating-a-simple-gui-with-the-designer) and it looks like this:
+Here, I modified a bit the GUI from the [previous post](../../johannes_mueller/entry_user_interf2/Readme#creating-a-simple-gui-with-the-designer) and it looks like this:
 
 ![](images/flood_tool_gui.png)
 

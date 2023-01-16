@@ -1,5 +1,5 @@
 # Getting started with Anaconda and Python
-[Johannes Müller](../Readme.md), January 26th, 2022
+[Johannes Müller](../Readme), January 26th, 2022
 
 ## Table of contents
 - [Introduction](#introduction)

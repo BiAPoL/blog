@@ -1,5 +1,5 @@
 # Running Deep-Learning Scripts in the BiA-PoL Omero Server
-[Marcelo Zoccoler](../readme.md), May 2nd 2022
+[Marcelo Zoccoler](../readme), May 2nd 2022
 
 ## Omero Server
 

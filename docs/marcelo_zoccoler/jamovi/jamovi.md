@@ -1,5 +1,5 @@
 # Jamovi: statistical analysis made visual and easy (powered with R)
-[Marcelo Zoccoler](../readme.md), October 7th 2021
+[Marcelo Zoccoler](../readme), October 7th 2021
 
 Statistical analysis software exist for decades. So why care about "just another one". Well, for one main reason: simplicity. And I mean simplicity by a clean interface and an easy usage. Besides that, [Jamovi](https://www.jamovi.org/) is open-source and developed in R, a powerful programming language to perform statistical tests.
 
@@ -12,7 +12,7 @@ Since I work with image analysis, I will use Jamovi to compare features of diffe
 
 ![](images/TEM_filter_sample_and_overlay.png)
 
-Then I saved 2 tables as .csv files ([table 1](https://github.com/BiAPoL/blog/raw/master/marcelo_zoccoler/jamovi/data/Results_black.csv) and [table 2](https://github.com/BiAPoL/blog/raw/master/marcelo_zoccoler/jamovi/data/Results_white.csv)) containing data about shape descriptors.
+Then I saved 2 [tables](https://github.com/BiAPoL/blog/raw/master/marcelo_zoccoler/jamovi/data) (as .csv files) containing data about shape descriptors.
 
 ## Installing Jamovi
 

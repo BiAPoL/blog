@@ -1,5 +1,5 @@
 # Custom user interfaces for Python (Part 1)
-[Johannes Müller](../Readme.md), October 18th 2021
+[Johannes Müller](../Readme), October 18th 2021
 
 ## Introduction
 Graphical user interfaces (*GUIs*) are powerful tools to make your scripts and functions available to users that are not necessarily familiar with a lot of coding, development platforms (e.g. Spyder or PyCharm) - and shouldn't be experienced programmers in order to use your tools.
@@ -106,7 +106,7 @@ This is an important concept to grasp as it mainly determines the behaviour of h
 Basically, every time an action in the GUI (clicking a button, pulling a slider, etc) prompts the execution of a function that is discovered by the *Event listener*. The execution of this function is then added to the event queue. All events in the queue are then executed **one after another**. Only once a function has returned (i.e. has finished executing), the event handler will handle the next function.
 In terms of the above figure, Function X has been triggered three times. One execution (Job 1) has already been executed and the second (Job 2) and third (Job 3) execution of this function are scheduled next. Clicking another button may trigger another function (function Y) that is then also added to the event queue.
 
-This has one major practical consequence: If your functions take long to execute, all other functionality of the GUI is not responsive in the meantime since the event executioner is busy with something else (i.e., Job 2), which will let your GUI *appear* to be frozen. Triggering other functions will, however, still be recorded by the listener and will be added to the queue.
+This has one major practical consequence: If your functions take long to execute, all other functionality of the GUI is irresponsive in the meantime since the event executioner is busy with something else (i.e., Job 2), which will let your GUI *appear* to be frozen. Triggering other functions will, however, still be recorded by the listener and will be added to the queue.
 
 ### Closing the GUI
 You may have noticed that your Python code editor of choice will not allow you to run the code to start your GUI using the same Python kernel twice. The reason for this behaviour is, that closing the GUI (for instance by clicking the X in the corner in Windows) will **not stop the event loop**. In order to properly close your GUI, add the following to your MainWindow class:

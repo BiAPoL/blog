@@ -15,11 +15,11 @@ Since 2020 I'm heading the Bio-image Analysis Technology Development group (BiA-
 I serve here as editor and I'm supporting students, employees and collaborators of the BiA-PoL in communicating their science and technology with the world.
 
 ## Blog posts
-* [GPU-accelerated image processing in the cloud using Google Colab and clEsperanto](clesperanto_google_colab/readme.md)
-* [Browsing the Open Microscopy Image Data Resource with Python](browsing_idr/readme.md)
-* [GPU-accelerated image processing using cupy and cucim](cupy_cucim/readme.md)
-* [Using StarDist in napari with GPU-support in Windows](stardist_gpu/readme.md)
-* [Installing Microsoft buildtools on Windows](ms_build_tools/readme.md)
+* [GPU-accelerated image processing in the cloud using Google Colab and clEsperanto](clesperanto_google_colab/readme)
+* [Browsing the Open Microscopy Image Data Resource with Python](browsing_idr/readme)
+* [GPU-accelerated image processing using cupy and cucim](cupy_cucim/readme)
+* [Using StarDist in napari with GPU-support in Windows](stardist_gpu/readme)
+* [Installing Microsoft buildtools on Windows](ms_build_tools/readme)
 
 ## Links
 * [BiA-PoL group website](https://physics-of-life.tu-dresden.de/en/research/core-groups/bio-image-analysis)
