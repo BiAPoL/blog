@@ -114,43 +114,46 @@ total size is 65,220  speedup is 1.00
 
    note: the folder with the cryptic name (`is36zwh_`) is a temporary folder created and managed by `pft`.
 
-2. you can read single images:
+2. you can read images
 
-   ```Python
-   image = imread("folder/filename001.tif")
-   ```
+   * single images
 
-   note that this is fast after syncing, while it will be slow the first time you do this without syncing.
+     ```Python
+     image = imread("folder/filename001.tif")
+     ```
 
-3. you can read all `.tif` images:
+     note that this is fast after syncing, while it will be slow the first time you do this without syncing.
 
-   ```Python
-   images = []
-   for filename in pft.list_files():
-      if filename.endswith(".tif"):
-         images.append(imread(filename))
-   
-   from skimage.io import imshow
-   imshow(images[0])
-   ```
+   * all `.tif` images
 
-   <img src="images/10_imshow.png" width="300" />
+     ```Python
+     images = []
+     for filename in pft.list_files():
+        if filename.endswith(".tif"):
+           images.append(imread(filename))
+     
+     from skimage.io import imshow
+     imshow(images[0])
+     ```
 
-4. after you analysed your data, you may want to save the results from a pandas dataframe to a csv file:
-   * if you need the file again, or don't want to wait until it is transferred to the fileserver, save it locally:
+     <img src="images/10_imshow.png" width="300" />
+
+3. after you analysed your data, you may want to save the results
+   * as a `.tif` file
+
+     ```python
+     from skimage.io import imsave
+
+     full_path = pft.cache_path / "folder/results.tif"
+     imsave(full_path, result_image)
+     ```
+
+   * from a pandas dataframe to a csv file
 
      ```python
      full_path = pft.cache_path / "folder/results.csv"
      my_pandas_dataframe.to_csv(full_path)
      ```
-
-   * if you don't need the file again on the cluster, you can save it directly to the fileserver:
-
-     ```python
-     pft.csv_save("folder/results.csv", my_pandas_dataframe)
-     ```
-
-     Waiting ................target file: /grp/<fileserver_group>/path/to/your/data/folder/results.csv
 
 ## Step 6: Put your data back on the fileserver
 
