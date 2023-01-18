@@ -36,8 +36,7 @@ Last part of this series, this post will teach you how to turn your napari GUI/w
 
 ### [GUIs: Creating graphical user interfaces with/for Python, Part III](marcelo_zoccoler/entry_user_interf3/Readme)
 <small>[Marcelo Zoccoler](marcelo_zoccoler/readme), November 29th, 2021</small><br>
-<img style="float: right; height:100px; width:100px" src="images/napari_logo.png" width="100" style="float:right">
-After learning how to create GUIs, one may want to integrate them into a pre-existing software. This third part will teach you a few ways design GUIs and embbed them into the popular python image viewer napari, either with the help of the Designer or straight from python functions using magicgui.
+<img style="float: right; height:100px; width:100px" src="images/napari_logo.png" width="100" style="float:right"><p>After learning how to create GUIs, one may want to integrate them into a pre-existing software. This third part will teach you a few ways design GUIs and embbed them into the popular python image viewer napari, either with the help of the Designer or straight from python functions using magicgui.</p>
 
 
 Find more blog posts on the left sidebar.
