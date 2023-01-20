@@ -6,6 +6,7 @@ root: intro
 parts:
 - caption: Blog Posts
   chapters:
+  - file: mara_lampert/getting_started_with_mambaforge_and_python/readme
   - file: marcelo_zoccoler/omero_scripts/readme
   - file: marcelo_zoccoler/mini_sabbatical_rike/Readme
   - file: johannes_mueller/anaconda_getting_started/Readme
@@ -31,6 +32,7 @@ parts:
   - file: robert_haase/why_we_blog/readme
   - file: people
     sections:
+    - file: mara_lampert/readme
     - file: johannes_mueller/Readme
     - file: marcelo_zoccoler/readme
     - file: ryan_savill/readme

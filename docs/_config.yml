@@ -2,7 +2,7 @@
 # Learn more at https://jupyterbook.org/customize/config.html
 
 title: BiA-PoL blog
-author: Marcelo Zoccoler, Johannes Müller, Till Korten, Ryan Savill, Robert Haase, DFG Cluster of Excellence "Physics of Life", TU Dresden
+author: Marcelo Zoccoler, Johannes Müller, Till Korten, Ryan Savill, Mara Lampert, Robert Haase, DFG Cluster of Excellence "Physics of Life", TU Dresden
 copyright: "2023"
 logo: images/biapol_logo.png
 execute:

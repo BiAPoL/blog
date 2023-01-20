@@ -4,5 +4,6 @@
 * [Ryan Savill](/ryan_savill/readme)
 * [Marcelo Zoccoler](/marcelo_zoccoler/readme)
 * [Johannes Müller](/johannes_mueller/Readme)
+* [Mara Lampert](/mara_lampert/readme)
 
 [Imprint](/imprint)
