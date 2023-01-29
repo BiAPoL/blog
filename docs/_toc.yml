@@ -6,6 +6,7 @@ root: intro
 parts:
 - caption: Blog Posts
   chapters:
+  # Add new chapters here (recent first)
   - file: mara_lampert/getting_started_with_mambaforge_and_python/readme
   - file: marcelo_zoccoler/omero_scripts/readme
   - file: marcelo_zoccoler/mini_sabbatical_rike/Readme
