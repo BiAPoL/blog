@@ -1,5 +1,6 @@
 /.idea/
-marcelo_zoccoler/entry_user_interf3/scripts/__pycache__/flood_tool.cpython-37.pyc
+docs/marcelo_zoccoler/entry_user_interf3/scripts/__pycache__/flood_tool.cpython-37.pyc
 
 
 .ipynb_checkpoints
+/docs/_build

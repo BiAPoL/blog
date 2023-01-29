@@ -1,8 +1,0 @@
-title: BiA-PoL blog
-logo: /images/biapol_logo.png
-description: Blog of the Bio-image Analysis Technology Development Group at the PoL Dresden
-show_downloads: true
-google_analytics:
-theme: jekyll-theme-minimal
-plugins:
-  - jekyll-redirect-from

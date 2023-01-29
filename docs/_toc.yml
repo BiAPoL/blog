@@ -1,0 +1,38 @@
+# Table of contents
+# Learn more at https://jupyterbook.org/customize/toc.html
+
+format: jb-book
+root: intro
+parts:
+- caption: Blog Posts
+  chapters:
+  - file: marcelo_zoccoler/omero_scripts/readme
+  - file: marcelo_zoccoler/mini_sabbatical_rike/Readme
+  - file: johannes_mueller/anaconda_getting_started/Readme
+  - file: johannes_mueller/entry_sphinx/Readme
+  - file: johannes_mueller/entry_user_inter/Readme
+    sections:
+    - file: johannes_mueller/entry_user_interf2/Readme
+    - file: marcelo_zoccoler/entry_user_interf3/Readme
+    - file: marcelo_zoccoler/entry_user_interf4/Readme
+  - file: marcelo_zoccoler/jamovi/jamovi
+  - file: robert_haase/ms_build_tools/readme
+  - file: ryan_savill/principal_feature_analysis/readme
+  - file: ryan_savill/03_background_subtraction/readme
+  - file: ryan_savill/02_intro_to_skimage/readme
+  - file: robert_haase/stardist_gpu/readme
+  - file: ryan_savill/01_intro_to_python/readme
+  - file: robert_haase/cupy_cucim/readme
+  - file: robert_haase/browsing_idr/readme
+  - file: robert_haase/clesperanto_google_colab/readme
+
+- caption: About the Blog
+  chapters:
+  - file: robert_haase/why_we_blog/readme
+  - file: people
+    sections:
+    - file: johannes_mueller/Readme
+    - file: marcelo_zoccoler/readme
+    - file: ryan_savill/readme
+    - file: robert_haase/readme
+  - file: imprint
