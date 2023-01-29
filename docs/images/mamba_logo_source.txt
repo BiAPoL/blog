@@ -1,0 +1,4 @@
+The Mamba logo has been taken from https://github.com/mamba-org/mamba
+
+It is licensed BSD3:
+https://github.com/mamba-org/mamba/blob/main/LICENSE
