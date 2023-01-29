@@ -1,0 +1,1006 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Setting up GPU-accelerated image processing on the TUD HPC cluster &#8212; BiA-PoL blog</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Running Deep-Learning Scripts in the BiA-PoL Omero Server" href="../../marcelo_zoccoler/omero_scripts/readme.html" />
+    <link rel="prev" title="Using GPU-accelerated image processing on the TUD HPC cluster" href="../devbio-napari_cluster/readme.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../../_static/biapol_logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">BiA-PoL blog</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    Welcome!
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Blog Posts
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../mara_lampert/getting_started_with_mambaforge_and_python/readme.html">
+   Getting started with Mambaforge and Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../devbio-napari_cluster/readme.html">
+   Using GPU-accelerated image processing on the TUD HPC cluster
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Setting up GPU-accelerated image processing on the TUD HPC cluster
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../marcelo_zoccoler/omero_scripts/readme.html">
+   Running Deep-Learning Scripts in the BiA-PoL Omero Server
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../marcelo_zoccoler/mini_sabbatical_rike/Readme.html">
+   Mini-Sabbatical Experience at Bia-PoL
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../johannes_mueller/anaconda_getting_started/Readme.html">
+   Getting started with Anaconda and Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../johannes_mueller/entry_sphinx/Readme.html">
+   Automated package documentation with Sphinx
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../johannes_mueller/entry_user_inter/Readme.html">
+   Custom user interfaces for Python (Part 1)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../johannes_mueller/entry_user_interf2/Readme.html">
+     Custom user interfaces for Python (Part 2)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../marcelo_zoccoler/entry_user_interf3/Readme.html">
+     Custom user interfaces for Python (Part 3)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../marcelo_zoccoler/entry_user_interf4/Readme.html">
+     Custom user interfaces for Python (Part 4)
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../marcelo_zoccoler/jamovi/jamovi.html">
+   Jamovi: statistical analysis made visual and easy (powered with R)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../robert_haase/ms_build_tools/readme.html">
+   Installing Microsoft buildtools on Windows
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../ryan_savill/principal_feature_analysis/readme.html">
+   Principal Feature Analysis
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../ryan_savill/03_background_subtraction/readme.html">
+   Background Subtraction
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../ryan_savill/02_intro_to_skimage/readme.html">
+   Introduction to Image Analysis Basics in Python with Scikit Image
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../robert_haase/stardist_gpu/readme.html">
+   Using StarDist in napari with GPU-support in Windows
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../ryan_savill/01_intro_to_python/readme.html">
+   Introduction to Using Python for Image Analysis
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../robert_haase/cupy_cucim/readme.html">
+   GPU-accelerated image processing using cupy and cucim
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../robert_haase/browsing_idr/readme.html">
+   Browsing the Open Microscopy Image Data Resource with Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../robert_haase/clesperanto_google_colab/readme.html">
+   GPU-accelerated image processing in the cloud using Google Colab and clEsperanto
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  About the Blog
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../robert_haase/why_we_blog/readme.html">
+   Why we blog
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../people.html">
+   BiA-PoL blog authors
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../mara_lampert/readme.html">
+     Mara Lampert
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../johannes_mueller/Readme.html">
+     Johannes Müller
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../marcelo_zoccoler/readme.html">
+     Marcelo Zoccoler
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../ryan_savill/readme.html">
+     Ryan Savill
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../robert_haase/readme.html">
+     Robert Haase
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../imprint.html">
+   Imprint
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/lazigu/blog"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/lazigu/blog/issues/new?title=Issue%20on%20page%20%2Ftill_korten/devbio-napari_cluster_setup/readme.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../../_sources/till_korten/devbio-napari_cluster_setup/readme.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.md</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#this-blog-post-is-for-you-if">
+   This blog post is for you if
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#see-also">
+   See also
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#step-1-get-access-to-the-zih-cluster">
+   Step 1: Get access to the ZIH cluster
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#step-2-get-access-fom-the-cluster-to-the-fileserver">
+   Step 2: Get access fom the cluster to the fileserver
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#step-3-start-a-jupyter-session-on-the-zih-cluster">
+   Step 3: Start a Jupyter session on the ZIH cluster
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#trouble-shooting">
+     Trouble shooting
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#step-4-open-a-terminal">
+   Step 4: Open a terminal
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#step-5-install-a-custom-jupyter-kernel-for-your-user">
+   Step 5: Install a custom jupyter kernel for your user
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#step-6-open-a-jupyter-notebook-with-the-newly-installed-environment">
+   Step 6: Open a Jupyter Notebook with the newly installed environment
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#step-7-verify-that-the-environment-works">
+   Step 7: Verify that the environment works
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#hints">
+   Hints
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#copy-data-directly-to-the-cluster">
+     Copy data directly to the cluster
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#what-hardware-is-the-current-node-running-on">
+     What hardware is the current node running on?
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#acknowledgements">
+   Acknowledgements
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Setting up GPU-accelerated image processing on the TUD HPC cluster</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#this-blog-post-is-for-you-if">
+   This blog post is for you if
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#see-also">
+   See also
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#step-1-get-access-to-the-zih-cluster">
+   Step 1: Get access to the ZIH cluster
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#step-2-get-access-fom-the-cluster-to-the-fileserver">
+   Step 2: Get access fom the cluster to the fileserver
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#step-3-start-a-jupyter-session-on-the-zih-cluster">
+   Step 3: Start a Jupyter session on the ZIH cluster
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#trouble-shooting">
+     Trouble shooting
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#step-4-open-a-terminal">
+   Step 4: Open a terminal
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#step-5-install-a-custom-jupyter-kernel-for-your-user">
+   Step 5: Install a custom jupyter kernel for your user
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#step-6-open-a-jupyter-notebook-with-the-newly-installed-environment">
+   Step 6: Open a Jupyter Notebook with the newly installed environment
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#step-7-verify-that-the-environment-works">
+   Step 7: Verify that the environment works
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#hints">
+   Hints
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#copy-data-directly-to-the-cluster">
+     Copy data directly to the cluster
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#what-hardware-is-the-current-node-running-on">
+     What hardware is the current node running on?
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#acknowledgements">
+   Acknowledgements
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="setting-up-gpu-accelerated-image-processing-on-the-tud-hpc-cluster">
+<h1>Setting up GPU-accelerated image processing on the TUD HPC cluster<a class="headerlink" href="#setting-up-gpu-accelerated-image-processing-on-the-tud-hpc-cluster" title="Permalink to this headline">#</a></h1>
+<p><a class="reference external" href="https://biapol.github.io/blog/till_korten">Till Korten</a>, July 29th 2022</p>
+<p>The <a class="reference external" href="https://tu-dresden.de/zih/hochleistungsrechnen/hpc?set_language=en">High Performance Computing (HPC) cluster at the compute center (ZIH) of the TU Dresden</a> provides a lot of computational resources including GPU support, which we can use for analyzing data in the life-sciences.
+This blog post explains how to set up an account on the cluster. <a class="reference internal" href="../devbio-napari_cluster/readme.html"><span class="doc std std-doc">This follow-up article</span></a> explains how you can then run your own <a class="reference external" href="https://jupyter.org/">jupyter notebooks</a> using some <a class="reference external" href="https://napari.org">napari</a> plugins and GPU-accelerated image processing python libraries such as <a class="reference external" href="https://clesperanto.net">clEsperanto</a> on the cluster.</p>
+<section id="this-blog-post-is-for-you-if">
+<h2>This blog post is for you if<a class="headerlink" href="#this-blog-post-is-for-you-if" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>you want to <a class="reference internal" href="../devbio-napari_cluster/readme.html"><span class="doc std std-doc">run devbio-napari tools</span></a> on the cluster.</p></li>
+<li><p>you are comfortabel with the command line</p></li>
+</ul>
+<p>If you need help with the setup, please do not hesitate to contact us</p>
+</section>
+<section id="see-also">
+<h2>See also<a class="headerlink" href="#see-also" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://doc.zih.tu-dresden.de/">ZIH HPC Documentation</a></p></li>
+</ul>
+</section>
+<section id="step-1-get-access-to-the-zih-cluster">
+<h2>Step 1: Get access to the ZIH cluster<a class="headerlink" href="#step-1-get-access-to-the-zih-cluster" title="Permalink to this headline">#</a></h2>
+<p>Before you can use the cluster, you need to <a class="reference external" href="https://tu-dresden.de/zih/hochleistungsrechnen/zugang/projektantrag?set_language=en">apply for an HPC project</a>.</p>
+<p>In most cases, a NHR trial project will provide plenty of resources for your needs, so that you can follow our recommendations for filling out the application:</p>
+<ol>
+<li><p>Log in to the <a class="reference external" href="https://projects.hpc.tu-dresden.de/jards/WEB/application/login.php?appkind=nhr">online project application form</a></p></li>
+<li><p>Application List: Scroll down and click on the button “New Project Application”</p>
+<a class="reference internal image-reference" href="../../_images/a1_new_project_application.png"><img alt="../../_images/a1_new_project_application.png" src="../../_images/a1_new_project_application.png" style="width: 150px;" /></a>
+</li>
+<li><p>Project Type: Select “trial project (&lt; 42000 CPU hours per year)</p>
+<a class="reference internal image-reference" href="../../_images/a2_trial_project.png"><img alt="../../_images/a2_trial_project.png" src="../../_images/a2_trial_project.png" style="width: 500px;" /></a>
+</li>
+<li><p>Choose PI and PC: Enter the email addresses of the principal investigator (PI) and a person to contact (PC). If you are not the PI, click on the button “change my role to Person to Contact” so that you can enter the email address of your PI.</p>
+<a class="reference internal image-reference" href="../../_images/a3_PI_PC_email.png"><img alt="../../_images/a3_PI_PC_email.png" src="../../_images/a3_PI_PC_email.png" style="width: 400px;" /></a>
+</li>
+<li><p>Principal Investigator: Enter the personal data of your PI</p></li>
+<li><p>Person to Contact: Enter the personal data of the PC</p></li>
+<li><p>Resources: check the boxes for both CPU and GPU:</p>
+<a class="reference internal image-reference" href="../../_images/a4_CPU_GPU.png"><img alt="../../_images/a4_CPU_GPU.png" src="../../_images/a4_CPU_GPU.png" style="width: 60px;" /></a>
+</li>
+<li><p>Project data:</p>
+<ul class="simple">
+<li><p>Choose a project duration. Enter the estimated duration of the project here (e.g. the duration of the contract of the PC). Note that no matter the total estimated project duration, all projects need to be extended after one year.</p></li>
+<li><p>Choose a title</p></li>
+<li><p>Choose a few keywords, e.g. <code class="docutils literal notranslate"><span class="pre">image</span> <span class="pre">processing,</span> <span class="pre">machine</span> <span class="pre">learning,</span> <span class="pre">data</span> <span class="pre">analysis</span></code></p></li>
+<li><p>Enter a short project description, e.g. <code class="docutils literal notranslate"><span class="pre">Analysis</span> <span class="pre">of</span> <span class="pre">light-sheet</span> <span class="pre">microscopy</span> <span class="pre">images</span> <span class="pre">of</span> <span class="pre">developing</span> <span class="pre">organoids</span> <span class="pre">using</span> <span class="pre">python</span> <span class="pre">machine-learning</span> <span class="pre">tools</span> <span class="pre">such</span> <span class="pre">as</span> <span class="pre">napari</span></code>. If you already have an abstract of a project proposal, we recommend to use parts of that (note the 1500 character limit).</p></li>
+<li><p>Commmissioned research: <code class="docutils literal notranslate"><span class="pre">No</span></code> (unless the project you are doing was specifically commissioned by a company)</p></li>
+<li><p>Select sponsorship (DFG, BMBF, EU, Industry, Other)</p></li>
+<li><p>If you selected <code class="docutils literal notranslate"><span class="pre">Other</span></code>, enter the sponsor in the text field below. e.g. <code class="docutils literal notranslate"><span class="pre">TU</span> <span class="pre">Dresden</span></code></p></li>
+<li><p>Classify your project according to predefined categories. E.g. “Main category”: <code class="docutils literal notranslate"><span class="pre">201</span> <span class="pre">Basic</span> <span class="pre">Research</span> <span class="pre">in</span> <span class="pre">Biology</span> <span class="pre">and</span> <span class="pre">Medicine</span></code> and “Sub category”: <code class="docutils literal notranslate"><span class="pre">201-02</span> <span class="pre">Biophysics</span></code></p></li>
+<li><p>Give reasons that make the use of this supercomputer necessary: e.g. <code class="docutils literal notranslate"><span class="pre">We</span> <span class="pre">need</span> <span class="pre">to</span> <span class="pre">process</span> <span class="pre">large</span> <span class="pre">amounts</span> <span class="pre">of</span> <span class="pre">image</span> <span class="pre">data,</span> <span class="pre">that</span> <span class="pre">would</span> <span class="pre">require</span> <span class="pre">hours</span> <span class="pre">to</span> <span class="pre">days</span> <span class="pre">on</span> <span class="pre">a</span> <span class="pre">normal</span> <span class="pre">computer.</span> <span class="pre">Furthermore,</span> <span class="pre">we</span> <span class="pre">need</span> <span class="pre">a</span> <span class="pre">standardized,</span> <span class="pre">reproducible</span> <span class="pre">environment</span> <span class="pre">for</span> <span class="pre">data</span> <span class="pre">processing.</span></code></p></li>
+<li><p>If the PI or PC were involved in other HPC projects within the last 3 years, you need to fill in the table “Other applications for compute time”</p></li>
+<li><p>Check the box that you are aware that incomplete information may lead to a significant cutback of resources or even to the rejection of the proposal</p></li>
+<li><p>Add other project members that need access to the HPC cluster (note, you can also easily add members later as needed)</p></li>
+</ul>
+</li>
+<li><p>Software packages: Here is what we recommend for bioimage analysis</p>
+<ul class="simple">
+<li><p>Compilers: GCC (during installation of some python packages),</p></li>
+<li><p>Programming Languages: Python (and R)</p></li>
+<li><p>Other packages: <code class="docutils literal notranslate"><span class="pre">singularity,</span> <span class="pre">OpenCL,</span> <span class="pre">CUDA</span> <span class="pre">(Inside</span> <span class="pre">singularity</span> <span class="pre">containers:</span> <span class="pre">PyTorch,</span> <span class="pre">Tensorflow,</span> <span class="pre">napari)</span></code></p></li>
+<li><p>Packages developed by yourself: <code class="docutils literal notranslate"><span class="pre">(Inside</span> <span class="pre">singularity</span> <span class="pre">containers:</span> <span class="pre">devbio-napari,</span> <span class="pre">pyclesperanto)</span></code></p></li>
+<li><p>Open source: Yes</p></li>
+<li><p>Links: <code class="docutils literal notranslate"><span class="pre">https://sylabs.io/singularity/,</span> <span class="pre">,</span> <span class="pre">https://www.khronos.org/opencl/,</span> <span class="pre">https://developer.nvidia.com/cuda-toolkit,</span> <span class="pre">https://pytorch.org/,</span> <span class="pre">https://www.tensorflow.org/,</span> <span class="pre">https://napari.org/stable/,</span> <span class="pre">https://github.com/haesleinhuepf/devbio-napari,</span> <span class="pre">https://github.com/clEsperanto/pyclesperanto_prototype</span></code></p></li>
+<li><p>Parallelization strategy: Hybrid</p></li>
+</ul>
+</li>
+<li><p>Data management: Fill out your estimated data requirements. Here is what we estimated for an average image analysis project:</p>
+<a class="reference internal image-reference" href="../../_images/a6_data_management.png"><img alt="../../_images/a6_data_management.png" src="../../_images/a6_data_management.png" style="width: 600px;" /></a>
+</li>
+<li><p>Upload of PDF files: For a trial project, you can skip this step.</p></li>
+<li><p>Finalize application: Click the button “Finalize” at the bottom.</p></li>
+<li><p>You will receive an email with a PDF document that needs to be signed (electronically) by the PI and sent back via email.</p></li>
+</ol>
+<p>For further information, refer to the <a class="reference external" href="https://doc.zih.tu-dresden.de/application/project_request_form/">ZIH documentation for HPC project applications</a>.</p>
+</section>
+<section id="step-2-get-access-fom-the-cluster-to-the-fileserver">
+<h2>Step 2: Get access fom the cluster to the fileserver<a class="headerlink" href="#step-2-get-access-fom-the-cluster-to-the-fileserver" title="Permalink to this headline">#</a></h2>
+<ol class="simple">
+<li><p>If you don’t already have one, apply for a <a class="reference external" href="https://selfservice.zih.tu-dresden.de/l/index.php/spor/request-form/">group space on the fileserver</a></p></li>
+<li><p>Ask for access to the fileserver from the cluster: Write an email to <a class="reference external" href="mailto:hpcsupport&#37;&#52;&#48;zih&#46;tu-dresden&#46;de">hpcsupport</a> and ask them to give you access to your fileserver account. They will then tell you a mount point that usually starts with <code class="docutils literal notranslate"><span class="pre">/grp/&lt;fileserver_group&gt;/</span></code>.</p></li>
+</ol>
+</section>
+<section id="step-3-start-a-jupyter-session-on-the-zih-cluster">
+<h2>Step 3: Start a Jupyter session on the ZIH cluster<a class="headerlink" href="#step-3-start-a-jupyter-session-on-the-zih-cluster" title="Permalink to this headline">#</a></h2>
+<p>Go to the <a class="reference external" href="https://taurus.hrsk.tu-dresden.de/jupyter">jupyter hub of the ZIH cluster</a>
+You will be greeted with the TUD login screen. Log in with your ZIH user name and password:</p>
+<a class="reference internal image-reference" href="../../_images/1_login1.png"><img alt="../../_images/1_login1.png" src="../../_images/1_login1.png" style="width: 500px;" /></a>
+<p>Afterwards, you should see a single button <code class="docutils literal notranslate"><span class="pre">Start</span> <span class="pre">My</span> <span class="pre">Server</span></code>. Click on it:</p>
+<a class="reference internal image-reference" href="../../_images/2_start_server1.png"><img alt="../../_images/2_start_server1.png" src="../../_images/2_start_server1.png" style="width: 500px;" /></a>
+<p>Now you get to configure the computing node you want your session to run on. Switch to the advanced configuration by clicking the button <code class="docutils literal notranslate"><span class="pre">Advanced</span></code>. Then you should see something like the image below.</p>
+<ol class="simple">
+<li><p>Start by choosing a preset (click on 1).</p></li>
+<li><p>You should choose a GPU node preset (2). You can choose between</p>
+<ul class="simple">
+<li><p>Ampere A100 -&gt; This is what you want if you really need to crunch some numbers. The A100 is more powerful than any gaming GPU and has 40GB graphics memory. However these machines are often more used and it may take longer to get a node on the cluster</p></li>
+<li><p>Tesla K80 -&gt; This is what you want for testing whether your workflows work on a GPU on the cluster and for tasks that are not time critical. The K80 is half as as powerful as a GTX 1080 and has 12GB graphics memory.</p></li>
+</ul>
+</li>
+</ol>
+<p>Once you are happy with your configuration, click the orange button <code class="docutils literal notranslate"><span class="pre">Spawn</span></code> at the very bottom.</p>
+<a class="reference internal image-reference" href="../../_images/3_configure_node1.png"><img alt="../../_images/3_configure_node1.png" src="../../_images/3_configure_node1.png" style="width: 500px;" /></a>
+<p>You will now see a wait bar. Do not worry if it does not move, this bar is always at 50%. It usually takes 2-5 min to get a node.</p>
+<a class="reference internal image-reference" href="../../_images/4_wait1.png"><img alt="../../_images/4_wait1.png" src="../../_images/4_wait1.png" style="width: 500px;" /></a>
+<section id="trouble-shooting">
+<h3>Trouble shooting<a class="headerlink" href="#trouble-shooting" title="Permalink to this headline">#</a></h3>
+<ul>
+<li><p>Check the current utilization (the bars above the preset chooser)</p>
+<ul class="simple">
+<li><p>the A100 are on the bar labeled <code class="docutils literal notranslate"><span class="pre">alpha</span></code></p></li>
+<li><p>the K80 are on the bar labeled <code class="docutils literal notranslate"><span class="pre">gpu2</span></code></p></li>
+</ul>
+<p>If the partition is very full, you may have to wait a long time or not get a session at all.</p>
+</li>
+<li><p>If you run out of memory or need more CPU cores, increase the number of CPUs. Note that the memory is per CPU, so if you choose more CPUs, you automatically get more memory.</p></li>
+</ul>
+</section>
+</section>
+<section id="step-4-open-a-terminal">
+<h2>Step 4: Open a terminal<a class="headerlink" href="#step-4-open-a-terminal" title="Permalink to this headline">#</a></h2>
+<p>Open a terminal by clicking on <code class="docutils literal notranslate"><span class="pre">File</span></code> (1 in the image below) -&gt; <code class="docutils literal notranslate"><span class="pre">New</span></code> (2) -&gt; <code class="docutils literal notranslate"><span class="pre">Terminal</span></code> (3)</p>
+<a class="reference internal image-reference" href="../../_images/5_open_terminal.png"><img alt="../../_images/5_open_terminal.png" src="../../_images/5_open_terminal.png" style="width: 500px;" /></a>
+</section>
+<section id="step-5-install-a-custom-jupyter-kernel-for-your-user">
+<h2>Step 5: Install a custom jupyter kernel for your user<a class="headerlink" href="#step-5-install-a-custom-jupyter-kernel-for-your-user" title="Permalink to this headline">#</a></h2>
+<p>One of the advantages of our approach is, that you can always execute your code with the exac same python environment so that you always get the same result for the same data. Therefore, it is important for you that you know with which version of our python environment you were working. You can find available <a class="reference external" href="https://gitlab.mn.tu-dresden.de/bia-pol/singularity-devbio-napari/-/releases">versions here</a>. Look for the version number at the end of the title. For example <code class="docutils literal notranslate"><span class="pre">v0.2.1</span></code>.</p>
+<p>To install a devbio-napari python environment, execute the following code in the terminal:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://gitlab.mn.tu-dresden.de/bia-pol/singularity-devbio-napari.git
+<span class="nb">cd</span><span class="w"> </span>singularity-devbio-napari
+./install.sh<span class="w"> </span>&lt;version&gt;
+</pre></div>
+</div>
+<p>replace <code class="docutils literal notranslate"><span class="pre">&lt;version&gt;</span></code> with the latest version shown at the top of <a class="reference external" href="https://gitlab.mn.tu-dresden.de/bia-pol/singularity-devbio-napari/-/releases">the version list</a>.</p>
+<p><em>Note</em>: In order to ensure <a class="reference external" href="https://en.wikipedia.org/wiki/Repeatability">repeatability</a> and <a class="reference external" href="https://en.wikipedia.org/wiki/Reproducibility">reproducibility</a> of the results you obtained from using a singularity container, we strongly recommend and encourage you to keep track of the used container’s version. This way, you can ensure the integrity of your analysis workflow further down the line.</p>
+<p>Wait 2-15 min until the image is downloaded and verified (the time depends on how much network and disk load is on the cluster). The output should look something like this:</p>
+<a class="reference internal image-reference" href="../../_images/6_terminal_output.png"><img alt="../../_images/6_terminal_output.png" src="../../_images/6_terminal_output.png" style="width: 500px;" /></a>
+<p>If everything went well, close the terminal by clicking on the small X at the top of the terminal window.</p>
+</section>
+<section id="step-6-open-a-jupyter-notebook-with-the-newly-installed-environment">
+<h2>Step 6: Open a Jupyter Notebook with the newly installed environment<a class="headerlink" href="#step-6-open-a-jupyter-notebook-with-the-newly-installed-environment" title="Permalink to this headline">#</a></h2>
+<p>Reload the browser tab. Now open a new notebook by clicking on <code class="docutils literal notranslate"><span class="pre">File</span></code> (1 in the image below) -&gt; <code class="docutils literal notranslate"><span class="pre">New</span></code> (2) -&gt; <code class="docutils literal notranslate"><span class="pre">Notebook</span></code> (3)</p>
+<a class="reference internal image-reference" href="../../_images/7_open_notebook1.png"><img alt="../../_images/7_open_notebook1.png" src="../../_images/7_open_notebook1.png" style="width: 500px;" /></a>
+<p>Now you are asked to select a kernel. Click on the drop down button (red rectangle in the image below).</p>
+<a class="reference internal image-reference" href="../../_images/8_select_kernel1.png"><img alt="../../_images/8_select_kernel1.png" src="../../_images/8_select_kernel1.png" style="width: 300px;" /></a>
+<p>Choose the kernel you just installed (<code class="docutils literal notranslate"><span class="pre">devbio-napari-0.2.1</span></code> in the image below).</p>
+<a class="reference internal image-reference" href="../../_images/9_select_devbio_napari1.png"><img alt="../../_images/9_select_devbio_napari1.png" src="../../_images/9_select_devbio_napari1.png" style="width: 300px;" /></a>
+<p>NB: for an existing notebook, you can click on the kernel name (by default <code class="docutils literal notranslate"><span class="pre">Python</span> <span class="pre">3</span></code>) in the top right corner of the notebook and aelect the devbio-napari kernel as described above.</p>
+</section>
+<section id="step-7-verify-that-the-environment-works">
+<h2>Step 7: Verify that the environment works<a class="headerlink" href="#step-7-verify-that-the-environment-works" title="Permalink to this headline">#</a></h2>
+<p>Run some test code to verify that the environment has everything you need. For example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pyclesperanto_prototype</span> <span class="k">as</span> <span class="nn">cle</span>
+<span class="kn">from</span> <span class="nn">skimage.io</span> <span class="kn">import</span> <span class="n">imread</span><span class="p">,</span> <span class="n">imsave</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># initialize GPU</span>
+<span class="n">device</span> <span class="o">=</span> <span class="n">cle</span><span class="o">.</span><span class="n">select_device</span><span class="p">(</span><span class="s2">&quot;A100&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Used GPU: &quot;</span><span class="p">,</span> <span class="n">device</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Used GPU:  &lt;NVIDIA A100-SXM4-40GB on Platform: NVIDIA CUDA (1 refs)&gt;</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># load data</span>
+<span class="n">image</span> <span class="o">=</span> <span class="n">imread</span><span class="p">(</span><span class="s1">&#39;https://imagej.nih.gov/ij/images/blobs.gif&#39;</span><span class="p">)</span>
+
+<span class="c1"># process the image</span>
+<span class="n">inverted</span> <span class="o">=</span> <span class="n">cle</span><span class="o">.</span><span class="n">subtract_image_from_scalar</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">scalar</span><span class="o">=</span><span class="mi">255</span><span class="p">)</span>
+<span class="n">blurred</span> <span class="o">=</span> <span class="n">cle</span><span class="o">.</span><span class="n">gaussian_blur</span><span class="p">(</span><span class="n">inverted</span><span class="p">,</span> <span class="n">sigma_x</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">sigma_y</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">binary</span> <span class="o">=</span> <span class="n">cle</span><span class="o">.</span><span class="n">threshold_otsu</span><span class="p">(</span><span class="n">blurred</span><span class="p">)</span>
+<span class="n">labeled</span> <span class="o">=</span> <span class="n">cle</span><span class="o">.</span><span class="n">connected_components_labeling_box</span><span class="p">(</span><span class="n">binary</span><span class="p">)</span>
+
+<span class="c1"># The maxmium intensity in a label image corresponds to the number of objects</span>
+<span class="n">num_labels</span> <span class="o">=</span> <span class="n">cle</span><span class="o">.</span><span class="n">maximum_of_all_pixels</span><span class="p">(</span><span class="n">labeled</span><span class="p">)</span>
+
+<span class="c1"># print out result</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Num objects in the image: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">num_labels</span><span class="p">))</span>
+
+<span class="c1"># save image to disc</span>
+<span class="n">imsave</span><span class="p">(</span><span class="s2">&quot;result.tif&quot;</span><span class="p">,</span> <span class="n">cle</span><span class="o">.</span><span class="n">pull</span><span class="p">(</span><span class="n">labeled</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>Num objects in the image: 62.0</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">cle</span><span class="o">.</span><span class="n">available_device_names</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>[‘NVIDIA A100-SXM4-40GB’, ‘cupy backend (experimental)’]</p>
+</section>
+<section id="hints">
+<h2>Hints<a class="headerlink" href="#hints" title="Permalink to this headline">#</a></h2>
+<section id="copy-data-directly-to-the-cluster">
+<h3>Copy data directly to the cluster<a class="headerlink" href="#copy-data-directly-to-the-cluster" title="Permalink to this headline">#</a></h3>
+<p>This option targets more advanced users. It is faster, because it skips the transfer of data between fileserver and project space. However, it requires specialized file-transfer tools like <a class="reference external" href="http://winscp.net/eng/download.php">WinSCP</a>, <a class="reference external" href="https://cyberduck.io/">Cyberduck</a> or <a class="reference external" href="https://man7.org/linux/man-pages/man1/rsync.1.html">Rsync</a>.</p>
+<p>Please follow the <a class="reference external" href="https://doc.zih.tu-dresden.de/data_transfer/export_nodes/">instructions on how to use the ZIH Export Nodes</a>.</p>
+</section>
+<section id="what-hardware-is-the-current-node-running-on">
+<h3>What hardware is the current node running on?<a class="headerlink" href="#what-hardware-is-the-current-node-running-on" title="Permalink to this headline">#</a></h3>
+<p>If you are using an NVidia GPU, you can the <a class="reference external" href="https://developer.nvidia.com/nvidia-system-management-interface">NVidia System Management Interface</a>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>!nvidia-smi
+</pre></div>
+</div>
+<p>It will give an overview about what’s currently going on on your GPU:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>+-----------------------------------------------------------------------------+
+<span class="p">|</span><span class="w"> </span>NVIDIA-SMI<span class="w"> </span><span class="m">470</span>.57.02<span class="w">    </span>Driver<span class="w"> </span>Version:<span class="w"> </span><span class="m">470</span>.57.02<span class="w">    </span>CUDA<span class="w"> </span>Version:<span class="w"> </span><span class="m">11</span>.4<span class="w">     </span><span class="p">|</span>
+<span class="p">|</span>-------------------------------+----------------------+----------------------+
+<span class="p">|</span><span class="w"> </span>GPU<span class="w">  </span>Name<span class="w">        </span>Persistence-M<span class="p">|</span><span class="w"> </span>Bus-Id<span class="w">        </span>Disp.A<span class="w"> </span><span class="p">|</span><span class="w"> </span>Volatile<span class="w"> </span>Uncorr.<span class="w"> </span>ECC<span class="w"> </span><span class="p">|</span>
+<span class="p">|</span><span class="w"> </span>Fan<span class="w">  </span>Temp<span class="w">  </span>Perf<span class="w">  </span>Pwr:Usage/Cap<span class="p">|</span><span class="w">         </span>Memory-Usage<span class="w"> </span><span class="p">|</span><span class="w"> </span>GPU-Util<span class="w">  </span>Compute<span class="w"> </span>M.<span class="w"> </span><span class="p">|</span>
+<span class="p">|</span><span class="w">                               </span><span class="p">|</span><span class="w">                      </span><span class="p">|</span><span class="w">               </span>MIG<span class="w"> </span>M.<span class="w"> </span><span class="p">|</span>
+<span class="p">|</span><span class="o">===============================</span>+<span class="o">======================</span>+<span class="o">======================</span><span class="p">|</span>
+<span class="p">|</span><span class="w">   </span><span class="m">0</span><span class="w">  </span>NVIDIA<span class="w"> </span>A100-SXM...<span class="w">  </span>On<span class="w">   </span><span class="p">|</span><span class="w"> </span><span class="m">00000000</span>:11:00.0<span class="w"> </span>Off<span class="w"> </span><span class="p">|</span><span class="w">                    </span><span class="m">0</span><span class="w"> </span><span class="p">|</span>
+<span class="p">|</span><span class="w"> </span>N/A<span class="w">   </span>52C<span class="w">    </span>P0<span class="w">    </span>60W<span class="w"> </span>/<span class="w"> </span>400W<span class="w"> </span><span class="p">|</span><span class="w">      </span>0MiB<span class="w"> </span>/<span class="w"> </span>40536MiB<span class="w"> </span><span class="p">|</span><span class="w">      </span><span class="m">0</span>%<span class="w">      </span>Default<span class="w"> </span><span class="p">|</span>
+<span class="p">|</span><span class="w">                               </span><span class="p">|</span><span class="w">                      </span><span class="p">|</span><span class="w">             </span>Disabled<span class="w"> </span><span class="p">|</span>
++-------------------------------+----------------------+----------------------+
+<span class="w">                                                                               </span>
++-----------------------------------------------------------------------------+
+<span class="p">|</span><span class="w"> </span>Processes:<span class="w">                                                                  </span><span class="p">|</span>
+<span class="p">|</span><span class="w">  </span>GPU<span class="w">   </span>GI<span class="w">   </span>CI<span class="w">        </span>PID<span class="w">   </span>Type<span class="w">   </span>Process<span class="w"> </span>name<span class="w">                  </span>GPU<span class="w"> </span>Memory<span class="w"> </span><span class="p">|</span>
+<span class="p">|</span><span class="w">        </span>ID<span class="w">   </span>ID<span class="w">                                                   </span>Usage<span class="w">      </span><span class="p">|</span>
+<span class="p">|</span><span class="o">=============================================================================</span><span class="p">|</span>
+<span class="p">|</span><span class="w">  </span>No<span class="w"> </span>running<span class="w"> </span>processes<span class="w"> </span>found<span class="w">                                                 </span><span class="p">|</span>
++-----------------------------------------------------------------------------+
+</pre></div>
+</div>
+<p>another option is</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>!numba<span class="w"> </span>-s
+</pre></div>
+</div>
+<p>which will tell you everything about your system you ever wanted to know (the output below is just the hardware information section. numba actually provides much more information):</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>System<span class="w"> </span>info:
+--------------------------------------------------------------------------------
+__Hardware<span class="w"> </span>Information__
+Machine<span class="w">                                       </span>:<span class="w"> </span>x86_64
+CPU<span class="w"> </span>Name<span class="w">                                      </span>:<span class="w"> </span>znver2
+CPU<span class="w"> </span>Count<span class="w">                                     </span>:<span class="w"> </span><span class="m">96</span>
+Number<span class="w"> </span>of<span class="w"> </span>accessible<span class="w"> </span>CPUs<span class="w">                     </span>:<span class="w"> </span><span class="m">6</span>
+List<span class="w"> </span>of<span class="w"> </span>accessible<span class="w"> </span>CPUs<span class="w"> </span>cores<span class="w">                 </span>:<span class="w"> </span><span class="m">32</span><span class="w"> </span><span class="m">33</span><span class="w"> </span><span class="m">34</span><span class="w"> </span><span class="m">80</span><span class="w"> </span><span class="m">81</span><span class="w"> </span><span class="m">82</span>
+CFS<span class="w"> </span>Restrictions<span class="w"> </span><span class="o">(</span>CPUs<span class="w"> </span>worth<span class="w"> </span>of<span class="w"> </span>runtime<span class="o">)</span><span class="w">      </span>:<span class="w"> </span>None
+
+CPU<span class="w"> </span>Features<span class="w">                                  </span>:<span class="w"> </span>64bit<span class="w"> </span>adx<span class="w"> </span>aes<span class="w"> </span>avx<span class="w"> </span>avx2<span class="w"> </span>bmi<span class="w"> </span>bmi2
+<span class="w">                                                </span>clflushopt<span class="w"> </span>clwb<span class="w"> </span>clzero<span class="w"> </span>cmov<span class="w"> </span>cx16
+<span class="w">                                                </span>cx8<span class="w"> </span>f16c<span class="w"> </span>fma<span class="w"> </span>fsgsbase<span class="w"> </span>fxsr<span class="w"> </span>lzcnt
+<span class="w">                                                </span>mmx<span class="w"> </span>movbe<span class="w"> </span>mwaitx<span class="w"> </span>pclmul<span class="w"> </span>popcnt
+<span class="w">                                                </span>prfchw<span class="w"> </span>rdpid<span class="w"> </span>rdrnd<span class="w"> </span>rdseed<span class="w"> </span>sahf<span class="w"> </span>sha
+<span class="w">                                                </span>sse<span class="w"> </span>sse2<span class="w"> </span>sse3<span class="w"> </span>sse4.1<span class="w"> </span>sse4.2<span class="w"> </span>sse4a
+<span class="w">                                                </span>ssse3<span class="w"> </span>wbnoinvd<span class="w"> </span>xsave<span class="w"> </span>xsavec
+<span class="w">                                                </span>xsaveopt<span class="w"> </span>xsaves
+
+Memory<span class="w"> </span>Total<span class="w"> </span><span class="o">(</span>MB<span class="o">)</span><span class="w">                             </span>:<span class="w"> </span><span class="m">1031711</span>
+Memory<span class="w"> </span>Available<span class="w"> </span><span class="o">(</span>MB<span class="o">)</span><span class="w">                         </span>:<span class="w"> </span><span class="m">974317</span>
+
+__OS<span class="w"> </span>Information__
+Platform<span class="w"> </span>Name<span class="w">                                 </span>:<span class="w"> </span>Linux-3.10.0-1160.11.1.el7.x86_64-x86_64-with-glibc2.31
+Platform<span class="w"> </span>Release<span class="w">                              </span>:<span class="w"> </span><span class="m">3</span>.10.0-1160.11.1.el7.x86_64
+OS<span class="w"> </span>Name<span class="w">                                       </span>:<span class="w"> </span>Linux
+OS<span class="w"> </span>Version<span class="w">                                    </span>:<span class="w"> </span><span class="c1">#1 SMP Fri Dec 18 16:34:56 UTC 2020</span>
+OS<span class="w"> </span>Specific<span class="w"> </span>Version<span class="w">                           </span>:<span class="w"> </span>?
+Libc<span class="w"> </span>Version<span class="w">                                  </span>:<span class="w"> </span>glibc<span class="w"> </span><span class="m">2</span>.31
+
+__Python<span class="w"> </span>Information__
+Python<span class="w"> </span>Compiler<span class="w">                               </span>:<span class="w"> </span>GCC<span class="w"> </span><span class="m">10</span>.3.0
+Python<span class="w"> </span>Implementation<span class="w">                         </span>:<span class="w"> </span>CPython
+Python<span class="w"> </span>Version<span class="w">                                </span>:<span class="w"> </span><span class="m">3</span>.9.13
+Python<span class="w"> </span>Locale<span class="w">                                 </span>:<span class="w"> </span>en_US.UTF-8
+
+__LLVM<span class="w"> </span>Information__
+LLVM<span class="w"> </span>Version<span class="w">                                  </span>:<span class="w"> </span><span class="m">10</span>.0.1
+
+__CUDA<span class="w"> </span>Information__
+CUDA<span class="w"> </span>Device<span class="w"> </span>Initialized<span class="w">                       </span>:<span class="w"> </span>True
+CUDA<span class="w"> </span>Driver<span class="w"> </span>Version<span class="w">                           </span>:<span class="w"> </span><span class="m">11040</span>
+CUDA<span class="w"> </span>Detect<span class="w"> </span>Output:
+Found<span class="w"> </span><span class="m">4</span><span class="w"> </span>CUDA<span class="w"> </span>devices
+id<span class="w"> </span><span class="m">0</span><span class="w">    </span>b<span class="s1">&#39;NVIDIA A100-SXM4-40GB&#39;</span><span class="w">                              </span><span class="o">[</span>SUPPORTED<span class="o">]</span>
+<span class="w">                      </span>compute<span class="w"> </span>capability:<span class="w"> </span><span class="m">8</span>.0
+<span class="w">                           </span>pci<span class="w"> </span>device<span class="w"> </span>id:<span class="w"> </span><span class="m">0</span>
+<span class="w">                              </span>pci<span class="w"> </span>bus<span class="w"> </span>id:<span class="w"> </span><span class="m">139</span>
+id<span class="w"> </span><span class="m">1</span><span class="w">    </span>b<span class="s1">&#39;NVIDIA A100-SXM4-40GB&#39;</span><span class="w">                              </span><span class="o">[</span>SUPPORTED<span class="o">]</span>
+<span class="w">                      </span>compute<span class="w"> </span>capability:<span class="w"> </span><span class="m">8</span>.0
+<span class="w">                           </span>pci<span class="w"> </span>device<span class="w"> </span>id:<span class="w"> </span><span class="m">0</span>
+<span class="w">                              </span>pci<span class="w"> </span>bus<span class="w"> </span>id:<span class="w"> </span><span class="m">144</span>
+id<span class="w"> </span><span class="m">2</span><span class="w">    </span>b<span class="s1">&#39;NVIDIA A100-SXM4-40GB&#39;</span><span class="w">                              </span><span class="o">[</span>SUPPORTED<span class="o">]</span>
+<span class="w">                      </span>compute<span class="w"> </span>capability:<span class="w"> </span><span class="m">8</span>.0
+<span class="w">                           </span>pci<span class="w"> </span>device<span class="w"> </span>id:<span class="w"> </span><span class="m">0</span>
+<span class="w">                              </span>pci<span class="w"> </span>bus<span class="w"> </span>id:<span class="w"> </span><span class="m">187</span>
+id<span class="w"> </span><span class="m">3</span><span class="w">    </span>b<span class="s1">&#39;NVIDIA A100-SXM4-40GB&#39;</span><span class="w">                              </span><span class="o">[</span>SUPPORTED<span class="o">]</span>
+<span class="w">                      </span>compute<span class="w"> </span>capability:<span class="w"> </span><span class="m">8</span>.0
+<span class="w">                           </span>pci<span class="w"> </span>device<span class="w"> </span>id:<span class="w"> </span><span class="m">0</span>
+<span class="w">                              </span>pci<span class="w"> </span>bus<span class="w"> </span>id:<span class="w"> </span><span class="m">193</span>
+Summary:
+<span class="w"> </span><span class="m">4</span>/4<span class="w"> </span>devices<span class="w"> </span>are<span class="w"> </span>supported
+</pre></div>
+</div>
+<p>Note the 1TB (sic!) of total RAM available on the nodes in the alpha partition of the TUD cluster</p>
+</section>
+</section>
+<section id="acknowledgements">
+<h2>Acknowledgements<a class="headerlink" href="#acknowledgements" title="Permalink to this headline">#</a></h2>
+<p>I would like to thank Fabian Rost for sharing his extensive experience of how to run python notebooks within singularity containers on the TUD cluster.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./till_korten/devbio-napari_cluster_setup"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="../devbio-napari_cluster/readme.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Using GPU-accelerated image processing on the TUD HPC cluster</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="../../marcelo_zoccoler/omero_scripts/readme.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Running Deep-Learning Scripts in the BiA-PoL Omero Server</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Marcelo Zoccoler, Johannes Müller, Till Korten, Ryan Savill, Mara Lampert, Robert Haase, DFG Cluster of Excellence "Physics of Life", TU Dresden<br/>
+  
+      &copy; Copyright 2023.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>
