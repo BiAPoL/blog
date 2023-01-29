@@ -10,10 +10,17 @@ If you have feedback or suggestions, if spotted a typo, broken link or misleadin
 
 ## Recent blog posts
 
-### [Getting started with Mambaforge and Python ](mara_lampert/getting_started_with_mambaforge_and_python/readme)
+### [Getting started with Mambaforge and Python](mara_lampert/getting_started_with_mambaforge_and_python/readme)
 <small>[Mara Lampert](mara_lampert/readme), January 26th, 2023</small><br>
 <img src="images/mamba_logo.png" width="100" align="right"><p>This post will help you to get started with Python using Mambaforge. More precisely, you will learn how to install Mambaforge, how to create and use conda environments and know about some very important packages. </p>
 
+### [Using GPU-accelerated image processing on the TUD HPC cluster](till_korten/devbio-napari_cluster/readme)
+<small>[Till Korten](mara_lampert/readme), Oct 21st, 2022</small><br>
+<img src="images/2290861_computer_laptop_network_notebook_share_icon.png" width="100" align="right"><p>The High Performance Computing cluster at the compute center (ZIH) of the TU Dresden provides a lot of computational resources including GPU support, which we can use for analyzing data in the life-sciences.</p>
+
+### [Setting up GPU-accelerated image processing on the TUD HPC cluster](till_korten/devbio-napari_cluster_setup/readme)
+<small>[Till Korten](mara_lampert/readme), July 29th, 2022</small><br>
+<img src="images/2290861_computer_laptop_network_notebook_share_icon.png" width="100" align="right"><p>The High Performance Computing cluster at the compute center (ZIH) of the TU Dresden provides a lot of computational resources including GPU support, which we can use for analyzing data in the life-sciences.</p>
 
 ### [Running Deep-learning Scripts in the BiA-PoL Omero Server](marcelo_zoccoler/omero_scripts/readme)
 <small>[Marcelo Zoccoler](marcelo_zoccoler/readme), May 2nd, 2022</small><br>
