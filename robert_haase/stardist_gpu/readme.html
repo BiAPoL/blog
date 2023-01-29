@@ -1,0 +1,773 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Using StarDist in napari with GPU-support in Windows &#8212; BiA-PoL blog</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Introduction to Using Python for Image Analysis" href="../../ryan_savill/01_intro_to_python/readme.html" />
+    <link rel="prev" title="Introduction to Image Analysis Basics in Python with Scikit Image" href="../../ryan_savill/02_intro_to_skimage/readme.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../../_static/biapol_logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">BiA-PoL blog</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    Welcome!
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Blog Posts
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../marcelo_zoccoler/omero_scripts/readme.html">
+   Running Deep-Learning Scripts in the BiA-PoL Omero Server
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../marcelo_zoccoler/mini_sabbatical_rike/Readme.html">
+   Mini-Sabbatical Experience at Bia-PoL
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../johannes_mueller/anaconda_getting_started/Readme.html">
+   Getting started with Anaconda and Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../johannes_mueller/entry_sphinx/Readme.html">
+   Automated package documentation with Sphinx
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../johannes_mueller/entry_user_inter/Readme.html">
+   Custom user interfaces for Python (Part 1)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../johannes_mueller/entry_user_interf2/Readme.html">
+     Custom user interfaces for Python (Part 2)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../marcelo_zoccoler/entry_user_interf3/Readme.html">
+     Custom user interfaces for Python (Part 3)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../marcelo_zoccoler/entry_user_interf4/Readme.html">
+     Custom user interfaces for Python (Part 4)
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../marcelo_zoccoler/jamovi/jamovi.html">
+   Jamovi: statistical analysis made visual and easy (powered with R)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../ms_build_tools/readme.html">
+   Installing Microsoft buildtools on Windows
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../ryan_savill/principal_feature_analysis/readme.html">
+   Principal Feature Analysis
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../ryan_savill/03_background_subtraction/readme.html">
+   Background Subtraction
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../ryan_savill/02_intro_to_skimage/readme.html">
+   Introduction to Image Analysis Basics in Python with Scikit Image
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Using StarDist in napari with GPU-support in Windows
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../ryan_savill/01_intro_to_python/readme.html">
+   Introduction to Using Python for Image Analysis
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../cupy_cucim/readme.html">
+   GPU-accelerated image processing using cupy and cucim
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../browsing_idr/readme.html">
+   Browsing the Open Microscopy Image Data Resource with Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../clesperanto_google_colab/readme.html">
+   GPU-accelerated image processing in the cloud using Google Colab and clEsperanto
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  About the Blog
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../why_we_blog/readme.html">
+   Why we blog
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../people.html">
+   BiA-PoL blog authors
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../johannes_mueller/Readme.html">
+     Johannes Müller
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../marcelo_zoccoler/readme.html">
+     Marcelo Zoccoler
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../ryan_savill/readme.html">
+     Ryan Savill
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../readme.html">
+     Robert Haase
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../imprint.html">
+   Imprint
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/lazigu/blog"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/lazigu/blog/issues/new?title=Issue%20on%20page%20%2Frobert_haase/stardist_gpu/readme.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../../_sources/robert_haase/stardist_gpu/readme.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.md</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#overview">
+   Overview
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#cuda-installation">
+   CUDA installation
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#cudnn-installation">
+   CUDNN installation
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#checking-cuda-and-cudnn-installation">
+     Checking CUDA and CUDNN installation
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#installing-conda-python-and-tensorflow">
+   Installing Conda, Python and Tensorflow
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#napari-stardist-plugin-installation">
+   Napari + StarDist plugin installation
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#testing-the-stardist-napari-plugin">
+   Testing the StarDist napari plugin
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Using StarDist in napari with GPU-support in Windows</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#overview">
+   Overview
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#cuda-installation">
+   CUDA installation
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#cudnn-installation">
+   CUDNN installation
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#checking-cuda-and-cudnn-installation">
+     Checking CUDA and CUDNN installation
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#installing-conda-python-and-tensorflow">
+   Installing Conda, Python and Tensorflow
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#napari-stardist-plugin-installation">
+   Napari + StarDist plugin installation
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#testing-the-stardist-napari-plugin">
+   Testing the StarDist napari plugin
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="using-stardist-in-napari-with-gpu-support-in-windows">
+<h1>Using StarDist in napari with GPU-support in Windows<a class="headerlink" href="#using-stardist-in-napari-with-gpu-support-in-windows" title="Permalink to this headline">#</a></h1>
+<p><a class="reference internal" href="../readme.html"><span class="doc std std-doc">Robert Haase</span></a>, June 19th 2021</p>
+<p>3D segmentation using deep learning is computationally costly, it might be necessary from a practical perspective to do it on computers
+with powerful graphics processing units (GPUs). One option is to do this in the cloud via Google Colab and for that it is recommended to take a look at <a class="reference external" href="https://github.com/HenriquesLab/ZeroCostDL4Mic/wiki">ZeroCostDeepLearning4Microscopy</a>.
+If you are greedy, as I am, and want to run everything on your own Windows computer, you can follow the instructions provided here.</p>
+<p>The <a class="reference external" href="https://github.com/stardist/stardist/">StarDist</a> developers Uwe Schmidt and Martin Weigert recently released a
+<a class="reference external" href="https://github.com/napari/napari">napari plugin</a> named <a class="reference external" href="https://github.com/stardist/stardist-napari">stardist-napari</a>.
+This finally puts 3D nuclei segmentation using StarDist into the hands of end-users.
+You can see it in action in this <a class="reference external" href="https://www.youtube.com/watch?v=Km1_TnUQ4FM&amp;list=PLilvrWT8aLuZCaOkjucLjvDu2YRtCS-JT&amp;index=5">Youtube video</a>.</p>
+<p>Under the hood StarDist uses
+<a class="reference external" href="https://www.tensorflow.org/">Tensorflow</a>,
+<a class="reference external" href="https://developer.nvidia.com/cuda-toolkit">CUDA</a>
+and <a class="reference external" href="https://developer.nvidia.com/cudnn">CUDNN</a>. As installation of these is not trivial, I took some notes while setting up a Windows computer recently and share the steps here.
+If you know tricks or short-cuts, please <a class="reference external" href="https://github.com/BiAPoL/blog/issues">get in touch</a> and share them!</p>
+<p>See also</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/deepimagej/deepimagej-plugin/wiki/GPU-connection">DeepImageJ GPU Installation</a></p></li>
+<li><p><a class="reference external" href="https://stackoverflow.com/questions/38009682/how-to-tell-if-tensorflow-is-using-gpu-acceleration-from-inside-python-shell">Stackoverflow: How to tell if tensorflow is using gpu acceleration from inside python shell?</a></p></li>
+</ul>
+<section id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">#</a></h2>
+<p>Before you start, you will need administrative privileges on your computer.
+If you don’t have them, please contact your IT department.</p>
+<p>In the following procedure, we will install</p>
+<ul class="simple">
+<li><p>CUDA 10.2 (with two patches)</p></li>
+<li><p>CUDNN 8.1.0.77 for CUDA 10.2</p></li>
+<li><p>tensorflow-gpu 2.4.2</p></li>
+<li><p>napari 0.4.10</p></li>
+<li><p>stardist-napari 2021.6.1</p></li>
+</ul>
+</section>
+<section id="cuda-installation">
+<h2>CUDA installation<a class="headerlink" href="#cuda-installation" title="Permalink to this headline">#</a></h2>
+<p>To install CUDA, download these files from <a class="reference external" href="https://developer.nvidia.com/cuda-10.2-download-archive?target_os=Windows&amp;target_arch=x86_64&amp;target_version=10&amp;target_type=exenetwork">the website</a> and install them in this order.
+Follow the instructions. This may take a while.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">cuda_10.2.89_win10_network.exe</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">cuda_10.2.1_win10.exe</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">cuda_10.2.2_win10.exe</span></code></p></li>
+</ul>
+</section>
+<section id="cudnn-installation">
+<h2>CUDNN installation<a class="headerlink" href="#cudnn-installation" title="Permalink to this headline">#</a></h2>
+<p>For downloading CUDNN you need an NVidia developer account.
+<a class="reference external" href="https://developer.nvidia.com/login">Sign up</a> and <a class="reference external" href="https://developer.nvidia.com/cudnn-download-survey">download CUDNN from this page</a>:</p>
+<p><img alt="" src="../../_images/download_cudnn.png" /></p>
+<p>Installation of CUDNN basically means unzipping the archive you downloaded and navigating into it. You can then copy these files:</p>
+<p><img alt="" src="../../_images/install_cudnn1.png" /></p>
+<p>Into the installation directory of CUDA, e.g. <code class="docutils literal notranslate"><span class="pre">C:\Program</span> <span class="pre">Files\NVIDIA</span> <span class="pre">GPU</span> <span class="pre">Computing</span> <span class="pre">Toolkit\CUDA\v10.2</span></code>:</p>
+<p><img alt="" src="../../_images/install_cudnn2.png" /></p>
+<p>At that point, you may need administrator privileges to click on <code class="docutils literal notranslate"><span class="pre">Continue</span></code> in this dialog:</p>
+<p><img alt="" src="../../_images/install_cudnn3.png" /></p>
+<p>After CUDA and CUDNN have been installed, it may make sense to restart the computer.</p>
+<section id="checking-cuda-and-cudnn-installation">
+<h3>Checking CUDA and CUDNN installation<a class="headerlink" href="#checking-cuda-and-cudnn-installation" title="Permalink to this headline">#</a></h3>
+<p>If the installation worked correctly, you will find some entries in the Environment Variables of your computer.
+To read them, click the Start Menu and enter “enviro”. When the Windows Search suggests “Edit Environment Variables” hit enter:</p>
+<p><img alt="" src="../../_images/check_env1.png" /></p>
+<p>A dialog will open, click on “Edit Environment Variables”:</p>
+<p><img alt="" src="../../_images/check_env2.png" /></p>
+<p>In the upcoming dialog, two entries should exist and point to the path were you just installed CUDNN:</p>
+<p><img alt="" src="../../_images/check_env3.png" /></p>
+<p>If these entries don’t exist, you can enter them by hand. However, it is recommended to go back and install CUDA and CUDNN again.</p>
+</section>
+</section>
+<section id="installing-conda-python-and-tensorflow">
+<h2>Installing Conda, Python and Tensorflow<a class="headerlink" href="#installing-conda-python-and-tensorflow" title="Permalink to this headline">#</a></h2>
+<p>In order to make Tensorflow use the GPU, we need to install it.
+As there are some conflicts between different versions of CUDA, Tensorflow, Python and others, I recommend installing specifically the versions, I’m using here:
+If you don’t have conda installed yet, I recommend installing <a class="reference external" href="https://docs.conda.io/en/latest/miniconda.html#windows-installers">miniconda</a>.
+There is an <a class="reference external" href="https://github.com/BiAPoL/Bio-image_Analysis_with_Python/blob/main/conda_basics/01_conda_environments">installation instruction part of our Python Bio-ImageAnalysis course</a>.</p>
+<p>Assuming conda is set up, we start by creating a new environment and specifically installing python 3.8:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>create<span class="w"> </span>--name<span class="w"> </span>stardist_gpu<span class="w"> </span><span class="nv">python</span><span class="o">==</span><span class="m">3</span>.8
+</pre></div>
+</div>
+<p>Afterwards, you can activate this environment:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>activate<span class="w"> </span>stardist_gpu
+</pre></div>
+</div>
+<p>We install tensorflow and more precisely, its GPU version:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>tensorflow-gpu<span class="o">=</span><span class="m">2</span>.4.2
+</pre></div>
+</div>
+<p>To check if tensorflow is installed correctly and uses the GPU, we start a python console</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>python
+</pre></div>
+</div>
+<p>and enter:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">tensorflow</span> <span class="k">as</span> <span class="nn">tf</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Num GPUs Available: &quot;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">list_physical_devices</span><span class="p">(</span><span class="s1">&#39;GPU&#39;</span><span class="p">)))</span>
+</pre></div>
+</div>
+<p>The output should be some technical details ending with something like:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Num</span> <span class="n">GPUs</span> <span class="n">Available</span><span class="p">:</span>  <span class="mi">1</span>
+</pre></div>
+</div>
+<p>You can also ask for more details, by entering:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">tensorflow.python.client</span> <span class="kn">import</span> <span class="n">device_lib</span> 
+<span class="nb">print</span><span class="p">(</span><span class="n">device_lib</span><span class="o">.</span><span class="n">list_local_devices</span><span class="p">())</span>
+</pre></div>
+</div>
+<p>This will tell you which GPU is available and also some details about your CPU, which could also run tensorflow:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">name</span><span class="p">:</span> <span class="s2">&quot;/device:CPU:0&quot;</span>
+<span class="n">device_type</span><span class="p">:</span> <span class="s2">&quot;CPU&quot;</span>
+<span class="n">memory_limit</span><span class="p">:</span> <span class="mi">268435456</span>
+<span class="n">locality</span> <span class="p">{</span>
+<span class="p">}</span>
+<span class="n">incarnation</span><span class="p">:</span> <span class="mi">6777841064378058334</span>
+<span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="s2">&quot;/device:GPU:0&quot;</span>
+<span class="n">device_type</span><span class="p">:</span> <span class="s2">&quot;GPU&quot;</span>
+<span class="n">memory_limit</span><span class="p">:</span> <span class="mi">3040739328</span>
+<span class="n">locality</span> <span class="p">{</span>
+  <span class="n">bus_id</span><span class="p">:</span> <span class="mi">1</span>
+  <span class="n">links</span> <span class="p">{</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+<span class="n">incarnation</span><span class="p">:</span> <span class="mi">317304344239135289</span>
+<span class="n">physical_device_desc</span><span class="p">:</span> <span class="s2">&quot;device: 0, name: NVIDIA GeForce RTX 3050 Ti Laptop GPU, pci bus id: 0000:01:00.0, compute capability: 8.6&quot;</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+<p>You can leave the python console by entering <code class="docutils literal notranslate"><span class="pre">quit()</span></code>.</p>
+</section>
+<section id="napari-stardist-plugin-installation">
+<h2>Napari + StarDist plugin installation<a class="headerlink" href="#napari-stardist-plugin-installation" title="Permalink to this headline">#</a></h2>
+<p>Napari can be installed using pip using this command:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>napari<span class="o">[</span>all<span class="o">]</span>
+</pre></div>
+</div>
+<p>You can then start napari from the command line:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>napari
+</pre></div>
+</div>
+<p>For installing the StarDist plugin, click on the menu <code class="docutils literal notranslate"><span class="pre">Plugins</span> <span class="pre">&gt;</span> <span class="pre">Install/Uninstall</span> <span class="pre">packages...</span></code>.
+This dialog will open, where you can just search for the plugin and click the <code class="docutils literal notranslate"><span class="pre">Install</span></code> button next to it:</p>
+<p><img alt="" src="../../_images/install_stardist.png" /></p>
+<p>You then need to restart napari. Afterwards, a new menu entry will show up under <code class="docutils literal notranslate"><span class="pre">Plugins</span></code>:</p>
+<p><img alt="" src="../../_images/install_stardist2.png" /></p>
+</section>
+<section id="testing-the-stardist-napari-plugin">
+<h2>Testing the StarDist napari plugin<a class="headerlink" href="#testing-the-stardist-napari-plugin" title="Permalink to this headline">#</a></h2>
+<p>For testing the plugin, you can use example data StarDist provides. You can find it in the menu <code class="docutils literal notranslate"><span class="pre">File</span> <span class="pre">&gt;</span> <span class="pre">Open</span> <span class="pre">Samples...</span> <span class="pre">&gt;</span> <span class="pre">StarDist</span> <span class="pre">&gt;</span> <span class="pre">Nuclei</span> <span class="pre">(3D)</span></code>.</p>
+<p><img alt="" src="../../_images/use_stardist1.png" /></p>
+<p>Then you should be able to activate the plugin from the menu <code class="docutils literal notranslate"><span class="pre">Plugins</span> <span class="pre">&gt;</span> <span class="pre">StarDist</span> <span class="pre">:</span> <span class="pre">StarDist</span></code>.
+As the default-values fit to the example data, you can just click on <code class="docutils literal notranslate"><span class="pre">Run</span></code> in the bottom right:</p>
+<p><img alt="" src="../../_images/use_stardist2.png" /></p>
+<p>To make sure that the installation of the GPU-related software worked, you can check if the GPU is indeed used, by looking at the command line window in the background :</p>
+<p><img alt="" src="../../_images/use_stardist3.png" /></p>
+<p>Furthermore, after a moment of waiting the segmented nuclei should show up:</p>
+<p><img alt="" src="../../_images/use_stardist4.png" /></p>
+<p>Also use the 3D view on the bottom left:</p>
+<p><img alt="" src="../../_images/use_stardist5.png" /></p>
+<p>Last but not least, please keep in mind that training your own model for your own data can be beneficial for segmentation quality.
+Check out the <a class="reference external" href="https://github.com/stardist/stardist">StarDist website</a> and <a class="reference external" href="https://github.com/stardist/stardist/tree/master/examples">example notebooks</a> to learn more.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./robert_haase/stardist_gpu"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="../../ryan_savill/02_intro_to_skimage/readme.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Introduction to Image Analysis Basics in Python with Scikit Image</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="../../ryan_savill/01_intro_to_python/readme.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Introduction to Using Python for Image Analysis</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Marcelo Zoccoler, Johannes Müller, Till Korten, Ryan Savill, Robert Haase, DFG Cluster of Excellence "Physics of Life", TU Dresden<br/>
+  
+      &copy; Copyright 2023.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

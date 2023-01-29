@@ -1,0 +1,813 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Background Subtraction &#8212; BiA-PoL blog</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Introduction to Image Analysis Basics in Python with Scikit Image" href="../02_intro_to_skimage/readme.html" />
+    <link rel="prev" title="Principal Feature Analysis" href="../principal_feature_analysis/readme.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../../_static/biapol_logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">BiA-PoL blog</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    Welcome!
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Blog Posts
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../marcelo_zoccoler/omero_scripts/readme.html">
+   Running Deep-Learning Scripts in the BiA-PoL Omero Server
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../marcelo_zoccoler/mini_sabbatical_rike/Readme.html">
+   Mini-Sabbatical Experience at Bia-PoL
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../johannes_mueller/anaconda_getting_started/Readme.html">
+   Getting started with Anaconda and Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../johannes_mueller/entry_sphinx/Readme.html">
+   Automated package documentation with Sphinx
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../johannes_mueller/entry_user_inter/Readme.html">
+   Custom user interfaces for Python (Part 1)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../johannes_mueller/entry_user_interf2/Readme.html">
+     Custom user interfaces for Python (Part 2)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../marcelo_zoccoler/entry_user_interf3/Readme.html">
+     Custom user interfaces for Python (Part 3)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../marcelo_zoccoler/entry_user_interf4/Readme.html">
+     Custom user interfaces for Python (Part 4)
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../marcelo_zoccoler/jamovi/jamovi.html">
+   Jamovi: statistical analysis made visual and easy (powered with R)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../robert_haase/ms_build_tools/readme.html">
+   Installing Microsoft buildtools on Windows
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../principal_feature_analysis/readme.html">
+   Principal Feature Analysis
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Background Subtraction
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../02_intro_to_skimage/readme.html">
+   Introduction to Image Analysis Basics in Python with Scikit Image
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../robert_haase/stardist_gpu/readme.html">
+   Using StarDist in napari with GPU-support in Windows
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../01_intro_to_python/readme.html">
+   Introduction to Using Python for Image Analysis
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../robert_haase/cupy_cucim/readme.html">
+   GPU-accelerated image processing using cupy and cucim
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../robert_haase/browsing_idr/readme.html">
+   Browsing the Open Microscopy Image Data Resource with Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../robert_haase/clesperanto_google_colab/readme.html">
+   GPU-accelerated image processing in the cloud using Google Colab and clEsperanto
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  About the Blog
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../robert_haase/why_we_blog/readme.html">
+   Why we blog
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../people.html">
+   BiA-PoL blog authors
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../johannes_mueller/Readme.html">
+     Johannes Müller
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../marcelo_zoccoler/readme.html">
+     Marcelo Zoccoler
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../readme.html">
+     Ryan Savill
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../robert_haase/readme.html">
+     Robert Haase
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../imprint.html">
+   Imprint
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/lazigu/blog"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/lazigu/blog/issues/new?title=Issue%20on%20page%20%2Fryan_savill/03_background_subtraction/readme.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../../_sources/ryan_savill/03_background_subtraction/readme.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.md</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#top-hat-filter">
+   Top-hat Filter
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#detour-why-functions-are-awesome">
+   Detour: Why Functions Are Awesome
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#how-to-build-your-own-simple-library">
+     How to Build Your Own Simple Library
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#difference-of-gaussian">
+   Difference of Gaussian
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#home">
+   Home
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Background Subtraction</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#top-hat-filter">
+   Top-hat Filter
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#detour-why-functions-are-awesome">
+   Detour: Why Functions Are Awesome
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#how-to-build-your-own-simple-library">
+     How to Build Your Own Simple Library
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#difference-of-gaussian">
+   Difference of Gaussian
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#home">
+   Home
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="background-subtraction">
+<h1>Background Subtraction<a class="headerlink" href="#background-subtraction" title="Permalink to this headline">#</a></h1>
+<p><a class="reference internal" href="../readme.html"><span class="doc std std-doc">Ryan Savill</span></a>, June 25th 2021</p>
+<p>In the <a class="reference external" href="https://biapol.github.io/blog/02_intro_to_skimage">previous blog post</a> we saw how background subtraction can improve segmentation substantially. We will now take a more in depth look at how background subtraction works by showing the top-hat filter and Difference of Gaussian (DoG) filter, which both can achieve background subtraction. In general, we want to use background subtraction if there is a sharp signal (high localised intensity) we want to isolate from moderate signal that is evenly distributed in the background. Some simple functions allow us to find the background image and subtract it from our original image, only leaving the signals we want to isolate.</p>
+<section id="top-hat-filter">
+<h2>Top-hat Filter<a class="headerlink" href="#top-hat-filter" title="Permalink to this headline">#</a></h2>
+<p>This process is basically <a class="reference external" href="https://www.youtube.com/watch?v=0PP38Z0CNMI&amp;t=800s">what a top-hat filter does</a>. Under the hood we are applying two filters in series before subtracting this filtered image from our input image. The first filter we apply is a minimum filter, which finds the minimum intensity for a pixel in a neighbourhood defined by the filter size. This can be seen as an <a class="reference external" href="https://homepages.inf.ed.ac.uk/rbf/HIPR2/erode.htm">erosion</a> of the image and returns part of the background. Afterwards, we apply a maximum filter to our minimum-filtered image, which sets a pixel to the maximum intensity value in a given neighbourhood. What we are doing now is a <a class="reference external" href="https://homepages.inf.ed.ac.uk/rbf/HIPR2/dilate.htm">dilation</a> of the image to retrieve the whole background (since we eroded some of it). To demonstrate this, we will apply the filter to our maximum projection image from the <a class="reference external" href="https://biapol.github.io/blog/ryan_savill/01_intro_to_python/">last post</a> which originates from a dataset acquired by Daniela Vorkel, Myers lab MPI CBG / CSBD:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">skimage</span> <span class="kn">import</span> <span class="n">io</span><span class="p">,</span> <span class="n">morphology</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">skimage.feature</span> <span class="k">as</span> <span class="nn">features</span>
+<span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">ndimage</span>
+
+<span class="n">your_file_path</span> <span class="o">=</span> <span class="s1">&#39;data_ryan//&#39;</span>
+<span class="n">tribolium</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="n">your_file_path</span> <span class="o">+</span> <span class="s1">&#39;MAX_Lund_18.0_22.0_Hours Z-projection t1.tif&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Now that we have the data loaded and our libraries imported we can apply a minimum filter and subtract it from the original image to see the result:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># setting the size of the minimum filter to be larger than the nuclei</span>
+<span class="n">size</span>  <span class="o">=</span> <span class="mi">25</span> 
+
+<span class="n">minimum_trib</span> <span class="o">=</span> <span class="n">ndimage</span><span class="o">.</span><span class="n">minimum_filter</span><span class="p">(</span><span class="n">tribolium</span><span class="p">,</span> <span class="n">size</span><span class="p">)</span>  
+<span class="n">orig_sub_min</span> <span class="o">=</span> <span class="n">tribolium</span> <span class="o">-</span> <span class="n">minimum_trib</span>
+
+<span class="c1"># visualising the result</span>
+<span class="n">fig</span><span class="p">,</span> <span class="p">(</span><span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span><span class="p">,</span> <span class="n">ax3</span><span class="p">)</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">figsize</span> <span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">20</span><span class="p">))</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">tribolium</span><span class="p">,</span> <span class="n">cmap</span> <span class="o">=</span> <span class="s1">&#39;gray&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Original&#39;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">minimum_trib</span><span class="p">,</span> <span class="n">cmap</span> <span class="o">=</span> <span class="s1">&#39;gray&#39;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Minimum&#39;</span><span class="p">)</span>
+<span class="n">ax3</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">orig_sub_min</span><span class="p">,</span> <span class="n">cmap</span> <span class="o">=</span> <span class="s1">&#39;gray&#39;</span><span class="p">)</span>
+<span class="n">ax3</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Original - Minimum&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><img alt="png" src="../../_images/output_3_1.png" /></p>
+<p>This already works quite well but we can see that there still is some background that isn’t removed around the outside of the embryo. This is why in the top-hat filter the minimum image is corrected with a maximum filter. This maximum filter assures that the whole background is included.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># getting the maximum of the minimum filtered image</span>
+<span class="n">max_of_min_trib</span> <span class="o">=</span> <span class="n">ndimage</span><span class="o">.</span><span class="n">maximum_filter</span><span class="p">(</span><span class="n">minimum_trib</span><span class="p">,</span> <span class="n">size</span><span class="p">)</span>
+
+<span class="c1"># subtraction from the original to obtain the top-hat filter</span>
+<span class="n">tophat_trib</span> <span class="o">=</span> <span class="n">tribolium</span><span class="o">-</span><span class="n">max_of_min_trib</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="p">(</span><span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span><span class="p">,</span> <span class="n">ax3</span><span class="p">,</span> <span class="n">ax4</span><span class="p">)</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="n">figsize</span> <span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">20</span><span class="p">))</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">tribolium</span><span class="p">,</span> <span class="n">cmap</span> <span class="o">=</span> <span class="s1">&#39;gray&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Original&#39;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">minimum_trib</span><span class="p">,</span> <span class="n">cmap</span> <span class="o">=</span> <span class="s1">&#39;gray&#39;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Minimum&#39;</span><span class="p">)</span>
+<span class="n">ax3</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">max_of_min_trib</span><span class="p">,</span> <span class="n">cmap</span> <span class="o">=</span> <span class="s1">&#39;gray&#39;</span><span class="p">)</span>
+<span class="n">ax3</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Max of Min&#39;</span><span class="p">)</span>
+<span class="n">ax4</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">tophat_trib</span><span class="p">,</span> <span class="n">cmap</span> <span class="o">=</span> <span class="s1">&#39;gray&#39;</span><span class="p">)</span>
+<span class="n">ax4</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Tophat&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><img alt="png" src="../../_images/output_5_1.png" /></p>
+<p>This in essence is the top-hat filter and we could now put it into a function to use to make our life easier or we can plot it with different values for the maximum and minimum filters to see what effect that has on the background subtraction:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">diytophat</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">minsize</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span> <span class="n">maxsize</span><span class="o">=</span><span class="mi">25</span><span class="p">):</span>
+    <span class="kn">from</span> <span class="nn">scipy.ndimage</span> <span class="kn">import</span> <span class="n">maximum_filter</span><span class="p">,</span> <span class="n">minimum_filter</span>
+    <span class="n">minimum</span> <span class="o">=</span> <span class="n">minimum_filter</span><span class="p">(</span><span class="n">image</span><span class="p">,</span><span class="n">minsize</span><span class="p">)</span>
+    <span class="n">max_of_min</span> <span class="o">=</span> <span class="n">maximum_filter</span><span class="p">(</span><span class="n">minimum</span><span class="p">,</span> <span class="n">maxsize</span><span class="p">)</span>
+    <span class="n">tophat</span> <span class="o">=</span> <span class="n">image</span> <span class="o">-</span> <span class="n">max_of_min</span>
+    <span class="k">return</span> <span class="n">tophat</span>
+
+<span class="c1"># creating a range of filter sizes to iterate through (from 5 to 105 in steps of size 20)</span>
+<span class="n">filtersizes</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">105</span><span class="p">,</span><span class="mi">20</span><span class="p">)</span>
+
+<span class="c1"># initialising the plot</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">filtersizes</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">filtersizes</span><span class="p">),</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">20</span><span class="p">))</span>
+
+<span class="c1"># iterating over the filtersizes for min and max</span>
+<span class="k">for</span> <span class="n">index_1</span><span class="p">,</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">filtersizes</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">index_2</span><span class="p">,</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">filtersizes</span><span class="p">):</span>
+        <span class="c1"># making the image and showing it on the plot </span>
+        <span class="n">axs</span><span class="p">[</span><span class="n">index_1</span><span class="p">,</span><span class="n">index_2</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">diytophat</span><span class="p">(</span><span class="n">tribolium</span><span class="p">,</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">),</span><span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">)</span>
+        <span class="n">axs</span><span class="p">[</span><span class="n">index_1</span><span class="p">,</span><span class="n">index_2</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;min = </span><span class="si">{minval}</span><span class="s2">, max = </span><span class="si">{maxval}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">minval</span> <span class="o">=</span> <span class="n">i</span><span class="p">,</span> <span class="n">maxval</span> <span class="o">=</span> <span class="n">j</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<p><img alt="png" src="../../_images/output_7_0.png" /></p>
+<p>From these plots we can see that keeping the filter sizes the same yields the best results, but having the maximum filter slightly smaller than the minimum filter also produces plausible results. Any large differences between the values seem to distort the image substantially. Since equal values seem to work the best we will modify our function to only have one filter size as input:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">diytophat</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">25</span><span class="p">):</span>
+    <span class="kn">from</span> <span class="nn">scipy.ndimage</span> <span class="kn">import</span> <span class="n">maximum_filter</span><span class="p">,</span> <span class="n">minimum_filter</span>
+    <span class="n">minimum</span> <span class="o">=</span> <span class="n">minimum_filter</span><span class="p">(</span><span class="n">image</span><span class="p">,</span><span class="n">size</span><span class="p">)</span>
+    <span class="n">max_of_min</span> <span class="o">=</span> <span class="n">maximum_filter</span><span class="p">(</span><span class="n">minimum</span><span class="p">,</span><span class="n">size</span><span class="p">)</span>
+    <span class="n">tophat</span> <span class="o">=</span> <span class="n">image</span> <span class="o">-</span> <span class="n">max_of_min</span>
+    <span class="k">return</span> <span class="n">tophat</span>
+</pre></div>
+</div>
+<p>One of the main benefits of python is that you don’t need to write a lot of code if you are doing things that are common, which is why to apply a top-hat filter we can also just use <a class="reference external" href="https://scikit-image.org/">scikit image</a> to apply a top-hat filter! The downside is that there are usually some peculiarities with the prepackaged code. In scikit image for some filters we need a <a class="reference external" href="https://homepages.inf.ed.ac.uk/rbf/HIPR2/strctel.htm">structuring element</a>. Basically, this is a 2d (or 3d if we are processing 3d images) matrix filled with 1 where the filter should take a pixel into account and 0 otherwise. The filters need this as a parameter to know how to apply the filter spatially. Now let’s generate one to see what it looks like:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">skimage.morphology</span> <span class="kn">import</span> <span class="n">disk</span>
+
+<span class="c1"># set the radius of the structuring element</span>
+<span class="n">radius</span> <span class="o">=</span> <span class="mi">5</span>
+
+<span class="c1"># generate the structuring element</span>
+<span class="n">str_el</span> <span class="o">=</span> <span class="n">disk</span><span class="p">(</span><span class="n">radius</span><span class="p">)</span>
+
+<span class="c1">#taking a look at the structuring element</span>
+<span class="n">str_el</span>
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>array([[0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0],
+       [0, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0],
+       [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0],
+       [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0],
+       [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0],
+       [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+       [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0],
+       [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0],
+       [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0],
+       [0, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0],
+       [0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0]], dtype=uint8)
+</pre></div>
+</div>
+<p>Now that we can generate the structuring element we can use the top-hat filter in scikit image on our maximum projection image:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">skimage.morphology</span> <span class="kn">import</span> <span class="n">white_tophat</span>
+
+<span class="c1"># set the radius of the structuring element</span>
+<span class="n">radius</span> <span class="o">=</span> <span class="mi">25</span>
+
+<span class="c1"># generate the structuring element</span>
+<span class="n">str_el</span> <span class="o">=</span> <span class="n">disk</span><span class="p">(</span><span class="n">radius</span><span class="p">)</span>
+
+<span class="c1"># apply the filter</span>
+<span class="n">scikit_tophat</span> <span class="o">=</span> <span class="n">white_tophat</span><span class="p">(</span><span class="n">tribolium</span><span class="p">,</span> <span class="n">str_el</span><span class="p">)</span>
+
+<span class="c1"># plotting the result</span>
+<span class="n">fig</span><span class="p">,</span> <span class="p">(</span><span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span><span class="p">)</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span> <span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">20</span><span class="p">))</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">tribolium</span><span class="p">,</span> <span class="n">cmap</span> <span class="o">=</span> <span class="s1">&#39;gray&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Original&#39;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">scikit_tophat</span><span class="p">,</span> <span class="n">cmap</span> <span class="o">=</span> <span class="s1">&#39;gray&#39;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Scikit Tophat&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><img alt="png" src="../../_images/output_13_1.png" /></p>
+<p>Again, we can make a function to shorten the code if we use it more often:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">subtract_background</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">radius</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">light_bg</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="c1"># import libraries</span>
+    <span class="kn">from</span> <span class="nn">skimage.morphology</span> <span class="kn">import</span> <span class="n">white_tophat</span><span class="p">,</span> <span class="n">black_tophat</span><span class="p">,</span> <span class="n">disk</span> 
+    
+    <span class="c1"># generate structuring element</span>
+    <span class="n">str_el</span> <span class="o">=</span> <span class="n">disk</span><span class="p">(</span><span class="n">radius</span><span class="p">)</span>
+     
+    <span class="c1"># use appropriate filter depending on the background colour</span>
+    <span class="k">if</span> <span class="n">light_bg</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">black_tophat</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">str_el</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">white_tophat</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">str_el</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="detour-why-functions-are-awesome">
+<h2>Detour: Why Functions Are Awesome<a class="headerlink" href="#detour-why-functions-are-awesome" title="Permalink to this headline">#</a></h2>
+<p>Making functions seems a bit tedious at the beginning and it can be much more fun to explore the code without having to make a function everytime, but you will soon get used to writing functions and choosing parameters to put into the functions. Not only that but you can save these functions in a file to use them in other python programs or jupyter notebooks and you will see how much easier this will make coding in python.</p>
+<p>I for instance have chosen to work with data in the form of dataframes (if you use <a class="reference external" href="https://www.r-project.org/">R</a> or <a class="reference external" href="https://de.mathworks.com/products/matlab.html">matlab</a> this might be familiar to you) with a python library called <a class="reference external" href="https://pandas.pydata.org/">pandas</a>. It comes pre-installed with anaconda and makes my life a little easier as all columns have names unlike numpy arrays, which could create a lot of confusion. When I want to perform some kind of analysis on my dataframes often functions will output results as numpy arrays, so I have to turn them back into dataframes and sometimes the dataframes need to be converted into arrays as input for some libraries. Functions help me everyday, because the small lines of code that convert datatypes or reshape lists for specific functions really sum up if you have to write them everytime. Also these lines of code make the files ineligible, whereas functions are just neat one-liners which I can easily read! But how can you make a library? I’ll show you a simple way now and a more in depth way later:</p>
+<section id="how-to-build-your-own-simple-library">
+<h3>How to Build Your Own Simple Library<a class="headerlink" href="#how-to-build-your-own-simple-library" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>First you have to make a python file and name it something recognisable (like: image_analysis_functions).</p></li>
+<li><p>Then you have to add the functions you want to include in your library. Make sure that each function also contains all the import statements of the libraries it uses, otherwise you might be met with errors later on!</p></li>
+<li><p>And believe it or not that was it!</p></li>
+</ul>
+<p>The important thing is that this python file is in the same folder as the python file you want to use your library in. If this is the case, you should be able to import it like this:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">image_analysis_functions</span> <span class="k">as</span> <span class="nn">iaf</span>
+
+<span class="n">io</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">iaf</span><span class="o">.</span><span class="n">subtract_background</span><span class="p">(</span><span class="n">tribolium</span><span class="p">))</span>
+</pre></div>
+</div>
+<p><img alt="png" src="../../_images/output_17_2.png" /></p>
+</section>
+</section>
+<section id="difference-of-gaussian">
+<h2>Difference of Gaussian<a class="headerlink" href="#difference-of-gaussian" title="Permalink to this headline">#</a></h2>
+<p>This is another method of highlighting nuclei, even if it is not described as background subtraction but rather <a class="reference external" href="https://en.wikipedia.org/wiki/Difference_of_Gaussians">feature enhancement</a>. In essence, it generates two Gaussian blurred images with different sigma for the Gaussian blur filter. The features we want to highlight should have a size between the two sigma values of the Gaussian blurs. Afterwards, we subtract the larger blurred image from the smaller one. In a way this combines the noise removal of the small Gaussian blurred image with a background subtraction represented by the larger Gaussian blurred image. If filters are a common concept for you, you can think of it as a bandpass filter that highlights the features in between the two sizes. Since <a class="reference external" href="https://scikit-image.org/docs/dev/api/skimage.filters.html#skimage.filters.gaussian">Gaussian blur</a> is a function included in scikit image let’s create this filter ourselves:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">skimage</span> <span class="kn">import</span> <span class="n">filters</span>
+
+<span class="c1"># the smaller Gaussian is just there to remove </span>
+<span class="c1"># noise so it can be just a few pixels</span>
+<span class="n">small_gaussian</span> <span class="o">=</span> <span class="n">filters</span><span class="o">.</span><span class="n">gaussian</span><span class="p">(</span><span class="n">tribolium</span><span class="p">,</span> <span class="n">sigma</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># the larger Gaussian has to be bigger than our largest</span>
+<span class="c1"># object, which we can measure or make an educated guess</span>
+<span class="n">large_gaussian</span> <span class="o">=</span> <span class="n">filters</span><span class="o">.</span><span class="n">gaussian</span><span class="p">(</span><span class="n">tribolium</span><span class="p">,</span> <span class="n">sigma</span> <span class="o">=</span> <span class="mi">100</span><span class="p">)</span>
+
+<span class="c1"># now we subtract the large gaussian from the small one</span>
+<span class="n">dog_tribolium</span> <span class="o">=</span> <span class="n">small_gaussian</span> <span class="o">-</span> <span class="n">large_gaussian</span>
+
+<span class="c1"># visualising the results</span>
+<span class="n">fig</span><span class="p">,</span> <span class="p">(</span><span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span><span class="p">,</span> <span class="n">ax3</span><span class="p">)</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">figsize</span> <span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">20</span><span class="p">))</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">small_gaussian</span><span class="p">,</span> <span class="n">cmap</span> <span class="o">=</span> <span class="s1">&#39;gray&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Small Gaussian&#39;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">large_gaussian</span><span class="p">,</span> <span class="n">cmap</span> <span class="o">=</span> <span class="s1">&#39;gray&#39;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Large Gaussian&#39;</span><span class="p">)</span>
+<span class="n">ax3</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">dog_tribolium</span><span class="p">,</span> <span class="n">cmap</span> <span class="o">=</span> <span class="s1">&#39;gray&#39;</span><span class="p">)</span>
+<span class="n">ax3</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;DoG Image&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><img alt="png" src="../../_images/output_19_11.png" /></p>
+<p>We can see that it is not quite as effective as the top-hat filter but nonetheless, it has managed to remove some of the background in the image. Making this filter ourselves is a good exercise in coding and understanding what these filters do. However, when it gets to complicated filters, reinventing the wheel isn’t practical and you will most likely find the filter you are looking for either in <a class="reference external" href="https://scikit-image.org/">scikit image</a>, in <a class="reference external" href="https://docs.scipy.org/doc/">scipy</a> or just google (this is what I often do). Because python is a relatively simple language to learn, there are many users who have most likely asked the same question as you have! For the <a class="reference external" href="https://scikit-image.org/docs/dev/api/skimage.filters.html#skimage.filters.difference_of_gaussians">Difference of Gaussian filter</a> scikit image has this function as well, which we can use here instead of doing the processing ourselves:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># setting the same sigmas as above</span>
+<span class="n">sk_dog_tribolium</span> <span class="o">=</span> <span class="n">filters</span><span class="o">.</span><span class="n">difference_of_gaussians</span><span class="p">(</span><span class="n">tribolium</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+
+<span class="c1"># visualising the results</span>
+<span class="c1"># visualising the results</span>
+<span class="n">fig</span><span class="p">,</span> <span class="p">(</span><span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span><span class="p">)</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span> <span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">20</span><span class="p">))</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">tribolium</span><span class="p">,</span> <span class="n">cmap</span> <span class="o">=</span> <span class="s1">&#39;gray&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Original&#39;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">sk_dog_tribolium</span><span class="p">,</span> <span class="n">cmap</span> <span class="o">=</span> <span class="s1">&#39;gray&#39;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;DoG Image&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><img alt="png" src="../../_images/output_21_1.png" /></p>
+<p>Difference of Gaussian is not only helpful as a background subtraction filter, it can also be used in spot- or blob-detection, which we will look at in the [next post]! Until then happy coding!</p>
+</section>
+<section id="home">
+<h2><a class="reference external" href="https://biapol.github.io/blog/ryan_savill/">Home</a><a class="headerlink" href="#home" title="Permalink to this headline">#</a></h2>
+<p><a class="reference external" href="https://biapol.github.io/blog/imprint">Imprint</a></p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./ryan_savill/03_background_subtraction"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="../principal_feature_analysis/readme.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Principal Feature Analysis</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="../02_intro_to_skimage/readme.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Introduction to Image Analysis Basics in Python with Scikit Image</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Marcelo Zoccoler, Johannes Müller, Till Korten, Ryan Savill, Robert Haase, DFG Cluster of Excellence "Physics of Life", TU Dresden<br/>
+  
+      &copy; Copyright 2023.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

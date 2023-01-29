@@ -1,0 +1,1420 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Principal Feature Analysis &#8212; BiA-PoL blog</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Background Subtraction" href="../03_background_subtraction/readme.html" />
+    <link rel="prev" title="Installing Microsoft buildtools on Windows" href="../../robert_haase/ms_build_tools/readme.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../../_static/biapol_logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">BiA-PoL blog</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    Welcome!
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Blog Posts
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../marcelo_zoccoler/omero_scripts/readme.html">
+   Running Deep-Learning Scripts in the BiA-PoL Omero Server
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../marcelo_zoccoler/mini_sabbatical_rike/Readme.html">
+   Mini-Sabbatical Experience at Bia-PoL
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../johannes_mueller/anaconda_getting_started/Readme.html">
+   Getting started with Anaconda and Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../johannes_mueller/entry_sphinx/Readme.html">
+   Automated package documentation with Sphinx
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../johannes_mueller/entry_user_inter/Readme.html">
+   Custom user interfaces for Python (Part 1)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../johannes_mueller/entry_user_interf2/Readme.html">
+     Custom user interfaces for Python (Part 2)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../marcelo_zoccoler/entry_user_interf3/Readme.html">
+     Custom user interfaces for Python (Part 3)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../marcelo_zoccoler/entry_user_interf4/Readme.html">
+     Custom user interfaces for Python (Part 4)
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../marcelo_zoccoler/jamovi/jamovi.html">
+   Jamovi: statistical analysis made visual and easy (powered with R)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../robert_haase/ms_build_tools/readme.html">
+   Installing Microsoft buildtools on Windows
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Principal Feature Analysis
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../03_background_subtraction/readme.html">
+   Background Subtraction
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../02_intro_to_skimage/readme.html">
+   Introduction to Image Analysis Basics in Python with Scikit Image
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../robert_haase/stardist_gpu/readme.html">
+   Using StarDist in napari with GPU-support in Windows
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../01_intro_to_python/readme.html">
+   Introduction to Using Python for Image Analysis
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../robert_haase/cupy_cucim/readme.html">
+   GPU-accelerated image processing using cupy and cucim
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../robert_haase/browsing_idr/readme.html">
+   Browsing the Open Microscopy Image Data Resource with Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../robert_haase/clesperanto_google_colab/readme.html">
+   GPU-accelerated image processing in the cloud using Google Colab and clEsperanto
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  About the Blog
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../robert_haase/why_we_blog/readme.html">
+   Why we blog
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../people.html">
+   BiA-PoL blog authors
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../johannes_mueller/Readme.html">
+     Johannes Müller
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../marcelo_zoccoler/readme.html">
+     Marcelo Zoccoler
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../readme.html">
+     Ryan Savill
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../robert_haase/readme.html">
+     Robert Haase
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../imprint.html">
+   Imprint
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/lazigu/blog"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/lazigu/blog/issues/new?title=Issue%20on%20page%20%2Fryan_savill/principal_feature_analysis/readme.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../../_sources/ryan_savill/principal_feature_analysis/readme.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.md</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#background">
+   Background
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#implementation">
+   Implementation
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Principal Feature Analysis</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#background">
+   Background
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#implementation">
+   Implementation
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="principal-feature-analysis">
+<h1>Principal Feature Analysis<a class="headerlink" href="#principal-feature-analysis" title="Permalink to this headline">#</a></h1>
+<p><a class="reference internal" href="../readme.html"><span class="doc std std-doc">Ryan Savill</span></a>, July 8th 2021</p>
+<section id="background">
+<h2>Background<a class="headerlink" href="#background" title="Permalink to this headline">#</a></h2>
+<p>Principal feature analysis (PFA) is a method for selecting a subset of features that describe most of the variability in the dataset based on <a class="reference external" href="http://venom.cs.utsa.edu/dmz/techrep/2007/CS-TR-2007-011.pdf">this paper</a> by Y. Lu et al. published in ACM, 2007. Most of the code for the implementation below was provided in a <a class="reference external" href="https://stats.stackexchange.com/questions/108743/methods-in-r-or-python-to-perform-feature-selection-in-unsupervised-learning/203978#203978">stackexchange comment section</a> and is greatly appreciated!</p>
+<p>This sounds oddly similar to principal component analysis (PCA), which is no coincidence as the methodologies are intertwined. PCA also does a similar thing but instead of choosing features that describe the variability to a certain threshold we choose a subset of principal components. This is not always optimal and there are valid choices for working with the features instead of the principal components as the principal components are always a transformed form of the data.</p>
+<p>If you have not heard of PCA before I would advise you to check out <a class="reference external" href="https://www.youtube.com/watch?v=FgakZw6K1QQ">this video</a>. If you (like me just a few days ago) have an understanding of the principle of PCA but don’t understand the math behind it I’d advise you to take some time to grasp the concepts. I found a great series of videos that explain all necessary parts of the puzzle that is PCA. Each video is just about 10 minutes long and explained quite well, even if your math lectures have been a few years ago!</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.youtube.com/watch?v=X78tLBY3BMk">Vector Projections</a></p></li>
+<li><p><a class="reference external" href="https://www.youtube.com/watch?v=glaiP222JWA">Eigenvectors and Eigenvalues</a></p></li>
+<li><p><a class="reference external" href="https://www.youtube.com/watch?v=e73033jZTCI">Derivative of a Matrix</a></p></li>
+<li><p><a class="reference external" href="https://www.youtube.com/watch?v=6oZT72-nnyI">Lagrange Multipliers</a></p></li>
+<li><p><a class="reference external" href="https://www.youtube.com/watch?v=152tSYtiQbw">Covariance Matrix</a></p></li>
+<li><p><a class="reference external" href="https://www.youtube.com/watch?v=dhK8nbtii6I">PCA</a> (finally!)</p></li>
+</ul>
+<p>Once you have grasped these concepts this explanation should be a breeze!</p>
+<p>Principal feature analysis takes advantage of some of the transformations in PCA to find out which features explain the variance. The first steps in PFA are to create the covariance matrix and find the orthonormal eigenvectors and sort them by their eigenvalues, creating a matrix A. This in effect is what PCA does as well since the principal components are the eigenvectors of the covariance matrix. We can output them in <a class="reference external" href="https://scikit-learn.org/stable/">scikit-learn</a> with the command ‘.components_’.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># importing everything we might need and more:</span>
+<span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">decomposition</span>
+<span class="kn">import</span> <span class="nn">tribolium_clustering</span> <span class="k">as</span> <span class="nn">tc</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">sklearn.decomposition</span> <span class="kn">import</span> <span class="n">PCA</span>
+<span class="kn">from</span> <span class="nn">sklearn.cluster</span> <span class="kn">import</span> <span class="n">KMeans</span>
+<span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">defaultdict</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics.pairwise</span> <span class="kn">import</span> <span class="n">euclidean_distances</span>
+<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">StandardScaler</span>
+
+<span class="c1"># function for labelling eigenvectors so it is readable:</span>
+<span class="k">def</span> <span class="nf">pca_comp_inf_dataframe</span><span class="p">(</span><span class="n">pca_object</span><span class="p">,</span><span class="n">regprops_df</span><span class="p">,</span><span class="n">n_components</span><span class="p">):</span>
+    <span class="kn">from</span> <span class="nn">sklearn.decomposition</span> <span class="kn">import</span> <span class="n">PCA</span>
+    <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+    <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+    <span class="n">features</span> <span class="o">=</span> <span class="n">regprops_df</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+    <span class="n">component_names</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;PC</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_components</span><span class="p">)]</span>
+    <span class="n">comps</span> <span class="o">=</span> <span class="n">pca_object</span><span class="o">.</span><span class="n">components_</span>
+    <span class="n">df_comps</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">comps</span><span class="p">,</span><span class="n">index</span> <span class="o">=</span> <span class="n">component_names</span><span class="p">,</span> <span class="n">columns</span> <span class="o">=</span> <span class="n">features</span><span class="p">)</span>
+    
+    <span class="k">return</span> <span class="n">df_comps</span>
+
+<span class="c1"># loading our test dataset</span>
+<span class="n">location_prefix</span> <span class="o">=</span> <span class="s1">&#39;data/folder/&#39;</span>
+
+<span class="n">timepoint</span> <span class="o">=</span> <span class="mi">9</span>
+<span class="n">regionpropspath</span> <span class="o">=</span> <span class="n">location_prefix</span> <span class="o">+</span> <span class="s1">&#39;Master Thesis//First Coding Tries//regionprops_all_timepoints_lund//regprops t</span><span class="si">{}</span><span class="s1">.csv&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">timepoint</span><span class="p">)</span>
+<span class="n">regprops</span> <span class="o">=</span> <span class="n">tc</span><span class="o">.</span><span class="n">readcsv_as_cl_input</span><span class="p">(</span><span class="n">regionpropspath</span><span class="p">)</span>
+
+<span class="c1"># redefinition of our dataset</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">regprops</span>
+
+<span class="c1"># standardscaling the dataset is a prerequisite for PCA</span>
+<span class="n">sc</span> <span class="o">=</span> <span class="n">StandardScaler</span><span class="p">()</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+
+<span class="c1"># fitting our PCA</span>
+<span class="n">pca</span> <span class="o">=</span> <span class="n">PCA</span><span class="p">()</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+
+<span class="c1"># getting our orthonormal eigenvectors:</span>
+<span class="n">A</span> <span class="o">=</span> <span class="n">pca</span><span class="o">.</span><span class="n">components_</span><span class="o">.</span><span class="n">T</span>
+
+<span class="c1"># labelling that matrix for ease of use</span>
+<span class="n">A_readable</span> <span class="o">=</span> <span class="n">pca_comp_inf_dataframe</span><span class="p">(</span><span class="n">pca</span><span class="p">,</span><span class="n">regprops</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">regprops</span><span class="o">.</span><span class="n">keys</span><span class="p">()))</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span>
+
+<span class="n">A_readable</span>
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>No Predictions in Regionprops of data/folder/Master Thesis/First Coding Tries/regionprops_all_timepoints_lund/regprops t9.csv
+</pre></div>
+</div>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>.dataframe tbody tr th {
+    vertical-align: top;
+}
+
+.dataframe thead th {
+    text-align: right;
+}
+</pre></div>
+</div>
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>PC1</th>
+      <th>PC2</th>
+      <th>PC3</th>
+      <th>PC4</th>
+      <th>PC5</th>
+      <th>PC6</th>
+      <th>PC7</th>
+      <th>PC8</th>
+      <th>PC9</th>
+      <th>PC10</th>
+      <th>PC11</th>
+      <th>PC12</th>
+      <th>PC13</th>
+      <th>PC14</th>
+      <th>PC15</th>
+      <th>PC16</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>area</th>
+      <td>0.317564</td>
+      <td>0.035871</td>
+      <td>0.001643</td>
+      <td>-0.060553</td>
+      <td>-0.099831</td>
+      <td>0.060197</td>
+      <td>0.121308</td>
+      <td>-0.070996</td>
+      <td>-0.059213</td>
+      <td>-0.200579</td>
+      <td>0.358877</td>
+      <td>0.496485</td>
+      <td>0.533148</td>
+      <td>0.376162</td>
+      <td>0.126583</td>
+      <td>-0.007435</td>
+    </tr>
+    <tr>
+      <th>centroid-0</th>
+      <td>0.031897</td>
+      <td>0.394748</td>
+      <td>-0.671168</td>
+      <td>0.066552</td>
+      <td>-0.171701</td>
+      <td>-0.245463</td>
+      <td>-0.296170</td>
+      <td>-0.423315</td>
+      <td>-0.143398</td>
+      <td>0.086719</td>
+      <td>0.030823</td>
+      <td>-0.041805</td>
+      <td>-0.005947</td>
+      <td>0.007349</td>
+      <td>0.026808</td>
+      <td>0.005131</td>
+    </tr>
+    <tr>
+      <th>centroid-1</th>
+      <td>0.008123</td>
+      <td>0.382147</td>
+      <td>0.488175</td>
+      <td>0.230320</td>
+      <td>-0.613868</td>
+      <td>-0.143166</td>
+      <td>-0.356966</td>
+      <td>0.192595</td>
+      <td>0.011508</td>
+      <td>-0.013926</td>
+      <td>0.001356</td>
+      <td>0.008315</td>
+      <td>-0.007246</td>
+      <td>0.000669</td>
+      <td>-0.015394</td>
+      <td>-0.000195</td>
+    </tr>
+    <tr>
+      <th>centroid-2</th>
+      <td>0.240592</td>
+      <td>-0.076633</td>
+      <td>-0.435728</td>
+      <td>0.075588</td>
+      <td>-0.140601</td>
+      <td>-0.327701</td>
+      <td>0.114531</td>
+      <td>0.634164</td>
+      <td>0.393689</td>
+      <td>-0.174994</td>
+      <td>-0.084351</td>
+      <td>0.026689</td>
+      <td>-0.018534</td>
+      <td>-0.022879</td>
+      <td>-0.062223</td>
+      <td>-0.007310</td>
+    </tr>
+    <tr>
+      <th>feret_diameter_max</th>
+      <td>0.289769</td>
+      <td>-0.012282</td>
+      <td>-0.032635</td>
+      <td>0.181363</td>
+      <td>-0.160207</td>
+      <td>0.380691</td>
+      <td>0.084649</td>
+      <td>-0.211788</td>
+      <td>0.439432</td>
+      <td>0.320636</td>
+      <td>-0.163147</td>
+      <td>0.056981</td>
+      <td>-0.363715</td>
+      <td>0.448382</td>
+      <td>0.007851</td>
+      <td>-0.012093</td>
+    </tr>
+    <tr>
+      <th>major_axis_length</th>
+      <td>0.301739</td>
+      <td>0.002370</td>
+      <td>-0.021720</td>
+      <td>0.113154</td>
+      <td>-0.135457</td>
+      <td>0.346191</td>
+      <td>0.039834</td>
+      <td>-0.195065</td>
+      <td>0.315525</td>
+      <td>0.010066</td>
+      <td>0.049534</td>
+      <td>-0.247254</td>
+      <td>0.419644</td>
+      <td>-0.608955</td>
+      <td>-0.086439</td>
+      <td>0.013967</td>
+    </tr>
+    <tr>
+      <th>minor_axis_length</th>
+      <td>0.308058</td>
+      <td>0.048526</td>
+      <td>0.032858</td>
+      <td>-0.149205</td>
+      <td>-0.075049</td>
+      <td>0.130833</td>
+      <td>0.027726</td>
+      <td>-0.170614</td>
+      <td>-0.094954</td>
+      <td>-0.740310</td>
+      <td>0.122889</td>
+      <td>-0.086970</td>
+      <td>-0.489703</td>
+      <td>-0.077289</td>
+      <td>-0.034946</td>
+      <td>-0.005721</td>
+    </tr>
+    <tr>
+      <th>solidity</th>
+      <td>0.139750</td>
+      <td>0.213562</td>
+      <td>0.179860</td>
+      <td>-0.784037</td>
+      <td>0.109756</td>
+      <td>-0.245965</td>
+      <td>-0.162139</td>
+      <td>-0.093897</td>
+      <td>0.399242</td>
+      <td>0.142184</td>
+      <td>-0.016268</td>
+      <td>-0.005970</td>
+      <td>0.007210</td>
+      <td>-0.012330</td>
+      <td>0.005534</td>
+      <td>-0.001295</td>
+    </tr>
+    <tr>
+      <th>mean_intensity</th>
+      <td>-0.298859</td>
+      <td>-0.031721</td>
+      <td>-0.044582</td>
+      <td>-0.053140</td>
+      <td>-0.290490</td>
+      <td>-0.081776</td>
+      <td>0.366782</td>
+      <td>-0.070965</td>
+      <td>0.147539</td>
+      <td>0.210029</td>
+      <td>0.577876</td>
+      <td>0.280034</td>
+      <td>-0.316568</td>
+      <td>-0.304428</td>
+      <td>0.055622</td>
+      <td>0.001809</td>
+    </tr>
+    <tr>
+      <th>max_intensity</th>
+      <td>-0.223891</td>
+      <td>0.445127</td>
+      <td>-0.015072</td>
+      <td>-0.078562</td>
+      <td>-0.095429</td>
+      <td>0.088448</td>
+      <td>0.504917</td>
+      <td>-0.064260</td>
+      <td>-0.004226</td>
+      <td>-0.155993</td>
+      <td>-0.573306</td>
+      <td>0.308846</td>
+      <td>0.074610</td>
+      <td>-0.118217</td>
+      <td>-0.036991</td>
+      <td>0.002788</td>
+    </tr>
+    <tr>
+      <th>min_intensity</th>
+      <td>-0.248677</td>
+      <td>-0.277709</td>
+      <td>-0.003527</td>
+      <td>-0.151868</td>
+      <td>-0.443942</td>
+      <td>-0.187537</td>
+      <td>0.304523</td>
+      <td>-0.223142</td>
+      <td>0.067566</td>
+      <td>-0.152249</td>
+      <td>-0.039673</td>
+      <td>-0.525101</td>
+      <td>0.223898</td>
+      <td>0.328584</td>
+      <td>-0.005177</td>
+      <td>-0.002429</td>
+    </tr>
+    <tr>
+      <th>image_stdev</th>
+      <td>-0.124373</td>
+      <td>0.597732</td>
+      <td>-0.026935</td>
+      <td>0.059831</td>
+      <td>0.275986</td>
+      <td>0.222842</td>
+      <td>0.207255</td>
+      <td>0.258350</td>
+      <td>0.080221</td>
+      <td>-0.016470</td>
+      <td>0.376158</td>
+      <td>-0.432514</td>
+      <td>0.043550</td>
+      <td>0.222652</td>
+      <td>0.025638</td>
+      <td>-0.004268</td>
+    </tr>
+    <tr>
+      <th>avg distance of 2 closest points</th>
+      <td>0.312403</td>
+      <td>0.040115</td>
+      <td>0.025366</td>
+      <td>-0.113510</td>
+      <td>-0.083929</td>
+      <td>-0.065002</td>
+      <td>0.223752</td>
+      <td>0.060992</td>
+      <td>-0.355553</td>
+      <td>0.261325</td>
+      <td>0.057316</td>
+      <td>-0.050857</td>
+      <td>-0.037707</td>
+      <td>0.038347</td>
+      <td>-0.716577</td>
+      <td>0.324435</td>
+    </tr>
+    <tr>
+      <th>avg distance of 3 closest points</th>
+      <td>0.315714</td>
+      <td>0.031638</td>
+      <td>0.028109</td>
+      <td>-0.084834</td>
+      <td>-0.084732</td>
+      <td>-0.064296</td>
+      <td>0.212046</td>
+      <td>0.076844</td>
+      <td>-0.308744</td>
+      <td>0.228016</td>
+      <td>-0.034887</td>
+      <td>-0.121603</td>
+      <td>-0.049914</td>
+      <td>-0.068178</td>
+      <td>0.120108</td>
+      <td>-0.802665</td>
+    </tr>
+    <tr>
+      <th>avg distance of 4 closest points</th>
+      <td>0.316944</td>
+      <td>0.023361</td>
+      <td>0.033518</td>
+      <td>-0.059729</td>
+      <td>-0.078356</td>
+      <td>-0.068524</td>
+      <td>0.204538</td>
+      <td>0.092240</td>
+      <td>-0.253916</td>
+      <td>0.188049</td>
+      <td>-0.088972</td>
+      <td>-0.156060</td>
+      <td>-0.072032</td>
+      <td>-0.097133</td>
+      <td>0.660690</td>
+      <td>0.499889</td>
+    </tr>
+    <tr>
+      <th>touching neighbor count</th>
+      <td>-0.190434</td>
+      <td>-0.078438</td>
+      <td>-0.284396</td>
+      <td>-0.437245</td>
+      <td>-0.339335</td>
+      <td>0.594522</td>
+      <td>-0.243295</td>
+      <td>0.334427</td>
+      <td>-0.201843</td>
+      <td>0.052019</td>
+      <td>-0.024418</td>
+      <td>0.025692</td>
+      <td>0.012726</td>
+      <td>0.013417</td>
+      <td>0.028237</td>
+      <td>0.006079</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+<p>Now we have a massive matrix of our eigenvectors sorted by eigenvalues, but since every feature has equal influence on the eigenvectors we need to take a subset of matrix <code class="docutils literal notranslate"><span class="pre">A</span></code> called <code class="docutils literal notranslate"><span class="pre">A_q</span></code>. <code class="docutils literal notranslate"><span class="pre">q</span></code> represents the number of eigenvectors we take into account and the value of <code class="docutils literal notranslate"><span class="pre">q</span></code> will influence how much variance we can explain with the subset of the principal components. We can turn this question around and set a threshold of how much variance should at least be explained and then find the corresponding subset <code class="docutils literal notranslate"><span class="pre">A-q</span></code> of matrix <code class="docutils literal notranslate"><span class="pre">A</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># this shows us how much variance each principal component explains</span>
+<span class="n">explained_variance</span> <span class="o">=</span> <span class="n">pca</span><span class="o">.</span><span class="n">explained_variance_ratio_</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Explained Variances&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">explained_variance</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+
+<span class="c1"># this shows us how much variance the subset up to the i&#39;th index explains</span>
+<span class="n">cumulative_expl_var</span> <span class="o">=</span> <span class="p">[</span><span class="nb">sum</span><span class="p">(</span><span class="n">explained_variance</span><span class="p">[:</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">])</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">explained_variance</span><span class="p">))]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Cumulative Explained Variance&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">cumulative_expl_var</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+
+<span class="c1"># now we iterate through the cumulative explained variance until we reach a threshold that we define</span>
+<span class="n">q_variance_limit</span> <span class="o">=</span> <span class="mf">0.9</span>
+
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">j</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">cumulative_expl_var</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">j</span> <span class="o">&gt;=</span> <span class="n">q_variance_limit</span><span class="p">:</span>
+        <span class="n">q</span> <span class="o">=</span> <span class="n">i</span>
+        <span class="k">break</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The Subset will include the first </span><span class="si">{}</span><span class="s1"> Eigenvectors&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">q</span><span class="p">))</span>
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Explained Variances
+[5.89549241e-01 1.24817549e-01 7.44073363e-02 6.06447683e-02
+ 5.05242728e-02 3.80817718e-02 2.29718719e-02 1.43923774e-02
+ 1.16341513e-02 5.35585488e-03 2.50361397e-03 1.82220555e-03
+ 1.48239356e-03 1.06126637e-03 6.85699035e-04 6.56265602e-05]
+
+Cumulative Explained Variance
+[0.5895492409109632, 0.7143667903013323, 0.7887741265865403, 0.8494188949293884, 0.8999431677426732, 0.9380249394988094, 0.9609968114170524, 0.9753891887742816, 0.9870233400706391, 0.992379194950718, 0.9948828089223744, 0.9967050144743802, 0.9981874080386469, 0.9992486744047498, 0.9999343734397964, 0.9999999999999999]
+
+The Subset will include the first 5 Eigenvectors
+</pre></div>
+</div>
+<p>With our q defined we can get the the subset matrix of eigenvectors A_q:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">A_q</span> <span class="o">=</span> <span class="n">A</span><span class="p">[:,:</span><span class="n">q</span><span class="p">]</span>
+
+<span class="n">A_q_readable</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">A_q</span><span class="p">,</span><span class="n">index</span> <span class="o">=</span> <span class="n">regprops</span><span class="o">.</span><span class="n">keys</span><span class="p">(),</span> <span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;PC</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">q</span><span class="p">)])</span>
+
+<span class="n">A_q_readable</span>
+</pre></div>
+</div>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>.dataframe tbody tr th {
+    vertical-align: top;
+}
+
+.dataframe thead th {
+    text-align: right;
+}
+</pre></div>
+</div>
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>PC1</th>
+      <th>PC2</th>
+      <th>PC3</th>
+      <th>PC4</th>
+      <th>PC5</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>area</th>
+      <td>0.317564</td>
+      <td>0.035871</td>
+      <td>0.001643</td>
+      <td>-0.060553</td>
+      <td>-0.099831</td>
+    </tr>
+    <tr>
+      <th>centroid-0</th>
+      <td>0.031897</td>
+      <td>0.394748</td>
+      <td>-0.671168</td>
+      <td>0.066552</td>
+      <td>-0.171701</td>
+    </tr>
+    <tr>
+      <th>centroid-1</th>
+      <td>0.008123</td>
+      <td>0.382147</td>
+      <td>0.488175</td>
+      <td>0.230320</td>
+      <td>-0.613868</td>
+    </tr>
+    <tr>
+      <th>centroid-2</th>
+      <td>0.240592</td>
+      <td>-0.076633</td>
+      <td>-0.435728</td>
+      <td>0.075588</td>
+      <td>-0.140601</td>
+    </tr>
+    <tr>
+      <th>feret_diameter_max</th>
+      <td>0.289769</td>
+      <td>-0.012282</td>
+      <td>-0.032635</td>
+      <td>0.181363</td>
+      <td>-0.160207</td>
+    </tr>
+    <tr>
+      <th>major_axis_length</th>
+      <td>0.301739</td>
+      <td>0.002370</td>
+      <td>-0.021720</td>
+      <td>0.113154</td>
+      <td>-0.135457</td>
+    </tr>
+    <tr>
+      <th>minor_axis_length</th>
+      <td>0.308058</td>
+      <td>0.048526</td>
+      <td>0.032858</td>
+      <td>-0.149205</td>
+      <td>-0.075049</td>
+    </tr>
+    <tr>
+      <th>solidity</th>
+      <td>0.139750</td>
+      <td>0.213562</td>
+      <td>0.179860</td>
+      <td>-0.784037</td>
+      <td>0.109756</td>
+    </tr>
+    <tr>
+      <th>mean_intensity</th>
+      <td>-0.298859</td>
+      <td>-0.031721</td>
+      <td>-0.044582</td>
+      <td>-0.053140</td>
+      <td>-0.290490</td>
+    </tr>
+    <tr>
+      <th>max_intensity</th>
+      <td>-0.223891</td>
+      <td>0.445127</td>
+      <td>-0.015072</td>
+      <td>-0.078562</td>
+      <td>-0.095429</td>
+    </tr>
+    <tr>
+      <th>min_intensity</th>
+      <td>-0.248677</td>
+      <td>-0.277709</td>
+      <td>-0.003527</td>
+      <td>-0.151868</td>
+      <td>-0.443942</td>
+    </tr>
+    <tr>
+      <th>image_stdev</th>
+      <td>-0.124373</td>
+      <td>0.597732</td>
+      <td>-0.026935</td>
+      <td>0.059831</td>
+      <td>0.275986</td>
+    </tr>
+    <tr>
+      <th>avg distance of 2 closest points</th>
+      <td>0.312403</td>
+      <td>0.040115</td>
+      <td>0.025366</td>
+      <td>-0.113510</td>
+      <td>-0.083929</td>
+    </tr>
+    <tr>
+      <th>avg distance of 3 closest points</th>
+      <td>0.315714</td>
+      <td>0.031638</td>
+      <td>0.028109</td>
+      <td>-0.084834</td>
+      <td>-0.084732</td>
+    </tr>
+    <tr>
+      <th>avg distance of 4 closest points</th>
+      <td>0.316944</td>
+      <td>0.023361</td>
+      <td>0.033518</td>
+      <td>-0.059729</td>
+      <td>-0.078356</td>
+    </tr>
+    <tr>
+      <th>touching neighbor count</th>
+      <td>-0.190434</td>
+      <td>-0.078438</td>
+      <td>-0.284396</td>
+      <td>-0.437245</td>
+      <td>-0.339335</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+<p>If you have read the paper or are following along with the paper we have just completed step 3 of the explained algorithm. What is done now is that we perform clustering on the matrix A_q with K-means clustering. Essentially, we are trying to find clusters of features as features that are clustered in this matrix have similar influences on the principal components and are thus correlating and not telling us much. This way we can just choose the feature that is closest to the cluster centre and it will be chosen as a principal feature.</p>
+<p>We can see that the choice of the cluster-number will determine how many features we choose. Y. Lu et al. recommend choosing the cluster-number: p, as: <code class="docutils literal notranslate"><span class="pre">p</span> <span class="pre">&gt;=</span> <span class="pre">q</span></code> because we can’t be completely sure that the variance that we chose is explained when <code class="docutils literal notranslate"><span class="pre">p</span> <span class="pre">=</span> <span class="pre">q</span></code>. We can just opt for a slightly larger <code class="docutils literal notranslate"><span class="pre">p</span></code> (arbitrary choice of 2  larger than <code class="docutils literal notranslate"><span class="pre">q</span></code>) but there is room for improvement in terms of an automated choice here OR it could be a parameter that we can implement later.</p>
+<p>Since K-means-clustering is implemented well in <a class="reference external" href="https://scikit-learn.org/stable/modules/clustering.html">scikit-learn</a> this procedure is just a couple of lines:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">kmeans</span> <span class="o">=</span> <span class="n">KMeans</span><span class="p">(</span><span class="n">n_clusters</span><span class="o">=</span> <span class="n">q</span> <span class="o">+</span> <span class="mi">2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span> <span class="mi">42</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">A_q</span><span class="p">)</span>
+<span class="n">clusters</span> <span class="o">=</span> <span class="n">kmeans</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">A_q</span><span class="p">)</span>
+<span class="n">cluster_centers</span> <span class="o">=</span> <span class="n">kmeans</span><span class="o">.</span><span class="n">cluster_centers_</span>
+
+<span class="n">clusters_readable</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">clusters</span><span class="p">,</span> <span class="n">index</span> <span class="o">=</span> <span class="n">regprops</span><span class="o">.</span><span class="n">keys</span><span class="p">(),</span> <span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Cluster&#39;</span><span class="p">])</span>
+<span class="n">clusters_readable</span>
+</pre></div>
+</div>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>.dataframe tbody tr th {
+    vertical-align: top;
+}
+
+.dataframe thead th {
+    text-align: right;
+}
+</pre></div>
+</div>
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Cluster</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>area</th>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>centroid-0</th>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th>centroid-1</th>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>centroid-2</th>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>feret_diameter_max</th>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>major_axis_length</th>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>minor_axis_length</th>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>solidity</th>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>mean_intensity</th>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>max_intensity</th>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>min_intensity</th>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>image_stdev</th>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>avg distance of 2 closest points</th>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>avg distance of 3 closest points</th>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>avg distance of 4 closest points</th>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>touching neighbor count</th>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+<p>What can we see here? Well each feature is now part of a cluster (numbers 0 - 6, since we have chosen 7 clusters). What we can also see is that quite a few features are part of the same cluster( = 2), while some features are only part of a unique cluster without any other features. This means that these features do not correlate (much at least) with any other features and will be chosen by our feature analysis. The clusters which have 2 or more features as part of it are the clusters where a feature has to be chosen. This is decided by the distances the features have from the cluster centres, so let’s determine the distances from the cluster centres for each feature:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># initialising a dictionary to keep the distances in:</span>
+<span class="n">dists</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span>
+
+<span class="c1"># iterating through each feature (i) and it&#39;s cluster (c)</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">c</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">clusters</span><span class="p">):</span>
+    
+    <span class="c1"># measuring the distance of each feature in A_q ([A_q[i, :]])</span>
+    <span class="c1"># and the cluster centers [cluster_centers[c, :]]</span>
+    <span class="n">dist</span> <span class="o">=</span> <span class="n">euclidean_distances</span><span class="p">([</span><span class="n">A_q</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="p">:]],</span> <span class="p">[</span><span class="n">cluster_centers</span><span class="p">[</span><span class="n">c</span><span class="p">,</span> <span class="p">:]])[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+    
+    <span class="c1"># each cluster is a key in the dictionary and the distance of each feature</span>
+    <span class="c1"># belonging to that cluster is saved under this key as a tupule (feature_idx, distance)</span>
+    <span class="n">dists</span><span class="p">[</span><span class="n">c</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">i</span><span class="p">,</span> <span class="n">dist</span><span class="p">))</span>
+
+<span class="n">dists</span>
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>defaultdict(list,
+            {2: [(0, 0.039527541499107074),
+              (4, 0.22202861661398224),
+              (5, 0.1470198671974888),
+              (6, 0.13180725994276707),
+              (12, 0.09346378648078914),
+              (13, 0.06610212866152891),
+              (14, 0.04944098356286365)],
+             5: [(1, 0.0)],
+             6: [(2, 0.0)],
+             1: [(3, 0.0)],
+             4: [(7, 0.0)],
+             0: [(8, 0.217150845350435),
+              (10, 0.2117088702247021),
+              (15, 0.29315857787851873)],
+             3: [(9, 0.21819421392343466), (11, 0.21819421392343452)]})
+</pre></div>
+</div>
+<p>In our <code class="docutils literal notranslate"><span class="pre">dists</span></code> dictionary each cluster has a list of tuples associated with it. Each tuple contains:
+(feature index, distance to cluster center)
+We can see that for the clusters with only one tuple associated <code class="docutils literal notranslate"><span class="pre">(5,6,1,4)</span></code>, the features all have distance 0 since the cluster center IS the feature. For all other clusters we still have to determine which feature is closest to the cluster center. Once the features have been determined we can transform our original dataset to only include these features:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># here we are getting the indices of the features with the smallest distances </span>
+<span class="c1"># to the cluster centers, essentially choosing which features to keep</span>
+<span class="n">indices_</span> <span class="o">=</span> <span class="p">[</span><span class="nb">sorted</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">])[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">dists</span><span class="o">.</span><span class="n">values</span><span class="p">()]</span>
+
+<span class="c1"># transforming the input data to only include the features we just chose</span>
+<span class="n">features_</span> <span class="o">=</span> <span class="n">X</span><span class="p">[:,</span> <span class="n">indices_</span><span class="p">]</span>
+</pre></div>
+</div>
+</section>
+<section id="implementation">
+<h2>Implementation<a class="headerlink" href="#implementation" title="Permalink to this headline">#</a></h2>
+<p>Since data science in python is mainly performed in <a class="reference external" href="https://scikit-learn.org/stable/">scikit-learn</a> we’ll stick to the conventions and create a class instead of a function for PFA. As stated above this is a slightly modified code provided by <a class="reference external" href="https://stats.stackexchange.com/users/76815/ulf-aslak">Ulf Aslak</a> on <a class="reference external" href="https://stats.stackexchange.com/questions/108743/methods-in-r-or-python-to-perform-feature-selection-in-unsupervised-learning">this stackexchange thread</a>. Thanks for your kind code donation!</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">PFA</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">diff_n_features</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span> <span class="n">q</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">explained_var</span> <span class="o">=</span> <span class="mf">0.95</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">q</span> <span class="o">=</span> <span class="n">q</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">diff_n_features</span> <span class="o">=</span> <span class="n">diff_n_features</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">explained_var</span> <span class="o">=</span> <span class="n">explained_var</span>
+
+    <span class="k">def</span> <span class="nf">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">):</span>
+        <span class="n">sc</span> <span class="o">=</span> <span class="n">StandardScaler</span><span class="p">()</span>
+        <span class="n">X</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+
+        <span class="n">pca</span> <span class="o">=</span> <span class="n">PCA</span><span class="p">()</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+        
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">q</span><span class="p">:</span>
+            <span class="n">explained_variance</span> <span class="o">=</span> <span class="n">pca</span><span class="o">.</span><span class="n">explained_variance_ratio_</span>
+            <span class="n">cumulative_expl_var</span> <span class="o">=</span> <span class="p">[</span><span class="nb">sum</span><span class="p">(</span><span class="n">explained_variance</span><span class="p">[:</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">])</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">explained_variance</span><span class="p">))]</span>
+            <span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">j</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">cumulative_expl_var</span><span class="p">):</span>
+                <span class="k">if</span> <span class="n">j</span> <span class="o">&gt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">explained_var</span><span class="p">:</span>
+                    <span class="n">q</span> <span class="o">=</span> <span class="n">i</span>
+                    <span class="k">break</span>
+                    
+        <span class="n">A_q</span> <span class="o">=</span> <span class="n">pca</span><span class="o">.</span><span class="n">components_</span><span class="o">.</span><span class="n">T</span><span class="p">[:,:</span><span class="n">q</span><span class="p">]</span>
+        
+        <span class="n">clusternumber</span> <span class="o">=</span> <span class="nb">min</span><span class="p">([</span><span class="n">q</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">diff_n_features</span><span class="p">,</span> <span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]])</span>
+        
+        <span class="n">kmeans</span> <span class="o">=</span> <span class="n">KMeans</span><span class="p">(</span><span class="n">n_clusters</span><span class="o">=</span> <span class="n">clusternumber</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">A_q</span><span class="p">)</span>
+        <span class="n">clusters</span> <span class="o">=</span> <span class="n">kmeans</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">A_q</span><span class="p">)</span>
+        <span class="n">cluster_centers</span> <span class="o">=</span> <span class="n">kmeans</span><span class="o">.</span><span class="n">cluster_centers_</span>
+
+        <span class="n">dists</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">c</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">clusters</span><span class="p">):</span>
+            <span class="n">dist</span> <span class="o">=</span> <span class="n">euclidean_distances</span><span class="p">([</span><span class="n">A_q</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="p">:]],</span> <span class="p">[</span><span class="n">cluster_centers</span><span class="p">[</span><span class="n">c</span><span class="p">,</span> <span class="p">:]])[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+            <span class="n">dists</span><span class="p">[</span><span class="n">c</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">i</span><span class="p">,</span> <span class="n">dist</span><span class="p">))</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">indices_</span> <span class="o">=</span> <span class="p">[</span><span class="nb">sorted</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">])[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">dists</span><span class="o">.</span><span class="n">values</span><span class="p">()]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">features_</span> <span class="o">=</span> <span class="n">X</span><span class="p">[:,</span> <span class="bp">self</span><span class="o">.</span><span class="n">indices_</span><span class="p">]</span>
+        
+    <span class="k">def</span> <span class="nf">fit_transform</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">X</span><span class="p">):</span>    
+        <span class="n">sc</span> <span class="o">=</span> <span class="n">StandardScaler</span><span class="p">()</span>
+        <span class="n">X</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+
+        <span class="n">pca</span> <span class="o">=</span> <span class="n">PCA</span><span class="p">()</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+        
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">q</span><span class="p">:</span>
+            <span class="n">explained_variance</span> <span class="o">=</span> <span class="n">pca</span><span class="o">.</span><span class="n">explained_variance_ratio_</span>
+            <span class="n">cumulative_expl_var</span> <span class="o">=</span> <span class="p">[</span><span class="nb">sum</span><span class="p">(</span><span class="n">explained_variance</span><span class="p">[:</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">])</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">explained_variance</span><span class="p">))]</span>
+            <span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">j</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">cumulative_expl_var</span><span class="p">):</span>
+                <span class="k">if</span> <span class="n">j</span> <span class="o">&gt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">explained_var</span><span class="p">:</span>
+                    <span class="n">q</span> <span class="o">=</span> <span class="n">i</span>
+                    <span class="k">break</span>
+                    
+        <span class="n">A_q</span> <span class="o">=</span> <span class="n">pca</span><span class="o">.</span><span class="n">components_</span><span class="o">.</span><span class="n">T</span><span class="p">[:,:</span><span class="n">q</span><span class="p">]</span>
+        
+        <span class="n">clusternumber</span> <span class="o">=</span> <span class="nb">min</span><span class="p">([</span><span class="n">q</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">diff_n_features</span><span class="p">,</span> <span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]])</span>
+        
+        <span class="n">kmeans</span> <span class="o">=</span> <span class="n">KMeans</span><span class="p">(</span><span class="n">n_clusters</span><span class="o">=</span> <span class="n">clusternumber</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">A_q</span><span class="p">)</span>
+        <span class="n">clusters</span> <span class="o">=</span> <span class="n">kmeans</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">A_q</span><span class="p">)</span>
+        <span class="n">cluster_centers</span> <span class="o">=</span> <span class="n">kmeans</span><span class="o">.</span><span class="n">cluster_centers_</span>
+
+        <span class="n">dists</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">c</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">clusters</span><span class="p">):</span>
+            <span class="n">dist</span> <span class="o">=</span> <span class="n">euclidean_distances</span><span class="p">([</span><span class="n">A_q</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="p">:]],</span> <span class="p">[</span><span class="n">cluster_centers</span><span class="p">[</span><span class="n">c</span><span class="p">,</span> <span class="p">:]])[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+            <span class="n">dists</span><span class="p">[</span><span class="n">c</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">i</span><span class="p">,</span> <span class="n">dist</span><span class="p">))</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">indices_</span> <span class="o">=</span> <span class="p">[</span><span class="nb">sorted</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">])[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">dists</span><span class="o">.</span><span class="n">values</span><span class="p">()]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">features_</span> <span class="o">=</span> <span class="n">X</span><span class="p">[:,</span> <span class="bp">self</span><span class="o">.</span><span class="n">indices_</span><span class="p">]</span>
+        
+        <span class="k">return</span> <span class="n">X</span><span class="p">[:,</span> <span class="bp">self</span><span class="o">.</span><span class="n">indices_</span><span class="p">]</span>
+    
+    <span class="k">def</span> <span class="nf">transform</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">X</span><span class="p">[:,</span> <span class="bp">self</span><span class="o">.</span><span class="n">indices_</span><span class="p">]</span>
+
+<span class="c1"># Testing</span>
+<span class="n">pfa</span> <span class="o">=</span> <span class="n">PFA</span><span class="p">(</span><span class="n">diff_n_features</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">explained_var</span><span class="o">=</span> <span class="mf">0.95</span><span class="p">)</span>
+<span class="n">pfa</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">regprops</span><span class="p">)</span>
+
+<span class="n">featurekeys</span> <span class="o">=</span> <span class="p">[</span><span class="n">regprops</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span><span class="o">.</span><span class="n">tolist</span><span class="p">()[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">pfa</span><span class="o">.</span><span class="n">indices_</span><span class="p">]</span>
+<span class="n">featurekeys</span>
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>[&#39;area&#39;,
+ &#39;centroid-0&#39;,
+ &#39;centroid-1&#39;,
+ &#39;solidity&#39;,
+ &#39;mean_intensity&#39;,
+ &#39;image_stdev&#39;,
+ &#39;touching neighbor count&#39;]
+</pre></div>
+</div>
+<p>This is a modification of the provided code in that it tries to force you to choose a subset. If you don’t manually say what the subset is, it will get a subset that explains 95% of the variance or the amount of variance that you determine. As described in the paper, the number of clusters (and with that the number of features) should be larger than the subset of eigenvectors chosen. This is implemented by not determining the number of features but only setting how many more features than the subset should be chosen. Apart from this a transform function was added as well as a fit_transform function, similarly to other scikit learn functions.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./ryan_savill/principal_feature_analysis"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="../../robert_haase/ms_build_tools/readme.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Installing Microsoft buildtools on Windows</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="../03_background_subtraction/readme.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Background Subtraction</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Marcelo Zoccoler, Johannes Müller, Till Korten, Ryan Savill, Robert Haase, DFG Cluster of Excellence "Physics of Life", TU Dresden<br/>
+  
+      &copy; Copyright 2023.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>
