@@ -1,7 +1,7 @@
 # Getting started with Anaconda and Python
 [Johannes Müller](../Readme), January 26th, 2022
 
-> **_NOTE:_**  The instructions in this blog post are outdated. [Read the updated instructions](mara_lampert/getting_started_with_mambaforge_and_python/readme).
+> **_NOTE:_**  The instructions in this blog post are outdated. [Read the updated instructions](../../mara_lampert/getting_started_with_mambaforge_and_python/readme).
 
 ## Table of contents
 - [Introduction](#introduction)
