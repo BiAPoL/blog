@@ -10,9 +10,14 @@ If you have feedback or suggestions, if spotted a typo, broken link or misleadin
 
 ## Recent blog posts
 
+### [Getting started with Mambaforge and Python ](mara_lampert/getting_started_with_mambaforge_and_python/readme)
+<small>[Mara Lampert](mara_lampert/readme), January 26th, 2023</small><br>
+<img src="images/mamba_logo.png" width="100" align="right"><p>This post will help you to get started with Python using Mambaforge. More precisely, you will learn how to install Mambaforge, how to create and use conda environments and know about some very important packages. </p>
+
+
 ### [Running Deep-learning Scripts in the BiA-PoL Omero Server](marcelo_zoccoler/omero_scripts/readme)
 <small>[Marcelo Zoccoler](marcelo_zoccoler/readme), May 2nd, 2022</small><br>
-<img src="images/ome-logomark.png" width="100" align="right"><p>This blog post explains how to run omero scripts in the BiA-PoL omero server. In this example, we execute a script on the server that runs a 2D [Stardist](https://github.com/stardist/stardist) model on a sample image.<p>
+<img src="images/ome-logomark.png" width="99" align="right"><p>This blog post explains how to run omero scripts in the BiA-PoL omero server. In this example, we execute a script on the server that runs a 2D [Stardist](https://github.com/stardist/stardist) model on a sample image.<p>
 
 
 ### [Mini-Sabbatical Experience at Bia-PoL](marcelo_zoccoler/mini_sabbatical_rike/Readme)
@@ -28,11 +33,6 @@ If you have feedback or suggestions, if spotted a typo, broken link or misleadin
 ### [GUIs: Creating graphical user interfaces with/for Python, Part IV](marcelo_zoccoler/entry_user_interf4/Readme)
 <small>[Marcelo Zoccoler](marcelo_zoccoler/readme), [Johannes Müller](/johannes_mueller/Readme), December 15th, 2021</small><br>
 <img src="images/napari_logo.png"  width="100" align="right"><p>Last part of this series, this post will teach you how to turn your napari GUI/widget into a napari plugin and publish it on Pypi, so everyone can access it, install it and benefit from your contribution.</p>
-
-
-### [GUIs: Creating graphical user interfaces with/for Python, Part III](marcelo_zoccoler/entry_user_interf3/Readme)
-<small>[Marcelo Zoccoler](marcelo_zoccoler/readme), November 29th, 2021</small><br>
-<img src="images/napari_logo.png" width="100" align="right"><p>After learning how to create GUIs, one may want to integrate them into a pre-existing software. This third part will teach you a few ways design GUIs and embbed them into the popular python image viewer napari, either with the help of the Designer or straight from python functions using magicgui.</p>
 
 
 Find more blog posts on the left sidebar.
