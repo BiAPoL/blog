@@ -88,7 +88,7 @@ It’s exactly the same as installing Homebrew on the ARM64 architecture, but it
 ## 4. Install Micromamba
 
 ```bash
-brew install --cask micromamba
+brew install --cask mambaforge
 ```
 
 ## 5. Set up the Python environment 
