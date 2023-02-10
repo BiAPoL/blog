@@ -17,7 +17,7 @@ __Mamba__ is a __package manager__ which can be used with Python. It is a softwa
 Here, I am going to show how to install Mambaforge. It comes with everything you need and downloads it from a community-driven open source software provider called  [conda-forge](https://conda-forge.org/). 
 First, you pick the Mambaforge installer for your operating system [here](https://github.com/conda-forge/miniforge#mambaforge):
 
-![](imgs/1_mambaforge_download_1.png)
+![](imgs/1_mambaforge_download_11.png)
 
 All Mac OS users can now jump [here](#installation-on-mac-os).
 
