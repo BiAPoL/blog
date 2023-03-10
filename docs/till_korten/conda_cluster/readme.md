@@ -56,7 +56,8 @@ If you want to use your custom environment with the jupyter hub that is already 
 srun --pty --gres=gpu:1 -p alpha bash -l
 
 # activate target environment
-mamba activate my-env
+mamba activate my-env # or: mamba activate "$WSDIR"/env
+
 
 # load environment modules to create the right PATH and LD_LIBRARY_PATH variables
 ml modenv/hiera  GCCcore/11.3.0
