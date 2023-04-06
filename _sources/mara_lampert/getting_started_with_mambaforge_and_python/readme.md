@@ -130,11 +130,11 @@ The opened window in napari should look like this and show the [napari-assistant
 In case it does not look like this, have a look [here](https://pypi.org/project/devbio-napari/). 
 
 ## Working with Jupyter lab
-[Jupyter lab](https://jupyter.org/) is a package which helps to keep a good code overview. It comes with devbio-napari. If you type
+[Jupyter lab](https://jupyter.org/) is a package which helps to keep a good code overview. It comes with devbio-napari. Just close the napari window and type
 ```json
 jupyter lab
 ```
-into the command line, a new browser window will open. You can start your first notebook clicking this icon:
+into the command line. A new browser window will open. You can start your first notebook clicking this icon:
 
 <img src="imgs/5_jupyter_1.png" width="200"/>
 
