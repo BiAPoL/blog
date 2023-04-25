@@ -41,7 +41,17 @@ In most cases, a NHR trial project will provide plenty of resources for your nee
 
     <img src="images/a4_CPU_GPU.png" width="60" />
 
-08. Project data:
+08. NHR CPU res:
+    * computing time per year: 42000 core-h
+    * Typical number of cores: 6
+    * Job-Memory: 10 GB per core
+09. NHR GPU res:
+    * computing time on GPU: 3000 GPU-hours
+    * How many GPU do you use for a single job?: 1
+    * How much GB of memory do you use for a typical job?: 12
+    * Which GPU programming scheme (CUDA, OpenACC, etc.) do you use? CUDA, OpenCL
+    * Which software do you deploy on GPUs (own code, third party)?: Tensorflow, pytorch, OpenCV
+10. Project data:
     * Choose a project duration. Enter the estimated duration of the project here (e.g. the duration of the contract of the PC). Note that no matter the total estimated project duration, all projects need to be extended after one year.
     * Choose a title
     * Choose a few keywords, e.g. `image processing, machine learning, data analysis`
@@ -54,7 +64,7 @@ In most cases, a NHR trial project will provide plenty of resources for your nee
     * If the PI or PC were involved in other HPC projects within the last 3 years, you need to fill in the table "Other applications for compute time"
     * Check the box that you are aware that incomplete information may lead to a significant cutback of resources or even to the rejection of the proposal
     * Add other project members that need access to the HPC cluster (note, you can also easily add members later as needed)
-09. Software packages: Here is what we recommend for bioimage analysis
+11. Software packages: Here is what we recommend for bioimage analysis
     * Compilers: GCC (during installation of some python packages),
     * Programming Languages: Python (and R)
     * Other packages: `singularity, OpenCL, CUDA (Inside singularity containers: PyTorch, Tensorflow, napari)`
@@ -62,13 +72,13 @@ In most cases, a NHR trial project will provide plenty of resources for your nee
     * Open source: Yes
     * Links: `https://sylabs.io/singularity/, , https://www.khronos.org/opencl/, https://developer.nvidia.com/cuda-toolkit, https://pytorch.org/, https://www.tensorflow.org/, https://napari.org/stable/, https://github.com/haesleinhuepf/devbio-napari, https://github.com/clEsperanto/pyclesperanto_prototype`
     * Parallelization strategy: Hybrid
-10. Data management: Fill out your estimated data requirements. Here is what we estimated for an average image analysis project:
+12. Data management: Fill out your estimated data requirements. Here is what we estimated for an average image analysis project:
 
     <img src="images/a6_data_management.png" width="600" />
 
-11. Upload of PDF files: For a trial project, you can skip this step.
-12. Finalize application: Click the button "Finalize" at the bottom.
-13. You will receive an email with a PDF document that needs to be signed (electronically) by the PI and sent back via email.
+13. Upload of PDF files: For a trial project, you can skip this step.
+14. Finalize application: Click the button "Finalize" at the bottom.
+15. You will receive an email with a PDF document that needs to be signed (electronically) by the PI and sent back via email.
 
 For further information, refer to the [ZIH documentation for HPC project applications](https://doc.zih.tu-dresden.de/application/project_request_form/).
 
