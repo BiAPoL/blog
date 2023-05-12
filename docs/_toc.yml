@@ -7,6 +7,7 @@ parts:
 - caption: Blog Posts
   chapters:
   # Add new chapters here (recent first)
+  - file: johannes_mueller/qtdesigner_and_magicgui/Readme
   - file: mara_lampert/getting_started_with_mambaforge_and_python/readme
   - file: till_korten/devbio-napari_cluster/readme
   - file: till_korten/devbio-napari_cluster_setup/readme
