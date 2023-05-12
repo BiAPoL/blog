@@ -3,7 +3,7 @@
 This blog post will give you a quick introduction on how to combine two great tools for the creation of graphical user interfaces in napari: The [Qt Designer](https://doc.qt.io/qt-6/qtdesigner-manual.html) and [magicgui](https://pyapp-kit.github.io/magicgui/). A good place to get started with each are the following blog posts by [myself](../Readme.md) and [Marcelo Zoccoler](../../marcelo_zoccoler/readme.md):
 
 * [Basic GUIs for napari](../entry_user_inter/Readme.md)
-* [Using the Qt designer](../entry_user_interf/Readme.md)
+* [Using the Qt designer](../entry_user_interf2/Readme.md)
 * [Using Qt from Python](../../marcelo_zoccoler/entry_user_interf3/Readme.md)
 * [Creating plugins from widgets](../../marcelo_zoccoler/entry_user_interf4/Readme.md)
 
@@ -64,7 +64,7 @@ Another cool thing you can *just do* in the Qt designer, is the use of Spacers: 
 
 ![Spacers](imgs/6_spacers.PNG)
 
-To use them, simpl drag and drop the spacer into the layout. You can then select the spacer and change its size policy in the right sidebar:
+To use them, simply drag and drop the vertical spacer into the layout. You'll find that by default, the spacer expands and thus moves all other widgets in the respective direction above or below itself. The same works for horizontal spacers. The result could look like this:
 
 ![Drop spacer](imgs/7_drop_spacers.PNG) ![Drop spacer](imgs/8_drop_spacers2.PNG)
 
@@ -76,19 +76,19 @@ The final result should look like this:
 
 ![Final widget](imgs/10_final_widget.PNG)
 
-We can then save the widget as a `.ui` file by clicking `File` -> `Save As...` and selecting the `.ui` file format. Let's call it `complex_widget.ui`. Before we can use the widget from python, we need to make some final choices in the Qt Designer. For instance, we need to know how we can find each of the widgets later from Python code. To do this for every widget, select it and have a look on the right sidebar. If we select the slider, we can see the following:
+Before we can use the widget from python, we need to make some final choices in the Qt Designer. For instance, we need to know how we can find each of the widgets later from Python code. To do this for every widget, select it and have a look on the right sidebar. If we select the slider, we can see the following:
 
 ![Slider](imgs/11_widget_options.PNG)
 
 The widget's **objectName** is currently set to be `horizontalSlider`. We can change this to whatever we want, but we need to remember this name later. In our case, we will change it to `horizontal_slider_widget`.
 
-The menu furthermore allows you to set default, minimum and maximum values for the slider widget - each of which would be accessible from Python later with another line of code, which can become very tedious for many widgets. The `pageStep` index indicates the order widgets will be selected if the `tab` key is pressed - the cursor will then jump from widget from widget in the order indicated by the `pageStep`. Additional settings regarding the layout of the respective selected widget can be done under the `QWidget` tab, such as a minimum height and width of the widget, tooltip messages and more.
+The menu furthermore allows you to set default, minimum and maximum values for the slider widget - each of which would be accessible from Python later with another line of code, which can become very tedious for many widgets. The `pageStep` is a cool feature that indicates the order by which widgets will be selected if the `tab` key is pressed - the cursor will then jump from widget from widget in the order indicated by the `pageStep`. Additional settings regarding the layout of the respective selected widget can be done under the `QWidget` tab, such as a minimum height and width of the widget, tooltip messages and more.
 
-After making your changes, save the widget again.
+After making your changes, we can then save the widget as a `.ui` file by clicking `File` -> `Save As...` and selecting the `.ui` file format. Let's call it `complex_widget.ui`. 
 
 ### Using the widget from Python
 
-To create a widget in python, create a Python file -- let's call it `my_custom_widget.py` in the same folder as the `.ui` file and add the following code:
+To use the created widget in python and napari, create a Python file -- let's call it `my_custom_widget.py` in the same folder as the `.ui` file and add the following code:
 
 ```python
 from qtpy.QtWidgets import QWidget
@@ -119,6 +119,10 @@ which will display the designed widget in napari:
 
 ![Final widget](imgs/12_widget_in_napari.PNG)
 
+Not that you can access *all previously added widgets* from Python by `widget.name_given_to_widget_in_desginer`. For instance, we can access the slider widget we created earlier by `widget.horizontal_slider_widget`. Let's see all of this in action:
+
+### Adding a magicgui widget to a custom widget
+
 We now want to add a magicgui widget to the widget we just created. We can create magicgui widgets with this simple code snippet:
 
 ```python
@@ -128,7 +132,7 @@ from napari.layers import Image
 image_layer_select = create_widget(annotation=Image, label="Image_layer")
 ```
 
-`image_layer_select` now contains a ready-to-use magicgui widget. We now want to replace the placeholder widget from earlier (it carries the default name ) with the newly created `image_layer_select`. We can do so by amending the `__init__` function of our custom widget and add another function to make sure that the magic of magicgui still works. For more details, see [this discussion](https://forum.image.sc/t/composing-workflows-in-napari/61222/3) on image.sc and [this github issue](https://github.com/napari/napari/issues/3659#issuecomment-973653290).
+`image_layer_select` now contains a ready-to-use magicgui widget. We now want to replace the placeholder widget from earlier (it carries the default name ) with the newly created `image_layer_select`. We can do so by amending the `__init__` function of our custom widget and add another function - the `eventFilter` - to make sure that the magic of magicgui still works. For more details, see [this discussion](https://forum.image.sc/t/composing-workflows-in-napari/61222/3) on image.sc and [this github issue](https://github.com/napari/napari/issues/3659#issuecomment-973653290).
 
 ```python
 from qtpy.QtWidgets import QWidget
@@ -178,7 +182,7 @@ viewer.window.add_dock_widget(widget, area="right")
 To round this blog post off, we would like to 
 
 - add some functionality to the widget, e.g., use the widgets from the qtdesigner for something. This has been already been adressed in [this blog post](../../marcelo_zoccoler/entry_user_interf4/Readme.md), so we will not go into too much detail here.
-- Access the image data inside the widget, which works in a bit peculiar way.
+- access the image data inside the widget, which works in a bit peculiar way.
 
 To add functionality, the main idea is to add a function to the widget that is called when a widget emits a signal that something has been done. For instance, for the slider widget, we can add a line in the `__init__` function of the widget that connects the slider's `valueChanged` signal to a function `on_slider_change`:
 
@@ -211,11 +215,11 @@ class my_custom_widget(QWidget):
 
         return super().eventFilter(obj, event)
     
-    def on_slider_change(self, value):
-        print(value)
+    def on_slider_change(self):
+        print(self.horizontal_slider_widget.value())
 ```
 
-To be able to access the image layer selected by the magicgui widget, we can do so by accessing the `value` attribute of the magicgui widget. This attribute will contain the selected layre - in order to access attributes of the layer itself (such as the actual image data), we can access this through `self.image_layer_select.value.data`. Similarly, we can access `features`, `metadata`, etc. We can then use this image data in the `on_slider_change` function:
+To be able to access the image layer selected by the magicgui widget, we can do so by accessing the `value` attribute of the magicgui widget. This attribute will contain the selected layre - in order to access attributes of the layer itself (such as the actual image data), we can access this through `self.image_layer_select.value.data`. Similarly, we can access `features`, `metadata`, etc. We can then use this image data in the `on_slider_change` function to threshold the image layer:
 
 ```python
 from qtpy.QtWidgets import QWidget
@@ -257,13 +261,15 @@ class my_custom_widget(QWidget):
             self.viewer.layers['result of threshold'].data = binary_image
 ```
 
-The result is a widget that will threshold the selected image layer when the slider is moved. You can find the entire code for this example [here](./example/).
+The result is a widget that will threshold the selected image layer when the slider is moved. You can find the entire code for this example [here](https://github.com/jo-mueller/blog/tree/designer-and-magicgui/docs/johannes_mueller/qtdesigner_and_magicgui/example).
 
 ![](imgs/14_threshold_widget.gif)
 
+* Note: While data attributes of the magicgui widget can can be accessed by `self.image_layer_select.value`, the value of many Qt widgets (e.g., sliders, checkboxes, spinboxes, etc) are typically accessed by `self.widget_name.value()`. This is a bit confusing, but it is what it is.
+
 ## Conclusion
 
-What we did in the previous example was, in essence, an implementation of a simple thresholding widget. It is obvious that such simple tasks are much better done by simply using [magicgui](https://pyapp-kit.github.io/magicgui/) to save ourselves working with Qt code to begin with. Using the combination of the Qt Designer and magicgui becomes a lot more useful when we want to create more complex widgets with many buttons. the following two criteria are indications that you may want to use the combination of the Qt Designer and magicgui:
+What we did in the previous example was, in essence, an implementation of a simple thresholding widget. It is obvious that such simple tasks are much better done by simply using [magicgui](https://pyapp-kit.github.io/magicgui/) to save ourselves working with Qt code to begin with. Using the combination of the Qt Designer and magicgui becomes a lot more useful when we want to create more complex widgets with many buttons. The following two criteria are indications that you may want to use the combination of the Qt Designer and magicgui:
 
 - There should be feedback to the GUI; e.g., the GUI should change when a button is pressed. This could be the case when a result is calculated and the GUI should display the result.
 - You need access to the same Python object from different functions. This could be the case when you control a remote device - let's call it `Microscope` - through a Qt widget. In this case, the `Microscope` class can be part of the the Qt object's namespace (e.g., `self.microscope = Microscope()`). You can then access the `Microscope` object from any function in the widget, e.g., when a button is pressed.
