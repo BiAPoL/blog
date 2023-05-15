@@ -52,7 +52,7 @@ we can now start to fill the blank widget with content: The bar on the left show
 
 ![Filled widget](imgs/3_create_widget.PNG)
 
-This directly introduces a key strength of the Qt designer: Arranging widgets in layouts is very easy here. Doing so allows widgets to be automatically scaled in size as the window is resized. This is a very useful feature, as it allows to create GUIs that are usable on different screen sizes. In our case, we have created a layout that will scale the slider and the label with the window size, but keep the button at a fixed size. To add a layout, we simply click into the tab widget and select a Box layout from the available layouts:
+This directly introduces a key strength of the Qt designer: Arranging widgets in layouts is very easy here. Doing so allows widgets to be automatically scaled in size as the window is resized. This is a very useful feature, as it allows to create GUIs that are usable on different screen sizes. In our case, we have created a layout that will scale the slider and the label with the window size, and also keep the button at the same size as the two widget elements above. To add a layout, we simply click into the tab widget and select a Box layout from the available layouts:
 
 ![Add layout](imgs/4_available_layouts.PNG)
 
@@ -82,7 +82,7 @@ Before we can use the widget from python, we need to make some final choices in 
 
 The widget's **objectName** is currently set to be `horizontalSlider`. We can change this to whatever we want, but we need to remember this name later. In our case, we will change it to `horizontal_slider_widget`.
 
-The menu furthermore allows you to set default, minimum and maximum values for the slider widget - each of which would be accessible from Python later with another line of code, which can become very tedious for many widgets. The `pageStep` is a cool feature that indicates the order by which widgets will be selected if the `tab` key is pressed - the cursor will then jump from widget from widget in the order indicated by the `pageStep`. Additional settings regarding the layout of the respective selected widget can be done under the `QWidget` tab, such as a minimum height and width of the widget, tooltip messages and more.
+The menu furthermore allows you to set default, minimum and maximum values for the slider widget - each of which would be accessible from Python later with another line of code, which can become very tedious for many widgets. The `pageStep` is a cool feature that indicates the order by which widgets will be selected if the `tab` key is pressed - the cursor will then jump from widget to widget in the order indicated by the `pageStep`. Additional settings regarding the layout of the respective selected widget can be done under the `QWidget` tab, such as a minimum height and width of the widget, tooltip messages and more.
 
 After making your changes, we can then save the widget as a `.ui` file by clicking `File` -> `Save As...` and selecting the `.ui` file format. Let's call it `complex_widget.ui`. 
 
@@ -119,7 +119,7 @@ which will display the designed widget in napari:
 
 ![Final widget](imgs/12_widget_in_napari.PNG)
 
-Not that you can access *all previously added widgets* from Python by `widget.name_given_to_widget_in_desginer`. For instance, we can access the slider widget we created earlier by `widget.horizontal_slider_widget`. Let's see all of this in action:
+Note that you can access *all previously added widgets* from Python by `widget.name_given_to_widget_in_desginer`. For instance, we can access the slider widget we created earlier by `widget.horizontal_slider_widget` ( or `self.horizontal_slider_widget` from inside the widget class). Let's see all of this in action:
 
 ### Adding a magicgui widget to a custom widget
 
@@ -132,7 +132,7 @@ from napari.layers import Image
 image_layer_select = create_widget(annotation=Image, label="Image_layer")
 ```
 
-`image_layer_select` now contains a ready-to-use magicgui widget. We now want to replace the placeholder widget from earlier (it carries the default name ) with the newly created `image_layer_select`. We can do so by amending the `__init__` function of our custom widget and add another function - the `eventFilter` - to make sure that the magic of magicgui still works. For more details, see [this discussion](https://forum.image.sc/t/composing-workflows-in-napari/61222/3) on image.sc and [this github issue](https://github.com/napari/napari/issues/3659#issuecomment-973653290).
+`image_layer_select` now contains a ready-to-use magicgui widget. We now want to insert the newly created `image_layer_select` into the widget created in the designer. We can do so by amending the `__init__` function of our custom widget and add another function - the `eventFilter` - to make sure that the magic of magicgui still works. For more details, see [this discussion](https://forum.image.sc/t/composing-workflows-in-napari/61222/3) on image.sc and [this github issue](https://github.com/napari/napari/issues/3659#issuecomment-973653290).
 
 ```python
 from qtpy.QtWidgets import QWidget
@@ -219,7 +219,7 @@ class my_custom_widget(QWidget):
         print(self.horizontal_slider_widget.value())
 ```
 
-To be able to access the image layer selected by the magicgui widget, we can do so by accessing the `value` attribute of the magicgui widget. This attribute will contain the selected layre - in order to access attributes of the layer itself (such as the actual image data), we can access this through `self.image_layer_select.value.data`. Similarly, we can access `features`, `metadata`, etc. We can then use this image data in the `on_slider_change` function to threshold the image layer:
+To be able to access the image layer selected by the magicgui widget, we can do so by accessing the `value` attribute of the magicgui widget. This attribute will contain the selected layer - in order to access attributes of the layer itself (such as the actual image data), we can access this through `self.image_layer_select.value.data`. Similarly, we can access `features`, `metadata`, etc. We can then use this image data in the `on_slider_change` function to threshold the image layer:
 
 ```python
 from qtpy.QtWidgets import QWidget
@@ -261,7 +261,7 @@ class my_custom_widget(QWidget):
             self.viewer.layers['result of threshold'].data = binary_image
 ```
 
-The result is a widget that will threshold the selected image layer when the slider is moved. You can find the entire code for this example [here](https://github.com/jo-mueller/blog/tree/designer-and-magicgui/docs/johannes_mueller/qtdesigner_and_magicgui/example).
+The result is a widget that will threshold the selected image layer when the slider is moved. You can find the entire code for this example [here](https://github.com/BiAPoL/blog/tree/master/docs/johannes_mueller/qtdesigner_and_magicgui/example).
 
 ![](imgs/14_threshold_widget.gif)
 
