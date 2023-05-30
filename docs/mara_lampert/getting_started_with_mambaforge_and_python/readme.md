@@ -75,7 +75,12 @@ curl -L -O "https://github.com/conda-forge/miniforge/releases/latest/download/Mi
 bash Miniforge3-$(uname)-$(uname -m).sh
 ```
 
-You just follow the instructions, press `Enter` and type _yes_ like here:
+You follow the instructions:
+
+1. press `Enter`
+2. read the license instructions (scroll down with the `down arrow` key) and type `yes`
+3. confirm the installation path with `Enter`
+4. IMPORTANT when asked if you want to initialize Mambaforge, type `yes` like here:
 
 ![](imgs/2_mac_install_3.png)
 
