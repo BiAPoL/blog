@@ -101,9 +101,9 @@ The reason for this is that incompatibilities between packages can occur. Robert
 You can create a new environment typing the following command into the Command Prompt: 
 
 ```json
-mamba create -n my_first_env devbio-napari python=3.9 -c conda-forge 
+mamba create -n my_first_env devbio- python=3.9 -c conda-forge 
 ```
-This will create a new environment with the name `my_first_env` and with Python version 3.9 installed. Furthermore, the latest version of devbio-napari will be installed in this environment, too. Devbio-napari is a collection of Python libraries and Napari plugins maintained by the BiAPoL team, that are useful for processing fluorescent microscopy image data.
+This will create a new environment with the name `my_first_env` and with Python version 3.9 installed. Furthermore, the latest version of devbio- will be installed in this environment, too. Devbio-napari is a collection of Python libraries and Napari plugins maintained by the BiAPoL team, that are useful for processing fluorescent microscopy image data.
 Conda will ask you about your permission to download the needed packages with `Proceed [y]/n`. By hitting `Enter` you confirm this and mamba will download and install the necessary packages. 
 
 > **_Recommendation:_** Create one conda environment for every project you are working on. This allows you to keep an overview on the needed packages for the project, maintaining them and ensure compatibility of the packages. 
@@ -120,7 +120,7 @@ This should lead to the prefix my_first_env appearing at the beginning of the co
 
 Now you can open napari, just type:
 ```json
-naparia 
+napari 
 ```
 
 The opened window in napari should look like this and show the [napari-assistant](https://github.com/haesleinhuepf/napari-assistant), a panel with common image processing operations.
