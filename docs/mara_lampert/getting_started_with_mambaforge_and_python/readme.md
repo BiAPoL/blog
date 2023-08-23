@@ -101,7 +101,7 @@ The reason for this is that incompatibilities between packages can occur. Robert
 You can create a new environment typing the following command into the Command Prompt: 
 
 ```json
-mamba create -n my_first_env devbio-napari python=3.9 -c conda-forge 
+mamba create --name devbio-napari-env python=3.9 devbio-napari pyqt -c conda-forge -c pytorch
 ```
 This will create a new environment with the name `my_first_env` and with Python version 3.9 installed. Furthermore, the latest version of devbio-napari will be installed in this environment, too. Devbio-napari is a collection of Python libraries and Napari plugins maintained by the BiAPoL team, that are useful for processing fluorescent microscopy image data.
 Conda will ask you about your permission to download the needed packages with `Proceed [y]/n`. By hitting `Enter` you confirm this and mamba will download and install the necessary packages. 
