@@ -1,8 +1,12 @@
-# Getting started with Mambaforge and Python 
+# Getting started with ~~Mamba~~*Miniforge and Python 
 [Mara Lampert](../readme), January 26th, 2023
 
-## Introduction to Python and Mamba 
-This blog post explains what Python and [Mamba](https://mamba.readthedocs.io/en/latest/installation.html)/ Mambaforge, and how you can download and setup it on your computer. We will also go through some steps how to get started with Bio-image Analysis. 
+updated by Stefan Hahmann, December 13th, 2023
+
+`(*)` After the release of Miniforge 23.3.1 in August 2023, Miniforge and Mambaforge are essentially identical. The only difference is the name of the installer and subsequently the default installation path.
+
+## Introduction to Python and Miniforge 
+This blog post explains what Python and [Mamba](https://mamba.readthedocs.io/en/latest/installation.html) / Miniforge is, and how you can download and setup it on your computer. We will also go through some steps how to get started with Bio-image Analysis. 
 
 > **_Note:_** This is an update of a [previous Blogpost](https://biapol.github.io/blog/johannes_mueller/anaconda_getting_started/) written by Johannes. 
 
@@ -13,43 +17,43 @@ __Python__ is a programming language which is easy to learn and very important i
 
 __Mamba__ is a __package manager__ which can be used with Python. It is a software allowing to install other software. Read more about Mamba [here](https://focalplane.biologists.com/2022/12/08/managing-scientific-python-environments-using-conda-mamba-and-friends/). 
 
-## Installation of Mambaforge 
-Here, I am going to show how to install Mambaforge. It comes with everything you need and downloads it from a community-driven open source software provider called  [conda-forge](https://conda-forge.org/). 
-First, you pick the Mambaforge installer for your operating system [here](https://github.com/conda-forge/miniforge#mambaforge):
+## Installation of Miniforge 
+Here, I am going to show how to install Miniforge. It comes with everything you need and downloads it from a community-driven open source software provider called  [conda-forge](https://conda-forge.org/). 
+First, you pick the Miniforge installer for your operating system [here](https://github.com/conda-forge/miniforge):
 
-![](imgs/1_mambaforge_download_11.png)
+![](imgs/1_mambaforge_download_12.png)
 
 All Mac OS users can now jump [here](#installation-on-mac-os).
 
 ### Installation on Windows
-When Mambaforge finished downloading, follow these steps during the installation: 
+When Miniforge finished downloading, follow these steps during the installation: 
 
 Click `Next`:
 
-![](imgs/2_mambaforge_install_1.png)
+![](imgs/2_miniforge_install_1.png)
 
 Click `I Agree`:
 
-![](imgs/2_mambaforge_install_2.png)
+![](imgs/2_miniforge_install_2.png)
 
-Now you have the option to either install Mambaforge for `Just Me` or for `All Users`. We highly recommend picking `Just Me`, as the other option requires Administrator priviledges and it can make installing packages more difficult later on.
+Now you have the option to either install Miniforge3 for `Just Me` or for `All Users`. We highly recommend picking `Just Me`, as the other option requires Administrator priviledges and it can make installing packages more difficult later on.
 
-![](imgs/2_mambaforge_install_3.png)
+![](imgs/2_miniforge_install_3.png)
 
-Install Mambaforge into the default location:
+Install Miniforge3 into the default location:
 
-![](imgs/2_mambaforge_install_4.png)
+![](imgs/2_miniforge_install_4.png)
  
-In the next step we recommend to additionally tick `Add Mambaforge to my Path`. If you don’t add it to the [Path](https://janelbrandon.medium.com/understanding-the-path-variable-6eae0936e976), Conda and Mamba would not work from any Terminal Window. Click `Install`
+In the next step we recommend to additionally tick `Add Miniforge3 to my Path`. If you don’t add it to the [Path](https://janelbrandon.medium.com/understanding-the-path-variable-6eae0936e976), Conda and Mamba would not work from any Terminal Window. Click `Install`
 
-![](imgs/2_mambaforge_install_5.png)
+![](imgs/2_miniforge_install_5.png)
 
 Click `Next` at the next window and you arrive here. Click `Finish` to exit the setup:
 
-![](imgs/2_mambaforge_install_7.png)
+![](imgs/2_miniforge_install_7.png)
 
 Great! You are ready to start coding! 👍 
-To see how to use Mambaforge, jump [here](#using-mambaforge)
+To see how to use Mamba, jump [here](#using-mamba)
 
 ### Installation on Mac OS
 
@@ -64,14 +68,14 @@ The opened Terminal should look like this:
 Then type these two lines to start the installation
 
 ```json
-curl -L -O "https://github.com/conda-forge/miniforge/releases/latest/download/Mambaforge-$(uname)-$(uname -m).sh"
+curl -L -O "https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-$(uname)-$(uname -m).sh"
 ```
 
 ```json
-bash Mambaforge-$(uname)-$(uname -m).sh
+bash Miniforge3-$(uname)-$(uname -m).sh
 ```
 
-You  just follow the instructions, press `Enter` and type _yes_ like here:
+You just follow the instructions, press `Enter` and type _yes_ like here:
 
 ![](imgs/2_mac_install_3.png)
 
@@ -81,9 +85,9 @@ When you see this:
 
 you are finished! Close and reopen the Terminal now. Happy coding! 👍
 
-## Using Mambaforge 
+## Using Mamba 
 
-Now we use Mambaforge by opening the command line. If you are not familiar with the command line yet, you can check out Roberts tutorial [here](https://www.youtube.com/watch?v=MOEPe9TGBK0&t=1146s). 
+Now we use Mamba by opening the command line. If you are not familiar with the command line yet, you can check out Roberts tutorial [here](https://www.youtube.com/watch?v=MOEPe9TGBK0&t=1146s). 
 
 To open the Command Prompt in Windows, press the `Windows button`, type _cmd_ and press `Enter`. The Mac OS users should already know how to open the Terminal ;-)
 
@@ -95,7 +99,7 @@ You are now located in the base environment. It is the default environment and i
 
 > **_Strong recommendation:_** Never install any packages into the base environment! 
 
-The reason for this is that incompatibilities between packages can occur. Robert demonstrated this [here](https://focalplane.biologists.com/2022/12/08/managing-scientific-python-environments-using-conda-mamba-and-friends/). If this happens in any environment apart from the base environment it is no problem. You can delete the environment, recreate it and start again. If this happens in the base environment, you need to delete and reinstall Mambaforge. 
+The reason for this is that incompatibilities between packages can occur. Robert demonstrated this [here](https://focalplane.biologists.com/2022/12/08/managing-scientific-python-environments-using-conda-mamba-and-friends/). If this happens in any environment apart from the base environment it is no problem. You can delete the environment, recreate it and start again. If this happens in the base environment, you need to delete and reinstall Miniforge. 
 
 ## Creating a new environment 
 You can create a new environment typing the following command into the Command Prompt: 
@@ -194,6 +198,6 @@ mamba env remove -n nameofproject_env
 
 ---
 
-Now you have Mambaforge installed, know how to work with conda environments and know about some very important packages. Have fun starting your own Bio-image Analysis project! 👍
+Now you have Miniforge installed, know how to work with conda environments and know about some very important packages. Have fun starting your own Bio-image Analysis project! 👍
 
 ---
