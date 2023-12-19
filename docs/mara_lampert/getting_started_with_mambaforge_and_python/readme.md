@@ -80,7 +80,7 @@ You follow the instructions:
 1. press `Enter`
 2. read the license instructions (scroll down with the `down arrow` key) and type `yes`
 3. confirm the installation path with `Enter`
-4. IMPORTANT when asked if you want to initialize Mambaforge, type `yes` like here:
+4. IMPORTANT when asked if you want to initialize Miniforge, type `yes` like here:
 
 ![](imgs/2_mac_install_3.png)
 
