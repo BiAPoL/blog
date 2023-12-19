@@ -1,4 +1,4 @@
-# Getting started with ~~Mamba~~*Miniforge and Python 
+# Getting started with Miniforge* and Python 
 [Mara Lampert](../readme), January 26th, 2023
 
 updated by Stefan Hahmann, December 18th, 2023
