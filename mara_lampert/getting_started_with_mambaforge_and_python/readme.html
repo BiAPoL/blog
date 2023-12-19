@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Getting started with Mambaforge and Python &#8212; BiA-PoL blog</title>
+    <title>Getting started with ~~Mamba~~*Miniforge and Python &#8212; BiA-PoL blog</title>
   
   
   
@@ -159,7 +159,7 @@ const thebe_selector_output = ".output, .cell_output"
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Blog Posts</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../johannes_mueller/qtdesigner_and_magicgui/Readme.html">Best of both worlds: Combining Qt Designer and magicgui</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Getting started with Mambaforge and Python</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Getting started with ~~Mamba~~*Miniforge and Python</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../till_korten/devbio-napari_cluster/readme.html">Using GPU-accelerated image processing on the TUD HPC cluster</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../till_korten/devbio-napari_cluster_setup/readme.html">Setting up GPU-accelerated image processing on the TUD HPC cluster</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../marcelo_zoccoler/omero_scripts/readme.html">Running Deep-Learning Scripts in the BiA-PoL Omero Server</a></li>
@@ -386,7 +386,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Getting started with Mambaforge and Python</h1>
+    <h1>Getting started with ~~Mamba~~*Miniforge and Python</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -396,13 +396,13 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction-to-python-and-mamba">Introduction to Python and Mamba</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installation-of-mambaforge">Installation of Mambaforge</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction-to-python-and-miniforge">Introduction to Python and Miniforge</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installation-of-miniforge">Installation of Miniforge</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#installation-on-windows">Installation on Windows</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#installation-on-mac-os">Installation on Mac OS</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-mambaforge">Using Mambaforge</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-mamba">Using Mamba</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-a-new-environment">Creating a new environment</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#starting-napari">Starting napari</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#working-with-jupyter-lab">Working with Jupyter lab</a></li>
@@ -419,12 +419,14 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section id="getting-started-with-mambaforge-and-python">
-<h1>Getting started with Mambaforge and Python<a class="headerlink" href="#getting-started-with-mambaforge-and-python" title="Permalink to this heading">#</a></h1>
+  <section id="getting-started-with-mamba-miniforge-and-python">
+<h1>Getting started with ~~Mamba~~*Miniforge and Python<a class="headerlink" href="#getting-started-with-mamba-miniforge-and-python" title="Permalink to this heading">#</a></h1>
 <p><a class="reference internal" href="../readme.html"><span class="doc std std-doc">Mara Lampert</span></a>, January 26th, 2023</p>
-<section id="introduction-to-python-and-mamba">
-<h2>Introduction to Python and Mamba<a class="headerlink" href="#introduction-to-python-and-mamba" title="Permalink to this heading">#</a></h2>
-<p>This blog post explains what Python and <a class="reference external" href="https://mamba.readthedocs.io/en/latest/installation.html">Mamba</a>/ Mambaforge, and how you can download and setup it on your computer. We will also go through some steps how to get started with Bio-image Analysis.</p>
+<p>updated by Stefan Hahmann, December 18th, 2023</p>
+<p><code class="docutils literal notranslate"><span class="pre">(*)</span></code> After the release of Miniforge 23.3.1 in August 2023, Miniforge and Mambaforge are essentially identical. The only difference is the name of the installer and subsequently the default installation path.</p>
+<section id="introduction-to-python-and-miniforge">
+<h2>Introduction to Python and Miniforge<a class="headerlink" href="#introduction-to-python-and-miniforge" title="Permalink to this heading">#</a></h2>
+<p>This blog post explains what Python and <a class="reference external" href="https://mamba.readthedocs.io/en/latest/installation.html">Mamba</a> / Miniforge is, and how you can download and setup it on your computer. We will also go through some steps how to get started with Bio-image Analysis.</p>
 <blockquote>
 <div><p><strong><em>Note:</em></strong> This is an update of a <a class="reference external" href="https://biapol.github.io/blog/johannes_mueller/anaconda_getting_started/">previous Blogpost</a> written by Johannes.</p>
 </div></blockquote>
@@ -432,29 +434,29 @@ document.write(`
 <p><strong>Python</strong> is a programming language which is easy to learn and very important in scientific data analysis nowadays.</p>
 <p><strong>Mamba</strong> is a <strong>package manager</strong> which can be used with Python. It is a software allowing to install other software. Read more about Mamba <a class="reference external" href="https://focalplane.biologists.com/2022/12/08/managing-scientific-python-environments-using-conda-mamba-and-friends/">here</a>.</p>
 </section>
-<section id="installation-of-mambaforge">
-<h2>Installation of Mambaforge<a class="headerlink" href="#installation-of-mambaforge" title="Permalink to this heading">#</a></h2>
-<p>Here, I am going to show how to install Mambaforge. It comes with everything you need and downloads it from a community-driven open source software provider called  <a class="reference external" href="https://conda-forge.org/">conda-forge</a>.
-First, you pick the Mambaforge installer for your operating system <a class="reference external" href="https://github.com/conda-forge/miniforge#mambaforge">here</a>:</p>
-<p><img alt="" src="../../_images/1_mambaforge_download_11.png" /></p>
+<section id="installation-of-miniforge">
+<h2>Installation of Miniforge<a class="headerlink" href="#installation-of-miniforge" title="Permalink to this heading">#</a></h2>
+<p>Here, I am going to show how to install Miniforge. It comes with everything you need and downloads it from a community-driven open source software provider called  <a class="reference external" href="https://conda-forge.org/">conda-forge</a>.
+First, you pick the Miniforge installer for your operating system <a class="reference external" href="https://github.com/conda-forge/miniforge">here</a>:</p>
+<p><img alt="" src="../../_images/1_mambaforge_download_12.png" /></p>
 <p>All Mac OS users can now jump <span class="xref myst">here</span>.</p>
 <section id="installation-on-windows">
 <h3>Installation on Windows<a class="headerlink" href="#installation-on-windows" title="Permalink to this heading">#</a></h3>
-<p>When Mambaforge finished downloading, follow these steps during the installation:</p>
+<p>When Miniforge finished downloading, follow these steps during the installation:</p>
 <p>Click <code class="docutils literal notranslate"><span class="pre">Next</span></code>:</p>
-<p><img alt="" src="../../_images/2_mambaforge_install_1.png" /></p>
+<p><img alt="" src="../../_images/2_miniforge_install_1.png" /></p>
 <p>Click <code class="docutils literal notranslate"><span class="pre">I</span> <span class="pre">Agree</span></code>:</p>
-<p><img alt="" src="../../_images/2_mambaforge_install_2.png" /></p>
-<p>Now you have the option to either install Mambaforge for <code class="docutils literal notranslate"><span class="pre">Just</span> <span class="pre">Me</span></code> or for <code class="docutils literal notranslate"><span class="pre">All</span> <span class="pre">Users</span></code>. We highly recommend picking <code class="docutils literal notranslate"><span class="pre">Just</span> <span class="pre">Me</span></code>, as the other option requires Administrator priviledges and it can make installing packages more difficult later on.</p>
-<p><img alt="" src="../../_images/2_mambaforge_install_3.png" /></p>
-<p>Install Mambaforge into the default location:</p>
-<p><img alt="" src="../../_images/2_mambaforge_install_4.png" /></p>
-<p>In the next step we recommend to additionally tick <code class="docutils literal notranslate"><span class="pre">Add</span> <span class="pre">Mambaforge</span> <span class="pre">to</span> <span class="pre">my</span> <span class="pre">Path</span></code>. If you don’t add it to the <a class="reference external" href="https://janelbrandon.medium.com/understanding-the-path-variable-6eae0936e976">Path</a>, Conda and Mamba would not work from any Terminal Window. Click <code class="docutils literal notranslate"><span class="pre">Install</span></code></p>
-<p><img alt="" src="../../_images/2_mambaforge_install_5.png" /></p>
+<p><img alt="" src="../../_images/2_miniforge_install_2.png" /></p>
+<p>Now you have the option to either install Miniforge3 for <code class="docutils literal notranslate"><span class="pre">Just</span> <span class="pre">Me</span></code> or for <code class="docutils literal notranslate"><span class="pre">All</span> <span class="pre">Users</span></code>. We highly recommend picking <code class="docutils literal notranslate"><span class="pre">Just</span> <span class="pre">Me</span></code>, as the other option requires Administrator priviledges and it can make installing packages more difficult later on.</p>
+<p><img alt="" src="../../_images/2_miniforge_install_3.png" /></p>
+<p>Install Miniforge3 into the default location:</p>
+<p><img alt="" src="../../_images/2_miniforge_install_4.png" /></p>
+<p>In the next step we recommend to additionally tick <code class="docutils literal notranslate"><span class="pre">Add</span> <span class="pre">Miniforge3</span> <span class="pre">to</span> <span class="pre">my</span> <span class="pre">Path</span></code>. If you don’t add it to the <a class="reference external" href="https://janelbrandon.medium.com/understanding-the-path-variable-6eae0936e976">Path</a>, Conda and Mamba would not work from any Terminal Window. Click <code class="docutils literal notranslate"><span class="pre">Install</span></code></p>
+<p><img alt="" src="../../_images/2_miniforge_install_5.png" /></p>
 <p>Click <code class="docutils literal notranslate"><span class="pre">Next</span></code> at the next window and you arrive here. Click <code class="docutils literal notranslate"><span class="pre">Finish</span></code> to exit the setup:</p>
-<p><img alt="" src="../../_images/2_mambaforge_install_7.png" /></p>
+<p><img alt="" src="../../_images/2_miniforge_install_7.png" /></p>
 <p>Great! You are ready to start coding! 👍
-To see how to use Mambaforge, jump <span class="xref myst">here</span></p>
+To see how to use Mamba, jump <span class="xref myst">here</span></p>
 </section>
 <section id="installation-on-mac-os">
 <h3>Installation on Mac OS<a class="headerlink" href="#installation-on-mac-os" title="Permalink to this heading">#</a></h3>
@@ -463,22 +465,22 @@ To see how to use Mambaforge, jump <span class="xref myst">here</span></p>
 <p>The opened Terminal should look like this:</p>
 <p><img alt="" src="../../_images/2_mac_install_2.png" /></p>
 <p>Then type these two lines to start the installation</p>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span>curl -L -O &quot;https://github.com/conda-forge/miniforge/releases/latest/download/Mambaforge-$(uname)-$(uname -m).sh&quot;
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span>curl -L -O &quot;https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-$(uname)-$(uname -m).sh&quot;
 </pre></div>
 </div>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span>bash Mambaforge-$(uname)-$(uname -m).sh
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span>bash Miniforge3-$(uname)-$(uname -m).sh
 </pre></div>
 </div>
-<p>You  just follow the instructions, press <code class="docutils literal notranslate"><span class="pre">Enter</span></code> and type <em>yes</em> like here:</p>
+<p>You just follow the instructions, press <code class="docutils literal notranslate"><span class="pre">Enter</span></code> and type <em>yes</em> like here:</p>
 <p><img alt="" src="../../_images/2_mac_install_3.png" /></p>
 <p>When you see this:</p>
 <p><img alt="" src="../../_images/2_mac_install_4.png" /></p>
 <p>you are finished! Close and reopen the Terminal now. Happy coding! 👍</p>
 </section>
 </section>
-<section id="using-mambaforge">
-<h2>Using Mambaforge<a class="headerlink" href="#using-mambaforge" title="Permalink to this heading">#</a></h2>
-<p>Now we use Mambaforge by opening the command line. If you are not familiar with the command line yet, you can check out Roberts tutorial <a class="reference external" href="https://www.youtube.com/watch?v=MOEPe9TGBK0&amp;t=1146s">here</a>.</p>
+<section id="using-mamba">
+<h2>Using Mamba<a class="headerlink" href="#using-mamba" title="Permalink to this heading">#</a></h2>
+<p>Now we use Mamba by opening the command line. If you are not familiar with the command line yet, you can check out Roberts tutorial <a class="reference external" href="https://www.youtube.com/watch?v=MOEPe9TGBK0&amp;t=1146s">here</a>.</p>
 <p>To open the Command Prompt in Windows, press the <code class="docutils literal notranslate"><span class="pre">Windows</span> <span class="pre">button</span></code>, type <em>cmd</em> and press <code class="docutils literal notranslate"><span class="pre">Enter</span></code>. The Mac OS users should already know how to open the Terminal ;-)</p>
 <p>When you open the command line, it should look like this:</p>
 <p><img alt="" src="../../_images/3_envs_1.png" /></p>
@@ -486,7 +488,7 @@ To see how to use Mambaforge, jump <span class="xref myst">here</span></p>
 <blockquote>
 <div><p><strong><em>Strong recommendation:</em></strong> Never install any packages into the base environment!</p>
 </div></blockquote>
-<p>The reason for this is that incompatibilities between packages can occur. Robert demonstrated this <a class="reference external" href="https://focalplane.biologists.com/2022/12/08/managing-scientific-python-environments-using-conda-mamba-and-friends/">here</a>. If this happens in any environment apart from the base environment it is no problem. You can delete the environment, recreate it and start again. If this happens in the base environment, you need to delete and reinstall Mambaforge.</p>
+<p>The reason for this is that incompatibilities between packages can occur. Robert demonstrated this <a class="reference external" href="https://focalplane.biologists.com/2022/12/08/managing-scientific-python-environments-using-conda-mamba-and-friends/">here</a>. If this happens in any environment apart from the base environment it is no problem. You can delete the environment, recreate it and start again. If this happens in the base environment, you need to delete and reinstall Miniforge.</p>
 </section>
 <section id="creating-a-new-environment">
 <h2>Creating a new environment<a class="headerlink" href="#creating-a-new-environment" title="Permalink to this heading">#</a></h2>
@@ -572,7 +574,7 @@ If you want to install a specific version of a package you can do it as shown he
 </pre></div>
 </div>
 <hr class="docutils" />
-<p>Now you have Mambaforge installed, know how to work with conda environments and know about some very important packages. Have fun starting your own Bio-image Analysis project! 👍</p>
+<p>Now you have Miniforge installed, know how to work with conda environments and know about some very important packages. Have fun starting your own Bio-image Analysis project! 👍</p>
 <hr class="docutils" />
 </section>
 </section>
@@ -644,13 +646,13 @@ If you want to install a specific version of a package you can do it as shown he
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction-to-python-and-mamba">Introduction to Python and Mamba</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installation-of-mambaforge">Installation of Mambaforge</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction-to-python-and-miniforge">Introduction to Python and Miniforge</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installation-of-miniforge">Installation of Miniforge</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#installation-on-windows">Installation on Windows</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#installation-on-mac-os">Installation on Mac OS</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-mambaforge">Using Mambaforge</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-mamba">Using Mamba</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-a-new-environment">Creating a new environment</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#starting-napari">Starting napari</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#working-with-jupyter-lab">Working with Jupyter lab</a></li>
