@@ -10,6 +10,11 @@ If you have feedback or suggestions, if spotted a typo, broken link or misleadin
 
 ## Recent blog posts
 
+### [Running bio image analysis workflows on your machine](stefan_hahmann/github_desktop_jupyter_notebook/readme)
+
+<small>[Stefan Hahmann](stefan_hahmann/readme), December 21st, 2023</small><br>
+<img src="images/jupyter_logo.png" width="100" align="right"><p>Jupyter Notebooks may be used to run bio image analysis workflows on your machine with your own data. They are a great tool to share workflows with others. This post will show you how to run workflows that have been shared via GitHub. </p>
+
 ### [Getting started with Miniforge and Python](mara_lampert/getting_started_with_mambaforge_and_python/readme)
 <small>[Mara Lampert](mara_lampert/readme), January 26th, 2023</small><br>
 <img src="images/mamba_logo.png" width="100" align="right"><p>This post will help you to get started with Python using Miniforge. More precisely, you will learn how to install Miniforge, how to create and use conda environments and know about some very important packages. </p>
