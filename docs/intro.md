@@ -10,9 +10,9 @@ If you have feedback or suggestions, if spotted a typo, broken link or misleadin
 
 ## Recent blog posts
 
-### [Getting started with Mambaforge and Python](mara_lampert/getting_started_with_mambaforge_and_python/readme)
+### [Getting started with Miniforge and Python](mara_lampert/getting_started_with_mambaforge_and_python/readme)
 <small>[Mara Lampert](mara_lampert/readme), January 26th, 2023</small><br>
-<img src="images/mamba_logo.png" width="100" align="right"><p>This post will help you to get started with Python using Mambaforge. More precisely, you will learn how to install Mambaforge, how to create and use conda environments and know about some very important packages. </p>
+<img src="images/mamba_logo.png" width="100" align="right"><p>This post will help you to get started with Python using Miniforge. More precisely, you will learn how to install Miniforge, how to create and use conda environments and know about some very important packages. </p>
 
 ### [Using GPU-accelerated image processing on the TUD HPC cluster](till_korten/devbio-napari_cluster/readme)
 <small>[Till Korten](till_korten/readme), Oct 21st, 2022</small><br>
