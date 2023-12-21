@@ -78,4 +78,6 @@ Before you run a cell, you can change the code in the cell. This allows you to a
 
 ![Jupyter Lab](images/jupyterlab-notebook-edit.png)
 
+It is possible to skip cells. This is useful, if you want to run only parts of the workflow. To skip a cell, click on the next cell, after the cell you want to skip and then click on the "Run". This will run the selected cell.
+
 
