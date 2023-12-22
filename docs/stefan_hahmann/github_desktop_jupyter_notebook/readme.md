@@ -11,12 +11,15 @@ This blog post will show you how to use [Github Desktop](https://desktop.github.
 
 [Git](https://git-scm.com/) is a version control system that allows you to track changes in your files. It is widely used in software development, because source files of code are frequently changed during the development process. Files that belong together are stored in a so-called repository.
 A repository can be stored on a local computer or on a web server. Git allows you to synchronize your local repository with a remote repository. This is useful, if you want to collaborate with other people on the same files.
+
 <img src="images/git-logo.png" alt="git-logo" height="100"/>
 
 [GitHub](https://github.com/) is a web-based hosting service for Git repositories. [GitHub Desktop](https://desktop.github.com/) is a client for Git and Github. It allows you to manage your Git repositories locally on your computer.
+
 <img src="images/github-logo.png" alt="git-logo" height="100"/> <img src="images/github-mark.png" alt="git-logo" height="100"/>
 
 [Jupyter Notebooks](https://jupyter.org/) are documents that contain code, equations, visualizations and narrative text. They are widely used in data science and research. The can contain workflows that help you to analyse your data. [Jupyter Lab](https://jupyterlab.readthedocs.io/en/stable/) allows you to edit and run Jupyter Notebooks.
+
 <img src="images/jupyter-logo.png" alt="git-logo" height="100"/>
 
 [Python](https://www.python.org/) is a programming language that is widely used in data science and research.
