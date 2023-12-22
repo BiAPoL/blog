@@ -13,6 +13,8 @@ Since 2022, I work as a [research software engineer](https://de-rse.org/en/) for
 
 # Blog posts
 
+* [Running bio image analysis workflows on your machine](github_desktop_jupyter_notebook/readme)
+
 # Links
 
 * [Twitter](https://twitter.com/stefanhahmann)
