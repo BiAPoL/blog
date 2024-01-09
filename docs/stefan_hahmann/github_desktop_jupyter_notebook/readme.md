@@ -34,7 +34,7 @@ There is no need to install Git separately before installing GitHub Desktop. Git
 
 ### GitHub Desktop
 
-Download and install [GitHub Desktop](https://desktop.github.com/). Choose the version for your operating system. It is available for Windows and Mac.
+Download and install [GitHub Desktop](https://desktop.github.com/). Choose the version for your operating system. GitHub.com provides installers for Windows and Mac. Users on Unix-like systems may follow these [instructions](https://dev.to/rahedmir/is-github-desktop-available-for-gnu-linux-4a69) to install a [fork](https://github.com/shiftkey/desktop/releases) of GitHub Desktop.
 
 ### Jupyter Lab
 
