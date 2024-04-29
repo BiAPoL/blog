@@ -106,6 +106,7 @@ sudo make build
 If this command fails, you can try to pull the image from the Docker Hub by running the following command.
 This will download the image from the Docker Hub, which may take some time depending on your internet connection.
 The version on Docker Hub may not be the latest version of Elephant, but you can use it, if building the image fails.
+Check [Docker Hub](https://hub.docker.com/r/stefanhahmann/elephant-server) for the Elephant server image.
 
 ```console
 docker pull stefanhahmann/elephant-server:0.5.6
