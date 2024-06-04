@@ -116,7 +116,7 @@ If you get an error message that make is not found, you can try to install make 
 sudo apt install make
 ```
 
-If the `make build` fails, you can try to pull the image from the Docker Hub by running the following command.
+If the `make build` command fails, you can try to pull the image from the Docker Hub by running the following command:
 
 ```console
 docker pull stefanhahmann/elephant-server:0.5.6
