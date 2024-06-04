@@ -1,6 +1,7 @@
 # Installation of Elephant Server on Windows
 
 [Stefan Hahmann](../readme.md), April 24th 2024
+[Johannes Soltwedel](../../johannes_mueller/Readme.md), April 24th 2024
 
 ## Introduction
 
