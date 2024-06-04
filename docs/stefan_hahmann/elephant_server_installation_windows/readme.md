@@ -24,6 +24,7 @@ Before installing Elephant on a powerful workstation or server, you may wish to 
 [Docker Desktop](https://www.docker.com/products/docker-desktop) is a tool that allows you to run Docker containers on your local machine. 
 Docker containers are lightweight, standalone, executable packages of software that include everything needed to run an application: code, runtime, system tools, system libraries and settings. 
 Docker Desktop is available for Windows and Mac. You can download it [here](https://www.docker.com/products/docker-desktop).
+Please make sure that you have installed and started Docker Desktop before proceeding. You will need to sign in to Docker Desktop with your Docker account.
 
 ### Windows Subsystem for Linux (WSL)
 
@@ -39,10 +40,10 @@ Open a console (press `Windows button`, type `cmd` and press `Enter`) and run th
 wsl --install
 ```
 
-This will install the latest version of WSL and Ubuntu as the current default distribution.
-After the installation is complete, you can open a Linux terminal by pressing `Windows button`, typing `wsl` and pressing `Enter`.
+This will install the latest version of WSL and Ubuntu as the current default WSL distribution on your machine. By the time of writing this blog post, the default distribution is Ubuntu 22.04 LTS.
+You can check the installation success, if you open a Linux terminal by pressing `Windows button`, typing `wsl` and pressing `Enter`.
 
-You should check, if the version number of WSL is 2. You can do this by running the following command in the Linux terminal:
+You should also check, if the version number of WSL is 2. You can do this by running the following command in the console:
 
 ```console
 wsl -l -v
@@ -60,7 +61,7 @@ Do also check the WSL integration in Docker Desktop by opening Docker Desktop an
 Make sure that the checkbox for the Ubuntu distribution is checked:
 ![docker-wsl-integration.PNG](images/docker-wsl-integration.png)
 
-To check if Docker is running correctly with the WSL, you can run the following command in the Linux terminal:
+To check if Docker is running correctly with the WSL, you can run the following command from the console:
 
 ```console
 docker run hello-world
@@ -103,8 +104,24 @@ Including `sudo` may not be required on every machine.
 ```console
 sudo make build
 ```
+If you get an error message that docker is not found, you can try to install docker inside WSL.
 
-If this command fails, you can try to pull the image from the Docker Hub by running the following command.
+```console
+sudo snap install docker
+```
+
+If you get an error message that make is not found, you can try to install make inside WSL.
+
+```console
+sudo apt install make
+```
+
+If the `make build` fails, you can try to pull the image from the Docker Hub by running the following command.
+
+```console
+docker pull stefanhahmann/elephant-server:0.5.6
+```
+
 This will download the image from the Docker Hub, which may take some time depending on your internet connection.
 The version on Docker Hub may not be the latest version of Elephant, but you can use it, if building the image fails.
 Check [Docker Hub](https://hub.docker.com/r/stefanhahmann/elephant-server) for the Elephant server image.
