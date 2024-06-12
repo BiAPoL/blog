@@ -12,40 +12,18 @@ If you have feedback or suggestions, if spotted a typo, broken link or misleadin
 
 ### [Running bio image analysis workflows on your machine](stefan_hahmann/github_desktop_jupyter_notebook/readme)
 
+<small>[Stefan Hahmann](stefan_hahmann/readme), April 24th, 2024</small><br>
+<img src="images/elephant-logo.png" width="100" align="right"><p>ELEPHANT is a platform for 3D cell tracking, based on incremental and interactive deep learning. This post will show you how to install the ELEPHANT server component on a Windows machine.</p>
+
 <small>[Stefan Hahmann](stefan_hahmann/readme), December 21st, 2023</small><br>
 <img src="images/jupyter_logo.png" width="100" align="right"><p>Jupyter Notebooks may be used to run bio image analysis workflows on your machine with your own data. They are a great tool to share workflows with others. This post will show you how to run workflows that have been shared via GitHub. </p>
+
+<small>[Johannes Soltwedel](johannes_mueller/readme), Mai 12th, 2023</small><br>
+<img src="images/qt_logo.png" width="100" align="right"><p>This blog post will give you a quick introduction on how to combine two great tools for the creation of graphical user interfaces in napari: The [Qt Designer](https://doc.qt.io/qt-6/qtdesigner-manual.html) and [magicgui](https://pyapp-kit.github.io/magicgui/). </p>
 
 ### [Getting started with Miniforge and Python](mara_lampert/getting_started_with_mambaforge_and_python/readme)
 <small>[Mara Lampert](mara_lampert/readme), January 26th, 2023</small><br>
 <img src="images/mamba_logo.png" width="100" align="right"><p>This post will help you to get started with Python using Miniforge. More precisely, you will learn how to install Miniforge, how to create and use conda environments and know about some very important packages. </p>
-
-### [Using GPU-accelerated image processing on the TUD HPC cluster](till_korten/devbio-napari_cluster/readme)
-<small>[Till Korten](till_korten/readme), Oct 21st, 2022</small><br>
-<img src="images/2290861_computer_laptop_network_notebook_share_icon.png" width="100" align="right"><p>The High Performance Computing cluster at the compute center (ZIH) of the TU Dresden provides a lot of computational resources including GPU support, which we can use for analyzing data in the life-sciences.</p>
-
-### [Setting up GPU-accelerated image processing on the TUD HPC cluster](till_korten/devbio-napari_cluster_setup/readme)
-<small>[Till Korten](till_korten/readme), July 29th, 2022</small><br>
-<img src="images/2290861_computer_laptop_network_notebook_share_icon.png" width="100" align="right"><p>The High Performance Computing cluster at the compute center (ZIH) of the TU Dresden provides a lot of computational resources including GPU support, which we can use for analyzing data in the life-sciences.</p>
-
-### [Running Deep-learning Scripts in the BiA-PoL Omero Server](marcelo_zoccoler/omero_scripts/readme)
-<small>[Marcelo Zoccoler](marcelo_zoccoler/readme), May 2nd, 2022</small><br>
-<img src="images/ome-logomark.png" width="99" align="right"><p>This blog post explains how to run omero scripts in the BiA-PoL omero server. In this example, we execute a script on the server that runs a 2D [Stardist](https://github.com/stardist/stardist) model on a sample image.<p>
-
-
-### [Mini-Sabbatical Experience at Bia-PoL](marcelo_zoccoler/mini_sabbatical_rike/Readme)
-<small>Friederike Kessel, February 28th, 2022</small><br>
-<img src="images/2290861_computer_laptop_network_notebook_share_icon.png" width="100" align="right"><p>This is a blog post about the personal experience of Rike, a post-doc who had just finished her PhD at the University Clinic in Dresden. She spent a two weeks training period at BiA-PoL working with image analysis.</p>
-
-
-### [Getting started with Python and Anaconda](johannes_mueller/anaconda_getting_started/Readme)
-<small>[Johannes Müller](johannes_mueller/Readme), January 26th, 2022</small><br>
-<img src="images/python_logo.png" width="100" align="right"><p>This post will help you to get started with using Python. More specifically, it will help you set up Anaconda environments which can be used to control installed packages effectively.</p>
-
-
-### [GUIs: Creating graphical user interfaces with/for Python, Part IV](marcelo_zoccoler/entry_user_interf4/Readme)
-<small>[Marcelo Zoccoler](marcelo_zoccoler/readme), [Johannes Müller](/johannes_mueller/Readme), December 15th, 2021</small><br>
-<img src="images/napari_logo.png"  width="100" align="right"><p>Last part of this series, this post will teach you how to turn your napari GUI/widget into a napari plugin and publish it on Pypi, so everyone can access it, install it and benefit from your contribution.</p>
-
 
 Find more blog posts on the left sidebar.
 Enjoy reading!
