@@ -153,7 +153,7 @@ You can check if the server is running by opening a browser and navigating to [h
 You should see the Elephant server interface:
 ![elephant-server-interface.png](images/elephant-server-interface.png)
 
-You can now open the Mastodon client in Fiji and connect to the Elephant server:
+You can now open a Mastodon project in Fiji, which brings up the client connected to the Elephant server:
 ![elephant-control-panel.png](images/elephant-control-panel.png)
 
 `*` By the time writing this blog post, there was a known issue with the Nvidia GPU support on WSL2. 
