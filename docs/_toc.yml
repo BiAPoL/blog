@@ -7,6 +7,7 @@ parts:
 - caption: Blog Posts
   chapters:
   # Add new chapters here (recent first)
+  - file: stefan_hahmann/elephant_server_installation_windows/readme
   - file: stefan_hahmann/github_desktop_jupyter_notebook/readme
   - file: johannes_mueller/qtdesigner_and_magicgui/Readme
   - file: mara_lampert/getting_started_with_mambaforge_and_python/readme
