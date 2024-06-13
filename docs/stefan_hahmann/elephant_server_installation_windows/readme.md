@@ -104,6 +104,8 @@ Including `sudo` may not be required on every machine.
 ```console
 sudo make build
 ```
+
+### Troubleshooting
 If you get an error message that docker is not found, you can try to install docker inside WSL.
 
 ```console
