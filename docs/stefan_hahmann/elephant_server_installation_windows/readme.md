@@ -126,10 +126,6 @@ This will download the image from the Docker Hub, which may take some time depen
 The version on Docker Hub may not be the latest version of Elephant, but you can use it, if building the image fails.
 Check [Docker Hub](https://hub.docker.com/r/stefanhahmann/elephant-server) for the Elephant server image.
 
-```console
-docker pull stefanhahmann/elephant-server:0.5.6
-```
-
 ## Starting the Elephant Server
 
 Make sure that Docker Desktop is running.
