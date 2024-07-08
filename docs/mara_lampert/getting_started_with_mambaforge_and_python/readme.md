@@ -3,6 +3,8 @@
 
 updated by [Stefan Hahmann](../../stefan_hahmann/readme), December 18th, 2023
 
+updated by [Mara Lampert](../readme), July 8th, 2024
+
 `(*)` After the release of Miniforge 23.3.1 in August 2023, Miniforge and Mambaforge are essentially identical. The only difference is the name of the installer and subsequently the default installation path.
 
 ## Introduction to Python and Miniforge 
@@ -110,7 +112,8 @@ The reason for this is that incompatibilities between packages can occur. Robert
 You can create a new environment typing the following command into the Command Prompt: 
 
 ```json
-mamba create -n my_first_env devbio-napari python=3.9 pyqt -c conda-forge
+conda create -n my_first_env devbio-napari python=3.9 pyqt 
+
 ```
 This will create a new environment with the name `my_first_env` and with Python version 3.9 installed. Furthermore, the latest version of devbio-napari will be installed in this environment, too. Devbio-napari is a collection of Python libraries and Napari plugins maintained by the BiAPoL team, that are useful for processing fluorescent microscopy image data.
 Conda will ask you about your permission to download the needed packages with `Proceed [y]/n`. By hitting `Enter` you confirm this and mamba will download and install the necessary packages. 
@@ -119,7 +122,7 @@ Conda will ask you about your permission to download the needed packages with `P
 
 To activate the environment, type: 
 ```json
-mamba activate my_first_env
+conda activate my_first_env
 ```
 This should lead to the prefix my_first_env appearing at the beginning of the command line: 
 
@@ -171,22 +174,26 @@ The error message tells us that seaborn is not yet installed in our conda enviro
 
 ## Installing new packages 
 If you want to install new packages while working in your Jupyter notebook, you can 
-1. Open a new Command Prompt Window 
+1. Open a new Command Prompt Window (While leaving the other Command Prompt Window open)
 2. Activate your current environment 
-3. Install packages while specializing the channel with `-c conda-forge` 
+3. Install packages 
 
 For example if you want to install seaborn, you would need to type:
 ```json
-mamba install seaborn -c conda-forge 
+conda install seaborn 
 ```
-into into the Command Prompt Window. This should look like this:
+into into the Command Prompt Window. This should currently look like this:
 
 ![](imgs/6_install_seaborn.png)
+
+We need to open a second Command Prompt Window to install new packages. Hereby, you can leave the first window open.
+
+![](imgs/6_install_seaborn_2.png)
 
 Conda will ask you again for confirmation (`Enter`) to proceed with the installation. If you type `N` + `Enter`, the operation will be canceled. 
 If you want to install a specific version of a package you can do it as shown here: 
 ```json
-mamba install <package name>=version -c conda-forge 
+conda install <package name>=version 
 ```
 It is considered good practice to write down the versions you are using to ensure compatibility between packages and to trace bugs. For further information see also the mamba user guide [here](https://mamba.readthedocs.io/en/latest/user_guide/mamba.html#mamba). 
 
@@ -194,11 +201,11 @@ It is considered good practice to write down the versions you are using to ensur
 ## Deactivation or Deletion of an environment 
 If you want to deactivate the environment you just need to type: 
 ```json
-mamba deactivate 
+conda deactivate 
 ```
 If you screwed up your environment and want to delete it, you can type:
 ```json
-mamba env remove -n nameofproject_env
+conda env remove -n nameofproject_env
 ```
 
 ---
