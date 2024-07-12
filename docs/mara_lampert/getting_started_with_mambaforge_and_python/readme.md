@@ -8,7 +8,7 @@ updated by [Mara Lampert](../readme), July 8th, 2024
 `(*)` After the release of Miniforge 23.3.1 in August 2023, Miniforge and Mambaforge are essentially identical. The only difference is the name of the installer and subsequently the default installation path.
 
 ## Introduction to Python and Miniforge 
-This blog post explains what Python and [Mamba](https://mamba.readthedocs.io/en/latest/installation.html) / Miniforge is, and how you can download and setup it on your computer. We will also go through some steps how to get started with Bio-image Analysis. 
+This blog post explains what Python and [Mamba](https://mamba.readthedocs.io/en/latest/) / Miniforge is, and how you can download and setup it on your computer. We will also go through some steps how to get started with Bio-image Analysis. 
 
 > **_Note:_** This is an update of a [previous Blogpost](https://biapol.github.io/blog/johannes_mueller/anaconda_getting_started/) written by Johannes. 
 
