@@ -13,11 +13,11 @@ This blog post explains what Python and [Conda](https://docs.readthedocs.io/en/s
 > **_Note:_** This is an update of a [previous Blogpost](https://biapol.github.io/blog/johannes_mueller/anaconda_getting_started/Readme.html) written by [Johannes](https://biapol.github.io/blog/johannes_mueller/Readme.html). 
 
 
-**Why do we need Mamba to use Python?**
+**Why do we need Conda to use Python?**
 
 __Python__ is a programming language which is easy to learn and very important in scientific data analysis nowadays. 
 
-__Mamba__ is a __package manager__ which can be used with Python. It is a software allowing to install other software. Read more about Mamba [here](https://focalplane.biologists.com/2022/12/08/managing-scientific-python-environments-using-conda-mamba-and-friends/). 
+__Conda__ is a __package manager__ which can be used with Python. It is a software allowing to install other software. Read more about Conda [here](https://focalplane.biologists.com/2022/12/08/managing-scientific-python-environments-using-conda-mamba-and-friends/). 
 
 ## Installation of Miniforge 
 Here, I am going to show how to install Miniforge. It comes with everything you need and downloads it from a community-driven open source software provider called  [conda-forge](https://conda-forge.org/). 
@@ -46,7 +46,7 @@ Install Miniforge3 into the default location:
 
 ![](imgs/2_miniforge_install_4.png)
  
-In the next step we recommend to additionally tick `Add Miniforge3 to my Path`. If you don’t add it to the [Path](https://janelbrandon.medium.com/understanding-the-path-variable-6eae0936e976), Conda and Mamba would not work from any Terminal Window. Click `Install`
+In the next step we recommend to additionally tick `Add Miniforge3 to my Path`. If you don’t add it to the [Path](https://janelbrandon.medium.com/understanding-the-path-variable-6eae0936e976), Conda would not work from any Terminal Window. Click `Install`
 
 ![](imgs/2_miniforge_install_5.png)
 
@@ -55,7 +55,7 @@ Click `Next` at the next window and you arrive here. Click `Finish` to exit the 
 ![](imgs/2_miniforge_install_7.png)
 
 Great! You are ready to start coding! 👍 
-To see how to use Mamba, jump [here](#using-mamba)
+To see how to use Conda, jump [here](#using-mamba)
 
 ### Installation on Mac OS
 
@@ -92,9 +92,9 @@ When you see this:
 
 you are finished! Close and reopen the Terminal now. Happy coding! 👍
 
-## Using Mamba 
+## Using Conda
 
-Now we use Mamba by opening the command line. If you are not familiar with the command line yet, you can check out Roberts tutorial [here](https://www.youtube.com/watch?v=MOEPe9TGBK0&t=1146s). 
+Now we use Conda by opening the command line. If you are not familiar with the command line yet, you can check out Roberts tutorial [here](https://www.youtube.com/watch?v=MOEPe9TGBK0&t=1146s). 
 
 To open the Command Prompt in Windows, press the `Windows button`, type _cmd_ and press `Enter`. The Mac OS users should already know how to open the Terminal ;-)
 
@@ -116,7 +116,7 @@ conda create -n my_first_env devbio-napari python=3.9 pyqt
 
 ```
 This will create a new environment with the name `my_first_env` and with Python version 3.9 installed. Furthermore, the latest version of devbio-napari will be installed in this environment, too. Devbio-napari is a collection of Python libraries and Napari plugins maintained by the BiAPoL team, that are useful for processing fluorescent microscopy image data.
-Conda will ask you about your permission to download the needed packages with `Proceed [y]/n`. By hitting `Enter` you confirm this and mamba will download and install the necessary packages. 
+Conda will ask you about your permission to download the needed packages with `Proceed [y]/n`. By hitting `Enter` you confirm this and conda will download and install the necessary packages. 
 
 > **_Recommendation:_** Create one conda environment for every project you are working on. This allows you to keep an overview on the needed packages for the project, maintaining them and ensure compatibility of the packages. 
 
