@@ -182,7 +182,7 @@ For example if you want to install seaborn, you would need to type:
 ```json
 conda install seaborn 
 ```
-into into the Command Prompt Window. This should currently look like this:
+into the Command Prompt Window. This should currently look like this:
 
 ![](imgs/6_install_seaborn.png)
 
