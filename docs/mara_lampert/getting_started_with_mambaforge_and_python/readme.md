@@ -195,7 +195,7 @@ If you want to install a specific version of a package you can do it as shown he
 ```json
 conda install <package name>=version 
 ```
-It is considered good practice to write down the versions you are using to ensure compatibility between packages and to trace bugs. For further information see also the mamba user guide [here](https://mamba.readthedocs.io/en/latest/user_guide/mamba.html#mamba). 
+It is considered good practice to write down the versions you are using to ensure compatibility between packages and to trace bugs. For further information see also the conda user guide [here](https://docs.readthedocs.io/en/stable/guides/conda.html). 
 
 
 ## Deactivation or Deletion of an environment 
