@@ -186,7 +186,7 @@ into the Command Prompt Window. This should currently look like this:
 
 ![](imgs/6_install_seaborn.png)
 
-We need to open a second Command Prompt Window to install new packages. Hereby, you can leave the first window open.
+We need to open a second Command Prompt Window to install new packages. While doing so, you can leave the first window open.
 
 ![](imgs/6_install_seaborn_2.png)
 
