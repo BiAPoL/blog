@@ -14,6 +14,7 @@ Enjoy coding!
 
 ## Blog posts
 * [Getting started with Mambaforge and Python ](getting_started_with_mambaforge_and_python/readme)
+* [Getting started with Miniforge and Python ](getting_started_with_miniforge_and_python/readme)
 
 ## Links
 * [BiA-PoL group website](https://physics-of-life.tu-dresden.de/en/research/technology-development-groups/bio-image-analysis)
