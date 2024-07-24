@@ -1,29 +1,24 @@
-# Getting started with Miniforge* and Python 
-[Mara Lampert](../readme), January 26th, 2023
+# Getting started with Miniforge and Python 
+[Mara Lampert](../readme), July 8th, 2024
 
-updated by [Stefan Hahmann](../../stefan_hahmann/readme), December 18th, 2023
-
-> **_NOTE:_**  The instructions in this blog post are outdated. [Read the updated instructions](https://biapol.github.io/blog/mara_lampert/getting_started_with_miniforge_and_python/Readme.html).
-
-`(*)` After the release of Miniforge 23.3.1 in August 2023, Miniforge and Mambaforge are essentially identical. The only difference is the name of the installer and subsequently the default installation path.
 
 ## Introduction to Python and Miniforge 
-This blog post explains what Python and [Mamba](https://mamba.readthedocs.io/en/latest/installation.html) / Miniforge is, and how you can download and setup it on your computer. We will also go through some steps how to get started with Bio-image Analysis. 
+This blog post explains what Python and [Conda](https://docs.readthedocs.io/en/stable/guides/conda.html) / Miniforge is, and how you can download and setup it on your computer. We will also go through some steps how to get started with Bio-image Analysis. 
 
-> **_Note:_** This is an update of a [previous Blogpost](https://biapol.github.io/blog/johannes_mueller/anaconda_getting_started/) written by Johannes. 
+> **_Note:_** This is an update of a [previous Blogpost](https://biapol.github.io/blog/mara_lampert/getting_started_with_mambaforge_and_python/readme.html). 
 
 
-**Why do we need Mamba to use Python?**
+**Why do we need Conda to use Python?**
 
 __Python__ is a programming language which is easy to learn and very important in scientific data analysis nowadays. 
 
-__Mamba__ is a __package manager__ which can be used with Python. It is a software allowing to install other software. Read more about Mamba [here](https://focalplane.biologists.com/2022/12/08/managing-scientific-python-environments-using-conda-mamba-and-friends/). 
+__Conda__ is a __package manager__ which can be used with Python. It is a software allowing to install other software. Read more about Conda [here](https://focalplane.biologists.com/2022/12/08/managing-scientific-python-environments-using-conda-mamba-and-friends/). 
 
 ## Installation of Miniforge 
-Here, I am going to show how to install Miniforge. It comes with everything you need and downloads it from a community-driven open source software provider called  [conda-forge](https://conda-forge.org/). 
+Here, I am going to show how to install Miniforge. It comes with everything you need and downloads packages from a community-driven open source software provider called  [conda-forge](https://conda-forge.org/). 
 First, you pick the Miniforge installer for your operating system [here](https://github.com/conda-forge/miniforge):
 
-![](imgs/1_mambaforge_download_12.png)
+![](imgs/1_miniforge_download_12.png)
 
 All Mac OS users can now jump [here](#installation-on-mac-os).
 
@@ -46,7 +41,7 @@ Install Miniforge3 into the default location:
 
 ![](imgs/2_miniforge_install_4.png)
  
-In the next step we recommend to additionally tick `Add Miniforge3 to my Path`. If you don’t add it to the [Path](https://janelbrandon.medium.com/understanding-the-path-variable-6eae0936e976), Conda and Mamba would not work from any Terminal Window. Click `Install`
+In the next step we recommend to additionally tick `Add Miniforge3 to my Path`. If you don’t add it to the [Path](https://janelbrandon.medium.com/understanding-the-path-variable-6eae0936e976), Conda would not work from any Terminal Window. Click `Install`
 
 ![](imgs/2_miniforge_install_5.png)
 
@@ -55,7 +50,7 @@ Click `Next` at the next window and you arrive here. Click `Finish` to exit the 
 ![](imgs/2_miniforge_install_7.png)
 
 Great! You are ready to start coding! 👍 
-To see how to use Mamba, jump [here](#using-mamba)
+To see how to use Conda, jump [here](#using-mamba)
 
 ### Installation on Mac OS
 
@@ -92,9 +87,9 @@ When you see this:
 
 you are finished! Close and reopen the Terminal now. Happy coding! 👍
 
-## Using Mamba 
+## Using Conda
 
-Now we use Mamba by opening the command line. If you are not familiar with the command line yet, you can check out Roberts tutorial [here](https://www.youtube.com/watch?v=MOEPe9TGBK0&t=1146s). 
+Now we use Conda by opening the command line. If you are not familiar with the command line yet, you can check out Roberts tutorial [here](https://www.youtube.com/watch?v=MOEPe9TGBK0&t=1146s). 
 
 To open the Command Prompt in Windows, press the `Windows button`, type _cmd_ and press `Enter`. The Mac OS users should already know how to open the Terminal ;-)
 
@@ -112,16 +107,17 @@ The reason for this is that incompatibilities between packages can occur. Robert
 You can create a new environment typing the following command into the Command Prompt: 
 
 ```json
-mamba create -n my_first_env devbio-napari python=3.9 pyqt -c conda-forge
+conda create -n my_first_env devbio-napari python=3.9 pyqt 
+
 ```
 This will create a new environment with the name `my_first_env` and with Python version 3.9 installed. Furthermore, the latest version of devbio-napari will be installed in this environment, too. Devbio-napari is a collection of Python libraries and Napari plugins maintained by the BiAPoL team, that are useful for processing fluorescent microscopy image data.
-Conda will ask you about your permission to download the needed packages with `Proceed [y]/n`. By hitting `Enter` you confirm this and mamba will download and install the necessary packages. 
+Conda will ask you about your permission to download the needed packages with `Proceed [y]/n`. By hitting `Enter` you confirm this and conda will download and install the necessary packages. 
 
 > **_Recommendation:_** Create one conda environment for every project you are working on. This allows you to keep an overview on the needed packages for the project, maintaining them and ensure compatibility of the packages. 
 
 To activate the environment, type: 
 ```json
-mamba activate my_first_env
+conda activate my_first_env
 ```
 This should lead to the prefix my_first_env appearing at the beginning of the command line: 
 
@@ -173,34 +169,38 @@ The error message tells us that seaborn is not yet installed in our conda enviro
 
 ## Installing new packages 
 If you want to install new packages while working in your Jupyter notebook, you can 
-1. Open a new Command Prompt Window 
+1. Open a new Command Prompt Window (While leaving the other Command Prompt Window open)
 2. Activate your current environment 
-3. Install packages while specializing the channel with `-c conda-forge` 
+3. Install packages 
 
 For example if you want to install seaborn, you would need to type:
 ```json
-mamba install seaborn -c conda-forge 
+conda install seaborn 
 ```
-into into the Command Prompt Window. This should look like this:
+into the Command Prompt Window. This should currently look like this:
 
 ![](imgs/6_install_seaborn.png)
+
+We need to open a second Command Prompt Window to install new packages. While doing so, you can leave the first window open.
+
+![](imgs/6_install_seaborn_2.png)
 
 Conda will ask you again for confirmation (`Enter`) to proceed with the installation. If you type `N` + `Enter`, the operation will be canceled. 
 If you want to install a specific version of a package you can do it as shown here: 
 ```json
-mamba install <package name>=version -c conda-forge 
+conda install <package name>=version 
 ```
-It is considered good practice to write down the versions you are using to ensure compatibility between packages and to trace bugs. For further information see also the mamba user guide [here](https://mamba.readthedocs.io/en/latest/user_guide/mamba.html#mamba). 
+It is considered good practice to write down the versions you are using to ensure compatibility between packages and to trace bugs. For further information see also the conda user guide [here](https://docs.readthedocs.io/en/stable/guides/conda.html). 
 
 
 ## Deactivation or Deletion of an environment 
 If you want to deactivate the environment you just need to type: 
 ```json
-mamba deactivate 
+conda deactivate 
 ```
 If you screwed up your environment and want to delete it, you can type:
 ```json
-mamba env remove -n nameofproject_env
+conda env remove -n nameofproject_env
 ```
 
 ---

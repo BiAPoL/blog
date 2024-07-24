@@ -10,6 +10,11 @@ If you have feedback or suggestions, if spotted a typo, broken link or misleadin
 
 ## Recent blog posts
 
+### [Getting started with Miniforge and Python](mara_lampert/getting_started_with_miniforge_and_python/readme)]
+
+<small>[Mara Lampert](mara_lampert/readme), July 8th, 2024</small><br>
+<img src="images/package_manager.jpeg" width="100" align="right"><p>This post will help you to get started with Python using Miniforge. More precisely, you will learn how to install Miniforge, how to create and use conda environments and you will get to know some important packages for bio image analysis.</p>
+
 ### [Installation of Elephant Server on Windows](stefan_hahmann/elephant_server_installation_windows/readme)
 
 <small>[Stefan Hahmann](stefan_hahmann/readme), April 24th, 2024</small><br>
@@ -24,10 +29,6 @@ If you have feedback or suggestions, if spotted a typo, broken link or misleadin
 
 <small>[Johannes Soltwedel](johannes_mueller/readme), Mai 12th, 2023</small><br>
 <img src="images/qt_logo.png" width="100" align="right"><p>This blog post will give you a quick introduction on how to combine two great tools for the creation of graphical user interfaces in napari: The [Qt Designer](https://doc.qt.io/qt-6/qtdesigner-manual.html) and [magicgui](https://pyapp-kit.github.io/magicgui/). </p>
-
-### [Getting started with Miniforge and Python](mara_lampert/getting_started_with_mambaforge_and_python/readme)
-<small>[Mara Lampert](mara_lampert/readme), January 26th, 2023</small><br>
-<img src="images/mamba_logo.png" width="100" align="right"><p>This post will help you to get started with Python using Miniforge. More precisely, you will learn how to install Miniforge, how to create and use conda environments and know about some very important packages. </p>
 
 Find more blog posts on the left sidebar.
 Enjoy reading!
