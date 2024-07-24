@@ -5,7 +5,7 @@
 ## Introduction to Python and Miniforge 
 This blog post explains what Python and [Conda](https://docs.readthedocs.io/en/stable/guides/conda.html) / Miniforge is, and how you can download and setup it on your computer. We will also go through some steps how to get started with Bio-image Analysis. 
 
-> **_Note:_** This is an update of a [previous Blogpost](https://biapol.github.io/blog/johannes_mueller/anaconda_getting_started/Readme.html) written by [Johannes](https://biapol.github.io/blog/johannes_mueller/Readme.html). 
+> **_Note:_** This is an update of a [previous Blogpost](https://biapol.github.io/blog/mara_lampert/getting_started_with_mambaforge_and_python/readme.html). 
 
 
 **Why do we need Conda to use Python?**
