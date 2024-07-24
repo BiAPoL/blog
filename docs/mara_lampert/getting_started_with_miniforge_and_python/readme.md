@@ -15,7 +15,7 @@ __Python__ is a programming language which is easy to learn and very important i
 __Conda__ is a __package manager__ which can be used with Python. It is a software allowing to install other software. Read more about Conda [here](https://focalplane.biologists.com/2022/12/08/managing-scientific-python-environments-using-conda-mamba-and-friends/). 
 
 ## Installation of Miniforge 
-Here, I am going to show how to install Miniforge. It comes with everything you need and downloads it from a community-driven open source software provider called  [conda-forge](https://conda-forge.org/). 
+Here, I am going to show how to install Miniforge. It comes with everything you need and downloads packages from a community-driven open source software provider called  [conda-forge](https://conda-forge.org/). 
 First, you pick the Miniforge installer for your operating system [here](https://github.com/conda-forge/miniforge):
 
 ![](imgs/1_miniforge_download_12.png)
