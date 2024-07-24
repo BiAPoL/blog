@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Getting started with Miniforge* and Python &#8212; BiA-PoL blog</title>
+    <title>Getting started with Miniforge and Python &#8212; BiA-PoL blog</title>
   
   
   
@@ -61,11 +61,9 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'mara_lampert/getting_started_with_mambaforge_and_python/readme';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'mara_lampert/getting_started_with_miniforge_and_python/readme';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Using GPU-accelerated image processing on the TUD HPC cluster" href="../../till_korten/devbio-napari_cluster/readme.html" />
-    <link rel="prev" title="Best of both worlds: Combining Qt Designer and magicgui" href="../../johannes_mueller/qtdesigner_and_magicgui/Readme.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -157,11 +155,11 @@ const thebe_selector_output = ".output, .cell_output"
             </li>
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Blog Posts</span></p>
-<ul class="current nav bd-sidenav">
+<ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../stefan_hahmann/elephant_server_installation_windows/readme.html">Installation of Elephant Server on Windows</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../stefan_hahmann/github_desktop_jupyter_notebook/readme.html">Running bio image analysis workflows on your machine</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../johannes_mueller/qtdesigner_and_magicgui/Readme.html">Best of both worlds: Combining Qt Designer and magicgui</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Getting started with Miniforge* and Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started_with_mambaforge_and_python/readme.html">Getting started with Miniforge* and Python</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../till_korten/devbio-napari_cluster/readme.html">Using GPU-accelerated image processing on the TUD HPC cluster</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../till_korten/devbio-napari_cluster_setup/readme.html">Setting up GPU-accelerated image processing on the TUD HPC cluster</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../marcelo_zoccoler/omero_scripts/readme.html">Running Deep-Learning Scripts in the BiA-PoL Omero Server</a></li>
@@ -279,7 +277,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/BiAPoL/blog/issues/new?title=Issue%20on%20page%20%2Fmara_lampert/getting_started_with_mambaforge_and_python/readme.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/BiAPoL/blog/issues/new?title=Issue%20on%20page%20%2Fmara_lampert/getting_started_with_miniforge_and_python/readme.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -309,7 +307,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="../../_sources/mara_lampert/getting_started_with_mambaforge_and_python/readme.md" target="_blank"
+      <li><a href="../../_sources/mara_lampert/getting_started_with_miniforge_and_python/readme.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -391,7 +389,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Getting started with Miniforge* and Python</h1>
+    <h1>Getting started with Miniforge and Python</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -407,7 +405,7 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#installation-on-mac-os">Installation on Mac OS</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-mamba">Using Mamba</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-conda">Using Conda</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-a-new-environment">Creating a new environment</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#starting-napari">Starting napari</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#working-with-jupyter-lab">Working with Jupyter lab</a></li>
@@ -425,53 +423,48 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section id="getting-started-with-miniforge-and-python">
-<h1>Getting started with Miniforge* and Python<a class="headerlink" href="#getting-started-with-miniforge-and-python" title="Permalink to this heading">#</a></h1>
-<p><a class="reference internal" href="../readme.html"><span class="doc std std-doc">Mara Lampert</span></a>, January 26th, 2023</p>
-<p>updated by <a class="reference internal" href="../../stefan_hahmann/readme.html"><span class="doc std std-doc">Stefan Hahmann</span></a>, December 18th, 2023</p>
-<blockquote>
-<div><p><strong><em>NOTE:</em></strong>  The instructions in this blog post are outdated. <a class="reference external" href="https://biapol.github.io/blog/mara_lampert/getting_started_with_miniforge_and_python/Readme.html">Read the updated instructions</a>.</p>
-</div></blockquote>
-<p><code class="docutils literal notranslate"><span class="pre">(*)</span></code> After the release of Miniforge 23.3.1 in August 2023, Miniforge and Mambaforge are essentially identical. The only difference is the name of the installer and subsequently the default installation path.</p>
+<h1>Getting started with Miniforge and Python<a class="headerlink" href="#getting-started-with-miniforge-and-python" title="Permalink to this heading">#</a></h1>
+<p><a class="reference internal" href="../readme.html"><span class="doc std std-doc">Mara Lampert</span></a>, July 8th, 2024</p>
 <section id="introduction-to-python-and-miniforge">
 <h2>Introduction to Python and Miniforge<a class="headerlink" href="#introduction-to-python-and-miniforge" title="Permalink to this heading">#</a></h2>
-<p>This blog post explains what Python and <a class="reference external" href="https://mamba.readthedocs.io/en/latest/installation.html">Mamba</a> / Miniforge is, and how you can download and setup it on your computer. We will also go through some steps how to get started with Bio-image Analysis.</p>
+<p>This blog post explains what Python and <a class="reference external" href="https://docs.readthedocs.io/en/stable/guides/conda.html">Conda</a> / Miniforge is, and how you can download and setup it on your computer. We will also go through some steps how to get started with Bio-image Analysis.</p>
 <blockquote>
-<div><p><strong><em>Note:</em></strong> This is an update of a <a class="reference external" href="https://biapol.github.io/blog/johannes_mueller/anaconda_getting_started/">previous Blogpost</a> written by Johannes.</p>
+<div><p><strong><em>Note:</em></strong> This is an update of a <a class="reference external" href="https://biapol.github.io/blog/mara_lampert/getting_started_with_mambaforge_and_python/readme.html">previous Blogpost</a>.</p>
 </div></blockquote>
-<p><strong>Why do we need Mamba to use Python?</strong></p>
+<p><strong>Why do we need Conda to use Python?</strong></p>
 <p><strong>Python</strong> is a programming language which is easy to learn and very important in scientific data analysis nowadays.</p>
-<p><strong>Mamba</strong> is a <strong>package manager</strong> which can be used with Python. It is a software allowing to install other software. Read more about Mamba <a class="reference external" href="https://focalplane.biologists.com/2022/12/08/managing-scientific-python-environments-using-conda-mamba-and-friends/">here</a>.</p>
+<p><strong>Conda</strong> is a <strong>package manager</strong> which can be used with Python. It is a software allowing to install other software. Read more about Conda <a class="reference external" href="https://focalplane.biologists.com/2022/12/08/managing-scientific-python-environments-using-conda-mamba-and-friends/">here</a>.</p>
 </section>
 <section id="installation-of-miniforge">
 <h2>Installation of Miniforge<a class="headerlink" href="#installation-of-miniforge" title="Permalink to this heading">#</a></h2>
-<p>Here, I am going to show how to install Miniforge. It comes with everything you need and downloads it from a community-driven open source software provider called  <a class="reference external" href="https://conda-forge.org/">conda-forge</a>.
+<p>Here, I am going to show how to install Miniforge. It comes with everything you need and downloads packages from a community-driven open source software provider called  <a class="reference external" href="https://conda-forge.org/">conda-forge</a>.
 First, you pick the Miniforge installer for your operating system <a class="reference external" href="https://github.com/conda-forge/miniforge">here</a>:</p>
-<p><img alt="" src="../../_images/1_mambaforge_download_12.png" /></p>
+<p><img alt="" src="../../_images/1_miniforge_download_12.png" /></p>
 <p>All Mac OS users can now jump <span class="xref myst">here</span>.</p>
 <section id="installation-on-windows">
 <h3>Installation on Windows<a class="headerlink" href="#installation-on-windows" title="Permalink to this heading">#</a></h3>
 <p>When Miniforge finished downloading, follow these steps during the installation:</p>
 <p>Click <code class="docutils literal notranslate"><span class="pre">Next</span></code>:</p>
-<p><img alt="" src="../../_images/2_miniforge_install_1.png" /></p>
+<p><img alt="" src="../../_images/2_miniforge_install_11.png" /></p>
 <p>Click <code class="docutils literal notranslate"><span class="pre">I</span> <span class="pre">Agree</span></code>:</p>
-<p><img alt="" src="../../_images/2_miniforge_install_2.png" /></p>
+<p><img alt="" src="../../_images/2_miniforge_install_21.png" /></p>
 <p>Now you have the option to either install Miniforge3 for <code class="docutils literal notranslate"><span class="pre">Just</span> <span class="pre">Me</span></code> or for <code class="docutils literal notranslate"><span class="pre">All</span> <span class="pre">Users</span></code>. We highly recommend picking <code class="docutils literal notranslate"><span class="pre">Just</span> <span class="pre">Me</span></code>, as the other option requires Administrator priviledges and it can make installing packages more difficult later on.</p>
-<p><img alt="" src="../../_images/2_miniforge_install_3.png" /></p>
+<p><img alt="" src="../../_images/2_miniforge_install_31.png" /></p>
 <p>Install Miniforge3 into the default location:</p>
-<p><img alt="" src="../../_images/2_miniforge_install_4.png" /></p>
-<p>In the next step we recommend to additionally tick <code class="docutils literal notranslate"><span class="pre">Add</span> <span class="pre">Miniforge3</span> <span class="pre">to</span> <span class="pre">my</span> <span class="pre">Path</span></code>. If you don’t add it to the <a class="reference external" href="https://janelbrandon.medium.com/understanding-the-path-variable-6eae0936e976">Path</a>, Conda and Mamba would not work from any Terminal Window. Click <code class="docutils literal notranslate"><span class="pre">Install</span></code></p>
-<p><img alt="" src="../../_images/2_miniforge_install_5.png" /></p>
+<p><img alt="" src="../../_images/2_miniforge_install_41.png" /></p>
+<p>In the next step we recommend to additionally tick <code class="docutils literal notranslate"><span class="pre">Add</span> <span class="pre">Miniforge3</span> <span class="pre">to</span> <span class="pre">my</span> <span class="pre">Path</span></code>. If you don’t add it to the <a class="reference external" href="https://janelbrandon.medium.com/understanding-the-path-variable-6eae0936e976">Path</a>, Conda would not work from any Terminal Window. Click <code class="docutils literal notranslate"><span class="pre">Install</span></code></p>
+<p><img alt="" src="../../_images/2_miniforge_install_51.png" /></p>
 <p>Click <code class="docutils literal notranslate"><span class="pre">Next</span></code> at the next window and you arrive here. Click <code class="docutils literal notranslate"><span class="pre">Finish</span></code> to exit the setup:</p>
-<p><img alt="" src="../../_images/2_miniforge_install_7.png" /></p>
+<p><img alt="" src="../../_images/2_miniforge_install_71.png" /></p>
 <p>Great! You are ready to start coding! 👍
-To see how to use Mamba, jump <span class="xref myst">here</span></p>
+To see how to use Conda, jump <span class="xref myst">here</span></p>
 </section>
 <section id="installation-on-mac-os">
 <h3>Installation on Mac OS<a class="headerlink" href="#installation-on-mac-os" title="Permalink to this heading">#</a></h3>
 <p>First, you open your Terminal. You can find it using the Spotlight Search and typing <em>Terminal</em> like this:</p>
-<p><img alt="" src="../../_images/2_mac_install_1.png" /></p>
+<p><img alt="" src="../../_images/2_mac_install_11.png" /></p>
 <p>The opened Terminal should look like this:</p>
-<p><img alt="" src="../../_images/2_mac_install_2.png" /></p>
+<p><img alt="" src="../../_images/2_mac_install_21.png" /></p>
 <p>Then type these two lines to start the installation</p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span>curl -L -O &quot;https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-$(uname)-$(uname -m).sh&quot;
 </pre></div>
@@ -486,18 +479,18 @@ To see how to use Mamba, jump <span class="xref myst">here</span></p>
 <li><p>confirm the installation path with <code class="docutils literal notranslate"><span class="pre">Enter</span></code></p></li>
 <li><p>IMPORTANT when asked if you want to initialize Miniforge, type <code class="docutils literal notranslate"><span class="pre">yes</span></code> like here:</p></li>
 </ol>
-<p><img alt="" src="../../_images/2_mac_install_3.png" /></p>
+<p><img alt="" src="../../_images/2_mac_install_31.png" /></p>
 <p>When you see this:</p>
-<p><img alt="" src="../../_images/2_mac_install_4.png" /></p>
+<p><img alt="" src="../../_images/2_mac_install_41.png" /></p>
 <p>you are finished! Close and reopen the Terminal now. Happy coding! 👍</p>
 </section>
 </section>
-<section id="using-mamba">
-<h2>Using Mamba<a class="headerlink" href="#using-mamba" title="Permalink to this heading">#</a></h2>
-<p>Now we use Mamba by opening the command line. If you are not familiar with the command line yet, you can check out Roberts tutorial <a class="reference external" href="https://www.youtube.com/watch?v=MOEPe9TGBK0&amp;t=1146s">here</a>.</p>
+<section id="using-conda">
+<h2>Using Conda<a class="headerlink" href="#using-conda" title="Permalink to this heading">#</a></h2>
+<p>Now we use Conda by opening the command line. If you are not familiar with the command line yet, you can check out Roberts tutorial <a class="reference external" href="https://www.youtube.com/watch?v=MOEPe9TGBK0&amp;t=1146s">here</a>.</p>
 <p>To open the Command Prompt in Windows, press the <code class="docutils literal notranslate"><span class="pre">Windows</span> <span class="pre">button</span></code>, type <em>cmd</em> and press <code class="docutils literal notranslate"><span class="pre">Enter</span></code>. The Mac OS users should already know how to open the Terminal ;-)</p>
 <p>When you open the command line, it should look like this:</p>
-<p><img alt="" src="../../_images/3_envs_1.png" /></p>
+<p><img alt="" src="../../_images/3_envs_11.png" /></p>
 <p>You are now located in the base environment. It is the default environment and includes beside a Python installation the core Conda libraries and dependencies.</p>
 <blockquote>
 <div><p><strong><em>Strong recommendation:</em></strong> Never install any packages into the base environment!</p>
@@ -507,20 +500,21 @@ To see how to use Mamba, jump <span class="xref myst">here</span></p>
 <section id="creating-a-new-environment">
 <h2>Creating a new environment<a class="headerlink" href="#creating-a-new-environment" title="Permalink to this heading">#</a></h2>
 <p>You can create a new environment typing the following command into the Command Prompt:</p>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span>mamba create -n my_first_env devbio-napari python=3.9 pyqt -c conda-forge
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span>conda create -n my_first_env devbio-napari python=3.9 pyqt 
+
 </pre></div>
 </div>
 <p>This will create a new environment with the name <code class="docutils literal notranslate"><span class="pre">my_first_env</span></code> and with Python version 3.9 installed. Furthermore, the latest version of devbio-napari will be installed in this environment, too. Devbio-napari is a collection of Python libraries and Napari plugins maintained by the BiAPoL team, that are useful for processing fluorescent microscopy image data.
-Conda will ask you about your permission to download the needed packages with <code class="docutils literal notranslate"><span class="pre">Proceed</span> <span class="pre">[y]/n</span></code>. By hitting <code class="docutils literal notranslate"><span class="pre">Enter</span></code> you confirm this and mamba will download and install the necessary packages.</p>
+Conda will ask you about your permission to download the needed packages with <code class="docutils literal notranslate"><span class="pre">Proceed</span> <span class="pre">[y]/n</span></code>. By hitting <code class="docutils literal notranslate"><span class="pre">Enter</span></code> you confirm this and conda will download and install the necessary packages.</p>
 <blockquote>
 <div><p><strong><em>Recommendation:</em></strong> Create one conda environment for every project you are working on. This allows you to keep an overview on the needed packages for the project, maintaining them and ensure compatibility of the packages.</p>
 </div></blockquote>
 <p>To activate the environment, type:</p>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span>mamba activate my_first_env
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span>conda activate my_first_env
 </pre></div>
 </div>
 <p>This should lead to the prefix my_first_env appearing at the beginning of the command line:</p>
-<p><img alt="" src="../../_images/3_envs_2.png" /></p>
+<p><img alt="" src="../../_images/3_envs_21.png" /></p>
 </section>
 <section id="starting-napari">
 <h2>Starting napari<a class="headerlink" href="#starting-napari" title="Permalink to this heading">#</a></h2>
@@ -529,7 +523,7 @@ Conda will ask you about your permission to download the needed packages with <c
 </pre></div>
 </div>
 <p>The opened window in napari should look like this and show the <a class="reference external" href="https://github.com/haesleinhuepf/napari-assistant">napari-assistant</a>, a panel with common image processing operations.</p>
-<p><img alt="" src="../../_images/4_devbio_napari_1.png" /></p>
+<p><img alt="" src="../../_images/4_devbio_napari_11.png" /></p>
 <p>In case it does not look like this, have a look <a class="reference external" href="https://pypi.org/project/devbio-napari/">here</a>.</p>
 </section>
 <section id="working-with-jupyter-lab">
@@ -539,52 +533,54 @@ Conda will ask you about your permission to download the needed packages with <c
 </pre></div>
 </div>
 <p>into the command line. A new browser window will open. You can start your first notebook clicking this icon:</p>
-<a class="reference internal image-reference" href="../../_images/5_jupyter_1.png"><img alt="../../_images/5_jupyter_1.png" src="../../_images/5_jupyter_1.png" style="width: 200px;" /></a>
+<a class="reference internal image-reference" href="../../_images/5_jupyter_11.png"><img alt="../../_images/5_jupyter_11.png" src="../../_images/5_jupyter_11.png" style="width: 200px;" /></a>
 <p>The header of the created notebook will look like this:</p>
-<p><img alt="" src="../../_images/5_jupyter_2.png" /></p>
+<p><img alt="" src="../../_images/5_jupyter_21.png" /></p>
 <p>Finally, test your notebook by typing</p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span>print(&#39;Hello World!&#39;)
 </pre></div>
 </div>
 <p>You can run the line by pressing <code class="docutils literal notranslate"><span class="pre">Shift</span></code> + <code class="docutils literal notranslate"><span class="pre">Enter</span></code>. Which should you give this output:</p>
-<p><img alt="" src="../../_images/5_jupyter_3.png" /></p>
+<p><img alt="" src="../../_images/5_jupyter_31.png" /></p>
 <p>Now we can import libraries into out notebook like this:</p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span>import seaborn as sns
 </pre></div>
 </div>
 <p>We can execute the cell typing <code class="docutils literal notranslate"><span class="pre">Shift</span></code> + <code class="docutils literal notranslate"><span class="pre">Enter</span></code> and receive this error message:</p>
-<p><img alt="" src="../../_images/5_jupyter_4.png" /></p>
+<p><img alt="" src="../../_images/5_jupyter_41.png" /></p>
 <p>The error message tells us that seaborn is not yet installed in our conda environment, but we will change this now.</p>
 </section>
 <section id="installing-new-packages">
 <h2>Installing new packages<a class="headerlink" href="#installing-new-packages" title="Permalink to this heading">#</a></h2>
 <p>If you want to install new packages while working in your Jupyter notebook, you can</p>
 <ol class="arabic simple">
-<li><p>Open a new Command Prompt Window</p></li>
+<li><p>Open a new Command Prompt Window (While leaving the other Command Prompt Window open)</p></li>
 <li><p>Activate your current environment</p></li>
-<li><p>Install packages while specializing the channel with <code class="docutils literal notranslate"><span class="pre">-c</span> <span class="pre">conda-forge</span></code></p></li>
+<li><p>Install packages</p></li>
 </ol>
 <p>For example if you want to install seaborn, you would need to type:</p>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span>mamba install seaborn -c conda-forge 
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span>conda install seaborn 
 </pre></div>
 </div>
-<p>into into the Command Prompt Window. This should look like this:</p>
-<p><img alt="" src="../../_images/6_install_seaborn.png" /></p>
+<p>into the Command Prompt Window. This should currently look like this:</p>
+<p><img alt="" src="../../_images/6_install_seaborn1.png" /></p>
+<p>We need to open a second Command Prompt Window to install new packages. While doing so, you can leave the first window open.</p>
+<p><img alt="" src="../../_images/6_install_seaborn_2.png" /></p>
 <p>Conda will ask you again for confirmation (<code class="docutils literal notranslate"><span class="pre">Enter</span></code>) to proceed with the installation. If you type <code class="docutils literal notranslate"><span class="pre">N</span></code> + <code class="docutils literal notranslate"><span class="pre">Enter</span></code>, the operation will be canceled.
 If you want to install a specific version of a package you can do it as shown here:</p>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span>mamba install &lt;package name&gt;=version -c conda-forge 
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span>conda install &lt;package name&gt;=version 
 </pre></div>
 </div>
-<p>It is considered good practice to write down the versions you are using to ensure compatibility between packages and to trace bugs. For further information see also the mamba user guide <a class="reference external" href="https://mamba.readthedocs.io/en/latest/user_guide/mamba.html#mamba">here</a>.</p>
+<p>It is considered good practice to write down the versions you are using to ensure compatibility between packages and to trace bugs. For further information see also the conda user guide <a class="reference external" href="https://docs.readthedocs.io/en/stable/guides/conda.html">here</a>.</p>
 </section>
 <section id="deactivation-or-deletion-of-an-environment">
 <h2>Deactivation or Deletion of an environment<a class="headerlink" href="#deactivation-or-deletion-of-an-environment" title="Permalink to this heading">#</a></h2>
 <p>If you want to deactivate the environment you just need to type:</p>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span>mamba deactivate 
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span>conda deactivate 
 </pre></div>
 </div>
 <p>If you screwed up your environment and want to delete it, you can type:</p>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span>mamba env remove -n nameofproject_env
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span>conda env remove -n nameofproject_env
 </pre></div>
 </div>
 <hr class="docutils" />
@@ -606,7 +602,7 @@ If you want to install a specific version of a package you can do it as shown he
         },
         kernelOptions: {
             name: "python3",
-            path: "./mara_lampert/getting_started_with_mambaforge_and_python"
+            path: "./mara_lampert/getting_started_with_miniforge_and_python"
         },
         predefinedOutput: true
     }
@@ -624,24 +620,6 @@ If you want to install a specific version of a package you can do it as shown he
   
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
-    <a class="left-prev"
-       href="../../johannes_mueller/qtdesigner_and_magicgui/Readme.html"
-       title="previous page">
-      <i class="fa-solid fa-angle-left"></i>
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Best of both worlds: Combining Qt Designer and magicgui</p>
-      </div>
-    </a>
-    <a class="right-next"
-       href="../../till_korten/devbio-napari_cluster/readme.html"
-       title="next page">
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Using GPU-accelerated image processing on the TUD HPC cluster</p>
-      </div>
-      <i class="fa-solid fa-angle-right"></i>
-    </a>
 </div></div>
   
 </div>
@@ -666,7 +644,7 @@ If you want to install a specific version of a package you can do it as shown he
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#installation-on-mac-os">Installation on Mac OS</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-mamba">Using Mamba</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-conda">Using Conda</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-a-new-environment">Creating a new environment</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#starting-napari">Starting napari</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#working-with-jupyter-lab">Working with Jupyter lab</a></li>
