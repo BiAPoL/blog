@@ -3,7 +3,7 @@
 
 updated by [Stefan Hahmann](../../stefan_hahmann/readme), December 18th, 2023
 
-> **_NOTE:_**  The instructions in this blog post are outdated. [Read the updated instructions](https://biapol.github.io/blog/mara_lampert/getting_started_with_miniforge_and_python/Readme.html).
+> **_NOTE:_**  The instructions in this blog post are outdated. [Read the updated instructions](https://biapol.github.io/blog/mara_lampert/getting_started_with_miniforge_and_python/readme.html).
 
 `(*)` After the release of Miniforge 23.3.1 in August 2023, Miniforge and Mambaforge are essentially identical. The only difference is the name of the installer and subsequently the default installation path.
 
