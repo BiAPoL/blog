@@ -417,7 +417,7 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section id="background-subtraction">
+  <section class="tex2jax_ignore mathjax_ignore" id="background-subtraction">
 <h1>Background Subtraction<a class="headerlink" href="#background-subtraction" title="Permalink to this heading">#</a></h1>
 <p>In the <a class="reference external" href="https://biapol.github.io/blog/02_intro_to_skimage">previous blog post</a> we saw how background subtraction can improve segmentation substantially. We will now take a more in depth look at how background subtraction works by showing the top-hat filter and Difference of Gaussian (DoG) filter, which both can achieve background subtraction. In general, we want to use background subtraction if there is a sharp signal (high localised intensity) we want to isolate from moderate signal that is evenly distributed in the background. Some simple functions allow us to find the background image and subtract it from our original image, only leaving the signals we want to isolate.</p>
 <section id="top-hat-filter">
