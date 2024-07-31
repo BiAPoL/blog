@@ -31,3 +31,5 @@ html:
 parse:
   myst_enable_extensions:
     - html_image
+    - dollarmath
+    - amsmath
