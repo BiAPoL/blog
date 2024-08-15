@@ -1,3 +1,5 @@
+(ref:miniforge_python)=
+
 # Getting started with Miniforge and Python 
 [Mara Lampert](../readme), July 8th, 2024
 
