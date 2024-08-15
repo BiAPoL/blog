@@ -6,7 +6,7 @@ root: intro
 parts:
 - caption: Blog Posts
   chapters:
-  # Add new chapters here (recent first)
+  - file: johannes_mueller/yolo_from_omero/train_yolo
   - file: stefan_hahmann/elephant_server_installation_windows/readme
   - file: stefan_hahmann/github_desktop_jupyter_notebook/readme
   - file: johannes_mueller/qtdesigner_and_magicgui/Readme
