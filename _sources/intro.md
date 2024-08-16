@@ -10,7 +10,7 @@ If you have feedback or suggestions, if spotted a typo, broken link or misleadin
 
 ## Recent blog posts
 
-### [Getting started with Miniforge and Python](mara_lampert/getting_started_with_miniforge_and_python/readme)]
+### [Getting started with Miniforge and Python](mara_lampert/getting_started_with_miniforge_and_python/readme)
 
 <small>[Mara Lampert](mara_lampert/readme), July 8th, 2024</small><br>
 <img src="images/package_manager.jpeg" width="100" align="right"><p>This post will help you to get started with Python using Miniforge. More precisely, you will learn how to install Miniforge, how to create and use conda environments and you will get to know some important packages for bio image analysis.</p>
