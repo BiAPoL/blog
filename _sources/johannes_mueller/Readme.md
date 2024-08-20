@@ -1,4 +1,4 @@
-# Johannes Müller
+# Johannes Soltwedel
 
 <img src="../images/johannes_mueller.jpg" alt="pol" width="150"/>
 
@@ -17,6 +17,7 @@ educate others to empower them to develop their own workflows and develop new me
 * [Advanced GUIs with Qt designer](entry_user_interf2/Readme)
 * [Automated package documentation with Sphinx](entry_sphinx/Readme)
 * [Getting started with Python and Anaconda](anaconda_getting_started/Readme)
+* [Training a yolo model on an OMERO dataset](ref:yolo_omero)
 
 ## Links
 * [BiA-PoL group website](https://physics-of-life.tu-dresden.de/en/research/technology-development-groups/bio-image-analysis)

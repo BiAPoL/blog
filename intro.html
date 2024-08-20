@@ -64,7 +64,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'intro';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Installation of Elephant Server on Windows" href="stefan_hahmann/elephant_server_installation_windows/readme.html" />
+    <link rel="next" title="Training a (YOLO) object detector using data from OMERO" href="johannes_mueller/yolo_from_omero/train_yolo.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -157,6 +157,8 @@ const thebe_selector_output = ".output, .cell_output"
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Blog Posts</span></p>
 <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="johannes_mueller/yolo_from_omero/train_yolo.html">Training a (YOLO) object detector using data from OMERO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mara_lampert/getting_started_with_miniforge_and_python/readme.html">Getting started with Miniforge and Python</a></li>
 <li class="toctree-l1"><a class="reference internal" href="stefan_hahmann/elephant_server_installation_windows/readme.html">Installation of Elephant Server on Windows</a></li>
 <li class="toctree-l1"><a class="reference internal" href="stefan_hahmann/github_desktop_jupyter_notebook/readme.html">Running bio image analysis workflows on your machine</a></li>
 <li class="toctree-l1"><a class="reference internal" href="johannes_mueller/qtdesigner_and_magicgui/Readme.html">Best of both worlds: Combining Qt Designer and magicgui</a></li>
@@ -197,7 +199,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="stefan_hahmann/readme.html">Stefan Hahmann</a></li>
 
 
-<li class="toctree-l2"><a class="reference internal" href="johannes_mueller/Readme.html">Johannes Müller</a></li>
+<li class="toctree-l2"><a class="reference internal" href="johannes_mueller/Readme.html">Johannes Soltwedel</a></li>
 <li class="toctree-l2"><a class="reference internal" href="marcelo_zoccoler/readme.html">Marcelo Zoccoler</a></li>
 
 
@@ -401,7 +403,8 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#recent-blog-posts">Recent blog posts</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-started-with-miniforge-and-python"><span class="xref myst">Getting started with Miniforge and Python</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#training-a-yolo-model-on-an-omero-dataset"><span class="xref myst">Training a yolo model on an OMERO dataset</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-started-with-miniforge-and-python"><span class="xref myst">Getting started with Miniforge and Python</span>]</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#installation-of-elephant-server-on-windows"><span class="xref myst">Installation of Elephant Server on Windows</span></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#running-bio-image-analysis-workflows-on-your-machine"><span class="xref myst">Running bio image analysis workflows on your machine</span></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#best-of-both-worlds-combining-qt-designer-and-magicgui"><span class="xref myst">Best of both worlds: Combining Qt Designer and magicgui</span></a></li>
@@ -429,8 +432,13 @@ We blog about image data science, knowledge exchange and research data managemen
 <a class="reference external" href="https://github.com/BiAPoL/blog/pulls">pull request</a> so that we can fix it. Contributions are very welcome.</p>
 <section id="recent-blog-posts">
 <h2>Recent blog posts<a class="headerlink" href="#recent-blog-posts" title="Permalink to this heading">#</a></h2>
+<section id="training-a-yolo-model-on-an-omero-dataset">
+<h3><a class="reference internal" href="johannes_mueller/yolo_from_omero/train_yolo.html#ref-yolo-omero"><span class="std std-ref">Training a yolo model on an OMERO dataset</span></a><a class="headerlink" href="#training-a-yolo-model-on-an-omero-dataset" title="Permalink to this heading">#</a></h3>
+<p><small><span class="xref myst">Johannes Soltwedel</span>, August 12th, 2024</small><br>
+<a class="reference internal" href="_images/yolo_dataset.PNG"><img alt="_images/yolo_dataset.PNG" class="align-right" src="_images/yolo_dataset.PNG" style="width: 10%;" /></a><p>YOLO is a powerful tool for object detection and thus, obviously interesting in bio-image analysis. This blog post will show you how to train a YOLO model on an OMERO dataset.</p></p>
+</section>
 <section id="getting-started-with-miniforge-and-python">
-<h3><a class="reference internal" href="mara_lampert/getting_started_with_miniforge_and_python/readme.html"><span class="doc std std-doc">Getting started with Miniforge and Python</span></a><a class="headerlink" href="#getting-started-with-miniforge-and-python" title="Permalink to this heading">#</a></h3>
+<h3><a class="reference internal" href="mara_lampert/getting_started_with_miniforge_and_python/readme.html"><span class="doc std std-doc">Getting started with Miniforge and Python</span></a>]<a class="headerlink" href="#getting-started-with-miniforge-and-python" title="Permalink to this heading">#</a></h3>
 <p><small><a class="reference internal" href="mara_lampert/readme.html"><span class="doc std std-doc">Mara Lampert</span></a>, July 8th, 2024</small><br>
 <a class="reference internal" href="_images/package_manager.jpeg"><img alt="_images/package_manager.jpeg" class="align-right" src="_images/package_manager.jpeg" style="width: 100px;" /></a><p>This post will help you to get started with Python using Miniforge. More precisely, you will learn how to install Miniforge, how to create and use conda environments and you will get to know some important packages for bio image analysis.</p></p>
 </section>
@@ -496,11 +504,11 @@ Enjoy reading!</p>
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="right-next"
-       href="stefan_hahmann/elephant_server_installation_windows/readme.html"
+       href="johannes_mueller/yolo_from_omero/train_yolo.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Installation of Elephant Server on Windows</p>
+        <p class="prev-next-title">Training a (YOLO) object detector using data from OMERO</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -523,7 +531,8 @@ Enjoy reading!</p>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#recent-blog-posts">Recent blog posts</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-started-with-miniforge-and-python"><span class="xref myst">Getting started with Miniforge and Python</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#training-a-yolo-model-on-an-omero-dataset"><span class="xref myst">Training a yolo model on an OMERO dataset</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-started-with-miniforge-and-python"><span class="xref myst">Getting started with Miniforge and Python</span>]</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#installation-of-elephant-server-on-windows"><span class="xref myst">Installation of Elephant Server on Windows</span></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#running-bio-image-analysis-workflows-on-your-machine"><span class="xref myst">Running bio image analysis workflows on your machine</span></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#best-of-both-worlds-combining-qt-designer-and-magicgui"><span class="xref myst">Best of both worlds: Combining Qt Designer and magicgui</span></a></li>

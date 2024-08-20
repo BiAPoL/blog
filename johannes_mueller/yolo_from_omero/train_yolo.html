@@ -1,0 +1,1127 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Training a (YOLO) object detector using data from OMERO &#8212; BiA-PoL blog</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'johannes_mueller/yolo_from_omero/train_yolo';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Getting started with Miniforge and Python" href="../../mara_lampert/getting_started_with_miniforge_and_python/readme.html" />
+    <link rel="prev" title="Welcome!" href="../../intro.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/biapol_logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../../_static/biapol_logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    Welcome!
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Blog Posts</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Training a (YOLO) object detector using data from OMERO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mara_lampert/getting_started_with_miniforge_and_python/readme.html">Getting started with Miniforge and Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../stefan_hahmann/elephant_server_installation_windows/readme.html">Installation of Elephant Server on Windows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../stefan_hahmann/github_desktop_jupyter_notebook/readme.html">Running bio image analysis workflows on your machine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../qtdesigner_and_magicgui/Readme.html">Best of both worlds: Combining Qt Designer and magicgui</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mara_lampert/getting_started_with_mambaforge_and_python/readme.html">Getting started with Miniforge* and Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../till_korten/devbio-napari_cluster/readme.html">Using GPU-accelerated image processing on the TUD HPC cluster</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../till_korten/devbio-napari_cluster_setup/readme.html">Setting up GPU-accelerated image processing on the TUD HPC cluster</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../marcelo_zoccoler/omero_scripts/readme.html">Running Deep-Learning Scripts in the BiA-PoL Omero Server</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../marcelo_zoccoler/mini_sabbatical_rike/Readme.html">Mini-Sabbatical Experience at Bia-PoL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../anaconda_getting_started/Readme.html">Getting started with Anaconda and Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../entry_sphinx/Readme.html">Automated package documentation with Sphinx</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../entry_user_inter/Readme.html">Custom user interfaces for Python (Part 1)</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../entry_user_interf2/Readme.html">Custom user interfaces for Python (Part 2)</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../marcelo_zoccoler/entry_user_interf3/Readme.html">Custom user interfaces for Python (Part 3)</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../marcelo_zoccoler/entry_user_interf4/Readme.html">Custom user interfaces for Python (Part 4)</a></li>
+
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../marcelo_zoccoler/jamovi/jamovi.html">Jamovi: statistical analysis made visual and easy (powered with R)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../robert_haase/ms_build_tools/readme.html">Installing Microsoft buildtools on Windows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ryan_savill/principal_feature_analysis/readme.html">Principal Feature Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ryan_savill/03_background_subtraction/readme.html">Background Subtraction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ryan_savill/02_intro_to_skimage/readme.html">Introduction to Image Analysis Basics in Python with Scikit Image</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../robert_haase/stardist_gpu/readme.html">Using StarDist in napari with GPU-support in Windows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ryan_savill/01_intro_to_python/readme.html">Introduction to Using Python for Image Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../robert_haase/cupy_cucim/readme.html">GPU-accelerated image processing using cupy and cucim</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../robert_haase/browsing_idr/readme.html">Browsing the Open Microscopy Image Data Resource with Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../robert_haase/clesperanto_google_colab/readme.html">GPU-accelerated image processing in the cloud using Google Colab and clEsperanto</a></li>
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">About the Blog</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../robert_haase/why_we_blog/readme.html">Why we blog</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../people.html">BiA-PoL blog authors</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../mara_lampert/readme.html">Mara Lampert</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../stefan_hahmann/readme.html">Stefan Hahmann</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="../Readme.html">Johannes Soltwedel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../marcelo_zoccoler/readme.html">Marcelo Zoccoler</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="../../ryan_savill/readme.html">Ryan Savill</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../robert_haase/readme.html">Robert Haase</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../imprint.html">Imprint</a></li>
+
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/BiAPoL/blog" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/BiAPoL/blog/issues/new?title=Issue%20on%20page%20%2Fjohannes_mueller/yolo_from_omero/train_yolo.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/johannes_mueller/yolo_from_omero/train_yolo.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Training a (YOLO) object detector using data from OMERO</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#omero">OMERO</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#yolo">YOLO</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-started">Getting started</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-data-from-omero">Getting data from omero</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#annotation">Annotation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#training-the-model">Training the model</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#downloading-the-dataset">Downloading the dataset</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#training">Training</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tensorboard">Tensorboard</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluation">Evaluation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#applying-the-model">Applying the model</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#moving-the-data-back-to-omero">Moving the data back to OMERO</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#final-thoughts">Final thoughts</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#used-data">Used data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#licenses">Licenses</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-much-training-data-is-enough">How much training data is enough?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#usage-scenarios">Usage scenarios</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="training-a-yolo-object-detector-using-data-from-omero">
+<span id="ref-yolo-omero"></span><h1>Training a (YOLO) object detector using data from OMERO<a class="headerlink" href="#training-a-yolo-object-detector-using-data-from-omero" title="Permalink to this heading">#</a></h1>
+<p>In this tutorial, you will learn how to use OMERO and YOLO in conjunction to train an object detector and classifier. But first off, before we start - all data used in this tutorial is <a class="reference external" href="https://zenodo.org/records/13329153">available on Zenodo</a> under a CC-BY 4.0 license. Now to OMERO and YOLO - what are they and why are they useful?</p>
+<section id="omero">
+<h2>OMERO<a class="headerlink" href="#omero" title="Permalink to this heading">#</a></h2>
+<p><a class="reference external" href="https://www.openmicroscopy.org/omero/">OMERO</a> - short for <em>open microscopy environment remote objects</em> is a widely used data management platform for image data in the life sciences. It allows you to store, organize, and analyze your images in a secure and scalable way. OMERO is open-source and can be easily extended and integrated with other tools and software.</p>
+</section>
+<section id="yolo">
+<h2>YOLO<a class="headerlink" href="#yolo" title="Permalink to this heading">#</a></h2>
+<p><a class="reference external" href="https://docs.ultralytics.com/models/yolov10/">YOLO</a> - short for <em>you only look once</em> is a class of continuously evolving object detection algorithms. YOLO is known for its speed and accuracy and is widely used in computer vision applications. YOLO is open-source and has been implemented in many programming languages and frameworks. It can be used for a variety of applications such as object detection, object classification, tracking or pose estimation - but I think one of the most bread-and-butter applications is still object detection. Contrary to many common segmentation algorithms in bio-image analysis, it does not seek to classify every pixel, but rather to predict <em>bounding boxes</em> around objects of interest.</p>
+<p>This already brings forth one of the key advantages of using YOLO for bio-medical image segmentation, <em>especially</em> in instance segmentation problems: Pixel classification, without an additional post-processing step is unable to split pixels into different objects - YOLO does this very natively. A typical result of a YOLO model could look like this:</p>
+<img src="./imgs/image1.png" alt="YOLO result" style="width:50%;">
+<p style="text-align: left;">Images &copy; 2022 Johannes Soltwedel. All rights reserved.</p>
+</section>
+<section id="getting-started">
+<h2>Getting started<a class="headerlink" href="#getting-started" title="Permalink to this heading">#</a></h2>
+<p>It all starts with a fresh environment. If you don’t have Python installed on your machine installed yet, follow <a class="reference internal" href="../../mara_lampert/getting_started_with_miniforge_and_python/readme.html#ref-miniforge-python"><span class="std std-ref">this</span></a> tutorial by Mara Lampert to get everything up and running. You can omit the last step of the tutorial, as we will be creating a different environment.</p>
+<p>To do so, bring up your miniforge prompt and create a new environment:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>create<span class="w"> </span>-n<span class="w"> </span>omero-yolo<span class="w"> </span><span class="nv">python</span><span class="o">=</span><span class="m">3</span>.9<span class="w"> </span>ezomero<span class="w"> </span>tensorboard<span class="w"> </span>scikit-image<span class="w"> </span>scikit-learn<span class="w"> </span>tqdm<span class="w"> </span>ultralytics<span class="w"> </span>-c<span class="w"> </span>bioconda
+conda<span class="w"> </span>activate<span class="w"> </span>omero-yolo
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Conda or mamba? If you are working with a fresh python installation done according to <a class="reference internal" href="../../mara_lampert/getting_started_with_miniforge_and_python/readme.html#ref-miniforge-python"><span class="std std-ref">the tutorial</span></a>, then using conda will be fine. If you are using an older version and were used to mamba, you can use mamba instead of conda. The syntax is the same. You can upgrade your conda installation for conda to be as fast as mamba by following <a class="reference external" href="https://www.anaconda.com/blog/a-faster-conda-for-a-growing-community">these instructions</a>.</p>
+</div>
+<p>Since training this kind of model is using deep learning, we will need to use a CUDA-capable (NVIDIA-manufactured) graphics card. Unfortunately, this is a key requirement for this tutorial. To install the necessary packages (i.e., <a class="reference external" href="https://pytorch.org/get-started/locally/">pytorch</a>), run the following command:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>install<span class="w"> </span>pytorch<span class="w"> </span>torchvision<span class="w"> </span>pytorch-cuda<span class="o">=</span><span class="m">12</span>.4<span class="w"> </span>-c<span class="w"> </span>pytorch<span class="w"> </span>-c<span class="w"> </span>nvidia
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><em>Note</em>: The installation may differ depending on your OS or driver version. To make sure everything runs, update your drivers to the latest version and check out the pytorch-homepage for the <a class="reference external" href="https://pytorch.org/get-started/locally/">correct installation instructions</a>.</p>
+</div>
+</section>
+<section id="getting-data-from-omero">
+<h2>Getting data from omero<a class="headerlink" href="#getting-data-from-omero" title="Permalink to this heading">#</a></h2>
+<p>Now where does OMERO come into play? Essentially, OMERO can serve as a super-easy tool to do annotations on your images - you can even do so collaboratively. In this example, the data we will work with, looks like this:</p>
+<p><img alt="OMERO data overview" src="../../_images/image2.PNG" /></p>
+<p>…and this is just a small snippet of the data. The entire dataset comprises more than 1500 images of this kind. What exactly we are looking at is not very important, but the job we’ll want to do is essentially this: Detect different objects (cells and spheroids) in each image of a multi-well plate. For reference, these are the objects we are searching for:</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Cells</p></th>
+<th class="head"><p>Spheroids</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><img alt="Cells" src="../../_images/image3.PNG" /></p></td>
+<td><p><img alt="Spheroids" src="../../_images/image4.PNG" /></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="annotation">
+<h2>Annotation<a class="headerlink" href="#annotation" title="Permalink to this heading">#</a></h2>
+<p>This brings us to an important step, which one would like to avoid in deep learning if possible, but it’s a necessary evil: Annotation. In this case, we will use OMERO to annotate the images. The simplest way to go at this in OMERO, is to just draw bounding boxes and write in the comment what sort of object it is. This is a very simple and straightforward way to do this. Unfortunately, OMERO does not (yet?) support simply tagging ROI (regions of interest) with labels, so we have to do this manually:</p>
+<p><img alt="OMERO annotation" src="../../_images/annotate.gif" /></p>
+<p>Still you can apprecciate that this is <strong>much</strong> faster than doing this in a local image viewer and then saving the annotations in a separate file, let alone annotating single pixels. Still, it’s a bit cumbersome so the question of how much annotations are enough annotations naturally arises. Read more on the subject in the <span class="xref myst">respective section below</span>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Consistency in the naming here is super-important. Make sure to stick to your conventions (i.e., avoid using “cell”/”cells”/”Cell” in the same dataset).</p>
+</div>
+</section>
+<section id="training-the-model">
+<h2>Training the model<a class="headerlink" href="#training-the-model" title="Permalink to this heading">#</a></h2>
+<p>Before we can actually proceed to train a model, we need to make the dataset available to us on our local machine. For this, we will use the excellent <a class="reference external" href="https://thejacksonlaboratory.github.io/ezomero/index.html">ezomero package</a> you already installed. Let’s write some code!</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">ezomero</span>
+<span class="kn">import</span> <span class="nn">tqdm</span>
+<span class="kn">import</span> <span class="nn">shutil</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">from</span> <span class="nn">skimage</span> <span class="kn">import</span> <span class="n">io</span>
+<span class="kn">from</span> <span class="nn">ultralytics</span> <span class="kn">import</span> <span class="n">YOLO</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We check whether pytorch has been installed correctly:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">torch</span>
+<span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">is_available</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">host</span> <span class="o">=</span> <span class="c1"># the address of your omero server</span>
+<span class="n">user</span> <span class="o">=</span> <span class="c1"># your username</span>
+<span class="n">secure</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="n">port</span> <span class="o">=</span> <span class="mi">4064</span>
+<span class="n">group</span> <span class="o">=</span> <span class="c1"># the group you want to connect to (set to None if you want to connect to the default group)</span>
+
+<span class="n">conn</span> <span class="o">=</span> <span class="n">ezomero</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">host</span><span class="o">=</span><span class="n">host</span><span class="p">,</span> <span class="n">user</span><span class="o">=</span><span class="n">user</span><span class="p">,</span> <span class="n">secure</span><span class="o">=</span><span class="n">secure</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="n">port</span><span class="p">,</span> <span class="n">group</span><span class="o">=</span><span class="n">group</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We first need all images and the corresponding annotations in the dataset. This could take a litle as we are sending A LOT of requests to the server. We create ourselves a directory (change the path to your liking) where we save the images and the labels from the OMERO server.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">working_directory</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;E:\BiAPoL\yolo_demo\dataset&#39;</span>  <span class="c1"># the directory where you want to save the dataset - replace with your own directory</span>
+<span class="n">images_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">working_directory</span><span class="p">,</span> <span class="s1">&#39;images&#39;</span><span class="p">)</span>
+<span class="n">labels_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">working_directory</span><span class="p">,</span> <span class="s1">&#39;labels&#39;</span><span class="p">)</span>
+<span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">images_dir</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">labels_dir</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now on to actually downloading - here we have to invest a bit more thought. Why? OMERO and YOLO have different definitions on how a bounding box is defined. The image below illustrates this:</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p></p></th>
+<th class="head"><p>OMERO</p></th>
+<th class="head"><p>YOLO</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Anchor</p></td>
+<td><p><img alt="OMERO bounding box" src="../../_images/image7.png" /></p></td>
+<td><p><img alt="YOLO bounding box" src="../../_images/image6.png" /></p></td>
+</tr>
+<tr class="row-odd"><td><p>Units</p></td>
+<td><p>Pixels</p></td>
+<td><p>Normalized</p></td>
+</tr>
+</tbody>
+</table>
+<p style="text-align: left;">Images &copy; 2022 Johannes Soltwedel. All rights reserved.</p>
+<p>To be compliant with YOLO conventions, we need to convert our annotations into the following format and normalize the positions and sizes of the bounding boxes to the width and height of the image:</p>
+<div class="highlight-txt notranslate"><div class="highlight"><pre><span></span>class_label1 x_center y_center width height
+class_label2 x_center y_center width height
+...
+</pre></div>
+</div>
+<p>First, we need to convert the wrtten class labls (e.g., “cell” or “spheroid”) into numerical labels. We can do this by creating a dictionary that maps the class labels to numerical labels:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">object_classes</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;cell&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="s1">&#39;compacted&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="s1">&#39;spheroid&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+    <span class="s1">&#39;dead&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="downloading-the-dataset">
+<h3>Downloading the dataset<a class="headerlink" href="#downloading-the-dataset" title="Permalink to this heading">#</a></h3>
+<p>Now we iterate over all the images in the dataset, retrieve the corresponding rois a(and the shapes they contain - honestly, I don’t fully understand the difference between Shapes and ROIs in OMERO 😅). Anyway, we then convert the annotations to YOLO format. This means dividing all coordinates by the width and height of the image as well as adding half the width and half the height to the coordinates of the anchor of the box to move it from the upper-left corner to the center.</p>
+<div class="highlight-Note notranslate"><div class="highlight"><pre><span></span>In the following code, you see image data being imported from `dataset=259` - replace this with the id of the dataset that yu are actually working with.
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">img_ids</span> <span class="o">=</span> <span class="n">ezomero</span><span class="o">.</span><span class="n">get_image_ids</span><span class="p">(</span><span class="n">conn</span><span class="p">,</span> <span class="n">dataset</span><span class="o">=</span><span class="mi">259</span><span class="p">)</span>  <span class="c1"># replace 259 with the id of the dataset you want to use</span>
+<span class="k">for</span> <span class="n">img_id</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="o">.</span><span class="n">tqdm</span><span class="p">(</span><span class="n">img_ids</span><span class="p">):</span>
+
+    <span class="c1"># get the image and metadata and save the image locally</span>
+    <span class="n">metadata</span><span class="p">,</span> <span class="n">image</span> <span class="o">=</span> <span class="n">ezomero</span><span class="o">.</span><span class="n">get_image</span><span class="p">(</span><span class="n">conn</span><span class="p">,</span> <span class="n">image_id</span><span class="o">=</span><span class="n">img_id</span><span class="p">,</span> <span class="n">dim_order</span><span class="o">=</span><span class="s1">&#39;tczyx&#39;</span><span class="p">)</span>
+    <span class="n">image_filename</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">working_directory</span><span class="p">,</span> <span class="s1">&#39;images&#39;</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">metadata</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s1">.png&#39;</span><span class="p">)</span>
+    <span class="n">labels_filename</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">working_directory</span><span class="p">,</span> <span class="s1">&#39;labels&#39;</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">metadata</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s1">.txt&#39;</span><span class="p">)</span>
+    
+    <span class="n">image</span> <span class="o">=</span> <span class="n">image</span><span class="o">.</span><span class="n">squeeze</span><span class="p">()</span>  <span class="c1"># remove singleton dimensions (TCZ)</span>
+    <span class="n">io</span><span class="o">.</span><span class="n">imsave</span><span class="p">(</span><span class="n">image_filename</span><span class="p">,</span> <span class="n">image</span><span class="o">.</span><span class="n">squeeze</span><span class="p">())</span>
+
+    <span class="c1"># determine the width and height of the image and get associated rois</span>
+    <span class="n">width</span><span class="p">,</span> <span class="n">height</span> <span class="o">=</span> <span class="n">image</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">image</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">roi_ids</span> <span class="o">=</span> <span class="n">ezomero</span><span class="o">.</span><span class="n">get_roi_ids</span><span class="p">(</span><span class="n">conn</span><span class="p">,</span> <span class="n">image_id</span><span class="o">=</span><span class="n">img_id</span><span class="p">)</span>
+
+    <span class="n">shapes</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">roi_id</span> <span class="ow">in</span> <span class="n">roi_ids</span><span class="p">:</span>
+        <span class="n">shape_ids</span> <span class="o">=</span> <span class="n">ezomero</span><span class="o">.</span><span class="n">get_shape_ids</span><span class="p">(</span><span class="n">conn</span><span class="p">,</span> <span class="n">roi_id</span><span class="o">=</span><span class="n">roi_id</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">shape_id</span> <span class="ow">in</span> <span class="n">shape_ids</span><span class="p">:</span>
+            <span class="n">shapes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ezomero</span><span class="o">.</span><span class="n">get_shape</span><span class="p">(</span><span class="n">conn</span><span class="p">,</span> <span class="n">shape_id</span><span class="o">=</span><span class="n">shape_id</span><span class="p">))</span>
+
+    <span class="c1"># now to convert the shapes to YOLO format</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">labels_filename</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">shape</span> <span class="ow">in</span> <span class="n">shapes</span><span class="p">:</span>
+            <span class="n">w</span> <span class="o">=</span> <span class="n">shape</span><span class="o">.</span><span class="n">width</span> <span class="o">/</span> <span class="n">width</span>
+            <span class="n">h</span> <span class="o">=</span> <span class="n">shape</span><span class="o">.</span><span class="n">height</span> <span class="o">/</span> <span class="n">height</span>
+
+            <span class="n">x</span> <span class="o">=</span> <span class="n">shape</span><span class="o">.</span><span class="n">x</span> <span class="o">/</span> <span class="n">width</span> <span class="o">+</span> <span class="n">w</span> <span class="o">/</span> <span class="mi">2</span>
+            <span class="n">y</span> <span class="o">=</span> <span class="n">shape</span><span class="o">.</span><span class="n">y</span> <span class="o">/</span> <span class="n">height</span> <span class="o">+</span> <span class="n">h</span> <span class="o">/</span> <span class="mi">2</span>
+
+            <span class="n">class_id</span> <span class="o">=</span> <span class="n">object_classes</span><span class="p">[</span><span class="n">shape</span><span class="o">.</span><span class="n">label</span><span class="p">]</span>
+
+            <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">class_id</span><span class="si">}</span><span class="s1"> </span><span class="si">{</span><span class="n">x</span><span class="si">}</span><span class="s1"> </span><span class="si">{</span><span class="n">y</span><span class="si">}</span><span class="s1"> </span><span class="si">{</span><span class="n">w</span><span class="si">}</span><span class="s1"> </span><span class="si">{</span><span class="n">h</span><span class="si">}</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 1615/1615 [29:28&lt;00:00,  1.10s/it]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Before we dive into the training, we have to do one final step. It is common practice in deep learning, to split the data into a training, validation and a testing cohort. This is done to evaluate the model on data it has not seen before. We will do a 70/20/10% split for training, validation and testing, respectively. We first create the folder structure:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Output directories</span>
+<span class="n">output_dirs</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;train&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;images&#39;</span><span class="p">:</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">working_directory</span><span class="p">,</span> <span class="s1">&#39;train/images&#39;</span><span class="p">),</span> <span class="s1">&#39;labels&#39;</span><span class="p">:</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">working_directory</span><span class="p">,</span> <span class="s1">&#39;train/labels&#39;</span><span class="p">)},</span>
+    <span class="s1">&#39;val&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;images&#39;</span><span class="p">:</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">working_directory</span><span class="p">,</span> <span class="s1">&#39;val/images&#39;</span><span class="p">),</span> <span class="s1">&#39;labels&#39;</span><span class="p">:</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">working_directory</span><span class="p">,</span> <span class="s1">&#39;val/labels&#39;</span><span class="p">)},</span>
+    <span class="s1">&#39;test&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;images&#39;</span><span class="p">:</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">working_directory</span><span class="p">,</span> <span class="s1">&#39;test/images&#39;</span><span class="p">),</span> <span class="s1">&#39;labels&#39;</span><span class="p">:</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">working_directory</span><span class="p">,</span> <span class="s1">&#39;test/labels&#39;</span><span class="p">)}</span>
+<span class="p">}</span>
+
+<span class="c1"># Create output directories if they don&#39;t exist</span>
+<span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">output_dirs</span><span class="p">:</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">output_dirs</span><span class="p">[</span><span class="n">key</span><span class="p">][</span><span class="s1">&#39;images&#39;</span><span class="p">],</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">output_dirs</span><span class="p">[</span><span class="n">key</span><span class="p">][</span><span class="s1">&#39;labels&#39;</span><span class="p">],</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We then sort our images and labels into these folders. For thi we set the random seed to a fixed value (<code class="docutils literal notranslate"><span class="pre">random_state=42</span></code>) for reproducibility:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Get list of all image files</span>
+<span class="n">image_files</span> <span class="o">=</span> <span class="p">[</span><span class="n">f</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">images_dir</span><span class="p">)</span> <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">images_dir</span><span class="p">,</span> <span class="n">f</span><span class="p">))]</span>
+
+<span class="c1"># Split the dataset into train, val, and test</span>
+<span class="n">train_files</span><span class="p">,</span> <span class="n">test_files</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">image_files</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.30</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">val_files</span><span class="p">,</span> <span class="n">test_files</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">test_files</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mi">1</span><span class="o">/</span><span class="mi">3</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>  <span class="c1"># 1/3 of 30% =&gt; 10%</span>
+
+<span class="c1"># Move the files to the respective directories</span>
+<span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">files</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">([</span><span class="s1">&#39;train&#39;</span><span class="p">,</span> <span class="s1">&#39;val&#39;</span><span class="p">,</span> <span class="s1">&#39;test&#39;</span><span class="p">],</span> <span class="p">[</span><span class="n">train_files</span><span class="p">,</span> <span class="n">val_files</span><span class="p">,</span> <span class="n">test_files</span><span class="p">]):</span>
+    <span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="n">files</span><span class="p">:</span>
+        <span class="n">image_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">images_dir</span><span class="p">,</span> <span class="n">file</span><span class="p">)</span>
+        <span class="n">label_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">labels_dir</span><span class="p">,</span> <span class="n">file</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;.png&#39;</span><span class="p">,</span> <span class="s1">&#39;.txt&#39;</span><span class="p">))</span>
+
+        <span class="n">shutil</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">image_file</span><span class="p">,</span> <span class="n">output_dirs</span><span class="p">[</span><span class="n">key</span><span class="p">][</span><span class="s1">&#39;images&#39;</span><span class="p">])</span>
+        <span class="n">shutil</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">label_file</span><span class="p">,</span> <span class="n">output_dirs</span><span class="p">[</span><span class="n">key</span><span class="p">][</span><span class="s1">&#39;labels&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Number of samples in training set:&#39;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">train_files</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Number of samples in validation set:&#39;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">val_files</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Number of samples in test set:&#39;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">test_files</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Number of samples in training set: 1071
+Number of samples in validation set: 306
+Number of samples in test set: 153
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="training">
+<h2>Training<a class="headerlink" href="#training" title="Permalink to this heading">#</a></h2>
+<p>Now for the cool part of all deep-learning frameworks: The <em>training</em>. Luckily, YOLO makes this quite easy! (Also see the <a class="reference external" href="https://docs.ultralytics.com/modes/train/#key-features-of-train-mode">documentation</a> on further hints and settings). Before we can start the training, we need to set a few configuration parameters. YOLO requires us to write this in a separate <code class="docutils literal notranslate"><span class="pre">yaml</span></code> file, which in our case would look something like this.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Make sure to replace <code class="docutils literal notranslate"><span class="pre">path</span></code> in the yaml file with the path to your dataset.</p>
+</div>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># Train/val/test sets as 1) dir: path/to/imgs, 2) file: path/to/imgs.txt, or 3) list: [path/to/imgs1, path/to/imgs2, ..]</span>
+<span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">E:/BiAPoL/yolo_demo/dataset</span><span class="w">  </span><span class="c1"># dataset root dir</span>
+<span class="nt">train</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">train/images</span><span class="w">  </span><span class="c1"># train images (relative to &#39;path&#39;) 128 images</span>
+<span class="nt">val</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">val/images</span><span class="w">  </span><span class="c1"># val images (relative to &#39;path&#39;) 128 images</span>
+<span class="nt">test</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">test/images</span><span class="w"> </span><span class="c1"># test images (optional)</span>
+
+<span class="nt">names</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">0</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cell</span>
+<span class="w">  </span><span class="nt">1</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">compacted</span>
+<span class="w">  </span><span class="nt">2</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">spheroid</span>
+<span class="w">  </span><span class="nt">3</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dead</span>
+</pre></div>
+</div>
+<p>For the training, we use a pretrained model. This means that the model has already been trained on a variety of image data (unlike ours, of course), but it is likely already able to distinguish basic shapes.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">YOLO</span><span class="p">(</span><span class="s2">&quot;yolov8n.pt&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We start the training and we add a few parameters to the training run. They are all explained in more detail <a class="reference external" href="https://docs.ultralytics.com/modes/train/#train-settings">here</a>, but here’s a quick glance:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">imgsz</span></code>: In order to stack images to batches, yolo needs to reshape them into a common shape, which is defined by this parameter. Since our images are quite small themselves, we can set this to a small value, e.g., 128. The value needs to be a potence of 2.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">batch</span></code>: Number of images in one batch. The bigger your GPU, the bigger this number can be. For a 8GB GPU, 64 is a good starting point.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">epochs</span></code>: Number of epochs to train the model. Longer training typically goes hand in hand with better performance, but also with <a class="reference external" href="https://en.wikipedia.org/wiki/Overfitting">overfitting</a>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">flipud</span></code>, <code class="docutils literal notranslate"><span class="pre">fliplr</span></code>, <code class="docutils literal notranslate"><span class="pre">degrees</span></code>: These parameters are used to augment the data. <a class="reference external" href="https://en.wikipedia.org/wiki/Data_augmentation">Augmentation</a> is a technique to artificially increase the size of the dataset by applying transformations (flipping, rotations, etc) to the images. This can help the model to generalize better and prevent overfitting. The values given for these parameters are the probabilities that the transformation is applied to an image.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">dropout</span></code>: Controls whether certain neurons (part of the neuronal network) are “<a class="reference external" href="https://machinelearningmastery.com/dropout-regularization-deep-learning-models-keras/">dropped out</a>” (muted) during training, which corresponds to the network temporarily forgetting what it has learned. This can help to prevent overfitting as the network learns not to overly rely on certain neurons.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">plots</span></code>: Plots some metrics.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">seed</span></code>: Removes the randomness from the training process. This is useful if you want to reproduce the results of a training run.</p></li>
+</ul>
+<p>Anyway - read the docs and play around with the parameters to see what works best for your data.</p>
+<section id="tensorboard">
+<h3>Tensorboard<a class="headerlink" href="#tensorboard" title="Permalink to this heading">#</a></h3>
+<p>If you don’t want to look at endless rows of text in your Jupyter notebook, but rather look at a fancy dashboard, you can use <a class="reference external" href="https://pytorch.org/tutorials/intermediate/tensorboard_tutorial.html">tensorboard</a> to visualize the training process. If you followed the instructions above, you already installed tensorboard. You can start tensorboard by running the following command in your terminal:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>path/to/where/this/notebook/is
+tensorboard<span class="w"> </span>--logdir<span class="o">=</span>runs
+</pre></div>
+</div>
+<p>If you are using <a class="reference external" href="https://code.visualstudio.com/">VSCode</a>, use the built in tensorboard extension by just hitting <code class="docutils literal notranslate"><span class="pre">Ctrl+Shift+P</span></code> and typing <code class="docutils literal notranslate"><span class="pre">tensorboard</span></code> and then selecting the folder <code class="docutils literal notranslate"><span class="pre">runs</span></code>.</p>
+<p><strong>Enough with the talk - Let’s start the training!</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">train</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="s2">&quot;./detection.yaml&quot;</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">imgsz</span><span class="o">=</span><span class="mi">128</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">batch</span><span class="o">=</span><span class="mi">64</span><span class="p">,</span> <span class="n">flipud</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">fliplr</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
+            <span class="n">dropout</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">optimizer</span><span class="o">=</span><span class="s1">&#39;Adam&#39;</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span> <span class="n">plots</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Lucky for us, YOLO runs a few tests before training starts which we can use to make sure whether we actually got all the classes and the x/y width/heigth conversion stuff right. Starting the training will spawn a folder called <code class="docutils literal notranslate"><span class="pre">runs</span></code> adjacent to this notebook. In this folder, we find an overview of several samples along with our bounding box annotations.</p>
+<p><img alt="batch_example" src="../../_images/train_batch0.jpg" /></p>
+<p>We are also shown an overview over our input annotations. We essentially see, that we are providing a huge number for the object class <code class="docutils literal notranslate"><span class="pre">cell</span></code>, but hardly any for the other classes in comparison. We also see that all labels are sort of square (top right), as also shown by the 2d histogram on the bottom-right:</p>
+<img alt="labels" src="../../_images/labels.jpg" />
+</section>
+</section>
+<section id="evaluation">
+<h2>Evaluation<a class="headerlink" href="#evaluation" title="Permalink to this heading">#</a></h2>
+<p>Once the training is done, we should have a look at some of the metrics yolo generates for us. For instance, we are shown some predictions and the corresponding ground truth labels. This is a good way to see how well the model is doing.</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Labels</p></th>
+<th class="head"><p>Predictions</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><img alt="labels" src="../../_images/val_batch1_labels.jpg" /></p></td>
+<td><p><img alt="predictions" src="../../_images/val_batch1_pred.jpg" /></p></td>
+</tr>
+</tbody>
+</table>
+<p>At a glance - not half-bad, right? Besides just looking at the predicted bounding boxes we can - and we also should - look at some metrics. What’s very important here, is the confusion matrix produced by the training, which essentially tells us how well the model is doing in terms of precision and recall.</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Counts</p></th>
+<th class="head"><p>Normalized</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><img alt="confusion matrix" src="../../_images/confusion_matrix.png" /></p></td>
+<td><p><img alt="confusion matrix normalized" src="../../_images/confusion_matrix_normalized.png" /></p></td>
+</tr>
+</tbody>
+</table>
+<p>From this we learn that our model is rather mediocre at detecting the <code class="docutils literal notranslate"><span class="pre">cell</span></code> class: In the normalized confusion matrix, we see that the True positive rate is about 50% for the cell class, whereas the model often (42%) predicts background (no object) where we annotated a cell. Interestingly, the model often predicts cells where the annotator only saw background.</p>
+<p>For the spheroids, we are quite good at finding them, with a true positive rate of 84%. There is one way, of course to improve performance:</p>
+<p><em>Annotate more data!</em></p>
+<p>But that’s a story for another day. For now, we have a working model that can detect cells and spheroids in our images.</p>
+</section>
+<section id="applying-the-model">
+<h2>Applying the model<a class="headerlink" href="#applying-the-model" title="Permalink to this heading">#</a></h2>
+<p>Lastly, if you want to apply the model on some new data, this can be done fairly easily with YOLO. In a real applciation, replace <code class="docutils literal notranslate"><span class="pre">list_of_other_images</span></code> with a list of paths to your images. Yolo automatically saves two model checkpoints for us to use: The best model and the last model. Obviously, we’ll want to use the best model.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">YOLO</span><span class="p">(</span><span class="s2">&quot;./runs/detect/train/weights/best.pt&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">list_of_other_images</span> <span class="o">=</span> <span class="p">[</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">output_dirs</span><span class="p">[</span><span class="s1">&#39;test&#39;</span><span class="p">][</span><span class="s1">&#39;images&#39;</span><span class="p">],</span> <span class="n">f</span><span class="p">)</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">test_files</span><span class="p">]</span>
+<span class="n">results</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">list_of_other_images</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Speed</span><span class="p">:</span> <span class="mf">0.3</span><span class="n">ms</span> <span class="n">preprocess</span><span class="p">,</span> <span class="mf">1.4</span><span class="n">ms</span> <span class="n">inference</span><span class="p">,</span> <span class="mf">1.3</span><span class="n">ms</span> <span class="n">postprocess</span> <span class="n">per</span> <span class="n">image</span> <span class="n">at</span> <span class="n">shape</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">128</span><span class="p">,</span> <span class="mi">128</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>…and that’s already it. The last thing we will cover in this tutorial is how to get the predictions and convert them back into something that OMERO could understand. This is a bit more tricky, as we have to convert the normalized bounding boxes back into pixel coordinates. This can be done by multiplying the x/y coordinates with the width and height of the image.</p>
+<p>Let’s look at a single example image (e.g., <code class="docutils literal notranslate"><span class="pre">well_102_t0_x2671.34_y1437.11.png</span></code>) and see what the predictions return</p>
+<p><img alt="Example image" src="../../_images/well_102_t0_x2671.34_y1437.11.png" /></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">test_image</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">output_dirs</span><span class="p">[</span><span class="s1">&#39;test&#39;</span><span class="p">][</span><span class="s1">&#39;images&#39;</span><span class="p">],</span> <span class="s1">&#39;well_102_t0_x2671.34_y1437.11.png&#39;</span><span class="p">)</span>
+<span class="n">prediction</span> <span class="o">=</span> <span class="n">model</span><span class="p">([</span><span class="n">test_image</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0: 128x128 7 cells, 20.5ms
+Speed: 2.0ms preprocess, 20.5ms inference, 6.0ms postprocess per image at shape (1, 3, 128, 128)
+</pre></div>
+</div>
+</div>
+</div>
+<p>There’s a bunch of stuff inside the <code class="docutils literal notranslate"><span class="pre">prediction</span></code> object. What we are looking for is stored in the <code class="docutils literal notranslate"><span class="pre">boxes</span></code> attribute. We can see that yolo offers us the result in a buch of different formats (<code class="docutils literal notranslate"><span class="pre">boxes.xywh</span></code>, <code class="docutils literal notranslate"><span class="pre">boxes.xywhn</span></code>, <code class="docutils literal notranslate"><span class="pre">boxes.xyxy</span></code>, <code class="docutils literal notranslate"><span class="pre">boxes.xyxyn</span></code>). We are interested in the <code class="docutils literal notranslate"><span class="pre">xywh</span></code> format, as this is already given in pixel units. The classes of the respective boxes are stored in the <code class="docutils literal notranslate"><span class="pre">boxes.cls</span></code> attribute.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">prediction</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">boxes</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ultralytics.engine.results.Boxes object with attributes:
+
+cls: tensor([0., 0., 0., 0., 0., 0., 0.], device=&#39;cuda:0&#39;)
+conf: tensor([0.6708, 0.6405, 0.5541, 0.3947, 0.3710, 0.3266, 0.2758], device=&#39;cuda:0&#39;)
+data: tensor([[60.0439, 64.5733, 69.9621, 75.9605,  0.6708,  0.0000],
+        [83.5776, 55.0671, 95.6779, 67.8791,  0.6405,  0.0000],
+        [57.3633, 83.5636, 66.9192, 94.2983,  0.5541,  0.0000],
+        [76.0216, 63.1894, 85.6686, 74.9451,  0.3947,  0.0000],
+        [76.0707, 53.7196, 86.5719, 65.4781,  0.3710,  0.0000],
+        [67.7796, 76.9948, 79.4629, 87.6710,  0.3266,  0.0000],
+        [57.3487, 73.0762, 65.8421, 82.4596,  0.2758,  0.0000]], device=&#39;cuda:0&#39;)
+id: None
+is_track: False
+orig_shape: (146, 136)
+shape: torch.Size([7, 6])
+xywh: tensor([[65.0030, 70.2669,  9.9182, 11.3872],
+        [89.6277, 61.4731, 12.1003, 12.8120],
+        [62.1412, 88.9310,  9.5560, 10.7346],
+        [80.8451, 69.0672,  9.6470, 11.7557],
+        [81.3213, 59.5988, 10.5012, 11.7585],
+        [73.6213, 82.3329, 11.6833, 10.6762],
+        [61.5954, 77.7679,  8.4934,  9.3834]], device=&#39;cuda:0&#39;)
+xywhn: tensor([[0.4780, 0.4813, 0.0729, 0.0780],
+        [0.6590, 0.4210, 0.0890, 0.0878],
+        [0.4569, 0.6091, 0.0703, 0.0735],
+        [0.5944, 0.4731, 0.0709, 0.0805],
+        [0.5980, 0.4082, 0.0772, 0.0805],
+        [0.5413, 0.5639, 0.0859, 0.0731],
+        [0.4529, 0.5327, 0.0625, 0.0643]], device=&#39;cuda:0&#39;)
+xyxy: tensor([[60.0439, 64.5733, 69.9621, 75.9605],
+        [83.5776, 55.0671, 95.6779, 67.8791],
+        [57.3633, 83.5636, 66.9192, 94.2983],
+        [76.0216, 63.1894, 85.6686, 74.9451],
+        [76.0707, 53.7196, 86.5719, 65.4781],
+        [67.7796, 76.9948, 79.4629, 87.6710],
+        [57.3487, 73.0762, 65.8421, 82.4596]], device=&#39;cuda:0&#39;)
+xyxyn: tensor([[0.4415, 0.4423, 0.5144, 0.5203],
+        [0.6145, 0.3772, 0.7035, 0.4649],
+        [0.4218, 0.5724, 0.4921, 0.6459],
+        [0.5590, 0.4328, 0.6299, 0.5133],
+        [0.5593, 0.3679, 0.6366, 0.4485],
+        [0.4984, 0.5274, 0.5843, 0.6005],
+        [0.4217, 0.5005, 0.4841, 0.5648]], device=&#39;cuda:0&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Also note, that the values shown for the box anchors say <code class="docutils literal notranslate"><span class="pre">device='cuda:0'</span></code>. This means, that the data is still on the GPU. To use it, we need to detach it from the GPU, move it to the CPU and convert it from a pytorch tensor to a numpy array:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">obj_class</span><span class="p">,</span> <span class="n">box</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">prediction</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">boxes</span><span class="o">.</span><span class="n">cls</span><span class="p">,</span> <span class="n">prediction</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">boxes</span><span class="o">.</span><span class="n">xywh</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Object class: </span><span class="si">{</span><span class="nb">int</span><span class="p">(</span><span class="n">obj_class</span><span class="p">)</span><span class="si">}</span><span class="s1">, Box: </span><span class="si">{</span><span class="n">box</span><span class="o">.</span><span class="n">detach</span><span class="p">()</span><span class="o">.</span><span class="n">cpu</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Object class: 0, Box: [     65.003      70.267      9.9182      11.387]
+Object class: 0, Box: [     89.628      61.473        12.1      12.812]
+Object class: 0, Box: [     62.141      88.931       9.556      10.735]
+Object class: 0, Box: [     80.845      69.067       9.647      11.756]
+Object class: 0, Box: [     81.321      59.599      10.501      11.759]
+Object class: 0, Box: [     73.621      82.333      11.683      10.676]
+Object class: 0, Box: [     61.595      77.768      8.4934      9.3834]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="moving-the-data-back-to-omero">
+<h2>Moving the data back to OMERO<a class="headerlink" href="#moving-the-data-back-to-omero" title="Permalink to this heading">#</a></h2>
+<p>To come full circle, here’s a quick glance on how to move the images along with the predictions back to OMERO. Luckily for us, ezomero makes this relatively straightforward:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">swapped_object_classes</span> <span class="o">=</span> <span class="p">{</span><span class="n">value</span><span class="p">:</span> <span class="n">key</span> <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">object_classes</span><span class="o">.</span><span class="n">items</span><span class="p">()}</span>
+
+<span class="n">rectangles</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">obj_class</span><span class="p">,</span> <span class="n">box</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">prediction</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">boxes</span><span class="o">.</span><span class="n">cls</span><span class="p">,</span> <span class="n">prediction</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">boxes</span><span class="o">.</span><span class="n">xywh</span><span class="p">):</span>
+    <span class="n">box_numpy</span> <span class="o">=</span> <span class="n">box</span><span class="o">.</span><span class="n">detach</span><span class="p">()</span><span class="o">.</span><span class="n">cpu</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">box_numpy</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">box_numpy</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">/</span> <span class="mi">2</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">box_numpy</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">box_numpy</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">/</span> <span class="mi">2</span>
+    <span class="n">width</span> <span class="o">=</span> <span class="n">box_numpy</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+    <span class="n">heigth</span> <span class="o">=</span> <span class="n">box_numpy</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
+    
+    <span class="n">rectangles</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ezomero</span><span class="o">.</span><span class="n">rois</span><span class="o">.</span><span class="n">Rectangle</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">heigth</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">swapped_object_classes</span><span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">obj_class</span><span class="p">)]))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Lastly, we could upload this image and the corresponding predictions to a new dataset in OMERO. Note that the image has to be converted in 5d (in our case, we set the format to <code class="docutils literal notranslate"><span class="pre">tczyx</span></code>) to be compatible with OMERO.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The steps up to this point can take a bit of time so you may have to reconnect to the omero server.</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">image_to_upload</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="n">test_image</span><span class="p">)</span>
+<span class="n">image_id</span> <span class="o">=</span> <span class="n">ezomero</span><span class="o">.</span><span class="n">post_image</span><span class="p">(</span>
+    <span class="n">conn</span><span class="p">,</span> <span class="n">image</span><span class="o">=</span><span class="n">image_to_upload</span><span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="p">:],</span> <span class="n">dim_order</span><span class="o">=</span><span class="s1">&#39;tczyx&#39;</span><span class="p">,</span>
+    <span class="n">dataset_id</span><span class="o">=</span><span class="mi">260</span><span class="p">,</span> <span class="n">image_name</span><span class="o">=</span><span class="s1">&#39;example_prediction&#39;</span>
+    <span class="p">)</span>
+
+<span class="n">roid_id</span> <span class="o">=</span> <span class="n">ezomero</span><span class="o">.</span><span class="n">post_roi</span><span class="p">(</span><span class="n">conn</span><span class="p">,</span> <span class="n">image_id</span><span class="o">=</span><span class="n">image_id</span><span class="p">,</span> <span class="n">shapes</span><span class="o">=</span><span class="n">rectangles</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>If we check on our OMERO server we see our predictions:</p>
+<img alt="OMERO predictions" src="../../_images/image8.png" />
+</section>
+<section id="final-thoughts">
+<h2>Final thoughts<a class="headerlink" href="#final-thoughts" title="Permalink to this heading">#</a></h2>
+<p>That’s it! This is quite a lengthy tutorial, so props if you made it all the way here.</p>
+<section id="used-data">
+<h3>Used data<a class="headerlink" href="#used-data" title="Permalink to this heading">#</a></h3>
+<p>All the data used in this tutorial is <a class="reference external" href="https://zenodo.org/records/13329153">publically available</a> at the courtesy of Louis Hewitt (<a class="reference external" href="https://www.mpi-cbg.de/research/researchgroups/currentgroups/anne-grapin-botton/research-focus">Grapin-Botton Lab</a>, MPI-CBG, Dresden, Germany). Without their collaboration, you wouldn’t be able to look at this tutorial. So, thank you!</p>
+<p>The bespoke data comes as a packed up OMERO project. You can use it by downloading the stored zip file and using the <a class="reference external" href="https://github.com/ome/omero-cli-transfer">omero-cli-transfer</a> package to upload it to your OMERO server and then walk yourself through this tutorial from the start. To do so, log into omero from the command line like this:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>omero<span class="w"> </span>login<span class="w"> </span>-s<span class="w"> </span>&lt;your_omero_server&gt;<span class="w"> </span>-u<span class="w"> </span>&lt;your_username&gt;<span class="w"> </span>-g<span class="w"> </span>&lt;your_group&gt;
+</pre></div>
+</div>
+<p>Then you can upload the jar file to your server:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>omero<span class="w"> </span>transfer<span class="w"> </span>unpack<span class="w"> </span>&lt;path_to_zip_file&gt;
+</pre></div>
+</div>
+</section>
+<section id="licenses">
+<h3>Licenses<a class="headerlink" href="#licenses" title="Permalink to this heading">#</a></h3>
+<p>You have seen that the syntax to set up the training for the yolo model is exceptionally easy, which is a huge strongpoint for yolo - not to mention that the model is quite fast and accurate. A grain of salt for using yolo is its AGPL license, which introduces quite strict requirements if you use it in your project. If you are planning to use yolo in a commercial project, you need to contact the developers for a proper license. For a more comprehensive overview of the licenses, check out <a class="reference external" href="https://f1000research.com/slides/10-519">Robert Haase’s slides on the subject</a>.</p>
+</section>
+<section id="how-much-training-data-is-enough">
+<h3>How much training data is enough?<a class="headerlink" href="#how-much-training-data-is-enough" title="Permalink to this heading">#</a></h3>
+<p>That’s a question that is hard to answer. According to the <a class="reference external" href="https://docs.ultralytics.com/guides/data-collection-and-annotation/#how-many-images-do-i-need-for-training-ultralytics-yolo-models">yolo docs on the subject</a>, some 100 annotated images and training for 100 epochs can be enough to get started - consider annotating (order of magnitude) 1000s of images <em>per class</em> for a more robust model.</p>
+</section>
+<section id="usage-scenarios">
+<h3>Usage scenarios<a class="headerlink" href="#usage-scenarios" title="Permalink to this heading">#</a></h3>
+<p>There is one obvious downside to yolo: It works 2D only, and biological data can often be of arbitrary dimension (3D, multi-channel, timelapse, etc). However, YOLO can still be an interesting option for a variety of tasks in the biomedical context. Interesting applications can, for instance, arise in the context of high-throughput analysis in a smart-microscopy setup. In this case, a microscope may want to determine automatically whether it is worth keeping the data it acquired or not. To achieve this, maximum projections could be acquired and yolo used to determine whether the image contains interesting structures or not.</p>
+<p>Another limitation of predicting bounding boxes is, well, the bounding box itself. Biological objects are typically not square. However, using results of a bounding box prediction, one could use <a class="reference external" href="https://segment-anything.com/">segment-anything</a> to refine the prediction. For usage in bio-image analysis, make sure to check out <a class="reference external" href="https://computational-cell-analytics.github.io/micro-sam/micro_sam.html">micro-sam</a>.</p>
+<p><strong>Anyway - thanks for reading and happy coding!</strong> 💻🚀</p>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./johannes_mueller/yolo_from_omero"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../../intro.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Welcome!</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../../mara_lampert/getting_started_with_miniforge_and_python/readme.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Getting started with Miniforge and Python</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#omero">OMERO</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#yolo">YOLO</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-started">Getting started</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-data-from-omero">Getting data from omero</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#annotation">Annotation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#training-the-model">Training the model</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#downloading-the-dataset">Downloading the dataset</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#training">Training</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tensorboard">Tensorboard</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluation">Evaluation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#applying-the-model">Applying the model</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#moving-the-data-back-to-omero">Moving the data back to OMERO</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#final-thoughts">Final thoughts</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#used-data">Used data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#licenses">Licenses</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-much-training-data-is-enough">How much training data is enough?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#usage-scenarios">Usage scenarios</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Marcelo Zoccoler, Johannes Müller, Till Korten, Ryan Savill, Mara Lampert, Stefan Hahmann, Robert Haase, DFG Cluster of Excellence "Physics of Life", TU Dresden
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

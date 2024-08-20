@@ -10,7 +10,12 @@ If you have feedback or suggestions, if spotted a typo, broken link or misleadin
 
 ## Recent blog posts
 
-### [Getting started with Miniforge and Python](mara_lampert/getting_started_with_miniforge_and_python/readme)
+### [Training a yolo model on an OMERO dataset](ref:yolo_omero)
+
+<small>[Johannes Soltwedel](johannes_mueller/readme), August 12th, 2024</small><br>
+<img src="images/yolo_dataset.PNG" width=10% align="right"><p>YOLO is a powerful tool for object detection and thus, obviously interesting in bio-image analysis. This blog post will show you how to train a YOLO model on an OMERO dataset.</p>
+
+### [Getting started with Miniforge and Python](mara_lampert/getting_started_with_miniforge_and_python/readme)]
 
 <small>[Mara Lampert](mara_lampert/readme), July 8th, 2024</small><br>
 <img src="images/package_manager.jpeg" width="100" align="right"><p>This post will help you to get started with Python using Miniforge. More precisely, you will learn how to install Miniforge, how to create and use conda environments and you will get to know some important packages for bio image analysis.</p>
