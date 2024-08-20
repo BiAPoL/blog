@@ -1,0 +1,10 @@
+path: E:/BiAPoL/yolo_demo/dataset  # dataset root dir
+train: train/images  # train images (relative to 'path') 128 images
+val: val/images  # val images (relative to 'path') 128 images
+test: test/images # test images (optional)
+
+names:
+  0: cell
+  1: compacted
+  2: spheroid
+  3: dead
