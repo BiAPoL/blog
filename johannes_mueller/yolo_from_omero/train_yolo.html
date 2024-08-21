@@ -410,6 +410,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#annotation">Annotation</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#training-the-model">Training the model</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#downloading-the-dataset">Downloading the dataset</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#train-test-validation-split">Train/Test/Validation split</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#training">Training</a><ul class="nav section-nav flex-column">
@@ -641,6 +642,9 @@ class_label2 x_center y_center width height
 </div>
 </div>
 </div>
+</section>
+<section id="train-test-validation-split">
+<h3>Train/Test/Validation split<a class="headerlink" href="#train-test-validation-split" title="Permalink to this heading">#</a></h3>
 <p>Before we dive into the training, we have to do one final step. It is common practice in deep learning, to split the data into a training, validation and a testing cohort. This is done to evaluate the model on data it has not seen before. We will do a 70/20/10% split for training, validation and testing, respectively. We first create the folder structure:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -933,12 +937,14 @@ Object class: 0, Box: [     61.595      77.768      8.4934      9.3834]
 <p class="admonition-title">Note</p>
 <p>The steps up to this point can take a bit of time so you may have to reconnect to the omero server.</p>
 </div>
+<p>One issue/question may arise here. <em>Where to upload the data?</em> My recommendation would be to create a new dataset on the omero server and upload the data there. In the following code, the dataset I created carries the id <code class="docutils literal notranslate"><span class="pre">260</span></code>, so’d have to replace this with the id of the dataset you created. <em>But why not just upload it tothe dataset I was already using up until here?</em> Well, you could do that, but it would be a bit messy because ad hoc it would be impossible to differentiate between the annotations you made manually above and the predictions done by YOLO. To keep it clean, it’s better to create a new dataset.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">image_to_upload</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="n">test_image</span><span class="p">)</span>
 <span class="n">image_id</span> <span class="o">=</span> <span class="n">ezomero</span><span class="o">.</span><span class="n">post_image</span><span class="p">(</span>
     <span class="n">conn</span><span class="p">,</span> <span class="n">image</span><span class="o">=</span><span class="n">image_to_upload</span><span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="p">:],</span> <span class="n">dim_order</span><span class="o">=</span><span class="s1">&#39;tczyx&#39;</span><span class="p">,</span>
-    <span class="n">dataset_id</span><span class="o">=</span><span class="mi">260</span><span class="p">,</span> <span class="n">image_name</span><span class="o">=</span><span class="s1">&#39;example_prediction&#39;</span>
+    <span class="n">dataset_id</span><span class="o">=</span><span class="mi">260</span><span class="p">,</span>  <span class="c1"># replace 260 with the id of the dataset you want to upload the image to</span>
+    <span class="n">image_name</span><span class="o">=</span><span class="s1">&#39;example_prediction&#39;</span>
     <span class="p">)</span>
 
 <span class="n">roid_id</span> <span class="o">=</span> <span class="n">ezomero</span><span class="o">.</span><span class="n">post_roi</span><span class="p">(</span><span class="n">conn</span><span class="p">,</span> <span class="n">image_id</span><span class="o">=</span><span class="n">image_id</span><span class="p">,</span> <span class="n">shapes</span><span class="o">=</span><span class="n">rectangles</span><span class="p">)</span>
@@ -1055,6 +1061,7 @@ Object class: 0, Box: [     61.595      77.768      8.4934      9.3834]
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#annotation">Annotation</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#training-the-model">Training the model</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#downloading-the-dataset">Downloading the dataset</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#train-test-validation-split">Train/Test/Validation split</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#training">Training</a><ul class="nav section-nav flex-column">
