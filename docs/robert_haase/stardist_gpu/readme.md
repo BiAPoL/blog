@@ -96,7 +96,7 @@ conda activate stardist_gpu
 
 We install tensorflow and more precisely, its GPU version:
 ```shell
-pip install tensorflow-gpu=2.4.2
+pip install tensorflow-gpu==2.4.2
 ```
 
 To check if tensorflow is installed correctly and uses the GPU, we start a python console
