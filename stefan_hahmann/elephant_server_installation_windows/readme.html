@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html lang="en" data-content_root="../../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Installation of Elephant Server on Windows &#8212; BiA-PoL blog</title>
   
@@ -15,52 +14,52 @@
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-  
-  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
-
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
   
+  <!-- So that users can add custom icons -->
+  <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-    <script src="../../_static/jquery.js"></script>
-    <script src="../../_static/underscore.js"></script>
-    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../../_static/doctools.js"></script>
-    <script src="../../_static/clipboard.min.js"></script>
-    <script src="../../_static/copybutton.js"></script>
-    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../../_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'stefan_hahmann/elephant_server_installation_windows/readme';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -68,6 +67,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="prev" title="Getting started with Miniforge and Python" href="../../mara_lampert/getting_started_with_miniforge_and_python/readme.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
   </head>
   
   
@@ -75,23 +75,16 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
   
-  <input type="checkbox"
-          class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
+  <div id="pst-scroll-pixel-helper"></div>
   
-  <input type="checkbox"
-          class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
   
-  <div class="search-button__wrapper">
-    <div class="search-button__overlay"></div>
-    <div class="search-button__search-container">
+  <dialog id="pst-search-dialog">
+    
 <form class="bd-search d-flex align-items-center"
       action="../../search.html"
       method="get">
@@ -99,7 +92,6 @@ const thebe_selector_output = ".output, .cell_output"
   <input type="search"
          class="form-control"
          name="q"
-         id="search-input"
          placeholder="Search this book..."
          aria-label="Search this book..."
          autocomplete="off"
@@ -107,16 +99,25 @@ const thebe_selector_output = ".output, .cell_output"
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form></div>
-  </div>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
       
-      <div class="bd-sidebar-primary bd-sidebar">
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -129,9 +130,13 @@ const thebe_selector_output = ".output, .cell_output"
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
+
+  
+    
   
 
 <a class="navbar-brand logo" href="../../intro.html">
+  
   
   
   
@@ -141,12 +146,19 @@ const thebe_selector_output = ".output, .cell_output"
       
     
     
-    <img src="../../_static/biapol_logo.png" class="logo__image only-light" alt="Logo image"/>
-    <script>document.write(`<img src="../../_static/biapol_logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+    <img src="../../_static/biapol_logo.png" class="logo__image only-light" alt="BiA-PoL blog - Home"/>
+    <img src="../../_static/biapol_logo.png" class="logo__image only-dark pst-js-only" alt="BiA-PoL blog - Home"/>
   
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -170,7 +182,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../../marcelo_zoccoler/mini_sabbatical_rike/Readme.html">Mini-Sabbatical Experience at Bia-PoL</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../johannes_mueller/anaconda_getting_started/Readme.html">Getting started with Anaconda and Python</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../johannes_mueller/entry_sphinx/Readme.html">Automated package documentation with Sphinx</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../johannes_mueller/entry_user_inter/Readme.html">Custom user interfaces for Python (Part 1)</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../johannes_mueller/entry_user_inter/Readme.html">Custom user interfaces for Python (Part 1)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../johannes_mueller/entry_user_interf2/Readme.html">Custom user interfaces for Python (Part 2)</a></li>
 
 <li class="toctree-l2"><a class="reference internal" href="../../marcelo_zoccoler/entry_user_interf3/Readme.html">Custom user interfaces for Python (Part 3)</a></li>
@@ -178,7 +190,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../../marcelo_zoccoler/entry_user_interf4/Readme.html">Custom user interfaces for Python (Part 4)</a></li>
 
 </ul>
-</li>
+</details></li>
 <li class="toctree-l1"><a class="reference internal" href="../../marcelo_zoccoler/jamovi/jamovi.html">Jamovi: statistical analysis made visual and easy (powered with R)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../robert_haase/ms_build_tools/readme.html">Installing Microsoft buildtools on Windows</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../ryan_savill/principal_feature_analysis/readme.html">Principal Feature Analysis</a></li>
@@ -195,7 +207,7 @@ const thebe_selector_output = ".output, .cell_output"
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">About the Blog</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../robert_haase/why_we_blog/readme.html">Why we blog</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../people.html">BiA-PoL blog authors</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../people.html">BiA-PoL blog authors</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../mara_lampert/readme.html">Mara Lampert</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../readme.html">Stefan Hahmann</a></li>
 
@@ -207,7 +219,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../../ryan_savill/readme.html">Ryan Savill</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../robert_haase/readme.html">Robert Haase</a></li>
 </ul>
-</li>
+</details></li>
 <li class="toctree-l1"><a class="reference internal" href="../../imprint.html">Imprint</a></li>
 
 </ul>
@@ -218,14 +230,19 @@ const thebe_selector_output = ".output, .cell_output"
   
   
   <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
   </div>
-  
-  <div id="rtd-footer-container"></div>
 
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
 
@@ -234,14 +251,14 @@ const thebe_selector_output = ".output, .cell_output"
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article">
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</label></div>
+</button></div>
       
     </div>
   
@@ -363,26 +380,20 @@ const thebe_selector_output = ".output, .cell_output"
 </button>
 
 
-<script>
-document.write(`
-  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
-    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
-    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
-  </button>
-`);
-</script>
 
-<script>
-document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-  </button>
-`);
-</script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</label>
+</button>
 </div></div>
       
     </div>
@@ -427,14 +438,14 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="installation-of-elephant-server-on-windows">
-<h1>Installation of Elephant Server on Windows<a class="headerlink" href="#installation-of-elephant-server-on-windows" title="Permalink to this heading">#</a></h1>
-<p><a class="reference internal" href="../readme.html"><span class="doc std std-doc">Stefan Hahmann</span></a>, April 24th 2024
-<a class="reference internal" href="../../johannes_mueller/Readme.html"><span class="doc std std-doc">Johannes Soltwedel</span></a>, April 24th 2024</p>
+<h1>Installation of Elephant Server on Windows<a class="headerlink" href="#installation-of-elephant-server-on-windows" title="Link to this heading">#</a></h1>
+<p><a class="reference internal" href="../readme.html"><span class="std std-doc">Stefan Hahmann</span></a>, April 24th 2024
+<a class="reference internal" href="../../johannes_mueller/Readme.html"><span class="std std-doc">Johannes Soltwedel</span></a>, April 24th 2024</p>
 <section id="introduction">
-<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h2>
+<h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
 <p><img alt="fiji.png" src="../../_images/fiji.png" />
 <img alt="mastodon.png" src="../../_images/mastodon.png" />
 <img alt="elephant-logo.png" src="../../_images/elephant-logo1.png" /></p>
@@ -444,9 +455,9 @@ The server is built as a web application that serves deep learning-based algorit
 <p>Before installing Elephant on a powerful workstation or server, you may wish to try it out locally on your machine. This blog post will show you how you can do so, if you are using a Windows machine.</p>
 </section>
 <section id="prerequisites">
-<h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this heading">#</a></h2>
+<h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Link to this heading">#</a></h2>
 <section id="docker-desktop">
-<h3>Docker Desktop<a class="headerlink" href="#docker-desktop" title="Permalink to this heading">#</a></h3>
+<h3>Docker Desktop<a class="headerlink" href="#docker-desktop" title="Link to this heading">#</a></h3>
 <p><img alt="docker-logo-blue.png" src="../../_images/docker-logo-blue.png" /></p>
 <p><a class="reference external" href="https://www.docker.com/products/docker-desktop">Docker Desktop</a> is a tool that allows you to run Docker containers on your local machine.
 Docker containers are lightweight, standalone, executable packages of software that include everything needed to run an application: code, runtime, system tools, system libraries and settings.
@@ -454,7 +465,7 @@ Docker Desktop is available for Windows and Mac. You can download it <a class="r
 Please make sure that you have installed and started Docker Desktop before proceeding. You will need to sign in to Docker Desktop with your Docker account.</p>
 </section>
 <section id="windows-subsystem-for-linux-wsl">
-<h3>Windows Subsystem for Linux (WSL)<a class="headerlink" href="#windows-subsystem-for-linux-wsl" title="Permalink to this heading">#</a></h3>
+<h3>Windows Subsystem for Linux (WSL)<a class="headerlink" href="#windows-subsystem-for-linux-wsl" title="Link to this heading">#</a></h3>
 <p><img alt="Windows_Subsystem_for_Linux_logo.png" src="../../_images/Windows_Subsystem_for_Linux_logo.png" /></p>
 <p><a class="reference external" href="https://docs.microsoft.com/en-us/windows/wsl/">Windows Subsystem for Linux (WSL)</a> is a compatibility layer for running Linux binary executables natively on Windows machines.
 It allows you to run a Linux distribution on your Windows machine.
@@ -486,7 +497,7 @@ Make sure that the checkbox for the Ubuntu distribution is checked:
 <img alt="docker-hello-world.png" src="../../_images/docker-hello-world.png" /></p>
 </section>
 <section id="elephant-installation-files">
-<h3>Elephant Installation Files<a class="headerlink" href="#elephant-installation-files" title="Permalink to this heading">#</a></h3>
+<h3>Elephant Installation Files<a class="headerlink" href="#elephant-installation-files" title="Link to this heading">#</a></h3>
 <p>Download the Elephant installation files from the <a class="reference external" href="https://github.com/elephant-track/elephant-server/archive/refs/heads/main.zip">Elephant GitHub repository</a>. Unzip the files to a folder on your local machine, e.g. <code class="docutils literal notranslate"><span class="pre">C:\elephant-server</span></code>.</p>
 <p>Open a console (press <code class="docutils literal notranslate"><span class="pre">Windows</span> <span class="pre">button</span></code>, type <code class="docutils literal notranslate"><span class="pre">cmd</span></code> and press <code class="docutils literal notranslate"><span class="pre">Enter</span></code>) and navigate to the folder where you have unzipped the Elephant installation files.
 Start <code class="docutils literal notranslate"><span class="pre">wsl</span></code> by typing <code class="docutils literal notranslate"><span class="pre">wsl</span></code> and pressing <code class="docutils literal notranslate"><span class="pre">Enter</span></code>.</p>
@@ -499,7 +510,7 @@ Start <code class="docutils literal notranslate"><span class="pre">wsl</span></c
 <img alt="hostnamectl.png" src="../../_images/hostnamectl.png" /></p>
 </section>
 <section id="gpu-support-for-machines-with-nvidia-gpus">
-<h3>GPU Support for machines with Nvidia GPUs<a class="headerlink" href="#gpu-support-for-machines-with-nvidia-gpus" title="Permalink to this heading">#</a></h3>
+<h3>GPU Support for machines with Nvidia GPUs<a class="headerlink" href="#gpu-support-for-machines-with-nvidia-gpus" title="Link to this heading">#</a></h3>
 <p><img alt="nvidia.png" src="../../_images/nvidia.png" /></p>
 <p>If you have a machine with an Nvidia GPU, you can use the GPU to accelerate the deep learning algorithms in Elephant.
 You need to install the official Nvidia driver for your GPU. You can download the driver from the <a class="reference external" href="https://www.nvidia.com/Download/index.aspx">Nvidia website</a>.
@@ -507,7 +518,7 @@ Furthermore, you need to install CUDA. You can download CUDA from the <a class="
 </section>
 </section>
 <section id="creating-the-elephant-server">
-<h2>Creating the Elephant Server<a class="headerlink" href="#creating-the-elephant-server" title="Permalink to this heading">#</a></h2>
+<h2>Creating the Elephant Server<a class="headerlink" href="#creating-the-elephant-server" title="Link to this heading">#</a></h2>
 <p>Open a console (press <code class="docutils literal notranslate"><span class="pre">Windows</span> <span class="pre">button</span></code>, type <code class="docutils literal notranslate"><span class="pre">cmd</span></code> and press <code class="docutils literal notranslate"><span class="pre">Enter</span></code>) and navigate to the folder where you have unzipped the Elephant installation files.
 Start <code class="docutils literal notranslate"><span class="pre">wsl</span></code> by typing <code class="docutils literal notranslate"><span class="pre">wsl</span></code> and pressing <code class="docutils literal notranslate"><span class="pre">Enter</span></code>.</p>
 <p>Build the Elephant Docker image by running the following command (it may take some time to download the required files):
@@ -516,7 +527,7 @@ Including <code class="docutils literal notranslate"><span class="pre">sudo</spa
 </pre></div>
 </div>
 <section id="troubleshooting">
-<h3>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permalink to this heading">#</a></h3>
+<h3>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Link to this heading">#</a></h3>
 <p>If you get an error message that docker is not found, you can try to install docker inside WSL.</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">sudo snap install docker</span>
 </pre></div>
@@ -535,7 +546,7 @@ Check <a class="reference external" href="https://hub.docker.com/r/stefanhahmann
 </section>
 </section>
 <section id="starting-the-elephant-server">
-<h2>Starting the Elephant Server<a class="headerlink" href="#starting-the-elephant-server" title="Permalink to this heading">#</a></h2>
+<h2>Starting the Elephant Server<a class="headerlink" href="#starting-the-elephant-server" title="Link to this heading">#</a></h2>
 <p>Make sure that Docker Desktop is running.</p>
 <p>Open a console (press <code class="docutils literal notranslate"><span class="pre">Windows</span> <span class="pre">button</span></code>, type <code class="docutils literal notranslate"><span class="pre">cmd</span></code> and press <code class="docutils literal notranslate"><span class="pre">Enter</span></code>) and navigate to the folder where you have unzipped the Elephant installation files.
 Start <code class="docutils literal notranslate"><span class="pre">wsl</span></code> by typing <code class="docutils literal notranslate"><span class="pre">wsl</span></code> and pressing <code class="docutils literal notranslate"><span class="pre">Enter</span></code>.</p>
@@ -557,14 +568,14 @@ You should see the Elephant server interface:
 You may need to update the Nvidia driver to the latest version, after the <a class="reference external" href="https://github.com/microsoft/WSL/issues/11277">issue</a> has been resolved in order to use the GPU for acceleration.</p>
 </section>
 <section id="stopping-the-elephant-server">
-<h2>Stopping the Elephant Server<a class="headerlink" href="#stopping-the-elephant-server" title="Permalink to this heading">#</a></h2>
+<h2>Stopping the Elephant Server<a class="headerlink" href="#stopping-the-elephant-server" title="Link to this heading">#</a></h2>
 <p>You can stop the Elephant server by running the following command:</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">sudo make stop</span>
 </pre></div>
 </div>
 </section>
 <section id="move-docker-to-another-drive">
-<h2>Move Docker to another drive<a class="headerlink" href="#move-docker-to-another-drive" title="Permalink to this heading">#</a></h2>
+<h2>Move Docker to another drive<a class="headerlink" href="#move-docker-to-another-drive" title="Link to this heading">#</a></h2>
 <p>You may want to move the Docker installation to another drive, if you have limited space on your system drive.
 You can do so with the following steps. Make sure you have stopped Docker Desktop.
 The following example moves the Docker installation to the <code class="docutils literal notranslate"><span class="pre">D:</span></code> drive. It is assumed you have an empty folder <code class="docutils literal notranslate"><span class="pre">D:\docker</span></code>.</p>
@@ -603,11 +614,10 @@ The following example moves the Docker installation to the <code class="docutils
 
               
               
-                <footer class="bd-footer-article">
+              
+              
+                <footer class="prev-next-footer d-print-none">
                   
-<div class="footer-article-items footer-article__inner">
-  
-    <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
        href="../../mara_lampert/getting_started_with_miniforge_and_python/readme.html"
@@ -627,17 +637,16 @@ The following example moves the Docker installation to the <code class="docutils
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
-</div></div>
-  
 </div>
-
                 </footer>
               
             </div>
             
             
               
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -681,6 +690,7 @@ By Marcelo Zoccoler, Johannes Müller, Till Korten, Ryan Savill, Mara Lampert, S
   
   <div class="footer-item">
     
+
   <p class="copyright">
     
       © Copyright 2024.
@@ -707,8 +717,8 @@ By Marcelo Zoccoler, Johannes Müller, Till Korten, Ryan Savill, Mara Lampert, S
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
-<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+  <script defer src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
 
   <footer class="bd-footer">
   </footer>

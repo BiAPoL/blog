@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html lang="en" data-content_root="../../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Best of both worlds: Combining Qt Designer and magicgui &#8212; BiA-PoL blog</title>
   
@@ -15,52 +14,52 @@
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-  
-  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
-
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
   
+  <!-- So that users can add custom icons -->
+  <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-    <script src="../../_static/jquery.js"></script>
-    <script src="../../_static/underscore.js"></script>
-    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../../_static/doctools.js"></script>
-    <script src="../../_static/clipboard.min.js"></script>
-    <script src="../../_static/copybutton.js"></script>
-    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../../_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'johannes_mueller/qtdesigner_and_magicgui/Readme';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -68,6 +67,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="prev" title="Running bio image analysis workflows on your machine" href="../../stefan_hahmann/github_desktop_jupyter_notebook/readme.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
   </head>
   
   
@@ -75,23 +75,16 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
   
-  <input type="checkbox"
-          class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
+  <div id="pst-scroll-pixel-helper"></div>
   
-  <input type="checkbox"
-          class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
   
-  <div class="search-button__wrapper">
-    <div class="search-button__overlay"></div>
-    <div class="search-button__search-container">
+  <dialog id="pst-search-dialog">
+    
 <form class="bd-search d-flex align-items-center"
       action="../../search.html"
       method="get">
@@ -99,7 +92,6 @@ const thebe_selector_output = ".output, .cell_output"
   <input type="search"
          class="form-control"
          name="q"
-         id="search-input"
          placeholder="Search this book..."
          aria-label="Search this book..."
          autocomplete="off"
@@ -107,16 +99,25 @@ const thebe_selector_output = ".output, .cell_output"
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form></div>
-  </div>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
       
-      <div class="bd-sidebar-primary bd-sidebar">
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -129,9 +130,13 @@ const thebe_selector_output = ".output, .cell_output"
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
+
+  
+    
   
 
 <a class="navbar-brand logo" href="../../intro.html">
+  
   
   
   
@@ -141,12 +146,19 @@ const thebe_selector_output = ".output, .cell_output"
       
     
     
-    <img src="../../_static/biapol_logo.png" class="logo__image only-light" alt="Logo image"/>
-    <script>document.write(`<img src="../../_static/biapol_logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+    <img src="../../_static/biapol_logo.png" class="logo__image only-light" alt="BiA-PoL blog - Home"/>
+    <img src="../../_static/biapol_logo.png" class="logo__image only-dark pst-js-only" alt="BiA-PoL blog - Home"/>
   
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -170,7 +182,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../../marcelo_zoccoler/mini_sabbatical_rike/Readme.html">Mini-Sabbatical Experience at Bia-PoL</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../anaconda_getting_started/Readme.html">Getting started with Anaconda and Python</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../entry_sphinx/Readme.html">Automated package documentation with Sphinx</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../entry_user_inter/Readme.html">Custom user interfaces for Python (Part 1)</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../entry_user_inter/Readme.html">Custom user interfaces for Python (Part 1)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../entry_user_interf2/Readme.html">Custom user interfaces for Python (Part 2)</a></li>
 
 <li class="toctree-l2"><a class="reference internal" href="../../marcelo_zoccoler/entry_user_interf3/Readme.html">Custom user interfaces for Python (Part 3)</a></li>
@@ -178,7 +190,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../../marcelo_zoccoler/entry_user_interf4/Readme.html">Custom user interfaces for Python (Part 4)</a></li>
 
 </ul>
-</li>
+</details></li>
 <li class="toctree-l1"><a class="reference internal" href="../../marcelo_zoccoler/jamovi/jamovi.html">Jamovi: statistical analysis made visual and easy (powered with R)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../robert_haase/ms_build_tools/readme.html">Installing Microsoft buildtools on Windows</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../ryan_savill/principal_feature_analysis/readme.html">Principal Feature Analysis</a></li>
@@ -195,7 +207,7 @@ const thebe_selector_output = ".output, .cell_output"
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">About the Blog</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../robert_haase/why_we_blog/readme.html">Why we blog</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../people.html">BiA-PoL blog authors</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../people.html">BiA-PoL blog authors</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../mara_lampert/readme.html">Mara Lampert</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../stefan_hahmann/readme.html">Stefan Hahmann</a></li>
 
@@ -207,7 +219,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../../ryan_savill/readme.html">Ryan Savill</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../robert_haase/readme.html">Robert Haase</a></li>
 </ul>
-</li>
+</details></li>
 <li class="toctree-l1"><a class="reference internal" href="../../imprint.html">Imprint</a></li>
 
 </ul>
@@ -218,14 +230,19 @@ const thebe_selector_output = ".output, .cell_output"
   
   
   <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
   </div>
-  
-  <div id="rtd-footer-container"></div>
 
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
 
@@ -234,14 +251,14 @@ const thebe_selector_output = ".output, .cell_output"
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article">
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</label></div>
+</button></div>
       
     </div>
   
@@ -363,26 +380,20 @@ const thebe_selector_output = ".output, .cell_output"
 </button>
 
 
-<script>
-document.write(`
-  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
-    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
-    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
-  </button>
-`);
-</script>
 
-<script>
-document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-  </button>
-`);
-</script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</label>
+</button>
 </div></div>
       
     </div>
@@ -421,35 +432,35 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="best-of-both-worlds-combining-qt-designer-and-magicgui">
-<h1>Best of both worlds: Combining Qt Designer and magicgui<a class="headerlink" href="#best-of-both-worlds-combining-qt-designer-and-magicgui" title="Permalink to this heading">#</a></h1>
-<p>This blog post will give you a quick introduction on how to combine two great tools for the creation of graphical user interfaces in napari: The <a class="reference external" href="https://doc.qt.io/qt-6/qtdesigner-manual.html">Qt Designer</a> and <a class="reference external" href="https://pyapp-kit.github.io/magicgui/">magicgui</a>. A good place to get started with each are the following blog posts by <a class="reference internal" href="../Readme.html"><span class="doc std std-doc">myself</span></a> and <a class="reference internal" href="../../marcelo_zoccoler/readme.html"><span class="doc std std-doc">Marcelo Zoccoler</span></a>:</p>
+<h1>Best of both worlds: Combining Qt Designer and magicgui<a class="headerlink" href="#best-of-both-worlds-combining-qt-designer-and-magicgui" title="Link to this heading">#</a></h1>
+<p>This blog post will give you a quick introduction on how to combine two great tools for the creation of graphical user interfaces in napari: The <a class="reference external" href="https://doc.qt.io/qt-6/qtdesigner-manual.html">Qt Designer</a> and <a class="reference external" href="https://pyapp-kit.github.io/magicgui/">magicgui</a>. A good place to get started with each are the following blog posts by <a class="reference internal" href="../Readme.html"><span class="std std-doc">myself</span></a> and <a class="reference internal" href="../../marcelo_zoccoler/readme.html"><span class="std std-doc">Marcelo Zoccoler</span></a>:</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="../entry_user_inter/Readme.html"><span class="doc std std-doc">Basic GUIs for napari</span></a></p></li>
-<li><p><a class="reference internal" href="../entry_user_interf2/Readme.html"><span class="doc std std-doc">Using the Qt designer</span></a></p></li>
-<li><p><a class="reference internal" href="../../marcelo_zoccoler/entry_user_interf3/Readme.html"><span class="doc std std-doc">Using Qt from Python</span></a></p></li>
-<li><p><a class="reference internal" href="../../marcelo_zoccoler/entry_user_interf4/Readme.html"><span class="doc std std-doc">Creating plugins from widgets</span></a></p></li>
+<li><p><a class="reference internal" href="../entry_user_inter/Readme.html"><span class="std std-doc">Basic GUIs for napari</span></a></p></li>
+<li><p><a class="reference internal" href="../entry_user_interf2/Readme.html"><span class="std std-doc">Using the Qt designer</span></a></p></li>
+<li><p><a class="reference internal" href="../../marcelo_zoccoler/entry_user_interf3/Readme.html"><span class="std std-doc">Using Qt from Python</span></a></p></li>
+<li><p><a class="reference internal" href="../../marcelo_zoccoler/entry_user_interf4/Readme.html"><span class="std std-doc">Creating plugins from widgets</span></a></p></li>
 </ul>
 <section id="why-use-qt-designer-and-magicgui">
-<h2>Why use Qt Designer and magicgui?<a class="headerlink" href="#why-use-qt-designer-and-magicgui" title="Permalink to this heading">#</a></h2>
+<h2>Why use Qt Designer and magicgui?<a class="headerlink" href="#why-use-qt-designer-and-magicgui" title="Link to this heading">#</a></h2>
 <p>While both tools are great to work with by themselves, each has functionality which the other can not cover. The Qt Designer is a great tool to design and customize complex graphical user interfaces (GUIs) without having to write any actual code. Magicgui on the other hand is a great tool to create widgets that interact very natively with <a class="reference external" href="https://napari.org/stable/">napari</a> - without going through the effort of actualy designing the GUI by code: Magicgui will do so by itself.</p>
 <p>A case you may find yourself unable to do with both tools by themselves is the following - which we will demonstrate how to solve in this tutorial. You want to design a complex user interface for a napari plugin, that requires a large number of input parameters. In particular, one of these parameters should be an input image. The latter is quite easy in magicgui:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nd">@magicgui</span><span class="p">()</span>
-<span class="k">def</span> <span class="nf">my_complext_function</span><span class="p">(</span><span class="n">image</span><span class="p">:</span> <span class="s1">&#39;napari.types.ImageData&#39;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;napari.types.ImageData&#39;</span><span class="p">:</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">my_complext_function</span><span class="p">(</span><span class="n">image</span><span class="p">:</span> <span class="s1">&#39;napari.types.ImageData&#39;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;napari.types.ImageData&#39;</span><span class="p">:</span>
     <span class="c1"># some complex code</span>
     <span class="k">return</span> <span class="n">output_image</span>
 </pre></div>
 </div>
 <p>… and that’s it - the <code class="docutils literal notranslate"><span class="pre">magicgui</span></code> decorator will turn this piece of code into a plugin and automatically finds all eligible input image layers in the napari viewer which can be processed by this function. Designing a widget for this function in the Qt Designer can be a bit tricky.</p>
 <p>On the other hand, consider the following case: You have two functions, that require access to a single parameter, such as the follows:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">first_function</span><span class="p">(</span><span class="n">image</span><span class="p">:</span> <span class="s1">&#39;napari.types.ImageData&#39;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;napari.types.ImageData&#39;</span><span class="p">:</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">first_function</span><span class="p">(</span><span class="n">image</span><span class="p">:</span> <span class="s1">&#39;napari.types.ImageData&#39;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;napari.types.ImageData&#39;</span><span class="p">:</span>
     
     <span class="n">some_global_parameter</span> <span class="o">=</span> <span class="mi">5</span>
     <span class="k">return</span> <span class="n">output_image</span>
 
-<span class="k">def</span> <span class="nf">second_function</span><span class="p">(</span><span class="n">image</span><span class="p">:</span> <span class="s1">&#39;napari.types.ImageData&#39;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;napari.types.ImageData&#39;</span><span class="p">:</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">second_function</span><span class="p">(</span><span class="n">image</span><span class="p">:</span> <span class="s1">&#39;napari.types.ImageData&#39;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;napari.types.ImageData&#39;</span><span class="p">:</span>
         
     <span class="n">some_new_parameter</span> <span class="o">=</span> <span class="n">some_global_parameter</span> <span class="o">+</span> <span class="mi">5</span>
     <span class="k">return</span> <span class="n">output_image</span>
@@ -458,10 +469,10 @@ document.write(`
 <p>Doing this <em>without</em> a Qt plugin is hard to do, as you would have to pass the parameter <code class="docutils literal notranslate"><span class="pre">some_global_parameter</span></code> to the second function. Hence, you’d have to create a Qt Widget (which can keep some internal variables) - but you cannot easily use magicgui to create dropdowns in that widget and select input images. Hence, let’s combine the two!</p>
 </section>
 <section id="how-to-combine-qt-designer-and-magicgui">
-<h2>How to combine Qt Designer and magicgui<a class="headerlink" href="#how-to-combine-qt-designer-and-magicgui" title="Permalink to this heading">#</a></h2>
+<h2>How to combine Qt Designer and magicgui<a class="headerlink" href="#how-to-combine-qt-designer-and-magicgui" title="Link to this heading">#</a></h2>
 <p>As a starting point, we create a custom widget in the Qt Designer. If you use <a class="reference external" href="https://www.anaconda.com/download">Anaconda</a>, it comes along with the software and can simply be opened in any environment by typing <code class="docutils literal notranslate"><span class="pre">designer</span></code> in the command terminal. If you use a different Python distribution, you can download the Qt Designer <a class="reference external" href="https://build-system.fman.io/qt-designer-download">here</a>.</p>
 <section id="designing-the-widget-in-the-designer">
-<h3>Designing the widget in the designer<a class="headerlink" href="#designing-the-widget-in-the-designer" title="Permalink to this heading">#</a></h3>
+<h3>Designing the widget in the designer<a class="headerlink" href="#designing-the-widget-in-the-designer" title="Link to this heading">#</a></h3>
 <p>When you start the designer, start by creating a new blank widget and click <code class="docutils literal notranslate"><span class="pre">Create</span></code>:</p>
 <p><img alt="Create a new blank widget" src="../../_images/1_create_widget.PNG" /> <img alt="Blank widget" src="../../_images/2_create_widget.PNG" /></p>
 <p>we can now start to fill the blank widget with content: The bar on the left shows all available widgets at your disposal. In our case, let’s add a few elements such as a slider, a label and a button. To highlight the level of complexity we can achieve, we embed both in a Tab widget. The result could look like this:</p>
@@ -485,15 +496,15 @@ document.write(`
 <p>After making your changes, we can then save the widget as a <code class="docutils literal notranslate"><span class="pre">.ui</span></code> file by clicking <code class="docutils literal notranslate"><span class="pre">File</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">Save</span> <span class="pre">As...</span></code> and selecting the <code class="docutils literal notranslate"><span class="pre">.ui</span></code> file format. Let’s call it <code class="docutils literal notranslate"><span class="pre">complex_widget.ui</span></code>.</p>
 </section>
 <section id="using-the-widget-from-python">
-<h3>Using the widget from Python<a class="headerlink" href="#using-the-widget-from-python" title="Permalink to this heading">#</a></h3>
+<h3>Using the widget from Python<a class="headerlink" href="#using-the-widget-from-python" title="Link to this heading">#</a></h3>
 <p>To use the created widget in python and napari, create a Python file – let’s call it <code class="docutils literal notranslate"><span class="pre">my_custom_widget.py</span></code> in the same folder as the <code class="docutils literal notranslate"><span class="pre">.ui</span></code> file and add the following code:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">qtpy.QtWidgets</span> <span class="kn">import</span> <span class="n">QWidget</span>
-<span class="kn">from</span> <span class="nn">qtpy</span> <span class="kn">import</span> <span class="n">uic</span>
-<span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">qtpy.QtWidgets</span><span class="w"> </span><span class="kn">import</span> <span class="n">QWidget</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">qtpy</span><span class="w"> </span><span class="kn">import</span> <span class="n">uic</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
 
 
-<span class="k">class</span> <span class="nc">my_custom_widget</span><span class="p">(</span><span class="n">QWidget</span><span class="p">):</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">napari_viewer</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">my_custom_widget</span><span class="p">(</span><span class="n">QWidget</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">napari_viewer</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
 
         <span class="c1"># load the .ui file from the same folder as this python file</span>
@@ -501,8 +512,8 @@ document.write(`
 </pre></div>
 </div>
 <p>… and that’s already all you need to know to create the widget! In order to show the widget in the napari viewer, create a Jupyter notebook in the same location and run the following code:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">napari</span>
-<span class="kn">from</span> <span class="nn">my_custom_widget</span> <span class="kn">import</span> <span class="n">my_custom_widget</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">napari</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">my_custom_widget</span><span class="w"> </span><span class="kn">import</span> <span class="n">my_custom_widget</span>
 
 <span class="n">viewer</span> <span class="o">=</span> <span class="n">napari</span><span class="o">.</span><span class="n">Viewer</span><span class="p">()</span>
 <span class="n">widget</span> <span class="o">=</span> <span class="n">my_custom_widget</span><span class="p">(</span><span class="n">viewer</span><span class="p">)</span>
@@ -514,23 +525,23 @@ document.write(`
 <p>Note that you can access <em>all previously added widgets</em> from Python by <code class="docutils literal notranslate"><span class="pre">widget.name_given_to_widget_in_desginer</span></code>. For instance, we can access the slider widget we created earlier by <code class="docutils literal notranslate"><span class="pre">widget.horizontal_slider_widget</span></code> ( or <code class="docutils literal notranslate"><span class="pre">self.horizontal_slider_widget</span></code> from inside the widget class). Let’s see all of this in action:</p>
 </section>
 <section id="adding-a-magicgui-widget-to-a-custom-widget">
-<h3>Adding a magicgui widget to a custom widget<a class="headerlink" href="#adding-a-magicgui-widget-to-a-custom-widget" title="Permalink to this heading">#</a></h3>
+<h3>Adding a magicgui widget to a custom widget<a class="headerlink" href="#adding-a-magicgui-widget-to-a-custom-widget" title="Link to this heading">#</a></h3>
 <p>We now want to add a magicgui widget to the widget we just created. We can create magicgui widgets with this simple code snippet:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">magicgui.widgets</span> <span class="kn">import</span> <span class="n">create_widget</span>
-<span class="kn">from</span> <span class="nn">napari.layers</span> <span class="kn">import</span> <span class="n">Image</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">magicgui.widgets</span><span class="w"> </span><span class="kn">import</span> <span class="n">create_widget</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">napari.layers</span><span class="w"> </span><span class="kn">import</span> <span class="n">Image</span>
 
 <span class="n">image_layer_select</span> <span class="o">=</span> <span class="n">create_widget</span><span class="p">(</span><span class="n">annotation</span><span class="o">=</span><span class="n">Image</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Image_layer&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">image_layer_select</span></code> now contains a ready-to-use magicgui widget. We now want to insert the newly created <code class="docutils literal notranslate"><span class="pre">image_layer_select</span></code> into the widget created in the designer. We can do so by amending the <code class="docutils literal notranslate"><span class="pre">__init__</span></code> function of our custom widget and add another function - the <code class="docutils literal notranslate"><span class="pre">eventFilter</span></code> - to make sure that the magic of magicgui still works. For more details, see <a class="reference external" href="https://forum.image.sc/t/composing-workflows-in-napari/61222/3">this discussion</a> on image.sc and <a class="reference external" href="https://github.com/napari/napari/issues/3659#issuecomment-973653290">this github issue</a>.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">qtpy.QtWidgets</span> <span class="kn">import</span> <span class="n">QWidget</span>
-<span class="kn">from</span> <span class="nn">qtpy.QtCore</span> <span class="kn">import</span> <span class="n">QEvent</span><span class="p">,</span> <span class="n">QObject</span>
-<span class="kn">from</span> <span class="nn">qtpy</span> <span class="kn">import</span> <span class="n">uic</span>
-<span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">qtpy.QtWidgets</span><span class="w"> </span><span class="kn">import</span> <span class="n">QWidget</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">qtpy.QtCore</span><span class="w"> </span><span class="kn">import</span> <span class="n">QEvent</span><span class="p">,</span> <span class="n">QObject</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">qtpy</span><span class="w"> </span><span class="kn">import</span> <span class="n">uic</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
 
 
-<span class="k">class</span> <span class="nc">my_custom_widget</span><span class="p">(</span><span class="n">QWidget</span><span class="p">):</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">napari_viewer</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">my_custom_widget</span><span class="p">(</span><span class="n">QWidget</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">napari_viewer</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">viewer</span> <span class="o">=</span> <span class="n">napari_viewer</span>
@@ -542,7 +553,7 @@ document.write(`
         <span class="bp">self</span><span class="o">.</span><span class="n">layout</span><span class="p">()</span><span class="o">.</span><span class="n">insertWidget</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">image_layer_select</span><span class="o">.</span><span class="n">native</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">installEventFilter</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">eventFilter</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obj</span><span class="p">:</span> <span class="n">QObject</span><span class="p">,</span> <span class="n">event</span><span class="p">:</span> <span class="n">QEvent</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">eventFilter</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obj</span><span class="p">:</span> <span class="n">QObject</span><span class="p">,</span> <span class="n">event</span><span class="p">:</span> <span class="n">QEvent</span><span class="p">):</span>
         <span class="k">if</span> <span class="n">event</span><span class="o">.</span><span class="n">type</span><span class="p">()</span> <span class="o">==</span> <span class="n">QEvent</span><span class="o">.</span><span class="n">ParentChange</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">image_layer_select</span><span class="o">.</span><span class="n">parent_changed</span><span class="o">.</span><span class="n">emit</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">parent</span><span class="p">())</span>
 
@@ -550,9 +561,9 @@ document.write(`
 </pre></div>
 </div>
 <p>Let’s change our notebook code from above slightly to use the new widget. The result is a new magicgui widget showing up at the top of our widget - and as we specified, it allows us to select an image layer from the napari viewer, in this case the <code class="docutils literal notranslate"><span class="pre">camera</span></code> image layer.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">napari</span>
-<span class="kn">from</span> <span class="nn">my_custom_widget</span> <span class="kn">import</span> <span class="n">my_custom_widget</span>
-<span class="kn">from</span> <span class="nn">skimage</span> <span class="kn">import</span> <span class="n">data</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">napari</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">my_custom_widget</span><span class="w"> </span><span class="kn">import</span> <span class="n">my_custom_widget</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">skimage</span><span class="w"> </span><span class="kn">import</span> <span class="n">data</span>
 
 <span class="n">viewer</span> <span class="o">=</span> <span class="n">napari</span><span class="o">.</span><span class="n">Viewer</span><span class="p">()</span>
 <span class="n">viewer</span><span class="o">.</span><span class="n">add_image</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">camera</span><span class="p">(),</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;camera&quot;</span><span class="p">)</span>
@@ -564,21 +575,21 @@ document.write(`
 <p><img alt="" src="../../_images/13_widget_in_napari_and_magicgui.PNG" /></p>
 </section>
 <section id="adding-functionality-to-the-widget">
-<h3>Adding functionality to the widget<a class="headerlink" href="#adding-functionality-to-the-widget" title="Permalink to this heading">#</a></h3>
+<h3>Adding functionality to the widget<a class="headerlink" href="#adding-functionality-to-the-widget" title="Link to this heading">#</a></h3>
 <p>To round this blog post off, we would like to</p>
 <ul class="simple">
-<li><p>add some functionality to the widget, e.g., use the widgets from the qtdesigner for something. This has been already been adressed in <a class="reference internal" href="../../marcelo_zoccoler/entry_user_interf4/Readme.html"><span class="doc std std-doc">this blog post</span></a>, so we will not go into too much detail here.</p></li>
+<li><p>add some functionality to the widget, e.g., use the widgets from the qtdesigner for something. This has been already been adressed in <a class="reference internal" href="../../marcelo_zoccoler/entry_user_interf4/Readme.html"><span class="std std-doc">this blog post</span></a>, so we will not go into too much detail here.</p></li>
 <li><p>access the image data inside the widget, which works in a bit peculiar way.</p></li>
 </ul>
 <p>To add functionality, the main idea is to add a function to the widget that is called when a widget emits a signal that something has been done. For instance, for the slider widget, we can add a line in the <code class="docutils literal notranslate"><span class="pre">__init__</span></code> function of the widget that connects the slider’s <code class="docutils literal notranslate"><span class="pre">valueChanged</span></code> signal to a function <code class="docutils literal notranslate"><span class="pre">on_slider_change</span></code>:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">qtpy.QtWidgets</span> <span class="kn">import</span> <span class="n">QWidget</span>
-<span class="kn">from</span> <span class="nn">qtpy.QtCore</span> <span class="kn">import</span> <span class="n">QEvent</span><span class="p">,</span> <span class="n">QObject</span>
-<span class="kn">from</span> <span class="nn">qtpy</span> <span class="kn">import</span> <span class="n">uic</span>
-<span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">qtpy.QtWidgets</span><span class="w"> </span><span class="kn">import</span> <span class="n">QWidget</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">qtpy.QtCore</span><span class="w"> </span><span class="kn">import</span> <span class="n">QEvent</span><span class="p">,</span> <span class="n">QObject</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">qtpy</span><span class="w"> </span><span class="kn">import</span> <span class="n">uic</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
 
 
-<span class="k">class</span> <span class="nc">my_custom_widget</span><span class="p">(</span><span class="n">QWidget</span><span class="p">):</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">napari_viewer</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">my_custom_widget</span><span class="p">(</span><span class="n">QWidget</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">napari_viewer</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">viewer</span> <span class="o">=</span> <span class="n">napari_viewer</span>
@@ -593,24 +604,24 @@ document.write(`
         <span class="c1"># connect slider to function</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">horizontal_slider_widget</span><span class="o">.</span><span class="n">valueChanged</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">on_slider_change</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">eventFilter</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obj</span><span class="p">:</span> <span class="n">QObject</span><span class="p">,</span> <span class="n">event</span><span class="p">:</span> <span class="n">QEvent</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">eventFilter</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obj</span><span class="p">:</span> <span class="n">QObject</span><span class="p">,</span> <span class="n">event</span><span class="p">:</span> <span class="n">QEvent</span><span class="p">):</span>
         <span class="k">if</span> <span class="n">event</span><span class="o">.</span><span class="n">type</span><span class="p">()</span> <span class="o">==</span> <span class="n">QEvent</span><span class="o">.</span><span class="n">ParentChange</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">image_layer_select</span><span class="o">.</span><span class="n">parent_changed</span><span class="o">.</span><span class="n">emit</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">parent</span><span class="p">())</span>
 
         <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">eventFilter</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">event</span><span class="p">)</span>
     
-    <span class="k">def</span> <span class="nf">on_slider_change</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">on_slider_change</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="nb">print</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">horizontal_slider_widget</span><span class="o">.</span><span class="n">value</span><span class="p">())</span>
 </pre></div>
 </div>
 <p>To be able to access the image layer selected by the magicgui widget, we can do so by accessing the <code class="docutils literal notranslate"><span class="pre">value</span></code> attribute of the magicgui widget. This attribute will contain the selected layer - in order to access attributes of the layer itself (such as the actual image data), we can access this through <code class="docutils literal notranslate"><span class="pre">self.image_layer_select.value.data</span></code>. Similarly, we can access <code class="docutils literal notranslate"><span class="pre">features</span></code>, <code class="docutils literal notranslate"><span class="pre">metadata</span></code>, etc. We can then use this image data in the <code class="docutils literal notranslate"><span class="pre">on_slider_change</span></code> function to threshold the image layer:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">qtpy.QtWidgets</span> <span class="kn">import</span> <span class="n">QWidget</span>
-<span class="kn">from</span> <span class="nn">qtpy.QtCore</span> <span class="kn">import</span> <span class="n">QEvent</span><span class="p">,</span> <span class="n">QObject</span>
-<span class="kn">from</span> <span class="nn">qtpy</span> <span class="kn">import</span> <span class="n">uic</span>
-<span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">qtpy.QtWidgets</span><span class="w"> </span><span class="kn">import</span> <span class="n">QWidget</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">qtpy.QtCore</span><span class="w"> </span><span class="kn">import</span> <span class="n">QEvent</span><span class="p">,</span> <span class="n">QObject</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">qtpy</span><span class="w"> </span><span class="kn">import</span> <span class="n">uic</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
 
-<span class="k">class</span> <span class="nc">my_custom_widget</span><span class="p">(</span><span class="n">QWidget</span><span class="p">):</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">napari_viewer</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">my_custom_widget</span><span class="p">(</span><span class="n">QWidget</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">napari_viewer</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">viewer</span> <span class="o">=</span> <span class="n">napari_viewer</span>
@@ -625,13 +636,13 @@ document.write(`
         <span class="c1"># connect slider to function</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">horizontal_slider_widget</span><span class="o">.</span><span class="n">valueChanged</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">on_slider_change</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">eventFilter</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obj</span><span class="p">:</span> <span class="n">QObject</span><span class="p">,</span> <span class="n">event</span><span class="p">:</span> <span class="n">QEvent</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">eventFilter</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obj</span><span class="p">:</span> <span class="n">QObject</span><span class="p">,</span> <span class="n">event</span><span class="p">:</span> <span class="n">QEvent</span><span class="p">):</span>
         <span class="k">if</span> <span class="n">event</span><span class="o">.</span><span class="n">type</span><span class="p">()</span> <span class="o">==</span> <span class="n">QEvent</span><span class="o">.</span><span class="n">ParentChange</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">image_layer_select</span><span class="o">.</span><span class="n">parent_changed</span><span class="o">.</span><span class="n">emit</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">parent</span><span class="p">())</span>
 
         <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">eventFilter</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">event</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">on_slider_change</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">on_slider_change</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="n">image_layer</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">image_layer_select</span><span class="o">.</span><span class="n">value</span>
         <span class="n">binary_image</span> <span class="o">=</span> <span class="n">image_layer</span><span class="o">.</span><span class="n">data</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">horizontal_slider_widget</span><span class="o">.</span><span class="n">value</span><span class="p">()</span>
 
@@ -651,7 +662,7 @@ document.write(`
 </section>
 </section>
 <section id="conclusion">
-<h2>Conclusion<a class="headerlink" href="#conclusion" title="Permalink to this heading">#</a></h2>
+<h2>Conclusion<a class="headerlink" href="#conclusion" title="Link to this heading">#</a></h2>
 <p>What we did in the previous example was, in essence, an implementation of a simple thresholding widget. It is obvious that such simple tasks are much better done by simply using <a class="reference external" href="https://pyapp-kit.github.io/magicgui/">magicgui</a> to save ourselves working with Qt code to begin with. Using the combination of the Qt Designer and magicgui becomes a lot more useful when we want to create more complex widgets with many buttons. The following two criteria are indications that you may want to use the combination of the Qt Designer and magicgui:</p>
 <ul class="simple">
 <li><p>There should be feedback to the GUI; e.g., the GUI should change when a button is pressed. This could be the case when a result is calculated and the GUI should display the result.</p></li>
@@ -685,11 +696,10 @@ document.write(`
 
               
               
-                <footer class="bd-footer-article">
+              
+              
+                <footer class="prev-next-footer d-print-none">
                   
-<div class="footer-article-items footer-article__inner">
-  
-    <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
        href="../../stefan_hahmann/github_desktop_jupyter_notebook/readme.html"
@@ -709,17 +719,16 @@ document.write(`
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
-</div></div>
-  
 </div>
-
                 </footer>
               
             </div>
             
             
               
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -757,6 +766,7 @@ By Marcelo Zoccoler, Johannes Müller, Till Korten, Ryan Savill, Mara Lampert, S
   
   <div class="footer-item">
     
+
   <p class="copyright">
     
       © Copyright 2024.
@@ -783,8 +793,8 @@ By Marcelo Zoccoler, Johannes Müller, Till Korten, Ryan Savill, Mara Lampert, S
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
-<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+  <script defer src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
 
   <footer class="bd-footer">
   </footer>

@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html lang="en" data-content_root="../../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Custom user interfaces for Python (Part 3) &#8212; BiA-PoL blog</title>
   
@@ -15,52 +14,52 @@
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-  
-  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
-
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
   
+  <!-- So that users can add custom icons -->
+  <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-    <script src="../../_static/jquery.js"></script>
-    <script src="../../_static/underscore.js"></script>
-    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../../_static/doctools.js"></script>
-    <script src="../../_static/clipboard.min.js"></script>
-    <script src="../../_static/copybutton.js"></script>
-    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../../_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'marcelo_zoccoler/entry_user_interf3/Readme';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -68,6 +67,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="prev" title="Custom user interfaces for Python (Part 2)" href="../../johannes_mueller/entry_user_interf2/Readme.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
   </head>
   
   
@@ -75,23 +75,16 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
   
-  <input type="checkbox"
-          class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
+  <div id="pst-scroll-pixel-helper"></div>
   
-  <input type="checkbox"
-          class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
   
-  <div class="search-button__wrapper">
-    <div class="search-button__overlay"></div>
-    <div class="search-button__search-container">
+  <dialog id="pst-search-dialog">
+    
 <form class="bd-search d-flex align-items-center"
       action="../../search.html"
       method="get">
@@ -99,7 +92,6 @@ const thebe_selector_output = ".output, .cell_output"
   <input type="search"
          class="form-control"
          name="q"
-         id="search-input"
          placeholder="Search this book..."
          aria-label="Search this book..."
          autocomplete="off"
@@ -107,16 +99,25 @@ const thebe_selector_output = ".output, .cell_output"
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form></div>
-  </div>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
       
-      <div class="bd-sidebar-primary bd-sidebar">
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -129,9 +130,13 @@ const thebe_selector_output = ".output, .cell_output"
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
+
+  
+    
   
 
 <a class="navbar-brand logo" href="../../intro.html">
+  
   
   
   
@@ -141,12 +146,19 @@ const thebe_selector_output = ".output, .cell_output"
       
     
     
-    <img src="../../_static/biapol_logo.png" class="logo__image only-light" alt="Logo image"/>
-    <script>document.write(`<img src="../../_static/biapol_logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+    <img src="../../_static/biapol_logo.png" class="logo__image only-light" alt="BiA-PoL blog - Home"/>
+    <img src="../../_static/biapol_logo.png" class="logo__image only-dark pst-js-only" alt="BiA-PoL blog - Home"/>
   
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -170,7 +182,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../mini_sabbatical_rike/Readme.html">Mini-Sabbatical Experience at Bia-PoL</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../johannes_mueller/anaconda_getting_started/Readme.html">Getting started with Anaconda and Python</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../johannes_mueller/entry_sphinx/Readme.html">Automated package documentation with Sphinx</a></li>
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="../../johannes_mueller/entry_user_inter/Readme.html">Custom user interfaces for Python (Part 1)</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../../johannes_mueller/entry_user_inter/Readme.html">Custom user interfaces for Python (Part 1)</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../../johannes_mueller/entry_user_interf2/Readme.html">Custom user interfaces for Python (Part 2)</a></li>
 
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Custom user interfaces for Python (Part 3)</a></li>
@@ -178,7 +190,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../entry_user_interf4/Readme.html">Custom user interfaces for Python (Part 4)</a></li>
 
 </ul>
-</li>
+</details></li>
 <li class="toctree-l1"><a class="reference internal" href="../jamovi/jamovi.html">Jamovi: statistical analysis made visual and easy (powered with R)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../robert_haase/ms_build_tools/readme.html">Installing Microsoft buildtools on Windows</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../ryan_savill/principal_feature_analysis/readme.html">Principal Feature Analysis</a></li>
@@ -195,7 +207,7 @@ const thebe_selector_output = ".output, .cell_output"
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">About the Blog</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../robert_haase/why_we_blog/readme.html">Why we blog</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../people.html">BiA-PoL blog authors</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../people.html">BiA-PoL blog authors</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../mara_lampert/readme.html">Mara Lampert</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../stefan_hahmann/readme.html">Stefan Hahmann</a></li>
 
@@ -207,7 +219,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../../ryan_savill/readme.html">Ryan Savill</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../robert_haase/readme.html">Robert Haase</a></li>
 </ul>
-</li>
+</details></li>
 <li class="toctree-l1"><a class="reference internal" href="../../imprint.html">Imprint</a></li>
 
 </ul>
@@ -218,14 +230,19 @@ const thebe_selector_output = ".output, .cell_output"
   
   
   <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
   </div>
-  
-  <div id="rtd-footer-container"></div>
 
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
 
@@ -234,14 +251,14 @@ const thebe_selector_output = ".output, .cell_output"
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article">
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</label></div>
+</button></div>
       
     </div>
   
@@ -363,26 +380,20 @@ const thebe_selector_output = ".output, .cell_output"
 </button>
 
 
-<script>
-document.write(`
-  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
-    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
-    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
-  </button>
-`);
-</script>
 
-<script>
-document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-  </button>
-`);
-</script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</label>
+</button>
 </div></div>
       
     </div>
@@ -428,41 +439,41 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="custom-user-interfaces-for-python-part-3">
-<h1>Custom user interfaces for Python (Part 3)<a class="headerlink" href="#custom-user-interfaces-for-python-part-3" title="Permalink to this heading">#</a></h1>
+<h1>Custom user interfaces for Python (Part 3)<a class="headerlink" href="#custom-user-interfaces-for-python-part-3" title="Link to this heading">#</a></h1>
 <p><a class="reference internal" href="../readme.html"><span class="doc std std-doc">Marcelo Zoccoler</span></a>, November 29th 2021</p>
 <section id="introduction">
-<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h2>
+<h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
 <p>Graphical user interfaces (<em>GUIs</em>) are powerful tools to make your scripts and functions available to users that are not necessarily familiar with a lot of coding, development platforms (e.g. Spyder or PyCharm) - and shouldn’t be experienced programmers in order to use your tools.</p>
 <p>In this blog, we will cover a few interesting and versatile methods for you to create customized <a class="reference external" href="https://qt.io">Qt</a>-based GUIs for Python in general. Since our work revolves mostly around the visualization and processing of <strong>images</strong>, we will also show you a few ways to create great user interfaces for <a class="reference external" href="https://napari.org/">napari</a>.</p>
 <p>Blogs on this topic will cover:</p>
 <ul class="simple">
-<li><p><span class="xref myst">Getting started (Part 1)</span></p></li>
-<li><p><span class="xref myst">Creating standalone GUIs (Part 2)</span></p></li>
-<li><p><span class="xref myst">Creating GUIs for napari (Part 3)</span></p></li>
-<li><p><span class="xref myst">Turning napari GUI into plugins (Part 4)</span></p></li>
+<li><p><a class="reference internal" href="#../../johannes_mueller/entry_user_inter/Readme#getting-started"><span class="xref myst">Getting started (Part 1)</span></a></p></li>
+<li><p><a class="reference internal" href="#../../johannes_mueller/entry_user_interf2/Readme#creating-advanced-standalone-guis"><span class="xref myst">Creating standalone GUIs (Part 2)</span></a></p></li>
+<li><p><a class="reference internal" href="#creating-advanced-guis-for-napari"><span class="xref myst">Creating GUIs for napari (Part 3)</span></a></p></li>
+<li><p><a class="reference internal" href="#../entry_user_interf4/Readme#turning-napari-gui-into-plugins"><span class="xref myst">Turning napari GUI into plugins (Part 4)</span></a></p></li>
 </ul>
 </section>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="creating-advanced-guis-for-napari">
-<h1>Creating advanced GUIs for napari<a class="headerlink" href="#creating-advanced-guis-for-napari" title="Permalink to this heading">#</a></h1>
-<p>The <span class="xref myst">previous entry</span> showed you how to create more advanced GUIs with the aid of the designer tool. This third part will teach you how to import those GUIs to napari and how to produce them straight from python functions using <a class="reference external" href="https://napari.org/magicgui/index.html">magicgui</a>.</p>
+<h1>Creating advanced GUIs for napari<a class="headerlink" href="#creating-advanced-guis-for-napari" title="Link to this heading">#</a></h1>
+<p>The <a class="reference internal" href="#../../johannes_mueller/entry_user_interf2/Readme#creating-advanced-standalone-guis"><span class="xref myst">previous entry</span></a> showed you how to create more advanced GUIs with the aid of the designer tool. This third part will teach you how to import those GUIs to napari and how to produce them straight from python functions using <a class="reference external" href="https://napari.org/magicgui/index.html">magicgui</a>.</p>
 <section id="table-of-contents">
-<h2>Table of contents<a class="headerlink" href="#table-of-contents" title="Permalink to this heading">#</a></h2>
+<h2>Table of contents<a class="headerlink" href="#table-of-contents" title="Link to this heading">#</a></h2>
 <ul class="simple">
-<li><p><span class="xref myst">Installing and running napari</span></p></li>
-<li><p><span class="xref myst">Calling napari from a script</span></p></li>
-<li><p><span class="xref myst">Importing your fancy GUI to napari</span></p></li>
-<li><p><span class="xref myst">Creating a callback function</span></p></li>
-<li><p><span class="xref myst">Automatically creating a GUI from a function with magicgui</span></p></li>
-<li><p><span class="xref myst">Creating a GUI from FunctionGui</span></p></li>
-<li><p><span class="xref myst">Conclusion</span></p></li>
+<li><p><a class="reference internal" href="#installing-and-running-napari"><span class="xref myst">Installing and running napari</span></a></p></li>
+<li><p><a class="reference internal" href="#calling-napari-from-a-script"><span class="xref myst">Calling napari from a script</span></a></p></li>
+<li><p><a class="reference internal" href="#importing-your-fancy-gui-to-napari"><span class="xref myst">Importing your fancy GUI to napari</span></a></p></li>
+<li><p><a class="reference internal" href="#creating-a-callback-function"><span class="xref myst">Creating a callback function</span></a></p></li>
+<li><p><a class="reference internal" href="#automatically-creating-a-gui-from-a-function-with-magicgui"><span class="xref myst">Automatically creating a GUI from a function with magicgui</span></a></p></li>
+<li><p><a class="reference internal" href="#creating-a-gui-from-functiongui"><span class="xref myst">Creating a GUI from FunctionGui</span></a></p></li>
+<li><p><a class="reference internal" href="#conclusion"><span class="xref myst">Conclusion</span></a></p></li>
 </ul>
 </section>
 <section id="installing-and-running-napari">
-<h2>Installing and running napari<a class="headerlink" href="#installing-and-running-napari" title="Permalink to this heading">#</a></h2>
+<h2>Installing and running napari<a class="headerlink" href="#installing-and-running-napari" title="Link to this heading">#</a></h2>
 <p>The <a class="reference external" href="https://napari.org/">napari website</a> has a more complete <a class="reference external" href="https://napari.org/tutorials/fundamentals/installation.html">installation tutorial</a>, but, overall, you should <a class="reference external" href="https://biapol.github.io/blog/johannes_mueller/entry_user_interf2/Readme#creating-your-environment">create a new conda environment</a> and then type</p>
 <p><code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">install</span> <span class="pre">-c</span> <span class="pre">conda-forge</span> <span class="pre">napari</span></code></p>
 <p>or</p>
@@ -475,17 +486,17 @@ Download the image above and drop it into napari by drag and drop (or use the us
 <p><strong>Wow! We have napari inside napari!</strong> ~~And that’s how you add a GUI to napari! 😆~~</p>
 </section>
 <section id="calling-napari-from-a-script">
-<h2>Calling napari from a script<a class="headerlink" href="#calling-napari-from-a-script" title="Permalink to this heading">#</a></h2>
+<h2>Calling napari from a script<a class="headerlink" href="#calling-napari-from-a-script" title="Link to this heading">#</a></h2>
 <p>Sometimes, it may be convenient to call the napari viewer from a script in order to display a series of image processing steps pre-defined in Python code. This can be done in a couple lines:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">napari</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">napari</span>
 <span class="n">viewer</span> <span class="o">=</span> <span class="n">napari</span><span class="o">.</span><span class="n">Viewer</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>The code above can be called from <a class="reference external" href="https://jupyter.org/">Jupyter Notebook or JupyterLab</a>, <a class="reference external" href="https://www.spyder-ide.org/">Spyder</a>, or your editor of preference.
 It is also possible to add images to the viewer from code. Download this image: <a class="reference external" href="https://github.com/BiAPoL/blog/tree/master/marcelo_zoccoler/entry_user_interf3/images/21_Map_of_Tabuaeran_Kiribati_blue.png">Astronaut photo of Tabuaeran, Kiribati with villages and main landmarks</a> by Government of USA, Government of Kiribati, under license CC BY-SA 3.0 <a class="reference external" href="https://creativecommons.org/licenses/by-sa/3.0">https://creativecommons.org/licenses/by-sa/3.0</a>, via Wikimedia Commons, where the following changes were made: green and red channels removed, then image was inverted regarding intensity.
 Put the image in the same folder as the code and let’s expand it a bit:</p>
-<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">napari</span>
-<span class="kn">from</span> <span class="nn">skimage.io</span> <span class="kn">import</span> <span class="n">imread</span>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">napari</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">skimage.io</span><span class="w"> </span><span class="kn">import</span> <span class="n">imread</span>
 
 <span class="n">viewer</span> <span class="o">=</span> <span class="n">napari</span><span class="o">.</span><span class="n">Viewer</span><span class="p">()</span>
 <span class="n">napari_image</span> <span class="o">=</span> <span class="n">imread</span><span class="p">(</span><span class="s1">&#39;21_Map_of_Tabuaeran_Kiribati_blue.png&#39;</span><span class="p">)</span>      <span class="c1"># Reads an image from file</span>
@@ -499,20 +510,20 @@ Put the image in the same folder as the code and let’s expand it a bit:</p>
 <p><em>Side-note: the napari island is part of the Kiribati country, which like Fiji, is also vulnerable to <a class="reference external" href="https://storymaps.arcgis.com/stories/7f455136b85f4edd8655d15a89b5039f">climate change effect</a>.</em></p>
 </section>
 <section id="importing-your-fancy-gui-to-napari">
-<h2>Importing your fancy GUI to napari<a class="headerlink" href="#importing-your-fancy-gui-to-napari" title="Permalink to this heading">#</a></h2>
-<p>Here, I modified a bit the GUI from the <span class="xref myst">previous post</span> and it looks like this:</p>
+<h2>Importing your fancy GUI to napari<a class="headerlink" href="#importing-your-fancy-gui-to-napari" title="Link to this heading">#</a></h2>
+<p>Here, I modified a bit the GUI from the <a class="reference internal" href="#../../johannes_mueller/entry_user_interf2/Readme#creating-a-simple-gui-with-the-designer"><span class="xref myst">previous post</span></a> and it looks like this:</p>
 <p><img alt="" src="../../_images/flood_tool_gui.png" /></p>
 <p>You can find the ‘.ui’ file to open this GUI with the designer <a class="reference external" href="https://github.com/BiAPoL/blog/raw/master/marcelo_zoccoler/entry_user_interf3/scripts/flood_tool.ui">here</a>. Download it and save it to the same folder of your code.</p>
 <p>Now let’s add it to napari! Modify the script as shown below:</p>
-<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">napari</span>
-<span class="kn">from</span> <span class="nn">skimage.io</span> <span class="kn">import</span> <span class="n">imread</span>
-<span class="kn">from</span> <span class="nn">qtpy.QtWidgets</span> <span class="kn">import</span> <span class="n">QMainWindow</span>
-<span class="kn">from</span> <span class="nn">qtpy</span> <span class="kn">import</span> <span class="n">uic</span>
-<span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">napari</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">skimage.io</span><span class="w"> </span><span class="kn">import</span> <span class="n">imread</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">qtpy.QtWidgets</span><span class="w"> </span><span class="kn">import</span> <span class="n">QMainWindow</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">qtpy</span><span class="w"> </span><span class="kn">import</span> <span class="n">uic</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
 
 <span class="c1"># Define the main window class</span>
-<span class="k">class</span> <span class="nc">FancyGUI</span><span class="p">(</span><span class="n">QMainWindow</span><span class="p">):</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">napari_viewer</span><span class="p">):</span>          <span class="c1"># include napari_viewer as argument (it has to have this name)</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">FancyGUI</span><span class="p">(</span><span class="n">QMainWindow</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">napari_viewer</span><span class="p">):</span>          <span class="c1"># include napari_viewer as argument (it has to have this name)</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">viewer</span> <span class="o">=</span> <span class="n">napari_viewer</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">UI_FILE</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">Path</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)</span><span class="o">.</span><span class="n">parent</span> <span class="o">/</span> <span class="s2">&quot;flood_tool.ui&quot;</span><span class="p">)</span>  <span class="c1"># path to .ui file</span>
@@ -544,11 +555,11 @@ Put the image in the same folder as the code and let’s expand it a bit:</p>
 <p><img alt="" src="../../_images/napari_flood_tool1b.png" /></p>
 </section>
 <section id="creating-a-callback-function">
-<h2>Creating a callback function<a class="headerlink" href="#creating-a-callback-function" title="Permalink to this heading">#</a></h2>
+<h2>Creating a callback function<a class="headerlink" href="#creating-a-callback-function" title="Link to this heading">#</a></h2>
 <p>As you may have noticed, our GUI is there, but it does nothing yet. We need to link click/change events to callback functions.
 Just for fun, let’s create a function that relates temperature increases to sea level.</p>
 <p><em><strong>Disclaimer:</strong> This specific function, although based on the fact that global warming contributes to increase sea levels, has no scientific background to support it, and it was completely made-up just for a fun illustration. Climate change is a complex subject that involves many internal and external factors which I do not have the expertise to explain.</em></p>
-<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">flood</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">delta</span><span class="p">):</span>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">flood</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">delta</span><span class="p">):</span>
     <span class="n">new_level</span> <span class="o">=</span> <span class="n">delta</span><span class="o">*</span><span class="mi">85</span>
     <span class="n">label_image</span> <span class="o">=</span> <span class="n">image</span> <span class="o">&lt;=</span> <span class="n">new_level</span>
     <span class="n">label_image</span> <span class="o">=</span> <span class="n">label_image</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span><span class="o">*</span><span class="mi">13</span>     <span class="c1"># label number 13 is blue in napari</span>
@@ -558,7 +569,7 @@ Just for fun, let’s create a function that relates temperature increases to se
 <p>This function takes an <code class="docutils literal notranslate"><span class="pre">image</span></code> and a <code class="docutils literal notranslate"><span class="pre">delta</span></code> (temperature) as inputs. It converts delta into <code class="docutils literal notranslate"><span class="pre">new_level</span></code> (new sea level) and creates a label image where the labeled region corresponds to grayscale levels which are below <code class="docutils literal notranslate"><span class="pre">new_level</span></code>. It returns <code class="docutils literal notranslate"><span class="pre">label_image</span></code> and <code class="docutils literal notranslate"><span class="pre">new_level</span></code>. It can be simplified, but let’s keep it like this for future reasons.</p>
 <p>Now, we need to link this function to the ‘Apply’ button. This can be done with the general command <code class="docutils literal notranslate"><span class="pre">pushButton.clicked.connect(callback_function)</span></code>.
 Let’s write a callback function that calls our flood function:</p>
-<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">apply_delta</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">apply_delta</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
     <span class="n">label</span><span class="p">,</span> <span class="n">level</span> <span class="o">=</span> <span class="n">flood</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">delta</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -570,21 +581,21 @@ Let’s write a callback function that calls our flood function:</p>
 <li><p><code class="docutils literal notranslate"><span class="pre">level</span></code> is the output sea level, which we want also to show as our Slider widget, so we set it with <code class="docutils literal notranslate"><span class="pre">self.horizontalSlider.setValue(level)</span></code>.</p></li>
 </ul>
 <p>Lastly, we use a flag (<code class="docutils literal notranslate"><span class="pre">self.label_layer</span></code>) to update the label layer rather than creating a new one every time. The code now looks like this:</p>
-<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">napari</span>
-<span class="kn">from</span> <span class="nn">skimage.io</span> <span class="kn">import</span> <span class="n">imread</span>
-<span class="kn">from</span> <span class="nn">qtpy.QtWidgets</span> <span class="kn">import</span> <span class="n">QMainWindow</span>
-<span class="kn">from</span> <span class="nn">qtpy</span> <span class="kn">import</span> <span class="n">uic</span>
-<span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">napari</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">skimage.io</span><span class="w"> </span><span class="kn">import</span> <span class="n">imread</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">qtpy.QtWidgets</span><span class="w"> </span><span class="kn">import</span> <span class="n">QMainWindow</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">qtpy</span><span class="w"> </span><span class="kn">import</span> <span class="n">uic</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
 
-<span class="k">def</span> <span class="nf">flood</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">delta</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">flood</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">delta</span><span class="p">):</span>
     <span class="n">new_level</span> <span class="o">=</span> <span class="n">delta</span><span class="o">*</span><span class="mi">85</span>
     <span class="n">label_image</span> <span class="o">=</span> <span class="n">image</span> <span class="o">&lt;=</span> <span class="n">new_level</span>
     <span class="n">label_image</span> <span class="o">=</span> <span class="n">label_image</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span><span class="o">*</span><span class="mi">13</span>  <span class="c1"># label 13 is blue in napari</span>
     <span class="k">return</span><span class="p">(</span><span class="n">label_image</span><span class="p">,</span> <span class="n">new_level</span><span class="p">)</span>
 
 <span class="c1"># Define the main window class</span>
-<span class="k">class</span> <span class="nc">FancyGUI</span><span class="p">(</span><span class="n">QMainWindow</span><span class="p">):</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">napari_viewer</span><span class="p">):</span>          <span class="c1"># include napari_viewer as argument (it has to have this name)</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">FancyGUI</span><span class="p">(</span><span class="n">QMainWindow</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">napari_viewer</span><span class="p">):</span>          <span class="c1"># include napari_viewer as argument (it has to have this name)</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">viewer</span> <span class="o">=</span> <span class="n">napari_viewer</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">UI_FILE</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">Path</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)</span><span class="o">.</span><span class="n">parent</span> <span class="o">/</span> <span class="s2">&quot;flood_tool.ui&quot;</span><span class="p">)</span>  <span class="c1"># path to .ui file</span>
@@ -593,7 +604,7 @@ Let’s write a callback function that calls our flood function:</p>
         <span class="bp">self</span><span class="o">.</span><span class="n">label_layer</span> <span class="o">=</span> <span class="kc">None</span>                <span class="c1"># stored label layer variable</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">pushButton</span><span class="o">.</span><span class="n">clicked</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">apply_delta</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">apply_delta</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">apply_delta</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="n">image</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">viewer</span><span class="o">.</span><span class="n">layers</span><span class="p">[</span><span class="s1">&#39;napari_island&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">data</span>    <span class="c1"># We chose to use the layer name to find the correct image layer</span>
         <span class="n">delta</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">doubleSpinBox</span><span class="o">.</span><span class="n">value</span><span class="p">()</span>
         <span class="n">label</span><span class="p">,</span> <span class="n">level</span> <span class="o">=</span> <span class="n">flood</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">delta</span><span class="p">)</span>
@@ -615,12 +626,12 @@ Let’s write a callback function that calls our flood function:</p>
 <p><img alt="" src="../../_images/napari_flood_tool2.png" /></p>
 </section>
 <section id="automatically-creating-a-gui-from-a-function-with-magicgui">
-<h2>Automatically creating a GUI from a function with magicgui<a class="headerlink" href="#automatically-creating-a-gui-from-a-function-with-magicgui" title="Permalink to this heading">#</a></h2>
+<h2>Automatically creating a GUI from a function with magicgui<a class="headerlink" href="#automatically-creating-a-gui-from-a-function-with-magicgui" title="Link to this heading">#</a></h2>
 <p>What if we could ‘magically’ simplify all that and just say: ‘Dear computer, please create a GUI for my function’?
 We can ~~literally~~ almost do that with 🧙‍♂️<a class="reference external" href="https://napari.org/magicgui/index.html">magicgui</a>! If we put some annotations right next to the variables in our function, we can create the GUI with one line of code 😻 ! So let’s not wait any longer and add those annotations to our function:</p>
-<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">napari.types</span> <span class="kn">import</span> <span class="n">ImageData</span><span class="p">,</span> <span class="n">LabelsData</span>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">napari.types</span><span class="w"> </span><span class="kn">import</span> <span class="n">ImageData</span><span class="p">,</span> <span class="n">LabelsData</span>
 
-<span class="k">def</span> <span class="nf">flood</span><span class="p">(</span><span class="n">image</span><span class="p">:</span> <span class="n">ImageData</span><span class="p">,</span> <span class="n">delta</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">new_level</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">LabelsData</span><span class="p">:</span> 
+<span class="k">def</span><span class="w"> </span><span class="nf">flood</span><span class="p">(</span><span class="n">image</span><span class="p">:</span> <span class="n">ImageData</span><span class="p">,</span> <span class="n">delta</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">new_level</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">LabelsData</span><span class="p">:</span> 
     <span class="n">new_level</span> <span class="o">=</span> <span class="n">delta</span><span class="o">*</span><span class="mi">85</span>
     <span class="n">label_image</span> <span class="o">=</span> <span class="n">image</span> <span class="o">&lt;=</span> <span class="n">new_level</span>
     <span class="n">label_image</span> <span class="o">=</span> <span class="n">label_image</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span><span class="o">*</span><span class="mi">13</span> <span class="c1"># label 13 is blue in napari</span>
@@ -638,12 +649,12 @@ We can ~~literally~~ almost do that with 🧙‍♂️<a class="reference extern
 <p>Now, here it comes… the one-liner: 🥁🥁</p>
 <p><code class="docutils literal notranslate"><span class="pre">flood_widget</span> <span class="pre">=</span> <span class="pre">magicgui(flood)</span></code></p>
 <p>Done! GUI was created and stored in <code class="docutils literal notranslate"><span class="pre">flood_widget</span></code>. The full code and the result become like this:</p>
-<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">napari</span>
-<span class="kn">from</span> <span class="nn">skimage.io</span> <span class="kn">import</span> <span class="n">imread</span>
-<span class="kn">from</span> <span class="nn">magicgui</span> <span class="kn">import</span> <span class="n">magicgui</span>
-<span class="kn">from</span> <span class="nn">napari.types</span> <span class="kn">import</span> <span class="n">ImageData</span><span class="p">,</span> <span class="n">LabelsData</span>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">napari</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">skimage.io</span><span class="w"> </span><span class="kn">import</span> <span class="n">imread</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">magicgui</span><span class="w"> </span><span class="kn">import</span> <span class="n">magicgui</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">napari.types</span><span class="w"> </span><span class="kn">import</span> <span class="n">ImageData</span><span class="p">,</span> <span class="n">LabelsData</span>
 
-<span class="k">def</span> <span class="nf">flood</span><span class="p">(</span><span class="n">image</span><span class="p">:</span> <span class="n">ImageData</span><span class="p">,</span> <span class="n">delta</span><span class="p">:</span> <span class="nb">float</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">new_level</span><span class="p">:</span> <span class="nb">int</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">LabelsData</span><span class="p">:</span> 
+<span class="k">def</span><span class="w"> </span><span class="nf">flood</span><span class="p">(</span><span class="n">image</span><span class="p">:</span> <span class="n">ImageData</span><span class="p">,</span> <span class="n">delta</span><span class="p">:</span> <span class="nb">float</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">new_level</span><span class="p">:</span> <span class="nb">int</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">LabelsData</span><span class="p">:</span> 
     <span class="n">new_level</span> <span class="o">=</span> <span class="n">delta</span><span class="o">*</span><span class="mi">85</span>
     <span class="n">label_image</span> <span class="o">=</span> <span class="n">image</span> <span class="o">&lt;=</span> <span class="n">new_level</span>
     <span class="n">label_image</span> <span class="o">=</span> <span class="n">label_image</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span><span class="o">*</span><span class="mi">13</span> <span class="c1"># label 13 is blue in napari</span>
@@ -671,24 +682,24 @@ We discarded the button here by using <code class="docutils literal notranslate"
 <img alt="figure 4" src="../../_images/napari_flood_tool4.png" />
 <p>One thing missing is that the ‘Sea level’ slider does not get updated since it is an input now. But, we can append a callback function to the spinbox that updates the slider every time delta changes! Add the following code after creating the widget with magicgui (thanks Talley Lambert for this tip!):</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@flood_widget</span><span class="o">.</span><span class="n">delta</span><span class="o">.</span><span class="n">changed</span><span class="o">.</span><span class="n">connect</span>  <span class="c1"># Connect a function to delta (spinbox widget)</span>
-<span class="k">def</span> <span class="nf">update_level</span><span class="p">(</span><span class="n">delta</span><span class="p">:</span> <span class="nb">float</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">update_level</span><span class="p">(</span><span class="n">delta</span><span class="p">:</span> <span class="nb">float</span><span class="p">):</span>
     <span class="n">flood_widget</span><span class="o">.</span><span class="n">new_level</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="n">delta</span> <span class="o">*</span> <span class="mi">85</span>  <span class="c1"># Update slider when spinbox changes</span>
 </pre></div>
 </div>
 <p>You can look for further documentation and tutorials at <a class="reference external" href="https://napari.org/magicgui/usage/quickstart.html">magicgui quickstart</a> and <a class="reference external" href="https://napari.org/guides/stable/magicgui.html">magicgui in napari</a>.</p>
 </section>
 <section id="creating-a-gui-from-functiongui">
-<h2>Creating a GUI from FunctionGui<a class="headerlink" href="#creating-a-gui-from-functiongui" title="Permalink to this heading">#</a></h2>
+<h2>Creating a GUI from FunctionGui<a class="headerlink" href="#creating-a-gui-from-functiongui" title="Link to this heading">#</a></h2>
 <p>The third approach is a more straightforward one. By using and modifying FunctionGui (the type that is returned by magicgui), we can have a more direct access to all options.</p>
 <p>We keep the annotated version of our function, but instead of passing it to magicgui, we will define a new <code class="docutils literal notranslate"><span class="pre">FunctionGui</span></code> class, based on <a class="reference external" href="https://napari.org/guides/stable/magicgui.html#magicgui-widgets-functiongui">this example</a> and pass our flood function to <code class="docutils literal notranslate"><span class="pre">FunctionGui</span></code>. So, I will start with the code shown below:</p>
-<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">flood</span><span class="p">(</span><span class="n">image</span><span class="p">:</span> <span class="n">ImageData</span><span class="p">,</span> <span class="n">delta</span><span class="p">:</span> <span class="nb">float</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">new_level</span><span class="p">:</span> <span class="nb">int</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">LabelsData</span><span class="p">:</span> 
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">flood</span><span class="p">(</span><span class="n">image</span><span class="p">:</span> <span class="n">ImageData</span><span class="p">,</span> <span class="n">delta</span><span class="p">:</span> <span class="nb">float</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">new_level</span><span class="p">:</span> <span class="nb">int</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">LabelsData</span><span class="p">:</span> 
     <span class="n">new_level</span> <span class="o">=</span> <span class="n">delta</span><span class="o">*</span><span class="mi">85</span>
     <span class="n">label_image</span> <span class="o">=</span> <span class="n">image</span> <span class="o">&lt;=</span> <span class="n">new_level</span>
     <span class="n">label_image</span> <span class="o">=</span> <span class="n">label_image</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span><span class="o">*</span><span class="mi">13</span> <span class="c1"># label 13 is blue in napari</span>
     <span class="k">return</span><span class="p">(</span><span class="n">label_image</span><span class="p">)</span>
     
-<span class="k">class</span> <span class="nc">MyGui</span><span class="p">(</span><span class="n">FunctionGui</span><span class="p">):</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">MyGui</span><span class="p">(</span><span class="n">FunctionGui</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
           <span class="n">flood</span><span class="p">,</span>                <span class="c1"># Here is where we pass our custom annotated function to FunctionGui</span>
           <span class="n">call_button</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
@@ -698,10 +709,10 @@ We discarded the button here by using <code class="docutils literal notranslate"
         <span class="c1"># do whatever other initialization you want here</span>
 </pre></div>
 </div>
-<p>If we open napari, add our image and add MyGui to napari, we get the same result as shown <span class="xref myst">before</span> (full code at the end of this section).</p>
-<p>Similarly, to match the widgets style we want (like in <span class="xref myst">previous results</span>), we can provide dictionaries to the <code class="docutils literal notranslate"><span class="pre">param_options</span></code>, like this:</p>
-<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">MyGui</span><span class="p">(</span><span class="n">FunctionGui</span><span class="p">):</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<p>If we open napari, add our image and add MyGui to napari, we get the same result as shown <a class="reference internal" href="#figure3"><span class="xref myst">before</span></a> (full code at the end of this section).</p>
+<p>Similarly, to match the widgets style we want (like in <a class="reference internal" href="#figure4"><span class="xref myst">previous results</span></a>), we can provide dictionaries to the <code class="docutils literal notranslate"><span class="pre">param_options</span></code>, like this:</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">MyGui</span><span class="p">(</span><span class="n">FunctionGui</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
           <span class="n">flood</span><span class="p">,</span>                <span class="c1"># Here is where we pass our custom annotated function to FunctionGui</span>
           <span class="n">call_button</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
@@ -717,19 +728,19 @@ We discarded the button here by using <code class="docutils literal notranslate"
 </pre></div>
 </div>
 <p>We can modify the <code class="docutils literal notranslate"><span class="pre">__init()__</span></code> and the <code class="docutils literal notranslate"><span class="pre">__call()__</span></code> functions to gain access to other widgets and get/send other variables that are not images. For example, besides <code class="docutils literal notranslate"><span class="pre">label_image</span></code>, we can make our function return <code class="docutils literal notranslate"><span class="pre">new_level</span></code> again as an annotation and use its value to change the slider when the user hits the ‘Run’ button. Check the complete code and result below:</p>
-<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">napari</span>
-<span class="kn">from</span> <span class="nn">skimage.io</span> <span class="kn">import</span> <span class="n">imread</span>
-<span class="kn">from</span> <span class="nn">napari.types</span> <span class="kn">import</span> <span class="n">ImageData</span><span class="p">,</span> <span class="n">LabelsData</span><span class="p">,</span> <span class="n">LayerDataTuple</span>
-<span class="kn">from</span> <span class="nn">magicgui.widgets</span> <span class="kn">import</span> <span class="n">FunctionGui</span>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">napari</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">skimage.io</span><span class="w"> </span><span class="kn">import</span> <span class="n">imread</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">napari.types</span><span class="w"> </span><span class="kn">import</span> <span class="n">ImageData</span><span class="p">,</span> <span class="n">LabelsData</span><span class="p">,</span> <span class="n">LayerDataTuple</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">magicgui.widgets</span><span class="w"> </span><span class="kn">import</span> <span class="n">FunctionGui</span>
 
-<span class="k">def</span> <span class="nf">flood</span><span class="p">(</span><span class="n">image</span><span class="p">:</span> <span class="n">ImageData</span><span class="p">,</span> <span class="n">delta</span><span class="p">:</span> <span class="nb">float</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">new_level</span><span class="p">:</span> <span class="nb">int</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">LayerDataTuple</span><span class="p">:</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">flood</span><span class="p">(</span><span class="n">image</span><span class="p">:</span> <span class="n">ImageData</span><span class="p">,</span> <span class="n">delta</span><span class="p">:</span> <span class="nb">float</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">new_level</span><span class="p">:</span> <span class="nb">int</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">LayerDataTuple</span><span class="p">:</span>
     <span class="n">new_level</span> <span class="o">=</span> <span class="n">delta</span><span class="o">*</span><span class="mi">85</span>
     <span class="n">label_image</span> <span class="o">=</span> <span class="n">image</span> <span class="o">&lt;=</span> <span class="n">new_level</span>
     <span class="n">label_image</span> <span class="o">=</span> <span class="n">label_image</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span><span class="o">*</span><span class="mi">13</span> <span class="c1"># label 13 is blue in napari</span>
     <span class="k">return</span><span class="p">((</span><span class="n">label_image</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;flood result&#39;</span><span class="p">,</span><span class="s1">&#39;metadata&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;new_level&#39;</span><span class="p">:</span><span class="n">new_level</span><span class="p">}}))</span>
 
-<span class="k">class</span> <span class="nc">MyGui</span><span class="p">(</span><span class="n">FunctionGui</span><span class="p">):</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">MyGui</span><span class="p">(</span><span class="n">FunctionGui</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
           <span class="n">flood</span><span class="p">,</span>
           <span class="n">call_button</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
@@ -743,7 +754,7 @@ We discarded the button here by using <code class="docutils literal notranslate"
                              <span class="s1">&#39;min&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;max&#39;</span> <span class="p">:</span> <span class="mi">255</span><span class="p">,</span> <span class="s1">&#39;enabled&#39;</span> <span class="p">:</span> <span class="kc">False</span><span class="p">}}</span>
         <span class="p">)</span>
 
-    <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="n">label_image</span> <span class="o">=</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__call__</span><span class="p">()</span>
         <span class="n">new_level</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">label_image</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="s1">&#39;metadata&#39;</span><span class="p">][</span><span class="s1">&#39;new_level&#39;</span><span class="p">])</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">new_level</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="n">new_level</span>
@@ -760,7 +771,7 @@ We discarded the button here by using <code class="docutils literal notranslate"
 <p><img alt="" src="../../_images/napari_flood_tool5.png" /></p>
 </section>
 <section id="conclusion">
-<h2>Conclusion<a class="headerlink" href="#conclusion" title="Permalink to this heading">#</a></h2>
+<h2>Conclusion<a class="headerlink" href="#conclusion" title="Link to this heading">#</a></h2>
 <p>We have implemented our GUI in 3 different ways! Check which way is advantageous for you and play with it a little bit, because in the next part we will teach you how to turn it into a napari plugin and distribute it 🎉</p>
 </section>
 </section>
@@ -790,11 +801,10 @@ We discarded the button here by using <code class="docutils literal notranslate"
 
               
               
-                <footer class="bd-footer-article">
+              
+              
+                <footer class="prev-next-footer d-print-none">
                   
-<div class="footer-article-items footer-article__inner">
-  
-    <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
        href="../../johannes_mueller/entry_user_interf2/Readme.html"
@@ -814,17 +824,16 @@ We discarded the button here by using <code class="docutils literal notranslate"
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
-</div></div>
-  
 </div>
-
                 </footer>
               
             </div>
             
             
               
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -869,6 +878,7 @@ By Marcelo Zoccoler, Johannes Müller, Till Korten, Ryan Savill, Mara Lampert, S
   
   <div class="footer-item">
     
+
   <p class="copyright">
     
       © Copyright 2024.
@@ -895,8 +905,8 @@ By Marcelo Zoccoler, Johannes Müller, Till Korten, Ryan Savill, Mara Lampert, S
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
-<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+  <script defer src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
 
   <footer class="bd-footer">
   </footer>

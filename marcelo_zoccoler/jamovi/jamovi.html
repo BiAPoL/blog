@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html lang="en" data-content_root="../../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Jamovi: statistical analysis made visual and easy (powered with R) &#8212; BiA-PoL blog</title>
   
@@ -15,52 +14,52 @@
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-  
-  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
-
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
   
+  <!-- So that users can add custom icons -->
+  <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-    <script src="../../_static/jquery.js"></script>
-    <script src="../../_static/underscore.js"></script>
-    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../../_static/doctools.js"></script>
-    <script src="../../_static/clipboard.min.js"></script>
-    <script src="../../_static/copybutton.js"></script>
-    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../../_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'marcelo_zoccoler/jamovi/jamovi';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -68,6 +67,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="prev" title="Custom user interfaces for Python (Part 4)" href="../entry_user_interf4/Readme.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
   </head>
   
   
@@ -75,23 +75,16 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
   
-  <input type="checkbox"
-          class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
+  <div id="pst-scroll-pixel-helper"></div>
   
-  <input type="checkbox"
-          class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
   
-  <div class="search-button__wrapper">
-    <div class="search-button__overlay"></div>
-    <div class="search-button__search-container">
+  <dialog id="pst-search-dialog">
+    
 <form class="bd-search d-flex align-items-center"
       action="../../search.html"
       method="get">
@@ -99,7 +92,6 @@ const thebe_selector_output = ".output, .cell_output"
   <input type="search"
          class="form-control"
          name="q"
-         id="search-input"
          placeholder="Search this book..."
          aria-label="Search this book..."
          autocomplete="off"
@@ -107,16 +99,25 @@ const thebe_selector_output = ".output, .cell_output"
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form></div>
-  </div>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
       
-      <div class="bd-sidebar-primary bd-sidebar">
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -129,9 +130,13 @@ const thebe_selector_output = ".output, .cell_output"
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
+
+  
+    
   
 
 <a class="navbar-brand logo" href="../../intro.html">
+  
   
   
   
@@ -141,12 +146,19 @@ const thebe_selector_output = ".output, .cell_output"
       
     
     
-    <img src="../../_static/biapol_logo.png" class="logo__image only-light" alt="Logo image"/>
-    <script>document.write(`<img src="../../_static/biapol_logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+    <img src="../../_static/biapol_logo.png" class="logo__image only-light" alt="BiA-PoL blog - Home"/>
+    <img src="../../_static/biapol_logo.png" class="logo__image only-dark pst-js-only" alt="BiA-PoL blog - Home"/>
   
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -170,7 +182,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../mini_sabbatical_rike/Readme.html">Mini-Sabbatical Experience at Bia-PoL</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../johannes_mueller/anaconda_getting_started/Readme.html">Getting started with Anaconda and Python</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../johannes_mueller/entry_sphinx/Readme.html">Automated package documentation with Sphinx</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../johannes_mueller/entry_user_inter/Readme.html">Custom user interfaces for Python (Part 1)</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../johannes_mueller/entry_user_inter/Readme.html">Custom user interfaces for Python (Part 1)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../johannes_mueller/entry_user_interf2/Readme.html">Custom user interfaces for Python (Part 2)</a></li>
 
 <li class="toctree-l2"><a class="reference internal" href="../entry_user_interf3/Readme.html">Custom user interfaces for Python (Part 3)</a></li>
@@ -178,7 +190,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../entry_user_interf4/Readme.html">Custom user interfaces for Python (Part 4)</a></li>
 
 </ul>
-</li>
+</details></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Jamovi: statistical analysis made visual and easy (powered with R)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../robert_haase/ms_build_tools/readme.html">Installing Microsoft buildtools on Windows</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../ryan_savill/principal_feature_analysis/readme.html">Principal Feature Analysis</a></li>
@@ -195,7 +207,7 @@ const thebe_selector_output = ".output, .cell_output"
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">About the Blog</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../robert_haase/why_we_blog/readme.html">Why we blog</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../people.html">BiA-PoL blog authors</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../people.html">BiA-PoL blog authors</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../mara_lampert/readme.html">Mara Lampert</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../stefan_hahmann/readme.html">Stefan Hahmann</a></li>
 
@@ -207,7 +219,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../../ryan_savill/readme.html">Ryan Savill</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../robert_haase/readme.html">Robert Haase</a></li>
 </ul>
-</li>
+</details></li>
 <li class="toctree-l1"><a class="reference internal" href="../../imprint.html">Imprint</a></li>
 
 </ul>
@@ -218,14 +230,19 @@ const thebe_selector_output = ".output, .cell_output"
   
   
   <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
   </div>
-  
-  <div id="rtd-footer-container"></div>
 
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
 
@@ -234,14 +251,14 @@ const thebe_selector_output = ".output, .cell_output"
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article">
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</label></div>
+</button></div>
       
     </div>
   
@@ -363,26 +380,20 @@ const thebe_selector_output = ".output, .cell_output"
 </button>
 
 
-<script>
-document.write(`
-  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
-    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
-    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
-  </button>
-`);
-</script>
 
-<script>
-document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-  </button>
-`);
-</script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</label>
+</button>
 </div></div>
       
     </div>
@@ -420,10 +431,10 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="jamovi-statistical-analysis-made-visual-and-easy-powered-with-r">
-<h1>Jamovi: statistical analysis made visual and easy (powered with R)<a class="headerlink" href="#jamovi-statistical-analysis-made-visual-and-easy-powered-with-r" title="Permalink to this heading">#</a></h1>
+<h1>Jamovi: statistical analysis made visual and easy (powered with R)<a class="headerlink" href="#jamovi-statistical-analysis-made-visual-and-easy-powered-with-r" title="Link to this heading">#</a></h1>
 <p><a class="reference internal" href="../readme.html"><span class="doc std std-doc">Marcelo Zoccoler</span></a>, October 7th 2021</p>
 <p>Statistical analysis software exist for decades. So why care about “just another one”. Well, for one main reason: simplicity. And I mean simplicity by a clean interface and an easy usage. Besides that, <a class="reference external" href="https://www.jamovi.org/">Jamovi</a> is open-source and developed in R, a powerful programming language to perform statistical tests.</p>
 <p>Almost every field in science uses statistical analysis as a tool to validate or refuse a hypothesis. Thus, popular commercial software, like <a class="reference external" href="https://www.ibm.com/analytics/spss-statistics-software">SPSS</a>, <a class="reference external" href="https://www.sas.com/en_us/home.html">SAS</a>, <a class="reference external" href="https://www.originlab.com/">Origin</a>, <a class="reference external" href="https://www.stata.com/">Stata</a>, <a class="reference external" href="https://www.graphpad.com/scientific-software/prism/">Prism</a>, as well as Excel itself, have been and are used. They are all very powerful platforms, but their initial interface with too many menus and buttons may intimidate new users (besides the price). There is a free similar option to SPSS called <a class="reference external" href="https://www.gnu.org/software/pspp/">PSPP</a>, but since it mimics the latter, their interfaces are similar.
@@ -433,18 +444,18 @@ Another options would be using programming languages like <a class="reference ex
 <p><img alt="" src="../../_images/TEM_filter_sample_and_overlay.png" /></p>
 <p>Then I saved 2 <a class="reference external" href="https://github.com/BiAPoL/blog/raw/master/marcelo_zoccoler/jamovi/data">tables</a> (as .csv files) containing data about shape descriptors.</p>
 <section id="installing-jamovi">
-<h2>Installing Jamovi<a class="headerlink" href="#installing-jamovi" title="Permalink to this heading">#</a></h2>
+<h2>Installing Jamovi<a class="headerlink" href="#installing-jamovi" title="Link to this heading">#</a></h2>
 <p>Just download it from the <a class="reference external" href="https://www.jamovi.org/">website</a> and follow standard installation steps.
 There are also a <a class="reference external" href="https://www.jamovi.org/user-manual.html">user guide</a> and <a class="reference external" href="https://www.jamovi.org/community.html">other tutorials</a> there!</p>
 </section>
 <section id="using-jamovi">
-<h2>Using Jamovi<a class="headerlink" href="#using-jamovi" title="Permalink to this heading">#</a></h2>
+<h2>Using Jamovi<a class="headerlink" href="#using-jamovi" title="Link to this heading">#</a></h2>
 <p>Open Jamovi and you will see a screen like the one shown below:</p>
 <p><img alt="" src="../../_images/screen0.PNG" /></p>
 <p>It is hardly possible to have a starting screen simpler than that. You have 4 tabs: Variables, Data, Analysis and Edit. And a split screen: left, where your data will live, and right, where the results will show up.</p>
 </section>
 <section id="importing-your-data">
-<h2>Importing your data<a class="headerlink" href="#importing-your-data" title="Permalink to this heading">#</a></h2>
+<h2>Importing your data<a class="headerlink" href="#importing-your-data" title="Link to this heading">#</a></h2>
 <p>You could type your data yourself in the left side, but since we already have our data from elsewhere, let’s import it. On the top left, click on the 3 dashes symbol and then click on “Import”. You should get a screen like this one:</p>
 <p><img alt="" src="../../_images/screen1.PNG" /></p>
 <p>Browse your data folder. Now, if you want to import data from 2 or more files, like in this case, it is important to press CTRL/CMD and click on every file before clicking on the “Import” button at the bottom.</p>
@@ -452,14 +463,14 @@ There are also a <a class="reference external" href="https://www.jamovi.org/user
 <p><img alt="" src="../../_images/screen2.PNG" /></p>
 </section>
 <section id="descriptive-analysis">
-<h2>Descriptive analysis<a class="headerlink" href="#descriptive-analysis" title="Permalink to this heading">#</a></h2>
+<h2>Descriptive analysis<a class="headerlink" href="#descriptive-analysis" title="Link to this heading">#</a></h2>
 <p>Now we are ready for analysis! It is always a good idea to take a look at the data before performing statistical tests. So, let’s go to “Analysis -&gt; Exploration” and observe descriptors about a certain feature. In our case, we are interested in Circularity, so click on the variable “Circ.” and then click on the arrow at the top to put this feature in the “Variables” box. We also want to see this feature separated by our black/white elements, so click on the variable “source” and then click on the second arrow to put it in the “Split by” box. You will already see a table on the right side showing some statistics like mean, median, etc.</p>
 <p><img alt="" src="../../_images/screen3a.PNG" /></p>
 <p>You can also add plots!</p>
 <p><img alt="" src="../../_images/screen3b.PNG" /></p>
 </section>
 <section id="hypothesis-testing-t-tests">
-<h2>Hypothesis testing: T-tests<a class="headerlink" href="#hypothesis-testing-t-tests" title="Permalink to this heading">#</a></h2>
+<h2>Hypothesis testing: T-tests<a class="headerlink" href="#hypothesis-testing-t-tests" title="Link to this heading">#</a></h2>
 <p>Then let’s do a t-test. Go to “Analyses -&gt;  T-tests -&gt; Independent Samples T-Test”.</p>
 <p><img alt="" src="../../_images/screen4a.PNG" /></p>
 <p>Since our data seems to be not normally distributed, we will perform a <a class="reference external" href="https://en.wikipedia.org/wiki/Mann%E2%80%93Whitney_U_test">Mann-Whitney U test</a> (shown below in red). We can also perform <a class="reference external" href="https://en.wikipedia.org/wiki/Normal_distribution">normality</a> and <a class="reference external" href="https://en.wikipedia.org/wiki/Homoscedasticity">homoscedasticity</a> tests to check our assumptions (shown in green).</p>
@@ -468,19 +479,19 @@ There are also a <a class="reference external" href="https://www.jamovi.org/user
 <p><img alt="" src="../../_images/screen4c.PNG" /></p>
 </section>
 <section id="correlation-analysis">
-<h2>Correlation analysis<a class="headerlink" href="#correlation-analysis" title="Permalink to this heading">#</a></h2>
+<h2>Correlation analysis<a class="headerlink" href="#correlation-analysis" title="Link to this heading">#</a></h2>
 <p>Another analysis we could run is <a class="reference external" href="https://en.wikipedia.org/wiki/Correlation">correlation</a>. Let’s check if roundness and aspect ratio are correlated.
 In the Analyses tab, click “Regression -&gt; Correlation Matrix”. Then just assign the variables “Round” and “AR” to right box, choose the correlations you want, like Pearson and Spearman, and activate some plot by checking checkboxes.</p>
 <p><img alt="" src="../../_images/screen5a.PNG" /></p>
 <p>We can see that they are negatively correlated, as one would expect by examining their <a class="reference external" href="https://imagej.nih.gov/ij/docs/menus/analyze.html">documentation</a>.</p>
 </section>
 <section id="editing">
-<h2>Editing<a class="headerlink" href="#editing" title="Permalink to this heading">#</a></h2>
+<h2>Editing<a class="headerlink" href="#editing" title="Link to this heading">#</a></h2>
 <p>All figures and tables produced can be exported or removed by right-clicking on them. Jamovi allows just a small amount of layout editing. If you click on the three dots at the upper right corner, you can change zoom, color palette and also enable “Syntax mode”, which then display the R code responsible for executing the tests and generating the plots.</p>
 <p><img alt="" src="../../_images/screen6.PNG" /></p>
 </section>
 <section id="extra-features">
-<h2>Extra features<a class="headerlink" href="#extra-features" title="Permalink to this heading">#</a></h2>
+<h2>Extra features<a class="headerlink" href="#extra-features" title="Link to this heading">#</a></h2>
 <p>Finally, extra functionality and tests that might be missing with the standard installation can be added as plugins. For instance, if one wants to perform power analysis, this can be done by clicking on the “+ Modules” button at the top right. Then, a list of plugins is displayed for installation.</p>
 <p><img alt="" src="../../_images/screen7.PNG" /></p>
 <p>If you install “jpower” for example, the new module appears as an extra button right next to the other analyses.</p>
@@ -514,11 +525,10 @@ In the Analyses tab, click “Regression -&gt; Correlation Matrix”. Then just 
 
               
               
-                <footer class="bd-footer-article">
+              
+              
+                <footer class="prev-next-footer d-print-none">
                   
-<div class="footer-article-items footer-article__inner">
-  
-    <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
        href="../entry_user_interf4/Readme.html"
@@ -538,17 +548,16 @@ In the Analyses tab, click “Regression -&gt; Correlation Matrix”. Then just 
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
-</div></div>
-  
 </div>
-
                 </footer>
               
             </div>
             
             
               
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -585,6 +594,7 @@ By Marcelo Zoccoler, Johannes Müller, Till Korten, Ryan Savill, Mara Lampert, S
   
   <div class="footer-item">
     
+
   <p class="copyright">
     
       © Copyright 2024.
@@ -611,8 +621,8 @@ By Marcelo Zoccoler, Johannes Müller, Till Korten, Ryan Savill, Mara Lampert, S
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
-<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+  <script defer src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
 
   <footer class="bd-footer">
   </footer>

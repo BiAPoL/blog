@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html lang="en" data-content_root="../../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Introduction to Image Analysis Basics in Python with Scikit Image &#8212; BiA-PoL blog</title>
   
@@ -15,52 +14,52 @@
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-  
-  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
-
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
   
+  <!-- So that users can add custom icons -->
+  <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-    <script src="../../_static/jquery.js"></script>
-    <script src="../../_static/underscore.js"></script>
-    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../../_static/doctools.js"></script>
-    <script src="../../_static/clipboard.min.js"></script>
-    <script src="../../_static/copybutton.js"></script>
-    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../../_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'ryan_savill/02_intro_to_skimage/readme';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -68,6 +67,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="prev" title="Background Subtraction" href="../03_background_subtraction/readme.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
   </head>
   
   
@@ -75,23 +75,16 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
   
-  <input type="checkbox"
-          class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
+  <div id="pst-scroll-pixel-helper"></div>
   
-  <input type="checkbox"
-          class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
   
-  <div class="search-button__wrapper">
-    <div class="search-button__overlay"></div>
-    <div class="search-button__search-container">
+  <dialog id="pst-search-dialog">
+    
 <form class="bd-search d-flex align-items-center"
       action="../../search.html"
       method="get">
@@ -99,7 +92,6 @@ const thebe_selector_output = ".output, .cell_output"
   <input type="search"
          class="form-control"
          name="q"
-         id="search-input"
          placeholder="Search this book..."
          aria-label="Search this book..."
          autocomplete="off"
@@ -107,16 +99,25 @@ const thebe_selector_output = ".output, .cell_output"
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form></div>
-  </div>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
       
-      <div class="bd-sidebar-primary bd-sidebar">
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -129,9 +130,13 @@ const thebe_selector_output = ".output, .cell_output"
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
+
+  
+    
   
 
 <a class="navbar-brand logo" href="../../intro.html">
+  
   
   
   
@@ -141,12 +146,19 @@ const thebe_selector_output = ".output, .cell_output"
       
     
     
-    <img src="../../_static/biapol_logo.png" class="logo__image only-light" alt="Logo image"/>
-    <script>document.write(`<img src="../../_static/biapol_logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+    <img src="../../_static/biapol_logo.png" class="logo__image only-light" alt="BiA-PoL blog - Home"/>
+    <img src="../../_static/biapol_logo.png" class="logo__image only-dark pst-js-only" alt="BiA-PoL blog - Home"/>
   
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -170,7 +182,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../../marcelo_zoccoler/mini_sabbatical_rike/Readme.html">Mini-Sabbatical Experience at Bia-PoL</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../johannes_mueller/anaconda_getting_started/Readme.html">Getting started with Anaconda and Python</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../johannes_mueller/entry_sphinx/Readme.html">Automated package documentation with Sphinx</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../johannes_mueller/entry_user_inter/Readme.html">Custom user interfaces for Python (Part 1)</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../johannes_mueller/entry_user_inter/Readme.html">Custom user interfaces for Python (Part 1)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../johannes_mueller/entry_user_interf2/Readme.html">Custom user interfaces for Python (Part 2)</a></li>
 
 <li class="toctree-l2"><a class="reference internal" href="../../marcelo_zoccoler/entry_user_interf3/Readme.html">Custom user interfaces for Python (Part 3)</a></li>
@@ -178,7 +190,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../../marcelo_zoccoler/entry_user_interf4/Readme.html">Custom user interfaces for Python (Part 4)</a></li>
 
 </ul>
-</li>
+</details></li>
 <li class="toctree-l1"><a class="reference internal" href="../../marcelo_zoccoler/jamovi/jamovi.html">Jamovi: statistical analysis made visual and easy (powered with R)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../robert_haase/ms_build_tools/readme.html">Installing Microsoft buildtools on Windows</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../principal_feature_analysis/readme.html">Principal Feature Analysis</a></li>
@@ -195,7 +207,7 @@ const thebe_selector_output = ".output, .cell_output"
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">About the Blog</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../robert_haase/why_we_blog/readme.html">Why we blog</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../people.html">BiA-PoL blog authors</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../people.html">BiA-PoL blog authors</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../mara_lampert/readme.html">Mara Lampert</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../stefan_hahmann/readme.html">Stefan Hahmann</a></li>
 
@@ -207,7 +219,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../readme.html">Ryan Savill</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../robert_haase/readme.html">Robert Haase</a></li>
 </ul>
-</li>
+</details></li>
 <li class="toctree-l1"><a class="reference internal" href="../../imprint.html">Imprint</a></li>
 
 </ul>
@@ -218,14 +230,19 @@ const thebe_selector_output = ".output, .cell_output"
   
   
   <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
   </div>
-  
-  <div id="rtd-footer-container"></div>
 
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
 
@@ -234,14 +251,14 @@ const thebe_selector_output = ".output, .cell_output"
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article">
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</label></div>
+</button></div>
       
     </div>
   
@@ -363,26 +380,20 @@ const thebe_selector_output = ".output, .cell_output"
 </button>
 
 
-<script>
-document.write(`
-  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
-    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
-    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
-  </button>
-`);
-</script>
 
-<script>
-document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-  </button>
-`);
-</script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</label>
+</button>
 </div></div>
       
     </div>
@@ -413,25 +424,25 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="introduction-to-image-analysis-basics-in-python-with-scikit-image">
-<h1>Introduction to Image Analysis Basics in Python with Scikit Image<a class="headerlink" href="#introduction-to-image-analysis-basics-in-python-with-scikit-image" title="Permalink to this heading">#</a></h1>
-<p><a class="reference internal" href="../readme.html"><span class="doc std std-doc">Ryan Savill</span></a>, June 25th 2021</p>
+<h1>Introduction to Image Analysis Basics in Python with Scikit Image<a class="headerlink" href="#introduction-to-image-analysis-basics-in-python-with-scikit-image" title="Link to this heading">#</a></h1>
+<p><a class="reference internal" href="../readme.html"><span class="std std-doc">Ryan Savill</span></a>, June 25th 2021</p>
 <p>Now that we have a grasp of the basics of python it’s time to get started with some proper image analysis! For the purpose of trying out image analysis I have a picture of a tribolium embryo with stained nuclei. It previously was a 3D image but we are working with a maximum projection to keep it simple (This means the maximum intensity over all slices of the embryo were taken).  The dataset was acquired by Daniela Vorkel, Myers lab, MPI-CBG / CSBD Dresden. Now to see how processing is done in python the explanation will be shown with this example.
 The first step in any program is to import the libraries needed. You can import whole libraries for example <a class="reference external" href="https://numpy.org/">numpy</a>:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># we are importing it as &#39;np&#39; to make the </span>
 <span class="c1"># code that we have to write shorter</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 </pre></div>
 </div>
 <p>Or we can import parts of a library that we need for example from <a class="reference external" href="https://scikit-image.org/">scikit image</a> or <a class="reference external" href="https://matplotlib.org/">matplotlib</a>.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">skimage</span> <span class="kn">import</span> <span class="n">data</span><span class="p">,</span> <span class="n">io</span><span class="p">,</span> <span class="n">filters</span><span class="p">,</span> <span class="n">feature</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">skimage</span><span class="w"> </span><span class="kn">import</span> <span class="n">data</span><span class="p">,</span> <span class="n">io</span><span class="p">,</span> <span class="n">filters</span><span class="p">,</span> <span class="n">feature</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
 </pre></div>
 </div>
 <p>If you have downloaded anaconda and created an environment as was described in my first <a class="reference external" href="https://biapol.github.io/blog/rs_Introduction_to_Python">post</a> you will have these libraries pre-installed as they are some of the standard scientific packages needed in python. If you get any errors, go to the command line, activate your environment and install the libraries. If you search the library you want to install in google you will find how to install them in your environment on the sites.</p>
-<p>Now that we have the libraries imported we can talk a bit about them: Numpy is one of the most important libraries you’ll need since a lot of the other libraries we will work with are partially based on numpy. In short, numpy is a framework with which arrays can be used for mathematical operations on vectors and matrices, but it is also far more than that. I would HIGHLY suggest watching <a class="reference external" href="https://www.youtube.com/watch?v=4uFs1qouPEI&amp;list=PLZsOBAyNTZwYHBIlu_PUO19M7aHMgwBJr&amp;index=12&amp;ab_channel=DigitalSreeni">this video</a> on numpy arrays and how they work. It is also helpful to play around with numpy arrays yourself to get used to how they work, because images in python are nothing else that numpy arrays of intensities!</p>
+<p>Now that we have the libraries imported we can talk a bit about them: Numpy is one of the most important libraries you’ll need since a lot of the other libraries we will work with are partially based on numpy. In short, numpy is a framework with which arrays can be used for mathematical operations on vectors and matrices, but it is also far more than that. I would HIGHLY suggest watching <a class="reference external" href="https://www.youtube.com/watch?v=4uFs1qouPEI&amp;amp;list=PLZsOBAyNTZwYHBIlu_PUO19M7aHMgwBJr&amp;amp;index=12&amp;amp;ab_channel=DigitalSreeni">this video</a> on numpy arrays and how they work. It is also helpful to play around with numpy arrays yourself to get used to how they work, because images in python are nothing else that numpy arrays of intensities!</p>
 <p>The other library we will be using is scikit image: you could think of this library a bit like the ImageJ of python. It has hundreds of functions needed for image analysis included and this saves us from defining our own functions for gaussian blurring, thresholding, etc. Most importantly the ‘io’ submodule can be used to read images from disc or saving them from python:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># you will need to write the filepath for where you have</span>
 <span class="c1"># the data stored in this variable as a string!</span>
@@ -484,9 +495,9 @@ shape of tribolium picture: (1024, 512)
 </pre></div>
 </div>
 <p><img alt="png" src="../../_images/output_9_0.png" /></p>
-<p>Now that we have learnt how to look at our image we can move on to manipulating it! First we will apply a median filter as preprocessing and afterwards <a class="reference external" href="https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&amp;arnumber=4310076">Otsu’s thresholding method</a>. As you will see thresholding works slightly different compared to ImageJ and <a class="reference external" href="https://cellprofiler.org/">CellProfiler</a> as we only get the value of the threshold. This value can then be used to compare each pixel to. Since our image is a numpy array, this is really easy and only one line of code! To look at the original image side by side, we will use matplotlib to display the results:</p>
+<p>Now that we have learnt how to look at our image we can move on to manipulating it! First we will apply a median filter as preprocessing and afterwards <a class="reference external" href="https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&amp;amp;arnumber=4310076">Otsu’s thresholding method</a>. As you will see thresholding works slightly different compared to ImageJ and <a class="reference external" href="https://cellprofiler.org/">CellProfiler</a> as we only get the value of the threshold. This value can then be used to compare each pixel to. Since our image is a numpy array, this is really easy and only one line of code! To look at the original image side by side, we will use matplotlib to display the results:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># importing the scipy library since it contains a median filter</span>
-<span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">ndimage</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scipy</span><span class="w"> </span><span class="kn">import</span> <span class="n">ndimage</span>
 
 <span class="c1"># median filtering with scipy to remove noise in the image</span>
 <span class="n">denoised_tribolium</span> <span class="o">=</span> <span class="n">ndimage</span><span class="o">.</span><span class="n">median_filter</span><span class="p">(</span><span class="n">tribolium</span><span class="p">,</span> <span class="n">size</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
@@ -522,10 +533,10 @@ shape of tribolium picture: (1024, 512)
 </div>
 <p><img alt="png" src="../../_images/output_11_0.png" /></p>
 <p>Instead of writing every line of code directly we can also perform more complicated workflows by defining a function and then calling it. This is especially helpful when we need to use functions often or we want to keep the code simple to not get lost in what sometimes is called <a class="reference external" href="https://en.wikipedia.org/wiki/Spaghetti_code">spaghetti-code</a>. Here we are writing a function that does the median-filter and thresholding like above, with a few input parameters so we can choose the median-filter size and if the background is black or white. If we already write default values in the function definition we can choose to change these values when we call the function or just call the function without the variables and work with the default values. The result should still be the same as above:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">median_and_otsutresh</span><span class="p">(</span><span class="n">img</span><span class="p">,</span><span class="n">mediansize</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span><span class="n">blackbgnd</span> <span class="o">=</span> <span class="kc">True</span><span class="p">):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">median_and_otsutresh</span><span class="p">(</span><span class="n">img</span><span class="p">,</span><span class="n">mediansize</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span><span class="n">blackbgnd</span> <span class="o">=</span> <span class="kc">True</span><span class="p">):</span>
     <span class="c1"># for a function to always work you need to import the libraries used in the function</span>
-    <span class="kn">from</span> <span class="nn">scipy.ndimage</span> <span class="kn">import</span> <span class="n">median_filter</span>
-    <span class="kn">from</span> <span class="nn">skimage.filters</span> <span class="kn">import</span> <span class="n">threshold_otsu</span>              
+    <span class="kn">from</span><span class="w"> </span><span class="nn">scipy.ndimage</span><span class="w"> </span><span class="kn">import</span> <span class="n">median_filter</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">skimage.filters</span><span class="w"> </span><span class="kn">import</span> <span class="n">threshold_otsu</span>              
     
     <span class="n">medianimg</span> <span class="o">=</span> <span class="n">median_filter</span><span class="p">(</span><span class="n">img</span><span class="p">,</span><span class="n">mediansize</span><span class="p">)</span>
     
@@ -563,9 +574,9 @@ shape of tribolium picture: (1024, 512)
 <p><img alt="png" src="../../_images/output_13_0.png" /></p>
 <p>These results are not too great so some preprocessing apart from the median filter is needed. Here we will use a <a class="reference external" href="https://en.wikipedia.org/wiki/Top-hat_transform">top-hat filter</a> for background subtraction in order to achieve a more precise segmentation. The function shown here is a simple implementation of the scikit image function and works with a radius as parameter for the top-hat filtering. A more in-depth overview about background subtraction is will be provided in a separate blog post!</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># defining a function for background subtraction</span>
-<span class="k">def</span> <span class="nf">subtract_background</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">radius</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">light_bg</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">subtract_background</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">radius</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">light_bg</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
         <span class="c1">#scikit image tophat function and structuring element need to be imported</span>
-        <span class="kn">from</span> <span class="nn">skimage.morphology</span> <span class="kn">import</span> <span class="n">white_tophat</span><span class="p">,</span> <span class="n">black_tophat</span><span class="p">,</span> <span class="n">disk</span> 
+        <span class="kn">from</span><span class="w"> </span><span class="nn">skimage.morphology</span><span class="w"> </span><span class="kn">import</span> <span class="n">white_tophat</span><span class="p">,</span> <span class="n">black_tophat</span><span class="p">,</span> <span class="n">disk</span> 
         
         <span class="c1"># this structuring element determines the size of background subtraction</span>
         <span class="n">str_el</span> <span class="o">=</span> <span class="n">disk</span><span class="p">(</span><span class="n">radius</span><span class="p">)</span>
@@ -599,7 +610,7 @@ shape of tribolium picture: (1024, 512)
 </div>
 <p><img alt="png" src="../../_images/output_15_1.png" /></p>
 <p>To actually get to individual marked cells we need to perform connected components analysis, in which each separate group of white pixels is marked as an individual entity. This is done by assigning a different grey value to each pixel and is easily handled with the measure submodule of scikit image. The result can then be plotted</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">skimage</span> <span class="kn">import</span> <span class="n">segmentation</span><span class="p">,</span> <span class="n">measure</span> <span class="c1"># importing the libraries</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">skimage</span><span class="w"> </span><span class="kn">import</span> <span class="n">segmentation</span><span class="p">,</span> <span class="n">measure</span> <span class="c1"># importing the libraries</span>
 
 <span class="c1"># performing the binarisation in just one line of code!</span>
 <span class="n">binarised_tribolium</span> <span class="o">=</span> <span class="n">median_and_otsutresh</span><span class="p">(</span><span class="n">subtract_background</span><span class="p">(</span><span class="n">tribolium</span><span class="p">,</span><span class="mi">15</span><span class="p">),</span><span class="mi">1</span><span class="p">)</span> <span class="c1"># saving the binarised image as variable</span>
@@ -631,7 +642,7 @@ shape of tribolium picture: (1024, 512)
 
 <span class="c1"># now we can plot the result of the connected components analysis</span>
 <span class="c1"># with the new colourmap</span>
-<span class="kn">import</span> <span class="nn">matplotlib</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib</span>
 
 <span class="n">fig</span><span class="p">,</span> <span class="n">ax1</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span> <span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">20</span><span class="p">))</span>
 
@@ -643,7 +654,7 @@ shape of tribolium picture: (1024, 512)
 <p><img alt="png" src="../../_images/output_19_1.png" /></p>
 <p>Even though the borders of the nuclei are slightly buggy and show what seem to be rainbows the cells can be differentiated from each other much more easily and we finally have a good result for the workflow. Next time, we will get into another method for achieving segmentations without relying on thresholding!</p>
 <section id="home">
-<h2><a class="reference external" href="https://biapol.github.io/blog/ryan_savill/">Home</a><a class="headerlink" href="#home" title="Permalink to this heading">#</a></h2>
+<h2><a class="reference external" href="https://biapol.github.io/blog/ryan_savill/">Home</a><a class="headerlink" href="#home" title="Link to this heading">#</a></h2>
 <p><a class="reference external" href="https://biapol.github.io/blog/imprint">Imprint</a></p>
 </section>
 </section>
@@ -673,11 +684,10 @@ shape of tribolium picture: (1024, 512)
 
               
               
-                <footer class="bd-footer-article">
+              
+              
+                <footer class="prev-next-footer d-print-none">
                   
-<div class="footer-article-items footer-article__inner">
-  
-    <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
        href="../03_background_subtraction/readme.html"
@@ -697,17 +707,16 @@ shape of tribolium picture: (1024, 512)
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
-</div></div>
-  
 </div>
-
                 </footer>
               
             </div>
             
             
               
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -737,6 +746,7 @@ By Marcelo Zoccoler, Johannes Müller, Till Korten, Ryan Savill, Mara Lampert, S
   
   <div class="footer-item">
     
+
   <p class="copyright">
     
       © Copyright 2024.
@@ -763,8 +773,8 @@ By Marcelo Zoccoler, Johannes Müller, Till Korten, Ryan Savill, Mara Lampert, S
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
-<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+  <script defer src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
 
   <footer class="bd-footer">
   </footer>

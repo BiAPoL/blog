@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html lang="en" data-content_root="../../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Training a (YOLO) object detector using data from OMERO &#8212; BiA-PoL blog</title>
   
@@ -15,52 +14,52 @@
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-  
-  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
-
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
   
+  <!-- So that users can add custom icons -->
+  <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-    <script src="../../_static/jquery.js"></script>
-    <script src="../../_static/underscore.js"></script>
-    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../../_static/doctools.js"></script>
-    <script src="../../_static/clipboard.min.js"></script>
-    <script src="../../_static/copybutton.js"></script>
-    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../../_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'johannes_mueller/yolo_from_omero/train_yolo';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -68,6 +67,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="prev" title="Welcome!" href="../../intro.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
   </head>
   
   
@@ -75,23 +75,16 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
   
-  <input type="checkbox"
-          class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
+  <div id="pst-scroll-pixel-helper"></div>
   
-  <input type="checkbox"
-          class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
   
-  <div class="search-button__wrapper">
-    <div class="search-button__overlay"></div>
-    <div class="search-button__search-container">
+  <dialog id="pst-search-dialog">
+    
 <form class="bd-search d-flex align-items-center"
       action="../../search.html"
       method="get">
@@ -99,7 +92,6 @@ const thebe_selector_output = ".output, .cell_output"
   <input type="search"
          class="form-control"
          name="q"
-         id="search-input"
          placeholder="Search this book..."
          aria-label="Search this book..."
          autocomplete="off"
@@ -107,16 +99,25 @@ const thebe_selector_output = ".output, .cell_output"
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form></div>
-  </div>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
       
-      <div class="bd-sidebar-primary bd-sidebar">
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -129,9 +130,13 @@ const thebe_selector_output = ".output, .cell_output"
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
+
+  
+    
   
 
 <a class="navbar-brand logo" href="../../intro.html">
+  
   
   
   
@@ -141,12 +146,19 @@ const thebe_selector_output = ".output, .cell_output"
       
     
     
-    <img src="../../_static/biapol_logo.png" class="logo__image only-light" alt="Logo image"/>
-    <script>document.write(`<img src="../../_static/biapol_logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+    <img src="../../_static/biapol_logo.png" class="logo__image only-light" alt="BiA-PoL blog - Home"/>
+    <img src="../../_static/biapol_logo.png" class="logo__image only-dark pst-js-only" alt="BiA-PoL blog - Home"/>
   
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -170,7 +182,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../../marcelo_zoccoler/mini_sabbatical_rike/Readme.html">Mini-Sabbatical Experience at Bia-PoL</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../anaconda_getting_started/Readme.html">Getting started with Anaconda and Python</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../entry_sphinx/Readme.html">Automated package documentation with Sphinx</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../entry_user_inter/Readme.html">Custom user interfaces for Python (Part 1)</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../entry_user_inter/Readme.html">Custom user interfaces for Python (Part 1)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../entry_user_interf2/Readme.html">Custom user interfaces for Python (Part 2)</a></li>
 
 <li class="toctree-l2"><a class="reference internal" href="../../marcelo_zoccoler/entry_user_interf3/Readme.html">Custom user interfaces for Python (Part 3)</a></li>
@@ -178,7 +190,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../../marcelo_zoccoler/entry_user_interf4/Readme.html">Custom user interfaces for Python (Part 4)</a></li>
 
 </ul>
-</li>
+</details></li>
 <li class="toctree-l1"><a class="reference internal" href="../../marcelo_zoccoler/jamovi/jamovi.html">Jamovi: statistical analysis made visual and easy (powered with R)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../robert_haase/ms_build_tools/readme.html">Installing Microsoft buildtools on Windows</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../ryan_savill/principal_feature_analysis/readme.html">Principal Feature Analysis</a></li>
@@ -195,7 +207,7 @@ const thebe_selector_output = ".output, .cell_output"
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">About the Blog</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../robert_haase/why_we_blog/readme.html">Why we blog</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../people.html">BiA-PoL blog authors</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../people.html">BiA-PoL blog authors</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../mara_lampert/readme.html">Mara Lampert</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../stefan_hahmann/readme.html">Stefan Hahmann</a></li>
 
@@ -207,7 +219,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../../ryan_savill/readme.html">Ryan Savill</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../robert_haase/readme.html">Robert Haase</a></li>
 </ul>
-</li>
+</details></li>
 <li class="toctree-l1"><a class="reference internal" href="../../imprint.html">Imprint</a></li>
 
 </ul>
@@ -218,14 +230,19 @@ const thebe_selector_output = ".output, .cell_output"
   
   
   <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
   </div>
-  
-  <div id="rtd-footer-container"></div>
 
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
 
@@ -234,14 +251,14 @@ const thebe_selector_output = ".output, .cell_output"
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article">
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</label></div>
+</button></div>
       
     </div>
   
@@ -363,26 +380,20 @@ const thebe_selector_output = ".output, .cell_output"
 </button>
 
 
-<script>
-document.write(`
-  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
-    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
-    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
-  </button>
-`);
-</script>
 
-<script>
-document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-  </button>
-`);
-</script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</label>
+</button>
 </div></div>
       
     </div>
@@ -436,24 +447,24 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="training-a-yolo-object-detector-using-data-from-omero">
-<span id="ref-yolo-omero"></span><h1>Training a (YOLO) object detector using data from OMERO<a class="headerlink" href="#training-a-yolo-object-detector-using-data-from-omero" title="Permalink to this heading">#</a></h1>
+<span id="ref-yolo-omero"></span><h1>Training a (YOLO) object detector using data from OMERO<a class="headerlink" href="#training-a-yolo-object-detector-using-data-from-omero" title="Link to this heading">#</a></h1>
 <p>In this tutorial, you will learn how to use OMERO and YOLO in conjunction to train an object detector and classifier. But first off, before we start - all data used in this tutorial is <a class="reference external" href="https://zenodo.org/records/13329153">available on Zenodo</a> under a CC-BY 4.0 license. Now to OMERO and YOLO - what are they and why are they useful?</p>
 <section id="omero">
-<h2>OMERO<a class="headerlink" href="#omero" title="Permalink to this heading">#</a></h2>
+<h2>OMERO<a class="headerlink" href="#omero" title="Link to this heading">#</a></h2>
 <p><a class="reference external" href="https://www.openmicroscopy.org/omero/">OMERO</a> - short for <em>open microscopy environment remote objects</em> is a widely used data management platform for image data in the life sciences. It allows you to store, organize, and analyze your images in a secure and scalable way. OMERO is open-source and can be easily extended and integrated with other tools and software.</p>
 </section>
 <section id="yolo">
-<h2>YOLO<a class="headerlink" href="#yolo" title="Permalink to this heading">#</a></h2>
+<h2>YOLO<a class="headerlink" href="#yolo" title="Link to this heading">#</a></h2>
 <p><a class="reference external" href="https://docs.ultralytics.com/models/yolov10/">YOLO</a> - short for <em>you only look once</em> is a class of continuously evolving object detection algorithms. YOLO is known for its speed and accuracy and is widely used in computer vision applications. YOLO is open-source and has been implemented in many programming languages and frameworks. It can be used for a variety of applications such as object detection, object classification, tracking or pose estimation - but I think one of the most bread-and-butter applications is still object detection. Contrary to many common segmentation algorithms in bio-image analysis, it does not seek to classify every pixel, but rather to predict <em>bounding boxes</em> around objects of interest.</p>
 <p>This already brings forth one of the key advantages of using YOLO for bio-medical image segmentation, <em>especially</em> in instance segmentation problems: Pixel classification, without an additional post-processing step is unable to split pixels into different objects - YOLO does this very natively. A typical result of a YOLO model could look like this:</p>
 <p><img alt="YOLO result" src="../../_images/image1.png" /></p>
 <p style="text-align: left;">Image &copy; 2022 Johannes Soltwedel. All rights reserved.</p>
 </section>
 <section id="getting-started">
-<h2>Getting started<a class="headerlink" href="#getting-started" title="Permalink to this heading">#</a></h2>
+<h2>Getting started<a class="headerlink" href="#getting-started" title="Link to this heading">#</a></h2>
 <p>It all starts with a fresh environment. If you don’t have Python installed on your machine installed yet, follow <a class="reference internal" href="../../mara_lampert/getting_started_with_miniforge_and_python/readme.html#ref-miniforge-python"><span class="std std-ref">this</span></a> tutorial by Mara Lampert to get everything up and running. You can omit the last step of the tutorial, as we will be creating a different environment.</p>
 <p>To do so, bring up your miniforge prompt and create a new environment:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>create<span class="w"> </span>-n<span class="w"> </span>omero-yolo<span class="w"> </span><span class="nv">python</span><span class="o">=</span><span class="m">3</span>.9<span class="w"> </span>ezomero<span class="w"> </span>tensorboard<span class="w"> </span>scikit-image<span class="w"> </span>scikit-learn<span class="w"> </span>tqdm<span class="w"> </span>ultralytics<span class="w"> </span>-c<span class="w"> </span>bioconda
@@ -474,11 +485,11 @@ conda<span class="w"> </span>activate<span class="w"> </span>omero-yolo
 </div>
 </section>
 <section id="getting-data-from-omero">
-<h2>Getting data from omero<a class="headerlink" href="#getting-data-from-omero" title="Permalink to this heading">#</a></h2>
+<h2>Getting data from omero<a class="headerlink" href="#getting-data-from-omero" title="Link to this heading">#</a></h2>
 <p>Now where does OMERO come into play? Essentially, OMERO can serve as a super-easy tool to do annotations on your images - you can even do so collaboratively. In this example, the data we will work with, looks like this:</p>
 <p><img alt="OMERO data overview" src="../../_images/image2.PNG" /></p>
 <p>…and this is just a small snippet of the data. The entire dataset comprises more than 1500 images of this kind. What exactly we are looking at is not very important, but the job we’ll want to do is essentially this: Detect different objects (cells and spheroids) in each image of a multi-well plate. For reference, these are the objects we are searching for:</p>
-<table class="table">
+<div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>Cells</p></th>
 <th class="head"><p>Spheroids</p></th>
@@ -490,31 +501,32 @@ conda<span class="w"> </span>activate<span class="w"> </span>omero-yolo
 </tr>
 </tbody>
 </table>
+</div>
 </section>
 <section id="annotation">
-<h2>Annotation<a class="headerlink" href="#annotation" title="Permalink to this heading">#</a></h2>
+<h2>Annotation<a class="headerlink" href="#annotation" title="Link to this heading">#</a></h2>
 <p>This brings us to an important step, which one would like to avoid in deep learning if possible, but it’s a necessary evil: Annotation. In this case, we will use OMERO to annotate the images. The simplest way to go at this in OMERO, is to just draw bounding boxes and write in the comment what sort of object it is. This is a very simple and straightforward way to do this. Unfortunately, OMERO does not (yet?) support simply tagging ROI (regions of interest) with labels, so we have to do this manually:</p>
 <p><img alt="OMERO annotation" src="../../_images/annotate.gif" /></p>
-<p>Still you can apprecciate that this is <strong>much</strong> faster than doing this in a local image viewer and then saving the annotations in a separate file, let alone annotating single pixels. Still, it’s a bit cumbersome so the question of how much annotations are enough annotations naturally arises. Read more on the subject in the <span class="xref myst">respective section below</span>.</p>
+<p>Still you can apprecciate that this is <strong>much</strong> faster than doing this in a local image viewer and then saving the annotations in a separate file, let alone annotating single pixels. Still, it’s a bit cumbersome so the question of how much annotations are enough annotations naturally arises. Read more on the subject in the <a class="reference internal" href="#how-much-training-data-is-enough?"><span class="xref myst">respective section below</span></a>.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Consistency in the naming here is super-important. Make sure to stick to your conventions (i.e., avoid using “cell”/”cells”/”Cell” in the same dataset).</p>
 </div>
 </section>
 <section id="training-the-model">
-<h2>Training the model<a class="headerlink" href="#training-the-model" title="Permalink to this heading">#</a></h2>
+<h2>Training the model<a class="headerlink" href="#training-the-model" title="Link to this heading">#</a></h2>
 <p>Before we can actually proceed to train a model, we need to make the dataset available to us on our local machine. For this, we will use the excellent <a class="reference external" href="https://thejacksonlaboratory.github.io/ezomero/index.html">ezomero package</a> you already installed. Let’s write some code!</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">ezomero</span>
-<span class="kn">import</span> <span class="nn">tqdm</span>
-<span class="kn">import</span> <span class="nn">shutil</span>
-<span class="kn">import</span> <span class="nn">os</span>
-<span class="kn">from</span> <span class="nn">skimage</span> <span class="kn">import</span> <span class="n">io</span>
-<span class="kn">from</span> <span class="nn">ultralytics</span> <span class="kn">import</span> <span class="n">YOLO</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">ezomero</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">tqdm</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">shutil</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">skimage</span><span class="w"> </span><span class="kn">import</span> <span class="n">io</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">ultralytics</span><span class="w"> </span><span class="kn">import</span> <span class="n">YOLO</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
 
-<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.model_selection</span><span class="w"> </span><span class="kn">import</span> <span class="n">train_test_split</span>
 </pre></div>
 </div>
 </div>
@@ -522,7 +534,7 @@ conda<span class="w"> </span>activate<span class="w"> </span>omero-yolo
 <p>We check whether pytorch has been installed correctly:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">torch</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
 <span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">is_available</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -554,7 +566,7 @@ conda<span class="w"> </span>activate<span class="w"> </span>omero-yolo
 </div>
 </div>
 <p>Now on to actually downloading - here we have to invest a bit more thought. Why? OMERO and YOLO have different definitions on how a bounding box is defined. The image below illustrates this:</p>
-<table class="table">
+<div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p></p></th>
 <th class="head"><p>OMERO</p></th>
@@ -572,6 +584,7 @@ conda<span class="w"> </span>activate<span class="w"> </span>omero-yolo
 </tr>
 </tbody>
 </table>
+</div>
 <p style="text-align: left;">Images &copy; 2022 Johannes Soltwedel. All rights reserved.</p>
 <p>To be compliant with YOLO conventions, we need to convert our annotations into the following format and normalize the positions and sizes of the bounding boxes to the width and height of the image:</p>
 <div class="highlight-txt notranslate"><div class="highlight"><pre><span></span>class_label1 x_center y_center width height
@@ -593,7 +606,7 @@ class_label2 x_center y_center width height
 </div>
 </div>
 <section id="downloading-the-dataset">
-<h3>Downloading the dataset<a class="headerlink" href="#downloading-the-dataset" title="Permalink to this heading">#</a></h3>
+<h3>Downloading the dataset<a class="headerlink" href="#downloading-the-dataset" title="Link to this heading">#</a></h3>
 <p>Now we iterate over all the images in the dataset, retrieve the corresponding rois a(and the shapes they contain - honestly, I don’t fully understand the difference between Shapes and ROIs in OMERO 😅). Anyway, we then convert the annotations to YOLO format. This means dividing all coordinates by the width and height of the image as well as adding half the width and half the height to the coordinates of the anchor of the box to move it from the upper-left corner to the center.</p>
 <div class="highlight-Note notranslate"><div class="highlight"><pre><span></span>In the following code, you see image data being imported from `dataset=259` - replace this with the id of the dataset that yu are actually working with.
 </pre></div>
@@ -644,7 +657,7 @@ class_label2 x_center y_center width height
 </div>
 </section>
 <section id="train-test-validation-split">
-<h3>Train/Test/Validation split<a class="headerlink" href="#train-test-validation-split" title="Permalink to this heading">#</a></h3>
+<h3>Train/Test/Validation split<a class="headerlink" href="#train-test-validation-split" title="Link to this heading">#</a></h3>
 <p>Before we dive into the training, we have to do one final step. It is common practice in deep learning, to split the data into a training, validation and a testing cohort. This is done to evaluate the model on data it has not seen before. We will do a 70/20/10% split for training, validation and testing, respectively. We first create the folder structure:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -704,7 +717,7 @@ Number of samples in test set: 153
 </section>
 </section>
 <section id="training">
-<h2>Training<a class="headerlink" href="#training" title="Permalink to this heading">#</a></h2>
+<h2>Training<a class="headerlink" href="#training" title="Link to this heading">#</a></h2>
 <p>Now for the cool part of all deep-learning frameworks: The <em>training</em>. Luckily, YOLO makes this quite easy! (Also see the <a class="reference external" href="https://docs.ultralytics.com/modes/train/#key-features-of-train-mode">documentation</a> on further hints and settings). Before we can start the training, we need to set a few configuration parameters. YOLO requires us to write this in a separate <code class="docutils literal notranslate"><span class="pre">yaml</span></code> file, which in our case would look something like this.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -743,7 +756,7 @@ Number of samples in test set: 153
 </ul>
 <p>Anyway - read the docs and play around with the parameters to see what works best for your data.</p>
 <section id="tensorboard">
-<h3>Tensorboard<a class="headerlink" href="#tensorboard" title="Permalink to this heading">#</a></h3>
+<h3>Tensorboard<a class="headerlink" href="#tensorboard" title="Link to this heading">#</a></h3>
 <p>If you don’t want to look at endless rows of text in your Jupyter notebook, but rather look at a fancy dashboard, you can use <a class="reference external" href="https://pytorch.org/tutorials/intermediate/tensorboard_tutorial.html">tensorboard</a> to visualize the training process. If you followed the instructions above, you already installed tensorboard. You can start tensorboard by running the following command in your terminal:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>path/to/where/this/notebook/is
 tensorboard<span class="w"> </span>--logdir<span class="o">=</span>runs
@@ -766,9 +779,9 @@ tensorboard<span class="w"> </span>--logdir<span class="o">=</span>runs
 </section>
 </section>
 <section id="evaluation">
-<h2>Evaluation<a class="headerlink" href="#evaluation" title="Permalink to this heading">#</a></h2>
+<h2>Evaluation<a class="headerlink" href="#evaluation" title="Link to this heading">#</a></h2>
 <p>Once the training is done, we should have a look at some of the metrics yolo generates for us. For instance, we are shown some predictions and the corresponding ground truth labels. This is a good way to see how well the model is doing.</p>
-<table class="table">
+<div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>Labels</p></th>
 <th class="head"><p>Predictions</p></th>
@@ -780,8 +793,9 @@ tensorboard<span class="w"> </span>--logdir<span class="o">=</span>runs
 </tr>
 </tbody>
 </table>
+</div>
 <p>At a glance - not half-bad, right? Besides just looking at the predicted bounding boxes we can - and we also should - look at some metrics. What’s very important here, is the confusion matrix produced by the training, which essentially tells us how well the model is doing in terms of precision and recall.</p>
-<table class="table">
+<div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>Counts</p></th>
 <th class="head"><p>Normalized</p></th>
@@ -793,13 +807,14 @@ tensorboard<span class="w"> </span>--logdir<span class="o">=</span>runs
 </tr>
 </tbody>
 </table>
+</div>
 <p>From this we learn that our model is rather mediocre at detecting the <code class="docutils literal notranslate"><span class="pre">cell</span></code> class: In the normalized confusion matrix, we see that the True positive rate is about 50% for the cell class, whereas the model often (42%) predicts background (no object) where we annotated a cell. Interestingly, the model often predicts cells where the annotator only saw background.</p>
 <p>For the spheroids, we are quite good at finding them, with a true positive rate of 84%. There is one way, of course to improve performance:</p>
 <p><em>Annotate more data!</em></p>
 <p>But that’s a story for another day. For now, we have a working model that can detect cells and spheroids in our images.</p>
 </section>
 <section id="applying-the-model">
-<h2>Applying the model<a class="headerlink" href="#applying-the-model" title="Permalink to this heading">#</a></h2>
+<h2>Applying the model<a class="headerlink" href="#applying-the-model" title="Link to this heading">#</a></h2>
 <p>Lastly, if you want to apply the model on some new data, this can be done fairly easily with YOLO. In a real applciation, replace <code class="docutils literal notranslate"><span class="pre">list_of_other_images</span></code> with a list of paths to your images. Yolo automatically saves two model checkpoints for us to use: The best model and the last model. Obviously, we’ll want to use the best model.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -913,7 +928,7 @@ Object class: 0, Box: [     61.595      77.768      8.4934      9.3834]
 </div>
 </section>
 <section id="moving-the-data-back-to-omero">
-<h2>Moving the data back to OMERO<a class="headerlink" href="#moving-the-data-back-to-omero" title="Permalink to this heading">#</a></h2>
+<h2>Moving the data back to OMERO<a class="headerlink" href="#moving-the-data-back-to-omero" title="Link to this heading">#</a></h2>
 <p>To come full circle, here’s a quick glance on how to move the images along with the predictions back to OMERO. Luckily for us, ezomero makes this relatively straightforward:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -956,10 +971,10 @@ Object class: 0, Box: [     61.595      77.768      8.4934      9.3834]
 <img alt="OMERO predictions" src="../../_images/image8.png" />
 </section>
 <section id="final-thoughts">
-<h2>Final thoughts<a class="headerlink" href="#final-thoughts" title="Permalink to this heading">#</a></h2>
+<h2>Final thoughts<a class="headerlink" href="#final-thoughts" title="Link to this heading">#</a></h2>
 <p>That’s it! This is quite a lengthy tutorial, so props if you made it all the way here.</p>
 <section id="used-data">
-<h3>Used data<a class="headerlink" href="#used-data" title="Permalink to this heading">#</a></h3>
+<h3>Used data<a class="headerlink" href="#used-data" title="Link to this heading">#</a></h3>
 <p>All the data used in this tutorial is <a class="reference external" href="https://zenodo.org/records/13329153">publically available</a> at the courtesy of Louis Hewitt (<a class="reference external" href="https://www.mpi-cbg.de/research/researchgroups/currentgroups/anne-grapin-botton/research-focus">Grapin-Botton Lab</a>, MPI-CBG, Dresden, Germany). Without their collaboration, you wouldn’t be able to look at this tutorial. So, thank you!</p>
 <p>The bespoke data comes as a packed up OMERO project. You can use it by downloading the stored zip file and using the <a class="reference external" href="https://github.com/ome/omero-cli-transfer">omero-cli-transfer</a> package to upload it to your OMERO server and then walk yourself through this tutorial from the start. To do so, log into omero from the command line like this:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>omero<span class="w"> </span>login<span class="w"> </span>-s<span class="w"> </span>&lt;your_omero_server&gt;<span class="w"> </span>-u<span class="w"> </span>&lt;your_username&gt;<span class="w"> </span>-g<span class="w"> </span>&lt;your_group&gt;
@@ -971,15 +986,15 @@ Object class: 0, Box: [     61.595      77.768      8.4934      9.3834]
 </div>
 </section>
 <section id="licenses">
-<h3>Licenses<a class="headerlink" href="#licenses" title="Permalink to this heading">#</a></h3>
+<h3>Licenses<a class="headerlink" href="#licenses" title="Link to this heading">#</a></h3>
 <p>You have seen that the syntax to set up the training for the yolo model is exceptionally easy, which is a huge strongpoint for yolo - not to mention that the model is quite fast and accurate. A grain of salt for using yolo is its AGPL license, which introduces quite strict requirements if you use it in your project. If you are planning to use yolo in a commercial project, you need to contact the developers for a proper license. For a more comprehensive overview of the licenses, check out <a class="reference external" href="https://f1000research.com/slides/10-519">Robert Haase’s slides on the subject</a>.</p>
 </section>
 <section id="how-much-training-data-is-enough">
-<h3>How much training data is enough?<a class="headerlink" href="#how-much-training-data-is-enough" title="Permalink to this heading">#</a></h3>
+<h3>How much training data is enough?<a class="headerlink" href="#how-much-training-data-is-enough" title="Link to this heading">#</a></h3>
 <p>That’s a question that is hard to answer. According to the <a class="reference external" href="https://docs.ultralytics.com/guides/data-collection-and-annotation/#how-many-images-do-i-need-for-training-ultralytics-yolo-models">yolo docs on the subject</a>, some 100 annotated images and training for 100 epochs can be enough to get started - consider annotating (order of magnitude) 1000s of images <em>per class</em> for a more robust model.</p>
 </section>
 <section id="usage-scenarios">
-<h3>Usage scenarios<a class="headerlink" href="#usage-scenarios" title="Permalink to this heading">#</a></h3>
+<h3>Usage scenarios<a class="headerlink" href="#usage-scenarios" title="Link to this heading">#</a></h3>
 <p>There is one obvious downside to yolo: It works 2D only, and biological data can often be of arbitrary dimension (3D, multi-channel, timelapse, etc). However, YOLO can still be an interesting option for a variety of tasks in the biomedical context. Interesting applications can, for instance, arise in the context of high-throughput analysis in a smart-microscopy setup. In this case, a microscope may want to determine automatically whether it is worth keeping the data it acquired or not. To achieve this, maximum projections could be acquired and yolo used to determine whether the image contains interesting structures or not.</p>
 <p>Another limitation of predicting bounding boxes is, well, the bounding box itself. Biological objects are typically not square. However, using results of a bounding box prediction, one could use <a class="reference external" href="https://segment-anything.com/">segment-anything</a> to refine the prediction. For usage in bio-image analysis, make sure to check out <a class="reference external" href="https://computational-cell-analytics.github.io/micro-sam/micro_sam.html">micro-sam</a>.</p>
 <p><strong>Anyway - thanks for reading and happy coding!</strong> 💻🚀</p>
@@ -1012,11 +1027,10 @@ Object class: 0, Box: [     61.595      77.768      8.4934      9.3834]
 
               
               
-                <footer class="bd-footer-article">
+              
+              
+                <footer class="prev-next-footer d-print-none">
                   
-<div class="footer-article-items footer-article__inner">
-  
-    <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
        href="../../intro.html"
@@ -1036,17 +1050,16 @@ Object class: 0, Box: [     61.595      77.768      8.4934      9.3834]
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
-</div></div>
-  
 </div>
-
                 </footer>
               
             </div>
             
             
               
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -1099,6 +1112,7 @@ By Marcelo Zoccoler, Johannes Müller, Till Korten, Ryan Savill, Mara Lampert, S
   
   <div class="footer-item">
     
+
   <p class="copyright">
     
       © Copyright 2024.
@@ -1125,8 +1139,8 @@ By Marcelo Zoccoler, Johannes Müller, Till Korten, Ryan Savill, Mara Lampert, S
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
-<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+  <script defer src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
 
   <footer class="bd-footer">
   </footer>

@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html lang="en" data-content_root="../../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Getting started with Miniforge and Python &#8212; BiA-PoL blog</title>
   
@@ -15,52 +14,52 @@
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-  
-  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
-
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
   
+  <!-- So that users can add custom icons -->
+  <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-    <script src="../../_static/jquery.js"></script>
-    <script src="../../_static/underscore.js"></script>
-    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../../_static/doctools.js"></script>
-    <script src="../../_static/clipboard.min.js"></script>
-    <script src="../../_static/copybutton.js"></script>
-    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../../_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'mara_lampert/getting_started_with_miniforge_and_python/readme';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -68,6 +67,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="prev" title="Training a (YOLO) object detector using data from OMERO" href="../../johannes_mueller/yolo_from_omero/train_yolo.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
   </head>
   
   
@@ -75,23 +75,16 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
   
-  <input type="checkbox"
-          class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
+  <div id="pst-scroll-pixel-helper"></div>
   
-  <input type="checkbox"
-          class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
   
-  <div class="search-button__wrapper">
-    <div class="search-button__overlay"></div>
-    <div class="search-button__search-container">
+  <dialog id="pst-search-dialog">
+    
 <form class="bd-search d-flex align-items-center"
       action="../../search.html"
       method="get">
@@ -99,7 +92,6 @@ const thebe_selector_output = ".output, .cell_output"
   <input type="search"
          class="form-control"
          name="q"
-         id="search-input"
          placeholder="Search this book..."
          aria-label="Search this book..."
          autocomplete="off"
@@ -107,16 +99,25 @@ const thebe_selector_output = ".output, .cell_output"
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form></div>
-  </div>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
       
-      <div class="bd-sidebar-primary bd-sidebar">
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -129,9 +130,13 @@ const thebe_selector_output = ".output, .cell_output"
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
+
+  
+    
   
 
 <a class="navbar-brand logo" href="../../intro.html">
+  
   
   
   
@@ -141,12 +146,19 @@ const thebe_selector_output = ".output, .cell_output"
       
     
     
-    <img src="../../_static/biapol_logo.png" class="logo__image only-light" alt="Logo image"/>
-    <script>document.write(`<img src="../../_static/biapol_logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+    <img src="../../_static/biapol_logo.png" class="logo__image only-light" alt="BiA-PoL blog - Home"/>
+    <img src="../../_static/biapol_logo.png" class="logo__image only-dark pst-js-only" alt="BiA-PoL blog - Home"/>
   
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -170,7 +182,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../../marcelo_zoccoler/mini_sabbatical_rike/Readme.html">Mini-Sabbatical Experience at Bia-PoL</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../johannes_mueller/anaconda_getting_started/Readme.html">Getting started with Anaconda and Python</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../johannes_mueller/entry_sphinx/Readme.html">Automated package documentation with Sphinx</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../johannes_mueller/entry_user_inter/Readme.html">Custom user interfaces for Python (Part 1)</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../johannes_mueller/entry_user_inter/Readme.html">Custom user interfaces for Python (Part 1)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../johannes_mueller/entry_user_interf2/Readme.html">Custom user interfaces for Python (Part 2)</a></li>
 
 <li class="toctree-l2"><a class="reference internal" href="../../marcelo_zoccoler/entry_user_interf3/Readme.html">Custom user interfaces for Python (Part 3)</a></li>
@@ -178,7 +190,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../../marcelo_zoccoler/entry_user_interf4/Readme.html">Custom user interfaces for Python (Part 4)</a></li>
 
 </ul>
-</li>
+</details></li>
 <li class="toctree-l1"><a class="reference internal" href="../../marcelo_zoccoler/jamovi/jamovi.html">Jamovi: statistical analysis made visual and easy (powered with R)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../robert_haase/ms_build_tools/readme.html">Installing Microsoft buildtools on Windows</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../ryan_savill/principal_feature_analysis/readme.html">Principal Feature Analysis</a></li>
@@ -195,7 +207,7 @@ const thebe_selector_output = ".output, .cell_output"
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">About the Blog</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../robert_haase/why_we_blog/readme.html">Why we blog</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../people.html">BiA-PoL blog authors</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../people.html">BiA-PoL blog authors</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../readme.html">Mara Lampert</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../stefan_hahmann/readme.html">Stefan Hahmann</a></li>
 
@@ -207,7 +219,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../../ryan_savill/readme.html">Ryan Savill</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../robert_haase/readme.html">Robert Haase</a></li>
 </ul>
-</li>
+</details></li>
 <li class="toctree-l1"><a class="reference internal" href="../../imprint.html">Imprint</a></li>
 
 </ul>
@@ -218,14 +230,19 @@ const thebe_selector_output = ".output, .cell_output"
   
   
   <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
   </div>
-  
-  <div id="rtd-footer-container"></div>
 
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
 
@@ -234,14 +251,14 @@ const thebe_selector_output = ".output, .cell_output"
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article">
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</label></div>
+</button></div>
       
     </div>
   
@@ -363,26 +380,20 @@ const thebe_selector_output = ".output, .cell_output"
 </button>
 
 
-<script>
-document.write(`
-  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
-    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
-    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
-  </button>
-`);
-</script>
 
-<script>
-document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-  </button>
-`);
-</script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</label>
+</button>
 </div></div>
       
     </div>
@@ -424,13 +435,13 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="getting-started-with-miniforge-and-python">
-<span id="ref-miniforge-python"></span><h1>Getting started with Miniforge and Python<a class="headerlink" href="#getting-started-with-miniforge-and-python" title="Permalink to this heading">#</a></h1>
+<span id="ref-miniforge-python"></span><h1>Getting started with Miniforge and Python<a class="headerlink" href="#getting-started-with-miniforge-and-python" title="Link to this heading">#</a></h1>
 <p><a class="reference internal" href="../readme.html"><span class="doc std std-doc">Mara Lampert</span></a>, July 8th, 2024</p>
 <section id="introduction-to-python-and-miniforge">
-<h2>Introduction to Python and Miniforge<a class="headerlink" href="#introduction-to-python-and-miniforge" title="Permalink to this heading">#</a></h2>
+<h2>Introduction to Python and Miniforge<a class="headerlink" href="#introduction-to-python-and-miniforge" title="Link to this heading">#</a></h2>
 <p>This blog post explains what Python and <a class="reference external" href="https://docs.readthedocs.io/en/stable/guides/conda.html">Conda</a> / Miniforge is, and how you can download and setup it on your computer. We will also go through some steps how to get started with Bio-image Analysis.</p>
 <blockquote>
 <div><p><strong><em>Note:</em></strong> This is an update of a <a class="reference external" href="https://biapol.github.io/blog/mara_lampert/getting_started_with_mambaforge_and_python/readme.html">previous Blogpost</a>.</p>
@@ -440,13 +451,13 @@ document.write(`
 <p><strong>Conda</strong> is a <strong>package manager</strong> which can be used with Python. It is a software allowing to install other software. Read more about Conda <a class="reference external" href="https://focalplane.biologists.com/2022/12/08/managing-scientific-python-environments-using-conda-mamba-and-friends/">here</a>.</p>
 </section>
 <section id="installation-of-miniforge">
-<h2>Installation of Miniforge<a class="headerlink" href="#installation-of-miniforge" title="Permalink to this heading">#</a></h2>
+<h2>Installation of Miniforge<a class="headerlink" href="#installation-of-miniforge" title="Link to this heading">#</a></h2>
 <p>Here, I am going to show how to install Miniforge. It comes with everything you need and downloads packages from a community-driven open source software provider called  <a class="reference external" href="https://conda-forge.org/">conda-forge</a>.
 First, you pick the Miniforge installer for your operating system <a class="reference external" href="https://github.com/conda-forge/miniforge">here</a>:</p>
 <p><img alt="" src="../../_images/1_miniforge_download_12.png" /></p>
-<p>All Mac OS users can now jump <span class="xref myst">here</span>.</p>
+<p>All Mac OS users can now jump <a class="reference internal" href="#installation-on-mac-os"><span class="xref myst">here</span></a>.</p>
 <section id="installation-on-windows">
-<h3>Installation on Windows<a class="headerlink" href="#installation-on-windows" title="Permalink to this heading">#</a></h3>
+<h3>Installation on Windows<a class="headerlink" href="#installation-on-windows" title="Link to this heading">#</a></h3>
 <p>When Miniforge finished downloading, follow these steps during the installation:</p>
 <p>Click <code class="docutils literal notranslate"><span class="pre">Next</span></code>:</p>
 <p><img alt="" src="../../_images/2_miniforge_install_11.png" /></p>
@@ -461,19 +472,19 @@ First, you pick the Miniforge installer for your operating system <a class="refe
 <p>Click <code class="docutils literal notranslate"><span class="pre">Next</span></code> at the next window and you arrive here. Click <code class="docutils literal notranslate"><span class="pre">Finish</span></code> to exit the setup:</p>
 <p><img alt="" src="../../_images/2_miniforge_install_71.png" /></p>
 <p>Great! You are ready to start coding! 👍
-To see how to use Conda, jump <span class="xref myst">here</span></p>
+To see how to use Conda, jump <a class="reference internal" href="#using-mamba"><span class="xref myst">here</span></a></p>
 </section>
 <section id="installation-on-mac-os">
-<h3>Installation on Mac OS<a class="headerlink" href="#installation-on-mac-os" title="Permalink to this heading">#</a></h3>
+<h3>Installation on Mac OS<a class="headerlink" href="#installation-on-mac-os" title="Link to this heading">#</a></h3>
 <p>First, you open your Terminal. You can find it using the Spotlight Search and typing <em>Terminal</em> like this:</p>
 <p><img alt="" src="../../_images/2_mac_install_11.png" /></p>
 <p>The opened Terminal should look like this:</p>
 <p><img alt="" src="../../_images/2_mac_install_21.png" /></p>
 <p>Then type these two lines to start the installation</p>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span>curl -L -O &quot;https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-$(uname)-$(uname -m).sh&quot;
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="err">curl</span><span class="w"> </span><span class="mi">-</span><span class="err">L</span><span class="w"> </span><span class="mi">-</span><span class="err">O</span><span class="w"> </span><span class="s2">&quot;https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-$(uname)-$(uname -m).sh&quot;</span>
 </pre></div>
 </div>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span>bash Miniforge3-$(uname)-$(uname -m).sh
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="err">bash</span><span class="w"> </span><span class="err">Mi</span><span class="kc">n</span><span class="err">i</span><span class="kc">f</span><span class="err">orge</span><span class="mi">3-</span><span class="err">$(u</span><span class="kc">na</span><span class="err">me)</span><span class="mi">-</span><span class="err">$(u</span><span class="kc">na</span><span class="err">me</span><span class="w"> </span><span class="mi">-</span><span class="err">m).sh</span>
 </pre></div>
 </div>
 <p>You follow the instructions:</p>
@@ -490,8 +501,8 @@ To see how to use Conda, jump <span class="xref myst">here</span></p>
 </section>
 </section>
 <section id="using-conda">
-<h2>Using Conda<a class="headerlink" href="#using-conda" title="Permalink to this heading">#</a></h2>
-<p>Now we use Conda by opening the command line. If you are not familiar with the command line yet, you can check out Roberts tutorial <a class="reference external" href="https://www.youtube.com/watch?v=MOEPe9TGBK0&amp;t=1146s">here</a>.</p>
+<h2>Using Conda<a class="headerlink" href="#using-conda" title="Link to this heading">#</a></h2>
+<p>Now we use Conda by opening the command line. If you are not familiar with the command line yet, you can check out Roberts tutorial <a class="reference external" href="https://www.youtube.com/watch?v=MOEPe9TGBK0&amp;amp;t=1146s">here</a>.</p>
 <p>To open the Command Prompt in Windows, press the <code class="docutils literal notranslate"><span class="pre">Windows</span> <span class="pre">button</span></code>, type <em>cmd</em> and press <code class="docutils literal notranslate"><span class="pre">Enter</span></code>. The Mac OS users should already know how to open the Terminal ;-)</p>
 <p>When you open the command line, it should look like this:</p>
 <p><img alt="" src="../../_images/3_envs_11.png" /></p>
@@ -502,10 +513,9 @@ To see how to use Conda, jump <span class="xref myst">here</span></p>
 <p>The reason for this is that incompatibilities between packages can occur. Robert demonstrated this <a class="reference external" href="https://focalplane.biologists.com/2022/12/08/managing-scientific-python-environments-using-conda-mamba-and-friends/">here</a>. If this happens in any environment apart from the base environment it is no problem. You can delete the environment, recreate it and start again. If this happens in the base environment, you need to delete and reinstall Miniforge.</p>
 </section>
 <section id="creating-a-new-environment">
-<h2>Creating a new environment<a class="headerlink" href="#creating-a-new-environment" title="Permalink to this heading">#</a></h2>
+<h2>Creating a new environment<a class="headerlink" href="#creating-a-new-environment" title="Link to this heading">#</a></h2>
 <p>You can create a new environment typing the following command into the Command Prompt:</p>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span>conda create -n my_first_env devbio-napari python=3.9 pyqt 
-
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="err">co</span><span class="kc">n</span><span class="err">da</span><span class="w"> </span><span class="err">crea</span><span class="kc">te</span><span class="w"> </span><span class="mi">-</span><span class="kc">n</span><span class="w"> </span><span class="err">my_</span><span class="kc">f</span><span class="err">irs</span><span class="kc">t</span><span class="err">_e</span><span class="kc">n</span><span class="err">v</span><span class="w"> </span><span class="err">devbio</span><span class="mi">-</span><span class="kc">na</span><span class="err">pari</span><span class="w"> </span><span class="err">py</span><span class="kc">t</span><span class="err">ho</span><span class="kc">n</span><span class="err">=</span><span class="mf">3.9</span><span class="w"> </span><span class="err">pyq</span><span class="kc">t</span><span class="w"> </span>
 </pre></div>
 </div>
 <p>This will create a new environment with the name <code class="docutils literal notranslate"><span class="pre">my_first_env</span></code> and with Python version 3.9 installed. Furthermore, the latest version of devbio-napari will be installed in this environment, too. Devbio-napari is a collection of Python libraries and Napari plugins maintained by the BiAPoL team, that are useful for processing fluorescent microscopy image data.
@@ -514,16 +524,16 @@ Conda will ask you about your permission to download the needed packages with <c
 <div><p><strong><em>Recommendation:</em></strong> Create one conda environment for every project you are working on. This allows you to keep an overview on the needed packages for the project, maintaining them and ensure compatibility of the packages.</p>
 </div></blockquote>
 <p>To activate the environment, type:</p>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span>conda activate my_first_env
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="err">co</span><span class="kc">n</span><span class="err">da</span><span class="w"> </span><span class="err">ac</span><span class="kc">t</span><span class="err">iva</span><span class="kc">te</span><span class="w"> </span><span class="err">my_</span><span class="kc">f</span><span class="err">irs</span><span class="kc">t</span><span class="err">_e</span><span class="kc">n</span><span class="err">v</span>
 </pre></div>
 </div>
 <p>This should lead to the prefix my_first_env appearing at the beginning of the command line:</p>
 <p><img alt="" src="../../_images/3_envs_21.png" /></p>
 </section>
 <section id="starting-napari">
-<h2>Starting napari<a class="headerlink" href="#starting-napari" title="Permalink to this heading">#</a></h2>
+<h2>Starting napari<a class="headerlink" href="#starting-napari" title="Link to this heading">#</a></h2>
 <p>Now you can open napari, just type:</p>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span>naparia 
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="kc">na</span><span class="err">paria</span><span class="w"> </span>
 </pre></div>
 </div>
 <p>The opened window in napari should look like this and show the <a class="reference external" href="https://github.com/haesleinhuepf/napari-assistant">napari-assistant</a>, a panel with common image processing operations.</p>
@@ -531,9 +541,9 @@ Conda will ask you about your permission to download the needed packages with <c
 <p>In case it does not look like this, have a look <a class="reference external" href="https://pypi.org/project/devbio-napari/">here</a>.</p>
 </section>
 <section id="working-with-jupyter-lab">
-<h2>Working with Jupyter lab<a class="headerlink" href="#working-with-jupyter-lab" title="Permalink to this heading">#</a></h2>
+<h2>Working with Jupyter lab<a class="headerlink" href="#working-with-jupyter-lab" title="Link to this heading">#</a></h2>
 <p><a class="reference external" href="https://jupyter.org/">Jupyter lab</a> is a package which helps to keep a good code overview. It comes with devbio-napari. Just close the napari window and type</p>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span>jupyter lab
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="err">jupy</span><span class="kc">ter</span><span class="w"> </span><span class="err">lab</span>
 </pre></div>
 </div>
 <p>into the command line. A new browser window will open. You can start your first notebook clicking this icon:</p>
@@ -541,13 +551,13 @@ Conda will ask you about your permission to download the needed packages with <c
 <p>The header of the created notebook will look like this:</p>
 <p><img alt="" src="../../_images/5_jupyter_21.png" /></p>
 <p>Finally, test your notebook by typing</p>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span>print(&#39;Hello World!&#39;)
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="err">pri</span><span class="kc">nt</span><span class="err">(&#39;Hello</span><span class="w"> </span><span class="err">World!&#39;)</span>
 </pre></div>
 </div>
 <p>You can run the line by pressing <code class="docutils literal notranslate"><span class="pre">Shift</span></code> + <code class="docutils literal notranslate"><span class="pre">Enter</span></code>. Which should you give this output:</p>
 <p><img alt="" src="../../_images/5_jupyter_31.png" /></p>
 <p>Now we can import libraries into out notebook like this:</p>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span>import seaborn as sns
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="err">impor</span><span class="kc">t</span><span class="w"> </span><span class="err">seabor</span><span class="kc">n</span><span class="w"> </span><span class="err">as</span><span class="w"> </span><span class="err">s</span><span class="kc">ns</span>
 </pre></div>
 </div>
 <p>We can execute the cell typing <code class="docutils literal notranslate"><span class="pre">Shift</span></code> + <code class="docutils literal notranslate"><span class="pre">Enter</span></code> and receive this error message:</p>
@@ -555,7 +565,7 @@ Conda will ask you about your permission to download the needed packages with <c
 <p>The error message tells us that seaborn is not yet installed in our conda environment, but we will change this now.</p>
 </section>
 <section id="installing-new-packages">
-<h2>Installing new packages<a class="headerlink" href="#installing-new-packages" title="Permalink to this heading">#</a></h2>
+<h2>Installing new packages<a class="headerlink" href="#installing-new-packages" title="Link to this heading">#</a></h2>
 <p>If you want to install new packages while working in your Jupyter notebook, you can</p>
 <ol class="arabic simple">
 <li><p>Open a new Command Prompt Window (While leaving the other Command Prompt Window open)</p></li>
@@ -563,7 +573,7 @@ Conda will ask you about your permission to download the needed packages with <c
 <li><p>Install packages</p></li>
 </ol>
 <p>For example if you want to install seaborn, you would need to type:</p>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span>conda install seaborn 
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="err">co</span><span class="kc">n</span><span class="err">da</span><span class="w"> </span><span class="err">i</span><span class="kc">nstall</span><span class="w"> </span><span class="err">seabor</span><span class="kc">n</span><span class="w"> </span>
 </pre></div>
 </div>
 <p>into the Command Prompt Window. This should currently look like this:</p>
@@ -572,19 +582,19 @@ Conda will ask you about your permission to download the needed packages with <c
 <p><img alt="" src="../../_images/6_install_seaborn_2.png" /></p>
 <p>Conda will ask you again for confirmation (<code class="docutils literal notranslate"><span class="pre">Enter</span></code>) to proceed with the installation. If you type <code class="docutils literal notranslate"><span class="pre">N</span></code> + <code class="docutils literal notranslate"><span class="pre">Enter</span></code>, the operation will be canceled.
 If you want to install a specific version of a package you can do it as shown here:</p>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span>conda install &lt;package name&gt;=version 
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="err">co</span><span class="kc">n</span><span class="err">da</span><span class="w"> </span><span class="err">i</span><span class="kc">nstall</span><span class="w"> </span><span class="err">&lt;package</span><span class="w"> </span><span class="kc">na</span><span class="err">me&gt;=versio</span><span class="kc">n</span><span class="w"> </span>
 </pre></div>
 </div>
 <p>It is considered good practice to write down the versions you are using to ensure compatibility between packages and to trace bugs. For further information see also the conda user guide <a class="reference external" href="https://docs.readthedocs.io/en/stable/guides/conda.html">here</a>.</p>
 </section>
 <section id="deactivation-or-deletion-of-an-environment">
-<h2>Deactivation or Deletion of an environment<a class="headerlink" href="#deactivation-or-deletion-of-an-environment" title="Permalink to this heading">#</a></h2>
+<h2>Deactivation or Deletion of an environment<a class="headerlink" href="#deactivation-or-deletion-of-an-environment" title="Link to this heading">#</a></h2>
 <p>If you want to deactivate the environment you just need to type:</p>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span>conda deactivate 
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="err">co</span><span class="kc">n</span><span class="err">da</span><span class="w"> </span><span class="err">deac</span><span class="kc">t</span><span class="err">iva</span><span class="kc">te</span><span class="w"> </span>
 </pre></div>
 </div>
 <p>If you screwed up your environment and want to delete it, you can type:</p>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span>conda env remove -n nameofproject_env
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="err">co</span><span class="kc">n</span><span class="err">da</span><span class="w"> </span><span class="err">e</span><span class="kc">n</span><span class="err">v</span><span class="w"> </span><span class="err">remove</span><span class="w"> </span><span class="mi">-</span><span class="kc">n</span><span class="w"> </span><span class="kc">na</span><span class="err">meo</span><span class="kc">f</span><span class="err">projec</span><span class="kc">t</span><span class="err">_e</span><span class="kc">n</span><span class="err">v</span>
 </pre></div>
 </div>
 <hr class="docutils" />
@@ -618,11 +628,10 @@ If you want to install a specific version of a package you can do it as shown he
 
               
               
-                <footer class="bd-footer-article">
+              
+              
+                <footer class="prev-next-footer d-print-none">
                   
-<div class="footer-article-items footer-article__inner">
-  
-    <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
        href="../../johannes_mueller/yolo_from_omero/train_yolo.html"
@@ -642,17 +651,16 @@ If you want to install a specific version of a package you can do it as shown he
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
-</div></div>
-  
 </div>
-
                 </footer>
               
             </div>
             
             
               
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -693,6 +701,7 @@ By Marcelo Zoccoler, Johannes Müller, Till Korten, Ryan Savill, Mara Lampert, S
   
   <div class="footer-item">
     
+
   <p class="copyright">
     
       © Copyright 2024.
@@ -719,8 +728,8 @@ By Marcelo Zoccoler, Johannes Müller, Till Korten, Ryan Savill, Mara Lampert, S
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
-<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+  <script defer src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
 
   <footer class="bd-footer">
   </footer>

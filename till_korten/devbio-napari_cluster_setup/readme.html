@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html lang="en" data-content_root="../../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Setting up GPU-accelerated image processing on the TUD HPC cluster &#8212; BiA-PoL blog</title>
   
@@ -15,52 +14,52 @@
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-  
-  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
-
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
   
+  <!-- So that users can add custom icons -->
+  <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-    <script src="../../_static/jquery.js"></script>
-    <script src="../../_static/underscore.js"></script>
-    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../../_static/doctools.js"></script>
-    <script src="../../_static/clipboard.min.js"></script>
-    <script src="../../_static/copybutton.js"></script>
-    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../../_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'till_korten/devbio-napari_cluster_setup/readme';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -68,6 +67,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="prev" title="Using GPU-accelerated image processing on the TUD HPC cluster" href="../devbio-napari_cluster/readme.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
   </head>
   
   
@@ -75,23 +75,16 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
   
-  <input type="checkbox"
-          class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
+  <div id="pst-scroll-pixel-helper"></div>
   
-  <input type="checkbox"
-          class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
   
-  <div class="search-button__wrapper">
-    <div class="search-button__overlay"></div>
-    <div class="search-button__search-container">
+  <dialog id="pst-search-dialog">
+    
 <form class="bd-search d-flex align-items-center"
       action="../../search.html"
       method="get">
@@ -99,7 +92,6 @@ const thebe_selector_output = ".output, .cell_output"
   <input type="search"
          class="form-control"
          name="q"
-         id="search-input"
          placeholder="Search this book..."
          aria-label="Search this book..."
          autocomplete="off"
@@ -107,16 +99,25 @@ const thebe_selector_output = ".output, .cell_output"
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form></div>
-  </div>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
       
-      <div class="bd-sidebar-primary bd-sidebar">
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -129,9 +130,13 @@ const thebe_selector_output = ".output, .cell_output"
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
+
+  
+    
   
 
 <a class="navbar-brand logo" href="../../intro.html">
+  
   
   
   
@@ -141,12 +146,19 @@ const thebe_selector_output = ".output, .cell_output"
       
     
     
-    <img src="../../_static/biapol_logo.png" class="logo__image only-light" alt="Logo image"/>
-    <script>document.write(`<img src="../../_static/biapol_logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+    <img src="../../_static/biapol_logo.png" class="logo__image only-light" alt="BiA-PoL blog - Home"/>
+    <img src="../../_static/biapol_logo.png" class="logo__image only-dark pst-js-only" alt="BiA-PoL blog - Home"/>
   
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -170,7 +182,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../../marcelo_zoccoler/mini_sabbatical_rike/Readme.html">Mini-Sabbatical Experience at Bia-PoL</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../johannes_mueller/anaconda_getting_started/Readme.html">Getting started with Anaconda and Python</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../johannes_mueller/entry_sphinx/Readme.html">Automated package documentation with Sphinx</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../johannes_mueller/entry_user_inter/Readme.html">Custom user interfaces for Python (Part 1)</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../johannes_mueller/entry_user_inter/Readme.html">Custom user interfaces for Python (Part 1)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../johannes_mueller/entry_user_interf2/Readme.html">Custom user interfaces for Python (Part 2)</a></li>
 
 <li class="toctree-l2"><a class="reference internal" href="../../marcelo_zoccoler/entry_user_interf3/Readme.html">Custom user interfaces for Python (Part 3)</a></li>
@@ -178,7 +190,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../../marcelo_zoccoler/entry_user_interf4/Readme.html">Custom user interfaces for Python (Part 4)</a></li>
 
 </ul>
-</li>
+</details></li>
 <li class="toctree-l1"><a class="reference internal" href="../../marcelo_zoccoler/jamovi/jamovi.html">Jamovi: statistical analysis made visual and easy (powered with R)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../robert_haase/ms_build_tools/readme.html">Installing Microsoft buildtools on Windows</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../ryan_savill/principal_feature_analysis/readme.html">Principal Feature Analysis</a></li>
@@ -195,7 +207,7 @@ const thebe_selector_output = ".output, .cell_output"
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">About the Blog</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../robert_haase/why_we_blog/readme.html">Why we blog</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../people.html">BiA-PoL blog authors</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../people.html">BiA-PoL blog authors</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../mara_lampert/readme.html">Mara Lampert</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../stefan_hahmann/readme.html">Stefan Hahmann</a></li>
 
@@ -207,7 +219,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../../ryan_savill/readme.html">Ryan Savill</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../robert_haase/readme.html">Robert Haase</a></li>
 </ul>
-</li>
+</details></li>
 <li class="toctree-l1"><a class="reference internal" href="../../imprint.html">Imprint</a></li>
 
 </ul>
@@ -218,14 +230,19 @@ const thebe_selector_output = ".output, .cell_output"
   
   
   <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
   </div>
-  
-  <div id="rtd-footer-container"></div>
 
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
 
@@ -234,14 +251,14 @@ const thebe_selector_output = ".output, .cell_output"
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article">
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</label></div>
+</button></div>
       
     </div>
   
@@ -363,26 +380,20 @@ const thebe_selector_output = ".output, .cell_output"
 </button>
 
 
-<script>
-document.write(`
-  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
-    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
-    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
-  </button>
-`);
-</script>
 
-<script>
-document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-  </button>
-`);
-</script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</label>
+</button>
 </div></div>
       
     </div>
@@ -430,29 +441,29 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="setting-up-gpu-accelerated-image-processing-on-the-tud-hpc-cluster">
-<h1>Setting up GPU-accelerated image processing on the TUD HPC cluster<a class="headerlink" href="#setting-up-gpu-accelerated-image-processing-on-the-tud-hpc-cluster" title="Permalink to this heading">#</a></h1>
+<h1>Setting up GPU-accelerated image processing on the TUD HPC cluster<a class="headerlink" href="#setting-up-gpu-accelerated-image-processing-on-the-tud-hpc-cluster" title="Link to this heading">#</a></h1>
 <p><a class="reference external" href="https://biapol.github.io/blog/till_korten">Till Korten</a>, July 29th 2022</p>
 <p>The <a class="reference external" href="https://tu-dresden.de/zih/hochleistungsrechnen/hpc?set_language=en">High Performance Computing (HPC) cluster at the compute center (ZIH) of the TU Dresden</a> provides a lot of computational resources including GPU support, which we can use for analyzing data in the life-sciences.
-This blog post explains how to set up an account on the cluster. <a class="reference internal" href="../devbio-napari_cluster/readme.html"><span class="doc std std-doc">This follow-up article</span></a> explains how you can then run your own <a class="reference external" href="https://jupyter.org/">jupyter notebooks</a> using some <a class="reference external" href="https://napari.org">napari</a> plugins and GPU-accelerated image processing python libraries such as <a class="reference external" href="https://clesperanto.net">clEsperanto</a> on the cluster.</p>
+This blog post explains how to set up an account on the cluster. <a class="reference internal" href="../devbio-napari_cluster/readme.html"><span class="std std-doc">This follow-up article</span></a> explains how you can then run your own <a class="reference external" href="https://jupyter.org/">jupyter notebooks</a> using some <a class="reference external" href="https://napari.org">napari</a> plugins and GPU-accelerated image processing python libraries such as <a class="reference external" href="https://clesperanto.net">clEsperanto</a> on the cluster.</p>
 <section id="this-blog-post-is-for-you-if">
-<h2>This blog post is for you if<a class="headerlink" href="#this-blog-post-is-for-you-if" title="Permalink to this heading">#</a></h2>
+<h2>This blog post is for you if<a class="headerlink" href="#this-blog-post-is-for-you-if" title="Link to this heading">#</a></h2>
 <ul class="simple">
-<li><p>you want to <a class="reference internal" href="../devbio-napari_cluster/readme.html"><span class="doc std std-doc">run devbio-napari tools</span></a> on the cluster.</p></li>
+<li><p>you want to <a class="reference internal" href="../devbio-napari_cluster/readme.html"><span class="std std-doc">run devbio-napari tools</span></a> on the cluster.</p></li>
 <li><p>you are comfortabel with the command line</p></li>
 </ul>
 <p>If you need help with the setup, please do not hesitate to contact us</p>
 </section>
 <section id="see-also">
-<h2>See also<a class="headerlink" href="#see-also" title="Permalink to this heading">#</a></h2>
+<h2>See also<a class="headerlink" href="#see-also" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p><a class="reference external" href="https://doc.zih.tu-dresden.de/">ZIH HPC Documentation</a></p></li>
 </ul>
 </section>
 <section id="step-1-get-access-to-the-zih-cluster">
-<h2>Step 1: Get access to the ZIH cluster<a class="headerlink" href="#step-1-get-access-to-the-zih-cluster" title="Permalink to this heading">#</a></h2>
+<h2>Step 1: Get access to the ZIH cluster<a class="headerlink" href="#step-1-get-access-to-the-zih-cluster" title="Link to this heading">#</a></h2>
 <p>Before you can use the cluster, you need to <a class="reference external" href="https://tu-dresden.de/zih/hochleistungsrechnen/zugang/projektantrag?set_language=en">apply for an HPC project</a>.</p>
 <p>In most cases, a NHR trial project will provide plenty of resources for your needs, so that you can follow our recommendations for filling out the application:</p>
 <ol class="arabic">
@@ -524,14 +535,14 @@ This blog post explains how to set up an account on the cluster. <a class="refer
 <p>For further information, refer to the <a class="reference external" href="https://doc.zih.tu-dresden.de/application/project_request_form/">ZIH documentation for HPC project applications</a>.</p>
 </section>
 <section id="step-2-get-access-fom-the-cluster-to-the-fileserver">
-<h2>Step 2: Get access fom the cluster to the fileserver<a class="headerlink" href="#step-2-get-access-fom-the-cluster-to-the-fileserver" title="Permalink to this heading">#</a></h2>
+<h2>Step 2: Get access fom the cluster to the fileserver<a class="headerlink" href="#step-2-get-access-fom-the-cluster-to-the-fileserver" title="Link to this heading">#</a></h2>
 <ol class="arabic simple">
 <li><p>If you don’t already have one, apply for a <a class="reference external" href="https://selfservice.zih.tu-dresden.de/l/index.php/spor/request-form/">group space on the fileserver</a></p></li>
 <li><p>Ask for access to the fileserver from the cluster: Write an email to <a class="reference external" href="mailto:hpcsupport&#37;&#52;&#48;zih&#46;tu-dresden&#46;de">hpcsupport</a> and ask them to give you access to your fileserver account. They will then tell you a mount point that usually starts with <code class="docutils literal notranslate"><span class="pre">/grp/&lt;fileserver_group&gt;/</span></code>.</p></li>
 </ol>
 </section>
 <section id="step-3-start-a-jupyter-session-on-the-zih-cluster">
-<h2>Step 3: Start a Jupyter session on the ZIH cluster<a class="headerlink" href="#step-3-start-a-jupyter-session-on-the-zih-cluster" title="Permalink to this heading">#</a></h2>
+<h2>Step 3: Start a Jupyter session on the ZIH cluster<a class="headerlink" href="#step-3-start-a-jupyter-session-on-the-zih-cluster" title="Link to this heading">#</a></h2>
 <p>Go to the <a class="reference external" href="https://taurus.hrsk.tu-dresden.de/jupyter">jupyter hub of the ZIH cluster</a>
 You will be greeted with the TUD login screen. Log in with your ZIH user name and password:</p>
 <a class="reference internal image-reference" href="../../_images/1_login1.png"><img alt="../../_images/1_login1.png" src="../../_images/1_login1.png" style="width: 500px;" /></a>
@@ -552,7 +563,7 @@ You will be greeted with the TUD login screen. Log in with your ZIH user name an
 <p>You will now see a wait bar. Do not worry if it does not move, this bar is always at 50%. It usually takes 2-5 min to get a node.</p>
 <a class="reference internal image-reference" href="../../_images/4_wait1.png"><img alt="../../_images/4_wait1.png" src="../../_images/4_wait1.png" style="width: 500px;" /></a>
 <section id="trouble-shooting">
-<h3>Trouble shooting<a class="headerlink" href="#trouble-shooting" title="Permalink to this heading">#</a></h3>
+<h3>Trouble shooting<a class="headerlink" href="#trouble-shooting" title="Link to this heading">#</a></h3>
 <ul>
 <li><p>Check the current utilization (the bars above the preset chooser)</p>
 <ul class="simple">
@@ -566,12 +577,12 @@ You will be greeted with the TUD login screen. Log in with your ZIH user name an
 </section>
 </section>
 <section id="step-4-open-a-terminal">
-<h2>Step 4: Open a terminal<a class="headerlink" href="#step-4-open-a-terminal" title="Permalink to this heading">#</a></h2>
+<h2>Step 4: Open a terminal<a class="headerlink" href="#step-4-open-a-terminal" title="Link to this heading">#</a></h2>
 <p>Open a terminal by clicking on <code class="docutils literal notranslate"><span class="pre">File</span></code> (1 in the image below) -&gt; <code class="docutils literal notranslate"><span class="pre">New</span></code> (2) -&gt; <code class="docutils literal notranslate"><span class="pre">Terminal</span></code> (3)</p>
 <a class="reference internal image-reference" href="../../_images/5_open_terminal.png"><img alt="../../_images/5_open_terminal.png" src="../../_images/5_open_terminal.png" style="width: 500px;" /></a>
 </section>
 <section id="step-5-install-a-custom-jupyter-kernel-for-your-user">
-<h2>Step 5: Install a custom jupyter kernel for your user<a class="headerlink" href="#step-5-install-a-custom-jupyter-kernel-for-your-user" title="Permalink to this heading">#</a></h2>
+<h2>Step 5: Install a custom jupyter kernel for your user<a class="headerlink" href="#step-5-install-a-custom-jupyter-kernel-for-your-user" title="Link to this heading">#</a></h2>
 <p>One of the advantages of our approach is, that you can always execute your code with the exac same python environment so that you always get the same result for the same data. Therefore, it is important for you that you know with which version of our python environment you were working. You can find available <a class="reference external" href="https://gitlab.mn.tu-dresden.de/bia-pol/singularity-devbio-napari/-/releases">versions here</a>. Look for the version number at the end of the title. For example <code class="docutils literal notranslate"><span class="pre">v0.2.1</span></code>.</p>
 <p>To install a devbio-napari python environment, execute the following code in the terminal:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://gitlab.mn.tu-dresden.de/bia-pol/singularity-devbio-napari.git
@@ -586,7 +597,7 @@ You will be greeted with the TUD login screen. Log in with your ZIH user name an
 <p>If everything went well, close the terminal by clicking on the small X at the top of the terminal window.</p>
 </section>
 <section id="step-6-open-a-jupyter-notebook-with-the-newly-installed-environment">
-<h2>Step 6: Open a Jupyter Notebook with the newly installed environment<a class="headerlink" href="#step-6-open-a-jupyter-notebook-with-the-newly-installed-environment" title="Permalink to this heading">#</a></h2>
+<h2>Step 6: Open a Jupyter Notebook with the newly installed environment<a class="headerlink" href="#step-6-open-a-jupyter-notebook-with-the-newly-installed-environment" title="Link to this heading">#</a></h2>
 <p>Reload the browser tab. Now open a new notebook by clicking on <code class="docutils literal notranslate"><span class="pre">File</span></code> (1 in the image below) -&gt; <code class="docutils literal notranslate"><span class="pre">New</span></code> (2) -&gt; <code class="docutils literal notranslate"><span class="pre">Notebook</span></code> (3)</p>
 <a class="reference internal image-reference" href="../../_images/7_open_notebook1.png"><img alt="../../_images/7_open_notebook1.png" src="../../_images/7_open_notebook1.png" style="width: 500px;" /></a>
 <p>Now you are asked to select a kernel. Click on the drop down button (red rectangle in the image below).</p>
@@ -596,10 +607,10 @@ You will be greeted with the TUD login screen. Log in with your ZIH user name an
 <p>NB: for an existing notebook, you can click on the kernel name (by default <code class="docutils literal notranslate"><span class="pre">Python</span> <span class="pre">3</span></code>) in the top right corner of the notebook and aelect the devbio-napari kernel as described above.</p>
 </section>
 <section id="step-7-verify-that-the-environment-works">
-<h2>Step 7: Verify that the environment works<a class="headerlink" href="#step-7-verify-that-the-environment-works" title="Permalink to this heading">#</a></h2>
+<h2>Step 7: Verify that the environment works<a class="headerlink" href="#step-7-verify-that-the-environment-works" title="Link to this heading">#</a></h2>
 <p>Run some test code to verify that the environment has everything you need. For example:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pyclesperanto_prototype</span> <span class="k">as</span> <span class="nn">cle</span>
-<span class="kn">from</span> <span class="nn">skimage.io</span> <span class="kn">import</span> <span class="n">imread</span><span class="p">,</span> <span class="n">imsave</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pyclesperanto_prototype</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">cle</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">skimage.io</span><span class="w"> </span><span class="kn">import</span> <span class="n">imread</span><span class="p">,</span> <span class="n">imsave</span>
 </pre></div>
 </div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># initialize GPU</span>
@@ -634,14 +645,14 @@ You will be greeted with the TUD login screen. Log in with your ZIH user name an
 <p>[‘NVIDIA A100-SXM4-40GB’, ‘cupy backend (experimental)’]</p>
 </section>
 <section id="hints">
-<h2>Hints<a class="headerlink" href="#hints" title="Permalink to this heading">#</a></h2>
+<h2>Hints<a class="headerlink" href="#hints" title="Link to this heading">#</a></h2>
 <section id="copy-data-directly-to-the-cluster">
-<h3>Copy data directly to the cluster<a class="headerlink" href="#copy-data-directly-to-the-cluster" title="Permalink to this heading">#</a></h3>
+<h3>Copy data directly to the cluster<a class="headerlink" href="#copy-data-directly-to-the-cluster" title="Link to this heading">#</a></h3>
 <p>This option targets more advanced users. It is faster, because it skips the transfer of data between fileserver and project space. However, it requires specialized file-transfer tools like <a class="reference external" href="http://winscp.net/eng/download.php">WinSCP</a>, <a class="reference external" href="https://cyberduck.io/">Cyberduck</a> or <a class="reference external" href="https://man7.org/linux/man-pages/man1/rsync.1.html">Rsync</a>.</p>
 <p>Please follow the <a class="reference external" href="https://doc.zih.tu-dresden.de/data_transfer/export_nodes/">instructions on how to use the ZIH Export Nodes</a>.</p>
 </section>
 <section id="what-hardware-is-the-current-node-running-on">
-<h3>What hardware is the current node running on?<a class="headerlink" href="#what-hardware-is-the-current-node-running-on" title="Permalink to this heading">#</a></h3>
+<h3>What hardware is the current node running on?<a class="headerlink" href="#what-hardware-is-the-current-node-running-on" title="Link to this heading">#</a></h3>
 <p>If you are using an NVidia GPU, you can the <a class="reference external" href="https://developer.nvidia.com/nvidia-system-management-interface">NVidia System Management Interface</a>:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>!nvidia-smi
 </pre></div>
@@ -741,7 +752,7 @@ Summary:
 </section>
 </section>
 <section id="acknowledgements">
-<h2>Acknowledgements<a class="headerlink" href="#acknowledgements" title="Permalink to this heading">#</a></h2>
+<h2>Acknowledgements<a class="headerlink" href="#acknowledgements" title="Link to this heading">#</a></h2>
 <p>I would like to thank Fabian Rost for sharing his extensive experience of how to run python notebooks within singularity containers on the TUD cluster.</p>
 </section>
 </section>
@@ -771,11 +782,10 @@ Summary:
 
               
               
-                <footer class="bd-footer-article">
+              
+              
+                <footer class="prev-next-footer d-print-none">
                   
-<div class="footer-article-items footer-article__inner">
-  
-    <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
        href="../devbio-napari_cluster/readme.html"
@@ -795,17 +805,16 @@ Summary:
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
-</div></div>
-  
 </div>
-
                 </footer>
               
             </div>
             
             
               
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -852,6 +861,7 @@ By Marcelo Zoccoler, Johannes Müller, Till Korten, Ryan Savill, Mara Lampert, S
   
   <div class="footer-item">
     
+
   <p class="copyright">
     
       © Copyright 2024.
@@ -878,8 +888,8 @@ By Marcelo Zoccoler, Johannes Müller, Till Korten, Ryan Savill, Mara Lampert, S
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
-<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+  <script defer src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
 
   <footer class="bd-footer">
   </footer>
