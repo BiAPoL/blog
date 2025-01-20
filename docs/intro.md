@@ -25,16 +25,6 @@ If you have feedback or suggestions, if spotted a typo, broken link or misleadin
 <small>[Stefan Hahmann](stefan_hahmann/readme), April 24th, 2024</small><br>
 <img src="images/elephant-logo.png" width="100" align="right"><p>ELEPHANT is a platform for 3D cell tracking, based on incremental and interactive deep learning. This post will show you how to install the ELEPHANT server component on a Windows machine.</p>
 
-### [Running bio image analysis workflows on your machine](stefan_hahmann/github_desktop_jupyter_notebook/readme)
-
-<small>[Stefan Hahmann](stefan_hahmann/readme), December 21st, 2023</small><br>
-<img src="images/jupyter_logo.png" width="100" align="right"><p>Jupyter Notebooks may be used to run bio image analysis workflows on your machine with your own data. They are a great tool to share workflows with others. This post will show you how to run workflows that have been shared via GitHub. </p>
-
-### [Best of both worlds: Combining Qt Designer and magicgui](johannes_mueller/qtdesigner_and_magicgui/readme)
-
-<small>[Johannes Soltwedel](johannes_mueller/readme), Mai 12th, 2023</small><br>
-<img src="images/qt_logo.png" width="100" align="right"><p>This blog post will give you a quick introduction on how to combine two great tools for the creation of graphical user interfaces in napari: The [Qt Designer](https://doc.qt.io/qt-6/qtdesigner-manual.html) and [magicgui](https://pyapp-kit.github.io/magicgui/). </p>
-
 Find more blog posts on the left sidebar.
 Enjoy reading!
 
