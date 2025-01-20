@@ -7,6 +7,7 @@ parts:
 - caption: Blog Posts
   chapters:
   # Add new chapters here (recent first)
+  - file: stefan_hahmann/stardist_gpu_2025/readme
   - file: johannes_mueller/yolo_from_omero/train_yolo
   - file: mara_lampert/getting_started_with_miniforge_and_python/readme
   - file: stefan_hahmann/elephant_server_installation_windows/readme
