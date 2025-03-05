@@ -30,7 +30,7 @@ If you don't have them, please contact your IT department.
 In the following procedure, we will install 
 * CUDA 11.2.0
 * CUDNN 8.1.0.77 for CUDA 11.2
-* tensorflow-gpu 2.10.0
+* tensorflow 2.10.0
 * stardist 0.8.5
 * napari 0.5.5
 * stardist-napari 2024.8.6.1
@@ -94,19 +94,19 @@ As there are some conflicts between different versions of CUDA, Tensorflow, Pyth
 If you don't have conda installed yet, I recommend installing [miniforge](https://github.com/conda-forge/miniforge). The installer can be downloaded [here](https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-Windows-x86_64.exe). 
 This blog post contains an [installation instruction](https://biapol.github.io/blog/mara_lampert/getting_started_with_miniforge_and_python/readme.html).
 
-Assuming miniforge is set up, we start by creating a new environment and specifically installing python 3.10, cudutoolkit 11.2 and cudnn 8.1.0:
+Assuming miniforge is set up, we start by creating a new environment and specifically installing python 3.10, cudutoolkit 11.2, cudnn 8.1.0 and pip. Installing pip within the environment has the advantage that installing package using pip, which will be done in later steps, will not interfer with the system pip.
 ```shell
-mamba create --name napari-stardist-gpu python=3.10 cudatoolkit=11.2 cudnn=8.1.0
+mamba create --name napari-stardist-gpu python=3.10 cudatoolkit=11.2 cudnn=8.1.0 pip
 ```
 
 Afterwards, you can activate this environment:
 ```shell
-conda activate napari-stardist-gpu
+mamba activate napari-stardist-gpu
 ```
 
-We install tensorflow and more precisely, its GPU version:
+We install tensorflow 2.10.0. TensorFlow 2.10 is the last TensorFlow release that supports GPU on native-Windows. Starting with TensorFlow 2.11, it is required need to install TensorFlow in WSL2.
 ```shell
-pip install tensorflow-gpu==2.10.0
+pip install tensorflow==2.10.0
 ```
 
 To check if tensorflow is installed correctly and uses the GPU, we start a python console
@@ -179,6 +179,12 @@ This dialog will open, where you can just search for the plugin and click the `I
 You then need to restart napari. Afterwards, a new menu entry will show up under `Plugins`:
 
 ![](images/install_stardist2.png)
+
+If you experience any problems during the installation, it may help in some case to clear mamba and pip caches before processing through the installation steps, since in some cases mamba / pip will reuse existing but non-matching versions of libraries that they find in their caches:
+```shell
+mamba clean -a -y
+pip cache purge
+```
 
 ## Testing the StarDist napari plugin
 
