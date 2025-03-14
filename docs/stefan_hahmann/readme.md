@@ -14,6 +14,8 @@ Since 2022, I work as a [research software engineer](https://de-rse.org/en/) for
 # Blog posts
 
 * [Running bio image analysis workflows on your machine](github_desktop_jupyter_notebook/readme)
+* [Installation of Elephant Server on Windows](elephant_server_installation_windows/readme)
+* [Using StarDist in napari with GPU-support in Windows (2025)](stardist_gpu_2025/readme)
 
 # Links
 
