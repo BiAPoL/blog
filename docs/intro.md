@@ -13,7 +13,7 @@ If you have feedback or suggestions, if spotted a typo, broken link or misleadin
 ### [Using StarDist in napari with GPU-support in Windows (2025)](stefan_hahmann/stardist_gpu_2025/readme)
 
 <small>[Stefan Hahmann](stefan_hahmann/readme), January 20th, 2025</small><br>
-<img src="images/stardist.PNG" width=10% align="right"><p>This blog post documents how to setup a Windows 10 system such that it can run the StarDist 2D and 3D plugin for Napari.</p>
+<img src="images/stardist_logo.jpg" width=10% align="right"><p>This blog post documents how to setup a Windows 10 system such that it can run the StarDist 2D and 3D plugin for Napari.</p>
 
 ### [Training a yolo model on an OMERO dataset](ref:yolo_omero)
 
