@@ -477,7 +477,8 @@ The server is built as a web application that serves deep learning-based algorit
 <p><a class="reference external" href="https://www.docker.com/products/docker-desktop">Docker Desktop</a> is a tool that allows you to run Docker containers on your local machine.
 Docker containers are lightweight, standalone, executable packages of software that include everything needed to run an application: code, runtime, system tools, system libraries and settings.
 Docker Desktop is available for Windows and Mac. You can download it <a class="reference external" href="https://www.docker.com/products/docker-desktop">here</a>.
-Please make sure that you have installed and started Docker Desktop before proceeding. You will need to sign in to Docker Desktop with your Docker account.</p>
+Please make sure that you have installed and started Docker Desktop before proceeding. Sometimes, it is needed to restart your machine after docker installation.
+You will need to sign in to Docker Desktop with your Docker account.</p>
 </section>
 <section id="windows-subsystem-for-linux-wsl">
 <h3>Windows Subsystem for Linux (WSL)<a class="headerlink" href="#windows-subsystem-for-linux-wsl" title="Link to this heading">#</a></h3>
@@ -534,8 +535,10 @@ Furthermore, you need to install CUDA. You can download CUDA from the <a class="
 </section>
 <section id="creating-the-elephant-server">
 <h2>Creating the Elephant Server<a class="headerlink" href="#creating-the-elephant-server" title="Link to this heading">#</a></h2>
-<p>Open a console (press <code class="docutils literal notranslate"><span class="pre">Windows</span> <span class="pre">button</span></code>, type <code class="docutils literal notranslate"><span class="pre">cmd</span></code> and press <code class="docutils literal notranslate"><span class="pre">Enter</span></code>) and navigate to the folder where you have unzipped the Elephant installation files.
-Start <code class="docutils literal notranslate"><span class="pre">wsl</span></code> by typing <code class="docutils literal notranslate"><span class="pre">wsl</span></code> and pressing <code class="docutils literal notranslate"><span class="pre">Enter</span></code>.</p>
+<p>Open a console (press <code class="docutils literal notranslate"><span class="pre">Windows</span> <span class="pre">button</span></code>, type <code class="docutils literal notranslate"><span class="pre">cmd</span></code> and press <code class="docutils literal notranslate"><span class="pre">Enter</span></code>) and navigate to the folder where you have unzipped the Elephant installation files.</p>
+<p>This folder should contain a file named <code class="docutils literal notranslate"><span class="pre">Makefile</span></code> - cf. a screenshot of the folder contents:</p>
+<p><img alt="elephant-server-folder-content.png" src="../../_images/elephant-server-folder-content.png" /></p>
+<p>Start <code class="docutils literal notranslate"><span class="pre">wsl</span></code> by typing <code class="docutils literal notranslate"><span class="pre">wsl</span></code> and pressing <code class="docutils literal notranslate"><span class="pre">Enter</span></code>.</p>
 <p>Build the Elephant Docker image by running the following command (it may take some time to download the required files):
 Including <code class="docutils literal notranslate"><span class="pre">sudo</span></code> may not be required on every machine.</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">sudo make build</span>
