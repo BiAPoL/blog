@@ -24,7 +24,8 @@ Before installing Elephant on a powerful workstation or server, you may wish to 
 [Docker Desktop](https://www.docker.com/products/docker-desktop) is a tool that allows you to run Docker containers on your local machine. 
 Docker containers are lightweight, standalone, executable packages of software that include everything needed to run an application: code, runtime, system tools, system libraries and settings. 
 Docker Desktop is available for Windows and Mac. You can download it [here](https://www.docker.com/products/docker-desktop).
-Please make sure that you have installed and started Docker Desktop before proceeding. You will need to sign in to Docker Desktop with your Docker account.
+Please make sure that you have installed and started Docker Desktop before proceeding. Sometimes, it is needed to restart your machine after docker installation. 
+You will need to sign in to Docker Desktop with your Docker account.
 
 ### Windows Subsystem for Linux (WSL)
 
@@ -96,6 +97,11 @@ Furthermore, you need to install CUDA. You can download CUDA from the [Nvidia we
 ## Creating the Elephant Server
 
 Open a console (press `Windows button`, type `cmd` and press `Enter`) and navigate to the folder where you have unzipped the Elephant installation files.
+
+This folder should contain a file named `Makefile` - cf. a screenshot of the folder contents:
+
+![elephant-server-folder-content.png](images/elephant-server-folder-content.png)
+
 Start `wsl` by typing `wsl` and pressing `Enter`.
 
 Build the Elephant Docker image by running the following command (it may take some time to download the required files):
